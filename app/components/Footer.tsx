@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-[#202124] px-5 py-14 text-white sm:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="text-2xl font-black">
-          Img<span className="font-normal">Swift</span>
+          Tools<span className="font-normal">Gift</span>
         </div>
 
         <p className="mt-3 text-sm text-white/45">
@@ -62,9 +62,11 @@ export default function Footer() {
         </nav>
 
         <div className="mt-10 border-t border-white/10 pt-7 text-sm text-white/40">
-          Â© 2026 ToolsGift. All rights reserved.
+          � 2026 ToolsGift. All rights reserved.
         </div>
       </div>
     </footer>
   );
 }
+
+

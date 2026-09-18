@@ -39,13 +39,13 @@ const platforms = [
   { key: "whatsapp", label: "WhatsApp", icon: "WA" },
   { key: "instagram", label: "Instagram", icon: "IG" },
   { key: "facebook", label: "Facebook", icon: "f" },
-  { key: "x", label: "X", icon: "ð•" },
-  { key: "youtube", label: "YouTube", icon: "â–¶" },
+  { key: "x", label: "X", icon: "𝕏" },
+  { key: "youtube", label: "YouTube", icon: "▶" },
   { key: "linkedin", label: "LinkedIn", icon: "in" },
   { key: "telegram", label: "Telegram", icon: "TG" },
-  { key: "website", label: "Website", icon: "â†—" },
+  { key: "website", label: "Website", icon: "↗" },
   { key: "email", label: "Email", icon: "@" },
-  { key: "phone", label: "Phone", icon: "â˜Ž" },
+  { key: "phone", label: "Phone", icon: "☎" },
 ] as const;
 
 const templates = [
@@ -1105,3 +1105,4 @@ function darkTemplateForTemplate(template: string) {
     template === "navy"
   );
 }
+

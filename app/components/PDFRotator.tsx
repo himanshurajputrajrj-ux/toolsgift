@@ -194,7 +194,7 @@ export default function PDFRotator() {
         </h1>
 
         <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-          Rotate PDF pages by 90Â°, 180Â°, or 270Â° and
+          Rotate PDF pages by 90°, 180°, or 270° and
           download the rotated document.
         </p>
       </div>
@@ -209,7 +209,7 @@ export default function PDFRotator() {
           className="cursor-pointer rounded-3xl border-2 border-dashed border-slate-300 bg-white p-10 text-center transition hover:border-blue-400 hover:bg-blue-50/30"
         >
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-3xl">
-            ðŸ”„
+            🔄
           </div>
 
           <h2 className="text-lg font-semibold text-slate-900">
@@ -239,7 +239,7 @@ export default function PDFRotator() {
           <div className="mb-6 flex flex-col gap-4 rounded-2xl bg-slate-50 p-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50 text-xl">
-                ðŸ“„
+                📄
               </div>
 
               <div>
@@ -248,7 +248,7 @@ export default function PDFRotator() {
                 </p>
 
                 <p className="text-sm text-slate-500">
-                  {formatBytes(file.size)} â€¢ {pageCount} page
+                  {formatBytes(file.size)} • {pageCount} page
                   {pageCount !== 1 ? "s" : ""}
                 </p>
               </div>
@@ -287,14 +287,14 @@ export default function PDFRotator() {
                   >
                     <span className="block text-2xl">
                       {value === 90
-                        ? "â†»"
+                        ? "↻"
                         : value === 180
-                        ? "â†»"
-                        : "â†º"}
+                        ? "↻"
+                        : "↺"}
                     </span>
 
                     <span className="mt-1 block text-sm font-semibold">
-                      {value}Â°
+                      {value}°
                     </span>
                   </button>
                 ))}
@@ -393,7 +393,7 @@ export default function PDFRotator() {
           >
             {processing
               ? "Rotating PDF..."
-              : `Rotate PDF ${rotation}Â°`}
+              : `Rotate PDF ${rotation}°`}
           </button>
         </div>
       )}
@@ -440,7 +440,7 @@ export default function PDFRotator() {
         ) : (
           <div className="flex min-h-[180px] items-center justify-center rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 text-center">
             <div>
-              <div className="mb-2 text-3xl">ðŸ”„</div>
+              <div className="mb-2 text-3xl">🔄</div>
 
               <p className="font-medium text-slate-600">
                 No rotated PDF yet
@@ -476,4 +476,5 @@ export default function PDFRotator() {
     </section>
   );
 }
+
 

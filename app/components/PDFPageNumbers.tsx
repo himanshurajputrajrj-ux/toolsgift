@@ -260,7 +260,7 @@ export default function PDFPageNumbers() {
             />
 
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-100 text-3xl">
-              ðŸ”¢
+              🔢
             </div>
 
             <h2 className="text-lg font-semibold text-slate-800">
@@ -272,7 +272,7 @@ export default function PDFPageNumbers() {
             </p>
 
             <p className="mt-2 text-xs text-slate-400">
-              PDF â€¢ Maximum 50MB
+              PDF • Maximum 50MB
             </p>
           </div>
 
@@ -436,7 +436,7 @@ export default function PDFPageNumbers() {
               ) : (
                 <div className="flex min-h-[280px] items-center justify-center px-6 text-center">
                   <div>
-                    <div className="mb-3 text-4xl">ðŸ”¢</div>
+                    <div className="mb-3 text-4xl">🔢</div>
 
                     <p className="font-medium text-slate-700">
                       Your numbered PDF will appear here
@@ -474,4 +474,5 @@ export default function PDFPageNumbers() {
     </section>
   );
 }
+
 

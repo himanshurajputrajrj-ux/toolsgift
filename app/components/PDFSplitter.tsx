@@ -402,7 +402,7 @@ export default function PDFSplitter() {
         />
 
         <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-2xl">
-          ðŸ“„
+          📄
         </div>
 
         <h3 className="text-lg font-semibold text-slate-900">
@@ -437,7 +437,7 @@ export default function PDFSplitter() {
               </p>
 
               <p className="mt-1 text-sm text-slate-500">
-                {formatSize(file.size)} Â·{" "}
+                {formatSize(file.size)} ·{" "}
                 {totalPages}{" "}
                 {totalPages === 1
                   ? "page"
@@ -594,7 +594,7 @@ export default function PDFSplitter() {
                         result.pageEnd
                           ? `Page ${result.pageStart}`
                           : `Pages ${result.pageStart}-${result.pageEnd}`}{" "}
-                        Â·{" "}
+                        ·{" "}
                         {formatSize(
                           result.size
                         )}
@@ -621,7 +621,7 @@ export default function PDFSplitter() {
           <div className="flex min-h-[260px] items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50">
             <div className="text-center">
               <div className="mb-3 text-4xl">
-                âœ‚ï¸
+                ✂️
               </div>
 
               <p className="font-medium text-slate-600">
@@ -648,5 +648,6 @@ export default function PDFSplitter() {
     </div>
   );
 }
+
 
 

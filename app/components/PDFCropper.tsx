@@ -243,7 +243,7 @@ export default function PDFCropper() {
             />
 
             <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-2xl">
-              âœ‚ï¸
+              ✂️
             </div>
 
             <p className="font-semibold text-slate-800">
@@ -251,7 +251,7 @@ export default function PDFCropper() {
             </p>
 
             <p className="mt-1 text-xs text-slate-500">
-              Drag & drop or click to browse â€¢ Max 50MB
+              Drag & drop or click to browse • Max 50MB
             </p>
           </div>
 
@@ -265,7 +265,7 @@ export default function PDFCropper() {
                   </p>
 
                   <p className="mt-1 text-xs text-slate-500">
-                    {formatBytes(file.size)} â€¢ {pageCount} pages
+                    {formatBytes(file.size)} • {pageCount} pages
                   </p>
                 </div>
 
@@ -458,7 +458,7 @@ export default function PDFCropper() {
             {!resultUrl ? (
               <div className="flex min-h-[280px] items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 px-6 text-center">
                 <div>
-                  <div className="mb-3 text-4xl">ðŸ“„</div>
+                  <div className="mb-3 text-4xl">📄</div>
 
                   <p className="font-medium text-slate-700">
                     Cropped PDF will appear here
@@ -512,5 +512,6 @@ export default function PDFCropper() {
     </section>
   );
 }
+
 
 

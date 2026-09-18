@@ -270,7 +270,7 @@ export default function PDFToPowerPoint() {
             />
 
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-2xl">
-              ðŸ“Š
+              📊
             </div>
 
             <h3 className="mt-4 font-semibold text-slate-900">
@@ -296,7 +296,7 @@ export default function PDFToPowerPoint() {
 
                   <p className="mt-1 text-sm text-slate-500">
                     {formatSize(file.size)}
-                    {pageCount > 0 && ` â€¢ ${pageCount} pages`}
+                    {pageCount > 0 && ` • ${pageCount} pages`}
                   </p>
                 </div>
 
@@ -346,7 +346,7 @@ export default function PDFToPowerPoint() {
             {!file ? (
               <div className="text-center">
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 text-3xl">
-                  ðŸ“‘
+                  📑
                 </div>
 
                 <p className="mt-4 font-medium text-slate-600">
@@ -360,7 +360,7 @@ export default function PDFToPowerPoint() {
             ) : (
               <div className="w-full text-center">
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-3xl">
-                  ðŸ“Š
+                  📊
                 </div>
 
                 <h3 className="mt-4 text-lg font-semibold text-slate-900">
@@ -404,4 +404,5 @@ export default function PDFToPowerPoint() {
     </section>
   );
 }
+
 

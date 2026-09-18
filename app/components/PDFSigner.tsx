@@ -369,7 +369,7 @@ export default function PDFSigner() {
           className="cursor-pointer rounded-3xl border-2 border-dashed border-slate-300 bg-white p-10 text-center transition hover:border-blue-400 hover:bg-blue-50/30"
         >
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-3xl">
-            ðŸ“„
+            📄
           </div>
 
           <h2 className="text-lg font-semibold text-slate-900">
@@ -399,7 +399,7 @@ export default function PDFSigner() {
           <div className="mb-6 flex flex-col gap-4 rounded-2xl bg-slate-50 p-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50 text-xl">
-                ðŸ“„
+                📄
               </div>
 
               <div>
@@ -408,7 +408,7 @@ export default function PDFSigner() {
                 </p>
 
                 <p className="text-sm text-slate-500">
-                  {formatBytes(file.size)} â€¢ {pageCount} page
+                  {formatBytes(file.size)} • {pageCount} page
                   {pageCount !== 1 ? "s" : ""}
                 </p>
               </div>
@@ -446,7 +446,7 @@ export default function PDFSigner() {
                   }
                   className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-40"
                 >
-                  â†
+                  ←
                 </button>
 
                 <div className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-slate-700">
@@ -463,7 +463,7 @@ export default function PDFSigner() {
                   }
                   className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-40"
                 >
-                  â†’
+                  →
                 </button>
               </div>
             </div>
@@ -677,7 +677,7 @@ export default function PDFSigner() {
         ) : (
           <div className="flex min-h-[180px] items-center justify-center rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 text-center">
             <div>
-              <div className="mb-2 text-3xl">âœï¸</div>
+              <div className="mb-2 text-3xl">✍️</div>
 
               <p className="font-medium text-slate-600">
                 No signed PDF yet
@@ -712,4 +712,5 @@ export default function PDFSigner() {
     </section>
   );
 }
+
 

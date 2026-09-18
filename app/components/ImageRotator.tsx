@@ -116,7 +116,7 @@ export default function ImageRotator() {
             onClick={() => inputRef.current?.click()}
             className="border-2 border-dashed border-gray-300 rounded-2xl p-10 text-center cursor-pointer hover:border-black transition"
           >
-            <div className="text-5xl mb-4">ðŸ”„</div>
+            <div className="text-5xl mb-4">🔄</div>
 
             <h2 className="text-xl font-semibold text-gray-900">
               Upload Image
@@ -187,7 +187,7 @@ export default function ImageRotator() {
                           : "border-gray-200 hover:bg-gray-50"
                       }`}
                     >
-                      90Â°
+                      90°
                     </button>
 
                     <button
@@ -199,7 +199,7 @@ export default function ImageRotator() {
                           : "border-gray-200 hover:bg-gray-50"
                       }`}
                     >
-                      180Â°
+                      180°
                     </button>
 
                     <button
@@ -211,7 +211,7 @@ export default function ImageRotator() {
                           : "border-gray-200 hover:bg-gray-50"
                       }`}
                     >
-                      270Â°
+                      270°
                     </button>
 
                     <button
@@ -223,7 +223,7 @@ export default function ImageRotator() {
                           : "border-gray-200 hover:bg-gray-50"
                       }`}
                     >
-                      360Â°
+                      360°
                     </button>
 
                   </div>
@@ -235,7 +235,7 @@ export default function ImageRotator() {
                   disabled={isRotating}
                   className="w-full mt-6 px-6 py-3 rounded-xl bg-black text-white font-semibold hover:bg-gray-800 disabled:opacity-50 transition"
                 >
-                  {isRotating ? "Rotating..." : `Rotate ${angle}Â°`}
+                  {isRotating ? "Rotating..." : `Rotate ${angle}°`}
                 </button>
 
                 <button
@@ -271,3 +271,4 @@ export default function ImageRotator() {
     </div>
   );
 }
+

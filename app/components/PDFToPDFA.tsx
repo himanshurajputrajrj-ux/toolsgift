@@ -223,7 +223,7 @@ export default function PDFToPDFA() {
             />
 
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-100 text-3xl">
-              ðŸ—„ï¸
+              🗄️
             </div>
 
             <h2 className="text-lg font-semibold text-slate-800">
@@ -235,7 +235,7 @@ export default function PDFToPDFA() {
             </p>
 
             <p className="mt-2 text-xs text-slate-400">
-              PDF â€¢ Maximum 50MB
+              PDF • Maximum 50MB
             </p>
           </div>
 
@@ -268,7 +268,7 @@ export default function PDFToPDFA() {
           {/* PDF/A information */}
           <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50 p-4">
             <div className="flex gap-3">
-              <span className="text-lg">â„¹ï¸</span>
+              <span className="text-lg">ℹ️</span>
 
               <div>
                 <p className="text-sm font-semibold text-blue-900">
@@ -327,7 +327,7 @@ export default function PDFToPDFA() {
               ) : (
                 <div className="flex min-h-[280px] items-center justify-center px-6 text-center">
                   <div>
-                    <div className="mb-3 text-4xl">ðŸ—„ï¸</div>
+                    <div className="mb-3 text-4xl">🗄️</div>
 
                     <p className="font-medium text-slate-700">
                       Your PDF/A result will appear here
@@ -365,5 +365,6 @@ export default function PDFToPDFA() {
     </section>
   );
 }
+
 
 

@@ -257,7 +257,7 @@ export default function PDFCompressor() {
             />
 
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-2xl">
-              ðŸ“„
+              📄
             </div>
 
             <h3 className="mt-4 font-semibold text-slate-900">
@@ -331,7 +331,7 @@ export default function PDFCompressor() {
             {!resultUrl ? (
               <div className="text-center">
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 text-3xl">
-                  ðŸ“¦
+                  📦
                 </div>
 
                 <p className="mt-4 font-medium text-slate-600">
@@ -339,13 +339,13 @@ export default function PDFCompressor() {
                 </p>
 
                 <p className="mt-1 text-sm text-slate-400">
-                  Upload a PDF and click â€œCompress PDFâ€.
+                  Upload a PDF and click “Compress PDF”.
                 </p>
               </div>
             ) : (
               <div className="w-full text-center">
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-3xl">
-                  âœ“
+                  ✓
                 </div>
 
                 <h3 className="mt-4 text-lg font-semibold text-slate-900">
@@ -396,6 +396,7 @@ export default function PDFCompressor() {
     </section>
   );
 }
+
 
 
 

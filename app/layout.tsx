@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ToolsGift.com"),
 
   title: {
-    default: "ToolsGift â€” Fast & Simple Image & PDF Tools",
+    default: "ToolsGift — Fast & Simple Image & PDF Tools",
     template: "%s | ToolsGift",
   },
 
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "ToolsGift",
-    title: "ToolsGift â€” Fast & Simple Image & PDF Tools",
+    title: "ToolsGift — Fast & Simple Image & PDF Tools",
     description:
       "Fast and simple online image and PDF tools for converting, editing, compressing and managing files.",
     url: "https://ToolsGift.com",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "ToolsGift â€” Fast & Simple Image & PDF Tools",
+    title: "ToolsGift — Fast & Simple Image & PDF Tools",
     description:
       "Fast and simple online image and PDF tools for everyday file processing.",
   },
@@ -95,3 +95,4 @@ export default function RootLayout({
     </html>
   );
 }
+

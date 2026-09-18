@@ -249,7 +249,7 @@ export default function MergePDF() {
         />
 
         <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-2xl">
-          ðŸ“‘
+          📑
         </div>
 
         <h3 className="text-lg font-semibold text-slate-900">
@@ -261,7 +261,7 @@ export default function MergePDF() {
         </p>
 
         <p className="mt-2 text-xs text-slate-400">
-          Multiple PDF files supported Â· Maximum 50 MB per file
+          Multiple PDF files supported · Maximum 50 MB per file
         </p>
       </div>
 
@@ -330,7 +330,7 @@ export default function MergePDF() {
                       disabled={index === 0}
                       className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40"
                     >
-                      â†‘
+                      ↑
                     </button>
 
                     <button
@@ -343,7 +343,7 @@ export default function MergePDF() {
                       }
                       className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40"
                     >
-                      â†“
+                      ↓
                     </button>
 
                     <button
@@ -364,7 +364,7 @@ export default function MergePDF() {
           <div className="flex min-h-[180px] items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50">
             <div className="text-center">
               <div className="mb-3 text-3xl">
-                ðŸ“„
+                📄
               </div>
 
               <p className="font-medium text-slate-600">
@@ -411,7 +411,7 @@ export default function MergePDF() {
         {resultUrl ? (
           <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-6 text-center">
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-100 text-3xl">
-              âœ“
+              ✓
             </div>
 
             <h3 className="text-lg font-bold text-slate-900">
@@ -419,7 +419,7 @@ export default function MergePDF() {
             </h3>
 
             <p className="mt-2 text-sm text-slate-600">
-              {files.length} PDF files combined Â·{" "}
+              {files.length} PDF files combined ·{" "}
               {formatSize(resultSize)}
             </p>
           </div>
@@ -427,7 +427,7 @@ export default function MergePDF() {
           <div className="flex min-h-[260px] items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50">
             <div className="text-center">
               <div className="mb-3 text-4xl">
-                ðŸ“‘
+                📑
               </div>
 
               <p className="font-medium text-slate-600">
@@ -454,5 +454,6 @@ export default function MergePDF() {
     </div>
   );
 }
+
 
 

@@ -430,7 +430,7 @@ export default function PDFRedactor() {
             />
 
             <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-2xl">
-              ðŸ“„
+              📄
             </div>
 
             <p className="font-semibold text-slate-800">
@@ -438,7 +438,7 @@ export default function PDFRedactor() {
             </p>
 
             <p className="mt-1 text-xs text-slate-500">
-              Drag & drop or click to browse â€¢ Max 50MB
+              Drag & drop or click to browse • Max 50MB
             </p>
           </div>
 
@@ -452,7 +452,7 @@ export default function PDFRedactor() {
                   </p>
 
                   <p className="mt-1 text-xs text-slate-500">
-                    {formatBytes(file.size)} â€¢ {pageCount} pages
+                    {formatBytes(file.size)} • {pageCount} pages
                   </p>
                 </div>
 
@@ -493,7 +493,7 @@ export default function PDFRedactor() {
                 }
                 className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                â† Previous
+                ← Previous
               </button>
 
               <span className="rounded-lg bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">
@@ -510,7 +510,7 @@ export default function PDFRedactor() {
                 }
                 className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                Next â†’
+                Next →
               </button>
             </div>
           )}
@@ -588,9 +588,9 @@ export default function PDFRedactor() {
                       </p>
 
                       <p className="text-xs text-slate-500">
-                        X: {Math.round(redaction.x)} â€¢ Y:{" "}
-                        {Math.round(redaction.y)} â€¢ W:{" "}
-                        {Math.round(redaction.width)} â€¢ H:{" "}
+                        X: {Math.round(redaction.x)} • Y:{" "}
+                        {Math.round(redaction.y)} • W:{" "}
+                        {Math.round(redaction.width)} • H:{" "}
                         {Math.round(redaction.height)}
                       </p>
                     </div>
@@ -642,7 +642,7 @@ export default function PDFRedactor() {
             {!resultUrl ? (
               <div className="flex min-h-[280px] items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 px-6 text-center">
                 <div>
-                  <div className="mb-3 text-4xl">ðŸ”’</div>
+                  <div className="mb-3 text-4xl">🔒</div>
 
                   <p className="font-medium text-slate-700">
                     Redacted PDF will appear here
@@ -664,7 +664,7 @@ export default function PDFRedactor() {
             )}
           </div>
 
-          {/* Download â€” always visible */}
+          {/* Download — always visible */}
           <a
             href={resultUrl || undefined}
             download="redacted.pdf"
@@ -696,4 +696,5 @@ export default function PDFRedactor() {
     </section>
   );
 }
+
 
