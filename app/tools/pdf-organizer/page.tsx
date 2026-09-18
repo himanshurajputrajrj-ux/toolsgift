@@ -2,6 +2,7 @@
 import PDFOrganizer from "../../components/PDFOrganizer";
 import ToolSEOContent from "../../components/ToolSEOContent";
 import Breadcrumbs from "../../components/Breadcrumbs";
+import RelatedTools from "../../components/RelatedTools";
 
 export const metadata: Metadata = {
   title: "Organize PDF Online",
@@ -38,7 +39,14 @@ export default function PDFOrganizerPage() {
       <Breadcrumbs toolName="Organize PDF" />
       <PDFOrganizer />
       <ToolSEOContent toolKey="pdf-organizer" />
+      <RelatedTools tools={[
+        { name: "PDF Compressor", href: "/tools/pdf-compressor" },
+        { name: "PDF Merger", href: "/tools/pdf-merger" },
+        { name: "PDF Splitter", href: "/tools/pdf-splitter" },
+        { name: "PDF Page Numbers", href: "/tools/pdf-page-numbers" },
+      ]} />
     </main>
   );
 }
+
 
