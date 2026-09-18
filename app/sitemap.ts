@@ -1,6 +1,6 @@
 ﻿import type { MetadataRoute } from "next";
 
-const baseUrl = "https://ToolsGift.com";
+const baseUrl = "https://toolsgift.com";
 
 const tools = [
   // Image Tools
@@ -70,3 +70,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 }
+
