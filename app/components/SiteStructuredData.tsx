@@ -1,0 +1,28 @@
+﻿import type { ReactNode } from "react";
+
+export default function SiteStructuredData(): ReactNode {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        name: "ToolsGift",
+        url: "https://toolsgift.com",
+      },
+      {
+        "@type": "WebSite",
+        name: "ToolsGift",
+        url: "https://toolsgift.com",
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(structuredData),
+      }}
+    />
+  );
+}

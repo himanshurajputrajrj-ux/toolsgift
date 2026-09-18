@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useMemo, useState } from "react";
+import SiteStructuredData from "./components/SiteStructuredData";
 
 type IconType =
   | "compress"
@@ -442,7 +443,7 @@ export default function Home() {
     }, [search]);
 
   return (
-    <main className="min-h-screen bg-[#F8F5ED] text-[#202124]">
+    <main className="min-h-screen bg-[#F8F5ED] text-[#202124]">`r`n      <SiteStructuredData />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.10),transparent_42%)] before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(rgba(32,33,36,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(32,33,36,0.025)_1px,transparent_1px)] before:bg-[size:32px_32px] before:[mask-image:linear-gradient(to_bottom,black,transparent_80%)]">
@@ -1371,4 +1372,7 @@ function Faq({
     </details>
   );
 }
+
+
+
 
