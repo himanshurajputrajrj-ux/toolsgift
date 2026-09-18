@@ -505,7 +505,7 @@ export default function Home() {
               Everything you need.
             </h2>
 
-            <p className="mx-auto mt-4 max-w-xl leading-7 text-black/50">
+            <p className="mx-auto mt-4 max-w-xl leading-7 text-black/60">
               Explore all ToolsGift tools or search
               for exactly what you need.
             </p>
@@ -525,7 +525,7 @@ export default function Home() {
                 Find the right tool in seconds.
               </h3>
 
-              <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-black/50 sm:text-base">
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-black/60 sm:text-base">
                 Search by tool name, file type,
                 or what you want to do.
               </p>
@@ -686,7 +686,7 @@ export default function Home() {
                         {tool.title}
                       </h3>
 
-                      <p className="mt-2 leading-6 text-black/50">
+                      <p className="mt-2 leading-6 text-black/60">
                         {tool.description}
                       </p>
 
@@ -710,7 +710,7 @@ export default function Home() {
                   No tools found
                 </h3>
 
-                <p className="mt-2 text-black/50">
+                <p className="mt-2 text-black/60">
                   Try searching for PDF, image,
                   compress, convert, or another
                   tool.
@@ -1316,7 +1316,7 @@ function Feature({
         {title}
       </h3>
 
-      <p className="mt-3 leading-7 text-black/50">
+      <p className="mt-3 leading-7 text-black/60">
         {text}
       </p>
 
@@ -1344,7 +1344,7 @@ function Step({
         {title}
       </h3>
 
-      <p className="mt-3 leading-7 text-black/50">
+      <p className="mt-3 leading-7 text-black/60">
         {text}
       </p>
 
@@ -1366,13 +1366,14 @@ function Faq({
         {question}
       </summary>
 
-      <p className="mt-4 leading-7 text-black/50">
+      <p className="mt-4 leading-7 text-black/60">
         {answer}
       </p>
 
     </details>
   );
 }
+
 
 
 
