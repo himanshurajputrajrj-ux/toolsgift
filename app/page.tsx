@@ -545,7 +545,7 @@ export default function Home() {
                   setSearch(e.target.value)
                 }
                 placeholder="Search tools, PDF, image, compress, convert..."
-                className="w-full bg-transparent text-base outline-none placeholder:text-black/35"
+                className="w-full bg-transparent text-base outline-none placeholder:text-black/60"
                 aria-label="Search tools"
               />
 
@@ -1308,7 +1308,7 @@ function Feature({
   return (
     <div className="relative overflow-hidden rounded-2xl border border-black/[0.09] bg-white p-7 shadow-[0_8px_30px_rgba(32,33,36,0.04)] before:absolute before:left-0 before:right-0 before:top-0 before:h-[2px] before:bg-[#C9A227] before:opacity-0 before:transition-opacity group-hover:before:opacity-100">
 
-      <div className="text-xs font-bold text-black/35">
+      <div className="text-xs font-bold text-black/60">
         {number}
       </div>
 
@@ -1336,7 +1336,7 @@ function Step({
   return (
     <div className="border-t border-black/15 pt-6">
 
-      <div className="text-xs font-bold text-black/35">
+      <div className="text-xs font-bold text-black/60">
         {number}
       </div>
 
@@ -1373,6 +1373,7 @@ function Faq({
     </details>
   );
 }
+
 
 
 
