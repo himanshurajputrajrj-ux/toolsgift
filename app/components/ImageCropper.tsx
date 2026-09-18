@@ -527,6 +527,60 @@ export default function ImageCropper() {
           </div>
         </div>
       </div>
+
+      <section className="mx-auto mt-10 max-w-4xl rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+        <h2 className="text-2xl font-bold text-slate-900">What is an Image Cropper?</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          An image cropper lets you remove unwanted areas from an image and keep only the part you need. ToolsGift Image Cropper provides precise controls for selecting the crop position and dimensions.
+        </p>
+
+        <h2 className="mt-7 text-2xl font-bold text-slate-900">How to Crop an Image</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          Upload an image, set the X and Y position, choose the crop width and height, and select Crop Image. You can preview the cropped result and download it when processing is complete.
+        </p>
+
+        <h2 className="mt-7 text-2xl font-bold text-slate-900">Crop JPG, PNG and WebP Images</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          Crop common image formats including JPG, PNG and WebP for websites, documents, social media and everyday image editing.
+        </p>
+
+        <h2 className="mt-7 text-2xl font-bold text-slate-900">Image Cropping in Your Browser</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          ToolsGift processes image cropping directly in your web browser using standard image and canvas features. The selected image is processed locally in the browser rather than being uploaded to a server by this tool.
+        </p>
+      </section>
+
+      <section className="mx-auto mt-8 max-w-4xl rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+        <h2 className="text-2xl font-bold text-slate-900">Frequently Asked Questions</h2>
+
+        <h3 className="mt-6 text-lg font-semibold text-slate-900">Can I crop an image online?</h3>
+        <p className="mt-2 leading-7 text-slate-600">Yes, ToolsGift lets you crop images online by setting the exact crop area and downloading the result.</p>
+
+        <h3 className="mt-6 text-lg font-semibold text-slate-900">What image formats can I crop?</h3>
+        <p className="mt-2 leading-7 text-slate-600">You can crop JPG, PNG, WebP and other browser-supported image formats. PNG and WebP inputs keep their respective output formats, while other image types are exported as JPG.</p>
+
+        <h3 className="mt-6 text-lg font-semibold text-slate-900">Can I crop an image to an exact size?</h3>
+        <p className="mt-2 leading-7 text-slate-600">Yes. You can set the X position, Y position, crop width and crop height using exact pixel values.</p>
+
+        <h3 className="mt-6 text-lg font-semibold text-slate-900">Can I crop images without uploading them to a server?</h3>
+        <p className="mt-2 leading-7 text-slate-600">Yes. The cropping process is performed locally in your browser using image and canvas features rather than uploading the selected image to a server by this tool.</p>
+
+        <h3 className="mt-6 text-lg font-semibold text-slate-900">Is the Image Cropper free to use?</h3>
+        <p className="mt-2 leading-7 text-slate-600">Yes. You can use the ToolsGift Image Cropper online to crop images and download the processed result.</p>
+
+        <h3 className="mt-6 text-lg font-semibold text-slate-900">Can I crop an image for social media?</h3>
+        <p className="mt-2 leading-7 text-slate-600">Yes. You can enter specific pixel dimensions to create a crop suitable for social media posts, profiles and other online uses.</p>
+
+        <h3 className="mt-6 text-lg font-semibold text-slate-900">Will cropping reduce image quality?</h3>
+        <p className="mt-2 leading-7 text-slate-600">Cropping removes the parts of the image outside the selected area. The output is then created in the corresponding image format using browser-based canvas processing.</p>
+
+        <h3 className="mt-6 text-lg font-semibold text-slate-900">How large can the uploaded image be?</h3>
+        <p className="mt-2 leading-7 text-slate-600">The Image Cropper accepts image files up to 25 MB.</p>
+      </section>
     </main>
   );
 }
+
+
+
+
