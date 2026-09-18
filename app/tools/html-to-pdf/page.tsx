@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import HTMLToPDF from "../../components/HTMLToPDF";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "HTML to PDF Converter Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function HTMLToPDFPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="HTML to PDF" />
       <HTMLToPDF />
       <ToolSEOContent toolKey="html-to-pdf" />
     </main>
   );
 }
+

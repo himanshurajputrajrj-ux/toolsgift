@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import PDFSplitter from "../../components/PDFSplitter";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Split PDF Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function PDFSplitterPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Split PDF" />
       <PDFSplitter />
       <ToolSEOContent toolKey="pdf-splitter" />
     </main>
   );
 }
+

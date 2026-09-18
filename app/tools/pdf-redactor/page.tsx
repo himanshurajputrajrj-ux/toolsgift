@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import PDFRedactor from "../../components/PDFRedactor";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Redact PDF Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function PDFRedactorPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Redact PDF" />
       <PDFRedactor />
       <ToolSEOContent toolKey="pdf-redactor" />
     </main>
   );
 }
+

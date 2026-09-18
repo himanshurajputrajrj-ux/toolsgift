@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import OCRPDF from "../../components/OCRPDF";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "OCR PDF Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function OCRPDFPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="OCR PDF" />
       <OCRPDF />
       <ToolSEOContent toolKey="ocr-pdf" />
     </main>
   );
 }
+

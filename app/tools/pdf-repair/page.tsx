@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import PDFRepair from "../../components/PDFRepair";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Repair PDF Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function PDFRepairPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Repair PDF" />
       <PDFRepair />
       <ToolSEOContent toolKey="pdf-repair" />
     </main>
   );
 }
+

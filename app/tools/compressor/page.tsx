@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import ImageCompressor from "../../components/ImageCompressor";
 
+import Breadcrumbs from "../../components/Breadcrumbs";
 export const metadata: Metadata = {
   title: "Image Compressor Online",
   description:
@@ -47,6 +48,7 @@ const structuredData = {
 export default function CompressorPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Image Compressor Online" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -57,3 +59,4 @@ export default function CompressorPage() {
     </main>
   );
 }
+

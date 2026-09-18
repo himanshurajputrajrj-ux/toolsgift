@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import ImageRotator from "../../components/ImageRotator";
 
+import Breadcrumbs from "../../components/Breadcrumbs";
 export const metadata: Metadata = {
   title: "Image Rotator Online",
   description:
@@ -33,7 +34,10 @@ export const metadata: Metadata = {
 export default function ImageRotatorPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Image Rotator Online" />
       <ImageRotator />
     </main>
   );
 }
+
+

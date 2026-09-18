@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import ImageEnhancer from "../../components/ImageEnhancer";
 
+import Breadcrumbs from "../../components/Breadcrumbs";
 export const metadata: Metadata = {
   title: "Image Enhancer Online",
   description:
@@ -33,7 +34,10 @@ export const metadata: Metadata = {
 export default function ImageEnhancerPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Image Enhancer Online" />
       <ImageEnhancer />
     </main>
   );
 }
+
+

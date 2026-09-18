@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import ScanToPDF from "../../components/ScanToPDF";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Scan to PDF Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function ScanToPDFPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Scan to PDF" />
       <ScanToPDF />
       <ToolSEOContent toolKey="scan-to-pdf" />
     </main>
   );
 }
+

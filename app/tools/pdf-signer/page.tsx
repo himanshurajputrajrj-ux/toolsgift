@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import PDFSigner from "../../components/PDFSigner";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Sign PDF Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function PDFSignerPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Sign PDF" />
       <PDFSigner />
       <ToolSEOContent toolKey="pdf-signer" />
     </main>
   );
 }
+

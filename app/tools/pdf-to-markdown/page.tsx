@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import PDFToMarkdown from "../../components/PDFToMarkdown";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "PDF to Markdown Converter Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function PDFToMarkdownPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="PDF to Markdown" />
       <PDFToMarkdown />
       <ToolSEOContent toolKey="pdf-to-markdown" />
     </main>
   );
 }
+

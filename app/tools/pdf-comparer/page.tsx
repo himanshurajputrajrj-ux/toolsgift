@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import PDFComparer from "../../components/PDFComparer";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Compare PDF Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function PDFComparerPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Compare PDF" />
       <PDFComparer />
       <ToolSEOContent toolKey="pdf-comparer" />
     </main>
   );
 }
+

@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import PDFCropper from "../../components/PDFCropper";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Crop PDF Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function PDFCropperPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Crop PDF" />
       <PDFCropper />
       <ToolSEOContent toolKey="pdf-cropper" />
     </main>
   );
 }
+

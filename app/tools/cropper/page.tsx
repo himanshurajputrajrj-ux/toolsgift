@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import ImageCropper from "../../components/ImageCropper";
 
+import Breadcrumbs from "../../components/Breadcrumbs";
 export const metadata: Metadata = {
   title: "Image Cropper Online",
   description:
@@ -32,7 +33,10 @@ export const metadata: Metadata = {
 export default function CropperPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Image Cropper Online" />
       <ImageCropper />
     </main>
   );
 }
+
+

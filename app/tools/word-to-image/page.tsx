@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import WordToImage from "../../components/WordToImage";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Word to Image Converter Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function WordToImagePage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Word to Image" />
       <WordToImage />
       <ToolSEOContent toolKey="word-to-image" />
     </main>
   );
 }
+

@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import PDFForms from "../../components/PDFForms";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Fill PDF Forms Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function PDFFormsPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="PDF Forms" />
       <PDFForms />
       <ToolSEOContent toolKey="pdf-forms" />
     </main>
   );
 }
+

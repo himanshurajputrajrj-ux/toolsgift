@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import PDFCompressor from "../../components/PDFCompressor";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Compress PDF Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function CompressPDFPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Compress PDF Online" />
       <PDFCompressor />
       <ToolSEOContent toolKey="pdf-compressor" />
     </main>
   );
 }
+

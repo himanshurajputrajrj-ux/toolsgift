@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import BatchConverter from "../../components/BatchConverter";
 
+import Breadcrumbs from "../../components/Breadcrumbs";
 export const metadata: Metadata = {
   title: "Batch Image Converter Online",
   description:
@@ -33,7 +34,10 @@ export const metadata: Metadata = {
 export default function BatchConverterPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Batch Image Converter" />
       <BatchConverter />
     </main>
   );
 }
+
+

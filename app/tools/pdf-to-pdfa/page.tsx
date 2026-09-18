@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import PDFToPDFA from "../../components/PDFToPDFA";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "PDF to PDF/A Converter Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function PDFToPDFAPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="PDF to PDF/A" />
       <PDFToPDFA />
       <ToolSEOContent toolKey="pdf-to-pdfa" />
     </main>
   );
 }
+

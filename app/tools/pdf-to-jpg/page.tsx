@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import PDFToJPG from "../../components/PDFToJPG";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "PDF to JPG Converter Online",
@@ -34,8 +35,10 @@ export const metadata: Metadata = {
 export default function PDFToJPGPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="PDF to JPG" />
       <PDFToJPG />
       <ToolSEOContent toolKey="pdf-to-jpg" />
     </main>
   );
 }
+

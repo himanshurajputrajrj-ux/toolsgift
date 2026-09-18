@@ -2,6 +2,7 @@
 import ImageConverter from "../../components/ImageConverter";
 import StructuredData from "../../components/StructuredData";
 
+import Breadcrumbs from "../../components/Breadcrumbs";
 export const metadata: Metadata = {
   title: "Image Converter Online",
   description:
@@ -35,10 +36,13 @@ export const metadata: Metadata = {
 export default function ConverterPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Image Converter Online" />
       <StructuredData name="Image Converter Online" description="Convert images online between JPG, PNG and WebP formats quickly and easily with ToolsGift." url="https://toolsgift.com/tools/converter" />
       <ImageConverter />
     </main>
   );
 }
+
+
 
 

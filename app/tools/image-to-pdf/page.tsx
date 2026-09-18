@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import ImageToPDF from "../../components/ImageToPDF";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Image to PDF Online",
@@ -33,8 +34,10 @@ export const metadata: Metadata = {
 export default function ImageToPDFPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Image to PDF" />
       <ImageToPDF />
       <ToolSEOContent toolKey="image-to-pdf" />
     </main>
   );
 }
+

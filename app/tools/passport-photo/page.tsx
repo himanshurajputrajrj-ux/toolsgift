@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import PassportPhotoMaker from "../../components/PassportPhotoMaker";
 import ToolSEOContent from "../../components/ToolSEOContent";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Passport Size Photo Maker Online",
@@ -31,8 +32,10 @@ export const metadata: Metadata = {
 export default function PassportPhotoPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <Breadcrumbs toolName="Passport Size Photo Maker" />
       <PassportPhotoMaker />
       <ToolSEOContent toolKey="passport-photo" />
     </main>
   );
 }
+
