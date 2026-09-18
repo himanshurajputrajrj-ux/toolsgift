@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import PDFTranslator from "../../components/PDFTranslator";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "PDF Translator Online",
@@ -34,6 +35,7 @@ export default function PDFTranslatorPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <PDFTranslator />
+      <ToolSEOContent toolKey="pdf-translator" />
     </main>
   );
 }

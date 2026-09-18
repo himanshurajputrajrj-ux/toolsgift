@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import PDFPageNumbers from "../../components/PDFPageNumbers";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "Add PDF Page Numbers Online",
@@ -34,6 +35,7 @@ export default function PDFPageNumbersPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <PDFPageNumbers />
+      <ToolSEOContent toolKey="pdf-page-numbers" />
     </main>
   );
 }

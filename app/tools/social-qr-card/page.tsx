@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import SocialQRCard from "../../components/SocialQRCard";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "Social Media QR Code Generator",
@@ -36,6 +37,7 @@ export default function SocialQRCardPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <SocialQRCard />
+      <ToolSEOContent toolKey="social-qr-card" />
     </main>
   );
 }

@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import ImageToPDF from "../../components/ImageToPDF";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "Image to PDF Online",
@@ -33,6 +34,7 @@ export default function ImageToPDFPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <ImageToPDF />
+      <ToolSEOContent toolKey="image-to-pdf" />
     </main>
   );
 }

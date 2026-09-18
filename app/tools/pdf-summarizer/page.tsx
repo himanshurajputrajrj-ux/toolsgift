@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import PDFSummarizer from "../../components/PDFSummarizer";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "PDF Summarizer Online",
@@ -34,6 +35,7 @@ export default function PDFSummarizerPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <PDFSummarizer />
+      <ToolSEOContent toolKey="pdf-summarizer" />
     </main>
   );
 }

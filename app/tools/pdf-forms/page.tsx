@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import PDFForms from "../../components/PDFForms";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "Fill PDF Forms Online",
@@ -34,6 +35,7 @@ export default function PDFFormsPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <PDFForms />
+      <ToolSEOContent toolKey="pdf-forms" />
     </main>
   );
 }

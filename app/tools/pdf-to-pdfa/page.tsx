@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import PDFToPDFA from "../../components/PDFToPDFA";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "PDF to PDF/A Converter Online",
@@ -34,6 +35,7 @@ export default function PDFToPDFAPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <PDFToPDFA />
+      <ToolSEOContent toolKey="pdf-to-pdfa" />
     </main>
   );
 }

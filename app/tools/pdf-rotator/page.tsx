@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import PDFRotator from "../../components/PDFRotator";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "Rotate PDF Online",
@@ -34,6 +35,7 @@ export default function PDFRotatorPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <PDFRotator />
+      <ToolSEOContent toolKey="pdf-rotator" />
     </main>
   );
 }

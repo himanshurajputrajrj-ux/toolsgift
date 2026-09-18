@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import PDFToPowerPoint from "../../components/PDFToPowerPoint";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "PDF to PowerPoint Converter Online",
@@ -34,6 +35,7 @@ export default function PDFToPowerPointPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <PDFToPowerPoint />
+      <ToolSEOContent toolKey="pdf-to-powerpoint" />
     </main>
   );
 }

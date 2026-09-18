@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import WebPConverter from "../../components/WebPConverter";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "WebP Converter Online",
@@ -33,6 +34,7 @@ export default function WebPConverterPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <WebPConverter />
+      <ToolSEOContent toolKey="webp-converter" />
     </main>
   );
 }

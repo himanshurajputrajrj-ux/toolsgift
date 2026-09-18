@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import PDFToExcel from "../../components/PDFToExcel";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "PDF to Excel Converter Online",
@@ -34,6 +35,7 @@ export default function PDFToExcelPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <PDFToExcel />
+      <ToolSEOContent toolKey="pdf-to-excel" />
     </main>
   );
 }

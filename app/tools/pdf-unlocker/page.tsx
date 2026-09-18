@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import PDFUnlocker from "../../components/PDFUnlocker";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "Unlock PDF Online",
@@ -34,6 +35,7 @@ export default function PDFUnlockerPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <PDFUnlocker />
+      <ToolSEOContent toolKey="pdf-unlocker" />
     </main>
   );
 }

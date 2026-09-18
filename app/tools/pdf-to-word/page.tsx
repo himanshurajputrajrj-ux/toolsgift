@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import PDFToWord from "../../components/PDFToWord";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "PDF to Word Converter Online",
@@ -34,6 +35,7 @@ export default function PDFToWordPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <PDFToWord />
+      <ToolSEOContent toolKey="pdf-to-word" />
     </main>
   );
 }

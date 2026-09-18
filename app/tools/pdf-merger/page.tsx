@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import MergePDF from "../../components/MergePDF";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "Merge PDF Online",
@@ -34,6 +35,7 @@ export default function MergePDFPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <MergePDF />
+      <ToolSEOContent toolKey="pdf-merger" />
     </main>
   );
 }

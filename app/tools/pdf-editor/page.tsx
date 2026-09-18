@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import PDFEditor from "../../components/PDFEditor";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 export const metadata: Metadata = {
   title: "PDF Editor Online",
@@ -34,6 +35,7 @@ export default function PDFEditorPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <PDFEditor />
+      <ToolSEOContent toolKey="pdf-editor" />
     </main>
   );
 }
