@@ -59,6 +59,7 @@ export const metadata: Metadata = {
     description:
       "Fast and simple online image and PDF tools for converting, editing, compressing and managing files.",
     url: "https://toolsgift.com",
+    images: [{ url: "/toolsgift-og.png", width: 1200, height: 630, alt: "ToolsGift — Fast & Simple Image & PDF Tools" }],
   },
 
   twitter: {
@@ -66,6 +67,7 @@ export const metadata: Metadata = {
     title: "ToolsGift — Fast & Simple Image & PDF Tools",
     description:
       "Fast and simple online image and PDF tools for everyday file processing.",
+    images: ["/toolsgift-og.png"],
   },
 
   alternates: {
@@ -95,5 +97,9 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+
+
 
 
