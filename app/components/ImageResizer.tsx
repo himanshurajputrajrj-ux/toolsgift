@@ -501,6 +501,26 @@ export default function ImageResizer() {
           </div>
         </div>
       </div>
+      <section className="mx-auto mt-10 max-w-4xl rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+        <h2 className="text-2xl font-bold text-slate-900">What is an Image Resizer?</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          An image resizer is an online tool that changes the width and height of an image while creating a new image at the selected dimensions. ToolsGift Image Resizer lets you resize images to specific pixel dimensions quickly and easily.
+        </p>
+        <h2 className="mt-7 text-2xl font-bold text-slate-900">How to Resize an Image</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          Upload your image, enter the desired width and height, and resize the image. The resized result is generated directly in your browser and can then be downloaded to your device.
+        </p>
+        <h2 className="mt-7 text-2xl font-bold text-slate-900">Resize JPG, PNG and WebP Images</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          Resize common image formats such as JPG, PNG and WebP for websites, social media, documents and other everyday uses. Choose the dimensions that fit your requirements and create a resized image in seconds.
+        </p>
+        <h2 className="mt-7 text-2xl font-bold text-slate-900">Image Resizing in Your Browser</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          ToolsGift processes image resizing in your web browser using standard browser image and canvas features. Your selected image is resized locally in the browser rather than being uploaded to a server by this tool.
+        </p>
+      </section>
     </main>
   );
 }
+
+
