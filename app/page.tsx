@@ -455,7 +455,7 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-7xl px-5 pb-20 pt-24 text-center md:pb-28 md:pt-32">
 
-          <p className="mb-5 text-xs font-bold tracking-[0.28em] text-black/45">
+          <p className="mb-5 text-xs font-bold tracking-[0.28em] text-black/60">
             FAST • SIMPLE • PRIVATE
           </p>
 
@@ -497,7 +497,7 @@ export default function Home() {
 
           <div className="text-center">
 
-            <p className="text-xs font-bold tracking-[0.28em] text-black/45">
+            <p className="text-xs font-bold tracking-[0.28em] text-black/60">
               ALL TOOLS
             </p>
 
@@ -517,7 +517,7 @@ export default function Home() {
 
             <div className="text-center">
 
-              <p className="text-xs font-bold tracking-[0.28em] text-black/45">
+              <p className="text-xs font-bold tracking-[0.28em] text-black/60">
                 SEARCH & TOOLS
               </p>
 
@@ -649,7 +649,7 @@ export default function Home() {
           <div className="mt-10">
 
             {search.trim() && (
-              <p className="mb-5 text-sm font-medium text-black/45">
+              <p className="mb-5 text-sm font-medium text-black/60">
                 {filteredTools.length}{" "}
                 {filteredTools.length === 1
                   ? "tool"
@@ -743,7 +743,7 @@ export default function Home() {
 
         <div className="mx-auto max-w-7xl">
 
-          <p className="text-xs font-bold tracking-[0.28em] text-black/45">
+          <p className="text-xs font-bold tracking-[0.28em] text-black/60">
             WHY ToolsGift
           </p>
 
@@ -789,7 +789,7 @@ export default function Home() {
 
           <div className="text-center">
 
-            <p className="text-xs font-bold tracking-[0.28em] text-black/45">
+            <p className="text-xs font-bold tracking-[0.28em] text-black/60">
               HOW IT WORKS
             </p>
 
@@ -1373,6 +1373,7 @@ function Faq({
     </details>
   );
 }
+
 
 
 
