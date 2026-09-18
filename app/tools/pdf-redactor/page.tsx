@@ -2,6 +2,7 @@
 import PDFRedactor from "../../components/PDFRedactor";
 import ToolSEOContent from "../../components/ToolSEOContent";
 import Breadcrumbs from "../../components/Breadcrumbs";
+import RelatedTools from "../../components/RelatedTools";
 
 export const metadata: Metadata = {
   title: "Redact PDF Online",
@@ -38,7 +39,14 @@ export default function PDFRedactorPage() {
       <Breadcrumbs toolName="Redact PDF" />
       <PDFRedactor />
       <ToolSEOContent toolKey="pdf-redactor" />
+      <RelatedTools tools={[
+        { name: "PDF Protector", href: "/tools/pdf-protector" },
+        { name: "PDF Unlocker", href: "/tools/pdf-unlocker" },
+        { name: "PDF Editor", href: "/tools/pdf-editor" },
+        { name: "PDF Watermark", href: "/tools/pdf-watermark" },
+      ]} />
     </main>
   );
 }
+
 
