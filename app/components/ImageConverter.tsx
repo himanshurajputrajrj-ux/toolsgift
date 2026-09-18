@@ -431,8 +431,37 @@ export default function ImageConverter() {
               Download Converted Image
             </button>
           </div>
+          <section className="mt-10 rounded-3xl bg-white p-6 shadow-sm md:p-8">
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-2xl font-bold text-slate-900">
+                What is an Image Converter?
+              </h2>
+              <p className="mt-3 text-slate-600 leading-7">
+                An image converter changes a picture from one file format to another while keeping the image available for use in the selected format. Different formats can be useful for websites, sharing, editing, storage and other digital workflows.
+              </p>
+              <h2 className="mt-8 text-2xl font-bold text-slate-900">
+                How to Convert an Image
+              </h2>
+              <p className="mt-3 text-slate-600 leading-7">
+                Upload an image, select the desired output format and adjust the available quality setting when supported. Click the convert button and download the converted image when processing is complete.
+              </p>
+              <h2 className="mt-8 text-2xl font-bold text-slate-900">
+                JPG, PNG and WebP Conversion
+              </h2>
+              <p className="mt-3 text-slate-600 leading-7">
+                ToolsGift provides image conversion between common formats such as JPG, PNG and WebP. Choosing the right format can help balance image quality, file size and compatibility with your intended use.
+              </p>
+              <h2 className="mt-8 text-2xl font-bold text-slate-900">
+                Image Conversion in Your Browser
+              </h2>
+              <p className="mt-3 text-slate-600 leading-7">
+                The image conversion tool processes images directly in your browser, so the conversion workflow can be performed on your device without requiring a separate desktop image conversion application.
+              </p>
+            </div>
+          </section>
         </div>
       </div>
     </main>
   );
 }
+
