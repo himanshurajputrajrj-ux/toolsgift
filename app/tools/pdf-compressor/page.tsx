@@ -2,6 +2,7 @@
 import PDFCompressor from "../../components/PDFCompressor";
 import ToolSEOContent from "../../components/ToolSEOContent";
 import Breadcrumbs from "../../components/Breadcrumbs";
+import RelatedTools from "../../components/RelatedTools";
 
 export const metadata: Metadata = {
   title: "Compress PDF Online",
@@ -38,7 +39,15 @@ export default function CompressPDFPage() {
       <Breadcrumbs toolName="Compress PDF Online" />
       <PDFCompressor />
       <ToolSEOContent toolKey="pdf-compressor" />
+      <RelatedTools tools={[
+        { name: "PDF Merger", href: "/tools/pdf-merger" },
+        { name: "PDF Splitter", href: "/tools/pdf-splitter" },
+        { name: "PDF to Word", href: "/tools/pdf-to-word" },
+        { name: "PDF Protector", href: "/tools/pdf-protector" },
+      ]} />
     </main>
   );
 }
+
+
 
