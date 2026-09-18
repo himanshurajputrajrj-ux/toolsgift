@@ -28,9 +28,31 @@ export const metadata: Metadata = {
   },
 };
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Image Compressor Online",
+  url: "https://toolsgift.com/tools/compressor",
+  description:
+    "Compress JPG, PNG and WebP images online while maintaining excellent quality. Reduce image file size quickly with ToolsGift.",
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Web",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+};
+
 export default function CompressorPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
       <ImageCompressor />
     </main>
   );
