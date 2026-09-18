@@ -2,203 +2,389 @@
 type ToolSEOContentProps = {
   toolKey: string;
 };
-const TOOLS: Record<string, { name: string; description: string }> = {
+type ToolData = {
+  name: string;
+  description: string;
+  action: string;
+  input: string;
+  output: string;
+  useCase: string;
+  benefit: string;
+};
+const TOOLS: Record<string, ToolData> = {
   "background-remover": {
     name: "Background Remover",
-    description: "Remove image backgrounds online for product photos, profile graphics, presentations and everyday image editing.",
+    description: "Remove the background from images online to create cleaner product photos, profile graphics and visual assets.",
+    action: "remove the background from an image",
+    input: "a supported image file",
+    output: "an image with the processed background",
+    useCase: "product photography, profile graphics and design projects",
+    benefit: "separating the main subject from an unwanted background",
   },
   "excel-to-pdf": {
     name: "Excel to PDF",
-    description: "Convert Excel spreadsheets to PDF online for sharing, printing and consistent document presentation.",
+    description: "Convert Excel spreadsheets into PDF documents for sharing, printing and consistent document presentation.",
+    action: "convert a spreadsheet into PDF",
+    input: "an Excel spreadsheet supported by the tool",
+    output: "a PDF version of the spreadsheet",
+    useCase: "sharing spreadsheets as fixed-layout documents",
+    benefit: "making spreadsheet files easier to share and print",
   },
   "html-to-pdf": {
     name: "HTML to PDF",
-    description: "Convert HTML content into PDF documents online for saving, sharing, printing and document workflows.",
+    description: "Convert HTML content into PDF documents for saving, sharing, printing and document workflows.",
+    action: "turn HTML content into a PDF document",
+    input: "HTML content supported by the tool",
+    output: "a PDF document generated from the HTML",
+    useCase: "saving web-style content as portable documents",
+    benefit: "creating a downloadable PDF from HTML content",
   },
   "image-to-pdf": {
     name: "Image to PDF",
-    description: "Convert images into PDF documents online for documents, applications, sharing and printing.",
+    description: "Convert images into PDF documents for applications, records, sharing, printing and everyday document workflows.",
+    action: "convert images into a PDF document",
+    input: "supported image files",
+    output: "a PDF containing the selected image content",
+    useCase: "turning photos or scanned images into documents",
+    benefit: "combining image content into a portable PDF file",
   },
   "image-to-word": {
     name: "Image to Word",
-    description: "Convert image-based content into Word documents online for editing and document reuse.",
+    description: "Convert image-based content into Word documents for editing, reuse and document workflows.",
+    action: "convert image content into a Word document",
+    input: "a supported image file",
+    output: "a Word document generated from the image content",
+    useCase: "working with content that starts as an image",
+    benefit: "moving image-based content into an editable document workflow",
   },
   "ocr-pdf": {
     name: "OCR PDF",
-    description: "Extract searchable text from scanned and image-based PDF documents with online OCR processing.",
+    description: "Process scanned and image-based PDF documents with OCR to make text easier to search and work with.",
+    action: "extract text from an image-based PDF",
+    input: "a supported scanned or image-based PDF",
+    output: "a processed PDF with OCR-related text content",
+    useCase: "scanned documents and image-based PDF files",
+    benefit: "making text inside scanned documents easier to search or reuse",
   },
   "passport-photo": {
     name: "Passport Photo Maker",
     description: "Create passport-size photos online for applications, documents and other identification-related uses.",
+    action: "prepare an image as a passport-size photo",
+    input: "a suitable photo",
+    output: "a passport-size photo based on the tool's available settings",
+    useCase: "application forms and document-photo requirements",
+    benefit: "preparing a photo in a convenient document-photo format",
   },
   "pdf-comparer": {
     name: "PDF Comparer",
-    description: "Compare two PDF documents online to identify differences between document versions.",
+    description: "Compare PDF documents online to help identify differences between two document versions.",
+    action: "compare two PDF documents",
+    input: "two supported PDF documents",
+    output: "a comparison result based on the selected documents",
+    useCase: "checking different versions of contracts, reports or documents",
+    benefit: "reviewing changes between PDF versions",
   },
   "pdf-compressor": {
     name: "PDF Compressor",
     description: "Compress PDF files online to reduce file size for easier sharing, storage and uploading.",
+    action: "reduce the file size of a PDF",
+    input: "a supported PDF document",
+    output: "a compressed PDF file",
+    useCase: "email attachments, uploads and file storage",
+    benefit: "making large PDF files easier to handle and share",
   },
   "pdf-cropper": {
     name: "PDF Cropper",
     description: "Crop PDF pages online to remove unwanted margins and create cleaner document pages.",
+    action: "crop the visible area of PDF pages",
+    input: "a supported PDF document",
+    output: "a PDF with the selected page areas cropped",
+    useCase: "removing excess margins or unwanted page areas",
+    benefit: "creating cleaner page layouts",
   },
   "pdf-editor": {
     name: "PDF Editor",
     description: "Edit PDF documents online for common document editing and file-management tasks.",
+    action: "make supported edits to a PDF document",
+    input: "a supported PDF document",
+    output: "an edited PDF document",
+    useCase: "making common changes to PDF files",
+    benefit: "handling routine PDF editing without a separate desktop workflow",
   },
   "pdf-forms": {
     name: "PDF Forms",
     description: "Work with PDF forms online for common form-related document workflows.",
+    action: "work with supported PDF form content",
+    input: "a supported PDF form",
+    output: "a processed PDF form",
+    useCase: "digital form and document workflows",
+    benefit: "handling supported PDF form tasks online",
   },
   "pdf-merger": {
     name: "Merge PDF",
-    description: "Merge multiple PDF files into one document online for easier sharing and organization.",
+    description: "Merge multiple PDF files into one document for easier sharing, organization and document management.",
+    action: "combine multiple PDF files into one document",
+    input: "two or more supported PDF files",
+    output: "a single merged PDF",
+    useCase: "combining reports, documents or related PDF files",
+    benefit: "keeping related documents together in one PDF",
   },
   "pdf-organizer": {
     name: "PDF Organizer",
-    description: "Rearrange and organize PDF pages online to create documents in the order you need.",
+    description: "Rearrange PDF pages online to create documents in the order you need.",
+    action: "reorder and organize PDF pages",
+    input: "a supported PDF document",
+    output: "an organized PDF with the selected page order",
+    useCase: "fixing page order in reports, applications and document collections",
+    benefit: "putting PDF pages into the correct sequence",
   },
   "pdf-page-numbers": {
     name: "PDF Page Numbers",
-    description: "Add page numbers to PDF documents online to improve navigation and document organization.",
+    description: "Add page numbers to PDF documents to improve navigation and document organization.",
+    action: "add page numbers to PDF pages",
+    input: "a supported PDF document",
+    output: "a PDF containing the added page numbers",
+    useCase: "reports, manuals, applications and longer documents",
+    benefit: "making multi-page documents easier to navigate",
   },
   "pdf-protector": {
     name: "PDF Protector",
-    description: "Protect PDF documents online with supported security options for safer document sharing.",
+    description: "Protect PDF documents with supported security options for safer document sharing and file management.",
+    action: "apply supported protection settings to a PDF",
+    input: "a supported PDF document",
+    output: "a protected PDF",
+    useCase: "documents that need supported access protection",
+    benefit: "adding an extra protection layer to a PDF file",
   },
   "pdf-redactor": {
     name: "PDF Redactor",
     description: "Redact sensitive information from PDF documents before sharing or publishing them.",
+    action: "redact selected information from a PDF",
+    input: "a supported PDF document",
+    output: "a redacted PDF document",
+    useCase: "removing sensitive information before document sharing",
+    benefit: "helping prevent selected information from being disclosed",
   },
   "pdf-repair": {
     name: "PDF Repair",
     description: "Repair supported damaged or problematic PDF files when documents do not open or work correctly.",
+    action: "attempt to repair a problematic PDF",
+    input: "a supported PDF that has a problem",
+    output: "a repaired PDF when the file can be successfully processed",
+    useCase: "PDF files that fail to open or behave unexpectedly",
+    benefit: "attempting recovery of a usable PDF document",
   },
   "pdf-rotator": {
     name: "PDF Rotator",
     description: "Rotate PDF pages online to correct document orientation and alignment.",
+    action: "rotate PDF pages",
+    input: "a supported PDF document",
+    output: "a PDF with the selected page orientation changed",
+    useCase: "correcting sideways or incorrectly oriented pages",
+    benefit: "making PDF pages easier to read and present",
   },
   "pdf-signer": {
     name: "PDF Signer",
-    description: "Add electronic signatures to PDF documents online for common digital signing workflows.",
+    description: "Add electronic signatures to PDF documents for common digital signing workflows.",
+    action: "add a supported signature to a PDF",
+    input: "a supported PDF document and the required signature information",
+    output: "a signed PDF document",
+    useCase: "documents that need a digital signing step",
+    benefit: "handling supported signing tasks online",
   },
   "pdf-splitter": {
     name: "PDF Splitter",
-    description: "Split PDF documents online into separate files or selected pages for easier sharing and organization.",
+    description: "Split PDF documents into separate files or selected pages for easier sharing and organization.",
+    action: "split a PDF into selected pages or sections",
+    input: "a supported PDF document",
+    output: "one or more PDF files based on the selected split options",
+    useCase: "separating chapters, pages or sections from a larger PDF",
+    benefit: "creating smaller, more focused PDF files",
   },
   "pdf-summarizer": {
     name: "PDF Summarizer",
-    description: "Summarize PDF documents online to review the main information in longer files more quickly.",
+    description: "Summarize PDF documents to review the main information in longer files more quickly.",
+    action: "create a summary of PDF content",
+    input: "a supported PDF document",
+    output: "a generated summary of the document content",
+    useCase: "quickly reviewing longer reports and documents",
+    benefit: "getting a shorter overview before reading the complete document",
   },
   "pdf-to-excel": {
     name: "PDF to Excel",
     description: "Convert PDF tables and document content into Excel files for spreadsheet-based workflows.",
+    action: "convert supported PDF content into an Excel file",
+    input: "a supported PDF document",
+    output: "an Excel spreadsheet",
+    useCase: "working with tabular PDF information in spreadsheets",
+    benefit: "moving supported PDF data into a spreadsheet workflow",
   },
   "pdf-to-jpg": {
     name: "PDF to JPG",
-    description: "Convert PDF pages into JPG images online for previews, sharing and image-based workflows.",
+    description: "Convert PDF pages into JPG images for previews, sharing and image-based workflows.",
+    action: "convert PDF pages into JPG images",
+    input: "a supported PDF document",
+    output: "JPG images generated from the PDF pages",
+    useCase: "creating image previews or sharing individual PDF pages as images",
+    benefit: "turning document pages into common image files",
   },
   "pdf-to-markdown": {
     name: "PDF to Markdown",
     description: "Convert PDF content into Markdown format for documentation, editing and structured text workflows.",
+    action: "convert supported PDF content into Markdown",
+    input: "a supported PDF document",
+    output: "Markdown text or a Markdown file",
+    useCase: "documentation and text-editing workflows",
+    benefit: "moving supported PDF content into a Markdown-based workflow",
   },
   "pdf-to-pdfa": {
     name: "PDF to PDF/A",
     description: "Convert PDF documents to PDF/A format for long-term document preservation and archival workflows.",
+    action: "convert a PDF into PDF/A format",
+    input: "a supported PDF document",
+    output: "a PDF/A document when conversion succeeds",
+    useCase: "document archiving and long-term preservation workflows",
+    benefit: "preparing documents for PDF/A-based archival workflows",
   },
   "pdf-to-powerpoint": {
     name: "PDF to PowerPoint",
     description: "Convert PDF documents into PowerPoint presentations for editing and presentation workflows.",
+    action: "convert supported PDF content into a PowerPoint presentation",
+    input: "a supported PDF document",
+    output: "a PowerPoint presentation",
+    useCase: "turning PDF-based material into presentation content",
+    benefit: "moving supported PDF content into a presentation workflow",
   },
   "pdf-to-word": {
     name: "PDF to Word",
     description: "Convert PDF documents into editable Word files for editing and content reuse.",
+    action: "convert supported PDF content into a Word document",
+    input: "a supported PDF document",
+    output: "a Word document",
+    useCase: "editing or reusing content from PDF documents",
+    benefit: "moving supported PDF content into an editable document workflow",
   },
   "pdf-translator": {
     name: "PDF Translator",
-    description: "Translate PDF document content online to make files easier to read in different languages.",
+    description: "Translate PDF document content online to make supported files easier to read in different languages.",
+    action: "translate supported PDF content",
+    input: "a supported PDF document",
+    output: "translated document content or a translated PDF result",
+    useCase: "reading documents written in another language",
+    benefit: "making supported PDF content easier to understand across languages",
   },
   "pdf-unlocker": {
     name: "PDF Unlocker",
     description: "Remove supported PDF restrictions from documents you are authorized to modify.",
+    action: "remove supported restrictions from a PDF",
+    input: "a PDF whose restrictions you are authorized to modify",
+    output: "a PDF with supported restrictions removed",
+    useCase: "working with PDF files that have supported editing or access restrictions",
+    benefit: "restoring supported document functionality for authorized users",
   },
   "pdf-watermark": {
     name: "PDF Watermark",
-    description: "Add watermarks to PDF documents online for branding, identification and document management.",
+    description: "Add watermarks to PDF documents for branding, identification and document management.",
+    action: "add a watermark to PDF pages",
+    input: "a supported PDF document and the watermark information",
+    output: "a watermarked PDF",
+    useCase: "branding, document identification and file management",
+    benefit: "adding visible identification or branding to PDF pages",
   },
   "powerpoint-to-pdf": {
     name: "PowerPoint to PDF",
     description: "Convert PowerPoint presentations to PDF for consistent sharing, printing and distribution.",
+    action: "convert a presentation into PDF",
+    input: "a supported PowerPoint presentation",
+    output: "a PDF version of the presentation",
+    useCase: "sharing presentations as fixed-layout documents",
+    benefit: "creating a convenient PDF version for sharing or printing",
   },
   "scan-to-pdf": {
     name: "Scan to PDF",
     description: "Create PDF documents from scanned or captured pages for digital storage and sharing.",
+    action: "create a PDF from scanned or captured pages",
+    input: "supported scanned or captured page images",
+    output: "a PDF document containing the selected pages",
+    useCase: "digitizing paper documents and scanned pages",
+    benefit: "bringing scanned pages together into a PDF document",
   },
   "social-qr-card": {
     name: "QR Code Generator",
     description: "Create QR code cards for social profiles, links and contact information.",
+    action: "create a QR code from supported link or contact information",
+    input: "a supported URL, profile link or contact detail",
+    output: "a generated QR code card",
+    useCase: "sharing social profiles, websites and contact information",
+    benefit: "giving people a quick way to open a link by scanning a QR code",
   },
   "webp-converter": {
     name: "WebP Converter",
-    description: "Convert images to and from WebP format online for websites and flexible image workflows.",
+    description: "Convert images to and from WebP format for websites and flexible image workflows.",
+    action: "convert an image between supported formats and WebP",
+    input: "a supported image file",
+    output: "an image in the selected supported format",
+    useCase: "website images and modern image-format workflows",
+    benefit: "changing image formats for different compatibility or web-use needs",
   },
   "word-to-image": {
     name: "Word to Image",
-    description: "Convert Word document pages into images for previews, sharing and image-based workflows.",
+    description: "Convert Word document pages into images for previews, sharing and image-based document workflows.",
+    action: "convert Word document pages into images",
+    input: "a supported Word document",
+    output: "image files generated from the document pages",
+    useCase: "sharing document pages as images or creating previews",
+    benefit: "turning document pages into common image-based content",
   },
   "word-to-pdf": {
     name: "Word to PDF",
-    description: "Convert Word documents to PDF online for sharing, printing and document distribution.",
+    description: "Convert Word documents to PDF for sharing, printing and document distribution.",
+    action: "convert a Word document into PDF",
+    input: "a supported Word document",
+    output: "a PDF version of the document",
+    useCase: "sharing documents in a consistent PDF format",
+    benefit: "creating a portable version of a Word document",
   },
 };
-const FAQS: Record<string, [string, string][]> = {
-  image: [
-    ["Can I use this tool online?", "Yes. ToolsGift provides this tool directly in your web browser without requiring a separate desktop application."],
-    ["How do I use this tool?", "Select your file, use the available options, start processing and download the resulting file."],
-    ["Is this tool free to use?", "The ToolsGift tool is available online for everyday file-processing tasks."],
-    ["What file formats are supported?", "Supported formats depend on the specific tool. The upload interface shows the formats accepted by the tool."],
-    ["Can I process another file?", "Yes. After completing one operation, you can select another supported file and process it."],
-    ["Do I need special software?", "No separate desktop software is required to use the online tool."],
-    ["Can I download the result?", "Yes. After processing is complete, use the download option provided by the tool."],
-    ["What if my file does not process?", "Check that the file is supported and try again. A different compatible file can also help identify whether the issue is file-specific."],
-  ],
-  pdf: [
-    ["Can I use this PDF tool online?", "Yes. ToolsGift provides this PDF tool through your web browser for common PDF document workflows."],
-    ["How do I use the PDF tool?", "Select the required PDF file or files, configure the available options, start the operation and download the result."],
-    ["Is this PDF tool free to use?", "The ToolsGift PDF tool is available online for everyday PDF-processing tasks."],
-    ["What PDF files are supported?", "The supported file requirements depend on the individual tool. The upload interface shows the applicable options."],
-    ["Can I process another PDF?", "Yes. You can select another supported PDF after completing an operation."],
-    ["Will my original PDF be changed?", "The processed result is created separately. Keep your original file if you need an unchanged copy."],
-    ["Can I download the processed PDF?", "Yes. Use the download control provided after the PDF operation finishes."],
-    ["What if my PDF does not process?", "Check that the document is a valid supported PDF and try the operation again."],
-  ],
-  office: [
-    ["Can I use this converter online?", "Yes. ToolsGift provides the conversion tool directly in your web browser."],
-    ["How do I convert a file?", "Upload the source document, choose the available options, start processing and download the generated file."],
-    ["What formats are supported?", "Supported input and output formats depend on the specific converter and are shown in its interface."],
-    ["Is the converter free to use?", "The ToolsGift converter is available online for everyday document conversion."],
-    ["Can I edit the converted file?", "If the output format is editable, you can open it in compatible software and make further changes."],
-    ["Can I convert another document?", "Yes. After the first conversion, you can select another supported document."],
-    ["Can I download the converted file?", "Yes. The resulting file can be downloaded after processing is complete."],
-    ["What if conversion fails?", "Check that the source file is supported and try again with a compatible document."],
-  ],
-};
-export default function ToolSEOContent({ toolKey }: ToolSEOContentProps): ReactNode {
+export default function ToolSEOContent({
+  toolKey,
+}: ToolSEOContentProps): ReactNode {
   const tool = TOOLS[toolKey];
   if (!tool) return null;
-  const type =
-    toolKey.startsWith("pdf-") ||
-    toolKey === "ocr-pdf" ||
-    toolKey === "scan-to-pdf"
-      ? "pdf"
-      : toolKey.includes("excel") ||
-        toolKey.includes("word") ||
-        toolKey.includes("powerpoint") ||
-        toolKey === "html-to-pdf"
-        ? "office"
-        : "image";
-  const faqs = FAQS[type];
+  const faq = [
+    [
+      `What does ${tool.name} do?`,
+      `ToolsGift ${tool.name} is designed to ${tool.action}. It is intended for ${tool.useCase}.`,
+    ],
+    [
+      `How do I use ${tool.name}?`,
+      `Open the ${tool.name} tool, provide ${tool.input}, use the available options, start the operation and download ${tool.output} when processing is complete.`,
+    ],
+    [
+      `What can I use with ${tool.name}?`,
+      `Use ${tool.input}. The exact supported formats and file requirements are shown by the tool's upload or input interface.`,
+    ],
+    [
+      `What result does ${tool.name} create?`,
+      `${tool.name} creates ${tool.output}. The exact result depends on the file and options selected during processing.`,
+    ],
+    [
+      `Who can use ${tool.name}?`,
+      `${tool.name} can be useful for everyday personal, work, study and document or image-processing tasks related to ${tool.useCase}.`,
+    ],
+    [
+      `Why would I use ${tool.name} online?`,
+      `Using ${tool.name} online can be convenient when you need to ${tool.action} without installing separate desktop software.`,
+    ],
+    [
+      `Can I use ${tool.name} for ${tool.useCase}?`,
+      `Yes. ${tool.name} is designed for workflows such as ${tool.useCase}, provided the required input is supported by the tool.`,
+    ],
+    [
+      `What if ${tool.name} does not process my file?`,
+      `Check that ${tool.input} meets the tool's supported requirements and try again. If the issue continues, test with another compatible file.`,
+    ],
+  ];
   return (
     <section className="mx-auto mt-10 max-w-4xl rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
       <h2 className="text-2xl font-bold text-slate-900">
@@ -209,24 +395,22 @@ export default function ToolSEOContent({ toolKey }: ToolSEOContentProps): ReactN
         How to Use {tool.name}
       </h2>
       <p className="mt-3 leading-7 text-slate-600">
-        Open the tool, select the required file or enter the required
-        information, use the available options, start processing and download
-        the result when it is ready.
+        Start by providing {tool.input}. Then use the available controls to
+        {` ${tool.action}`} and download {tool.output} when processing is
+        complete.
       </p>
       <h2 className="mt-7 text-2xl font-bold text-slate-900">
-        Why Use {tool.name} Online?
+        Common Uses of {tool.name}
       </h2>
       <p className="mt-3 leading-7 text-slate-600">
-        An online workflow can be convenient when you need to complete a
-        file-processing task without installing separate desktop software.
-        ToolsGift is designed for simple, everyday image and document
-        workflows.
+        {tool.name} can be useful for {tool.useCase}. Its main benefit is{" "}
+        {tool.benefit}.
       </p>
       <h2 className="mt-7 text-2xl font-bold text-slate-900">
         Frequently Asked Questions
       </h2>
       <div className="mt-4 space-y-5">
-        {faqs.map(([question, answer]) => (
+        {faq.map(([question, answer]) => (
           <div key={question}>
             <h3 className="text-lg font-semibold text-slate-900">
               {question}
