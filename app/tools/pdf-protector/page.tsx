@@ -2,6 +2,7 @@
 import PDFProtector from "../../components/PDFProtector";
 import ToolSEOContent from "../../components/ToolSEOContent";
 import Breadcrumbs from "../../components/Breadcrumbs";
+import RelatedTools from "../../components/RelatedTools";
 
 export const metadata: Metadata = {
   title: "Protect PDF Online",
@@ -38,7 +39,14 @@ export default function PDFProtectorPage() {
       <Breadcrumbs toolName="Protect PDF" />
       <PDFProtector />
       <ToolSEOContent toolKey="pdf-protector" />
+      <RelatedTools tools={[
+        { name: "PDF Unlocker", href: "/tools/pdf-unlocker" },
+        { name: "PDF Signer", href: "/tools/pdf-signer" },
+        { name: "PDF Watermark", href: "/tools/pdf-watermark" },
+        { name: "PDF Redactor", href: "/tools/pdf-redactor" },
+      ]} />
     </main>
   );
 }
+
 
