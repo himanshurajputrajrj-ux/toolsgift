@@ -10,7 +10,7 @@ export default function Footer() {
           Tools<span className="font-normal">Gift</span>
         </div>
 
-        <p className="mt-3 text-sm text-white/45">
+        <p className="mt-3 text-sm text-white/60">
           Fast & Simple Image Tools.
         </p>
 
@@ -61,13 +61,14 @@ export default function Footer() {
           </Link>
         </nav>
 
-        <div className="mt-10 border-t border-white/10 pt-7 text-sm text-white/40">
+        <div className="mt-10 border-t border-white/10 pt-7 text-sm text-white/60">
           © 2026 ToolsGift. All rights reserved.
         </div>
       </div>
     </footer>
   );
 }
+
 
 
 
