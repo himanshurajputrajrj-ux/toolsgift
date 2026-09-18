@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 
@@ -62,7 +62,7 @@ export default function Footer() {
         </nav>
 
         <div className="mt-10 border-t border-white/10 pt-7 text-sm text-white/40">
-          © 2026 ImgSwift. All rights reserved.
+          Â© 2026 ToolsGift. All rights reserved.
         </div>
       </div>
     </footer>

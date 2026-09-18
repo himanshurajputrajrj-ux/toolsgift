@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import ImageRotator from "../../components/ImageRotator";
 
 export const metadata: Metadata = {
   title: "Image Rotator Online",
   description:
-    "Rotate JPG, PNG and WebP images online by 90, 180, or 270 degrees quickly and easily with ImgSwift.",
+    "Rotate JPG, PNG and WebP images online by 90, 180, or 270 degrees quickly and easily with ToolsGift.",
   keywords: [
     "image rotator",
     "rotate image online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/rotator",
   },
   openGraph: {
-    title: "Image Rotator Online | ImgSwift",
+    title: "Image Rotator Online | ToolsGift",
     description:
       "Rotate JPG, PNG and WebP images online by 90, 180, or 270 degrees quickly and easily.",
     url: "/tools/rotator",

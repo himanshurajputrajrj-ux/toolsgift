@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/app/components/Header";
@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://imgswift.com"),
+  metadataBase: new URL("https://ToolsGift.com"),
 
   title: {
-    default: "ImgSwift — Fast & Simple Image & PDF Tools",
-    template: "%s | ImgSwift",
+    default: "ToolsGift â€” Fast & Simple Image & PDF Tools",
+    template: "%s | ToolsGift",
   },
 
   description:
@@ -40,12 +40,12 @@ export const metadata: Metadata = {
 
   authors: [
     {
-      name: "ImgSwift",
+      name: "ToolsGift",
     },
   ],
 
-  creator: "ImgSwift",
-  publisher: "ImgSwift",
+  creator: "ToolsGift",
+  publisher: "ToolsGift",
 
   robots: {
     index: true,
@@ -54,22 +54,22 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    siteName: "ImgSwift",
-    title: "ImgSwift — Fast & Simple Image & PDF Tools",
+    siteName: "ToolsGift",
+    title: "ToolsGift â€” Fast & Simple Image & PDF Tools",
     description:
       "Fast and simple online image and PDF tools for converting, editing, compressing and managing files.",
-    url: "https://imgswift.com",
+    url: "https://ToolsGift.com",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "ImgSwift — Fast & Simple Image & PDF Tools",
+    title: "ToolsGift â€” Fast & Simple Image & PDF Tools",
     description:
       "Fast and simple online image and PDF tools for everyday file processing.",
   },
 
   alternates: {
-    canonical: "https://imgswift.com",
+    canonical: "https://ToolsGift.com",
   },
 };
 

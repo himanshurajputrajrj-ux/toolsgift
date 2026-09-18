@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import WebPConverter from "../../components/WebPConverter";
 
 export const metadata: Metadata = {
   title: "WebP Converter Online",
   description:
-    "Convert JPG, PNG and other images to WebP online with adjustable quality using ImgSwift.",
+    "Convert JPG, PNG and other images to WebP online with adjustable quality using ToolsGift.",
   keywords: [
     "WebP converter",
     "WebP converter online",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     canonical: "/tools/webp-converter",
   },
   openGraph: {
-    title: "WebP Converter Online | ImgSwift",
+    title: "WebP Converter Online | ToolsGift",
     description:
       "Convert JPG, PNG and other images to WebP online with adjustable quality.",
     url: "/tools/webp-converter",

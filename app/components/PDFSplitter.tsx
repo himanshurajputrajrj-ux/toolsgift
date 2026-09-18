@@ -350,7 +350,7 @@ export default function PDFSplitter() {
 
       link.href = url;
       link.download =
-        "imgswift-split-pdf.zip";
+        "ToolsGift-split-pdf.zip";
 
       document.body.appendChild(link);
       link.click();
@@ -648,4 +648,5 @@ export default function PDFSplitter() {
     </div>
   );
 }
+
 

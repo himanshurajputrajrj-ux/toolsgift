@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFRepair from "../../components/PDFRepair";
 
 export const metadata: Metadata = {
   title: "Repair PDF Online",
   description:
-    "Repair and rebuild readable PDF files online to help recover PDFs with minor structural issues using ImgSwift.",
+    "Repair and rebuild readable PDF files online to help recover PDFs with minor structural issues using ToolsGift.",
   keywords: [
     "repair PDF",
     "repair PDF online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-repair",
   },
   openGraph: {
-    title: "Repair PDF Online | ImgSwift",
+    title: "Repair PDF Online | ToolsGift",
     description:
       "Repair and rebuild readable PDF files online to help recover PDFs with minor structural issues.",
     url: "/tools/pdf-repair",

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import HTMLToPDF from "../../components/HTMLToPDF";
 
 export const metadata: Metadata = {
   title: "HTML to PDF Converter Online",
   description:
-    "Convert HTML files and HTML code to PDF online directly in your browser with ImgSwift.",
+    "Convert HTML files and HTML code to PDF online directly in your browser with ToolsGift.",
   keywords: [
     "HTML to PDF",
     "HTML to PDF converter",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/html-to-pdf",
   },
   openGraph: {
-    title: "HTML to PDF Converter Online | ImgSwift",
+    title: "HTML to PDF Converter Online | ToolsGift",
     description:
       "Convert HTML files and HTML code to PDF online directly in your browser.",
     url: "/tools/html-to-pdf",

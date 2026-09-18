@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Contact the ImgSwift team for questions, feedback, suggestions, or issues related to our image and PDF tools.",
+    "Contact the ToolsGift team for questions, feedback, suggestions, or issues related to our image and PDF tools.",
   alternates: {
     canonical: "/contact",
   },
@@ -20,7 +20,7 @@ export default function ContactPage() {
 
           <p className="mt-4 text-lg leading-8 text-slate-600">
             We would love to hear from you. If you have a question, feedback,
-            suggestion, or experience an issue while using ImgSwift, you can
+            suggestion, or experience an issue while using ToolsGift, you can
             contact us through the information provided below.
           </p>
 
@@ -31,7 +31,7 @@ export default function ContactPage() {
               </h2>
 
               <p className="mt-3">
-                For questions or support related to ImgSwift, please contact
+                For questions or support related to ToolsGift, please contact
                 us by email. When reporting a technical issue, including the
                 name of the tool and a brief description of the problem can
                 help us understand the issue more quickly.
@@ -54,7 +54,7 @@ export default function ContactPage() {
               </h2>
 
               <p className="mt-3">
-                Your feedback helps us improve ImgSwift. You can contact us
+                Your feedback helps us improve ToolsGift. You can contact us
                 with suggestions for new tools, improvements to existing
                 features, or comments about the overall website experience.
               </p>
@@ -81,7 +81,7 @@ export default function ContactPage() {
 
               <p className="mt-3">
                 For business-related questions, partnerships, or other
-                inquiries concerning ImgSwift, you can use the same contact
+                inquiries concerning ToolsGift, you can use the same contact
                 email address.
               </p>
             </section>

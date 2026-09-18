@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFProtector from "../../components/PDFProtector";
 
 export const metadata: Metadata = {
   title: "Protect PDF Online",
   description:
-    "Protect PDF files with password security and restrict access to your documents using ImgSwift.",
+    "Protect PDF files with password security and restrict access to your documents using ToolsGift.",
   keywords: [
     "protect PDF",
     "protect PDF online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-protector",
   },
   openGraph: {
-    title: "Protect PDF Online | ImgSwift",
+    title: "Protect PDF Online | ToolsGift",
     description:
       "Protect PDF files with password security and restrict access to your documents.",
     url: "/tools/pdf-protector",

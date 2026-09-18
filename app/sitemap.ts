@@ -1,6 +1,6 @@
-import type { MetadataRoute } from "next";
+﻿import type { MetadataRoute } from "next";
 
-const baseUrl = "https://imgswift.com";
+const baseUrl = "https://ToolsGift.com";
 
 const tools = [
   // Image Tools

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import ExcelToPDF from "../../components/ExcelToPDF";
 
 export const metadata: Metadata = {
   title: "Excel to PDF Converter Online",
   description:
-    "Convert Excel XLS and XLSX spreadsheets to PDF documents online quickly and easily with ImgSwift.",
+    "Convert Excel XLS and XLSX spreadsheets to PDF documents online quickly and easily with ToolsGift.",
   keywords: [
     "Excel to PDF",
     "Excel to PDF converter",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/excel-to-pdf",
   },
   openGraph: {
-    title: "Excel to PDF Converter Online | ImgSwift",
+    title: "Excel to PDF Converter Online | ToolsGift",
     description:
       "Convert Excel XLS and XLSX spreadsheets to PDF documents online quickly and easily.",
     url: "/tools/excel-to-pdf",

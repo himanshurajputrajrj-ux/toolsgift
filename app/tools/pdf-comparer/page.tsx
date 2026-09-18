@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFComparer from "../../components/PDFComparer";
 
 export const metadata: Metadata = {
   title: "Compare PDF Online",
   description:
-    "Compare two PDF documents online and find page-level text differences quickly and easily with ImgSwift.",
+    "Compare two PDF documents online and find page-level text differences quickly and easily with ToolsGift.",
   keywords: [
     "compare PDF",
     "compare PDF online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-comparer",
   },
   openGraph: {
-    title: "Compare PDF Online | ImgSwift",
+    title: "Compare PDF Online | ToolsGift",
     description:
       "Compare two PDF documents online and find page-level text differences quickly and easily.",
     url: "/tools/pdf-comparer",

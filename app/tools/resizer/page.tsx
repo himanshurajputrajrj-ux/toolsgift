@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import ImageResizer from "../../components/ImageResizer";
 
 export const metadata: Metadata = {
   title: "Image Resizer Online",
   description:
-    "Resize JPG, PNG and WebP images online to custom width and height quickly and easily with ImgSwift.",
+    "Resize JPG, PNG and WebP images online to custom width and height quickly and easily with ToolsGift.",
   keywords: [
     "image resizer",
     "resize image online",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     canonical: "/tools/resizer",
   },
   openGraph: {
-    title: "Image Resizer Online | ImgSwift",
+    title: "Image Resizer Online | ToolsGift",
     description:
       "Resize JPG, PNG and WebP images online to custom width and height quickly and easily.",
     url: "/tools/resizer",

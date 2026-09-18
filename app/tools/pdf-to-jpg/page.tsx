@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFToJPG from "../../components/PDFToJPG";
 
 export const metadata: Metadata = {
   title: "PDF to JPG Converter Online",
   description:
-    "Convert PDF pages to high-quality JPG images online quickly and easily with ImgSwift.",
+    "Convert PDF pages to high-quality JPG images online quickly and easily with ToolsGift.",
   keywords: [
     "PDF to JPG",
     "PDF to JPG converter",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-to-jpg",
   },
   openGraph: {
-    title: "PDF to JPG Converter Online | ImgSwift",
+    title: "PDF to JPG Converter Online | ToolsGift",
     description:
       "Convert PDF pages to high-quality JPG images online quickly and easily.",
     url: "/tools/pdf-to-jpg",

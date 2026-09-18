@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import { jsPDF } from "jspdf";
@@ -24,7 +24,7 @@ export default function HTMLToPDF() {
   const maxFileSize = 10 * 1024 * 1024;
 
   const defaultHTML = `<div style="font-family: Arial, sans-serif; padding: 30px; background: white; color: #111827;">
-  <h1 style="font-size: 30px; margin-bottom: 15px;">Hello from ImgSwift</h1>
+  <h1 style="font-size: 30px; margin-bottom: 15px;">Hello from ToolsGift</h1>
   <p style="font-size: 16px; line-height: 1.6;">
     This HTML content can be converted into a PDF document directly in your browser.
   </p>
@@ -87,7 +87,7 @@ export default function HTMLToPDF() {
     setResultUrl("");
     setResultSize(0);
     setHtml(defaultHTML);
-    setFileName("imgswift-document");
+    setFileName("ToolsGift-document");
   };
 
   const convertToPDF = async () => {
@@ -182,7 +182,7 @@ export default function HTMLToPDF() {
       setResultSize(blob.size);
 
       if (!fileName) {
-        setFileName("imgswift-document");
+        setFileName("ToolsGift-document");
       }
     } catch (err) {
       console.error(err);
@@ -198,7 +198,7 @@ export default function HTMLToPDF() {
     const link = document.createElement("a");
 
     link.href = resultUrl;
-    link.download = `${fileName || "imgswift-document"}.pdf`;
+    link.download = `${fileName || "ToolsGift-document"}.pdf`;
 
     document.body.appendChild(link);
     link.click();
@@ -327,7 +327,7 @@ export default function HTMLToPDF() {
             />
 
             <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-2xl">
-              📄
+              ðŸ“„
             </div>
 
             <h2 className="text-base font-semibold text-slate-800">
@@ -339,7 +339,7 @@ export default function HTMLToPDF() {
             </p>
 
             <p className="mt-2 text-xs text-slate-400">
-              HTML / HTM • Maximum 10MB
+              HTML / HTM â€¢ Maximum 10MB
             </p>
           </div>
 
@@ -444,7 +444,7 @@ export default function HTMLToPDF() {
               ) : (
                 <div className="flex min-h-[280px] items-center justify-center px-6 text-center">
                   <div>
-                    <div className="mb-3 text-4xl">📑</div>
+                    <div className="mb-3 text-4xl">ðŸ“‘</div>
 
                     <p className="font-medium text-slate-700">
                       Your converted PDF will appear here

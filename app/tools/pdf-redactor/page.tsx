@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFRedactor from "../../components/PDFRedactor";
 
 export const metadata: Metadata = {
   title: "Redact PDF Online",
   description:
-    "Redact sensitive information and cover selected areas of PDF documents online with ImgSwift.",
+    "Redact sensitive information and cover selected areas of PDF documents online with ToolsGift.",
   keywords: [
     "redact PDF",
     "redact PDF online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-redactor",
   },
   openGraph: {
-    title: "Redact PDF Online | ImgSwift",
+    title: "Redact PDF Online | ToolsGift",
     description:
       "Redact sensitive information and cover selected areas of PDF documents online.",
     url: "/tools/pdf-redactor",

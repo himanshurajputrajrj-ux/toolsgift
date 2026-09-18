@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFToExcel from "../../components/PDFToExcel";
 
 export const metadata: Metadata = {
   title: "PDF to Excel Converter Online",
   description:
-    "Convert PDF files to editable Excel XLSX spreadsheets online quickly and easily with ImgSwift.",
+    "Convert PDF files to editable Excel XLSX spreadsheets online quickly and easily with ToolsGift.",
   keywords: [
     "PDF to Excel",
     "PDF to Excel converter",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-to-excel",
   },
   openGraph: {
-    title: "PDF to Excel Converter Online | ImgSwift",
+    title: "PDF to Excel Converter Online | ToolsGift",
     description:
       "Convert PDF files to editable Excel XLSX spreadsheets online quickly and easily.",
     url: "/tools/pdf-to-excel",

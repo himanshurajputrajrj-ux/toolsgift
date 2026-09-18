@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMemo, useState } from "react";
 import QRCode from "qrcode";
@@ -39,13 +39,13 @@ const platforms = [
   { key: "whatsapp", label: "WhatsApp", icon: "WA" },
   { key: "instagram", label: "Instagram", icon: "IG" },
   { key: "facebook", label: "Facebook", icon: "f" },
-  { key: "x", label: "X", icon: "𝕏" },
-  { key: "youtube", label: "YouTube", icon: "▶" },
+  { key: "x", label: "X", icon: "ð•" },
+  { key: "youtube", label: "YouTube", icon: "â–¶" },
   { key: "linkedin", label: "LinkedIn", icon: "in" },
   { key: "telegram", label: "Telegram", icon: "TG" },
-  { key: "website", label: "Website", icon: "↗" },
+  { key: "website", label: "Website", icon: "â†—" },
   { key: "email", label: "Email", icon: "@" },
-  { key: "phone", label: "Phone", icon: "☎" },
+  { key: "phone", label: "Phone", icon: "â˜Ž" },
 ] as const;
 
 const templates = [
@@ -212,7 +212,7 @@ export default function SocialQRCard() {
 
     downloadDataUrl(
       quickQR,
-      "imgswift-qr-code.png"
+      "ToolsGift-qr-code.png"
     );
   };
 
@@ -226,7 +226,7 @@ export default function SocialQRCard() {
     }
 
     const payload = {
-      type: "ImgSwiftPremiumQRCard",
+      type: "ToolsGiftPremiumQRCard",
       name: data.name.trim(),
       profession: data.title.trim(),
       contacts: activeLinks.map((item) => ({

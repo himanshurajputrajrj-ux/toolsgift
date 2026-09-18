@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFSummarizer from "../../components/PDFSummarizer";
 
 export const metadata: Metadata = {
   title: "PDF Summarizer Online",
   description:
-    "Summarize PDF documents online directly in your browser and quickly extract the most important information with ImgSwift.",
+    "Summarize PDF documents online directly in your browser and quickly extract the most important information with ToolsGift.",
   keywords: [
     "PDF summarizer",
     "PDF summarizer online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-summarizer",
   },
   openGraph: {
-    title: "PDF Summarizer Online | ImgSwift",
+    title: "PDF Summarizer Online | ToolsGift",
     description:
       "Summarize PDF documents online directly in your browser and quickly extract the most important information.",
     url: "/tools/pdf-summarizer",

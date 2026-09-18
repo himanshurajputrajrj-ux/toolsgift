@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFToMarkdown from "../../components/PDFToMarkdown";
 
 export const metadata: Metadata = {
   title: "PDF to Markdown Converter Online",
   description:
-    "Convert PDF documents to Markdown online and extract structured text into clean Markdown format with ImgSwift.",
+    "Convert PDF documents to Markdown online and extract structured text into clean Markdown format with ToolsGift.",
   keywords: [
     "PDF to Markdown",
     "PDF to Markdown converter",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-to-markdown",
   },
   openGraph: {
-    title: "PDF to Markdown Converter Online | ImgSwift",
+    title: "PDF to Markdown Converter Online | ToolsGift",
     description:
       "Convert PDF documents to Markdown online and extract structured text into clean Markdown format.",
     url: "/tools/pdf-to-markdown",

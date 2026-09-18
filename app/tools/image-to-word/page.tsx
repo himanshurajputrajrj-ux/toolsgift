@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import ImageToWord from "../../components/ImageToWord";
 
 export const metadata: Metadata = {
   title: "Image to Word Converter Online",
   description:
-    "Convert JPG, PNG and other images to editable Word documents online quickly and easily with ImgSwift.",
+    "Convert JPG, PNG and other images to editable Word documents online quickly and easily with ToolsGift.",
   keywords: [
     "image to Word",
     "image to Word converter",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/image-to-word",
   },
   openGraph: {
-    title: "Image to Word Converter Online | ImgSwift",
+    title: "Image to Word Converter Online | ToolsGift",
     description:
       "Convert JPG, PNG and other images to editable Word documents online quickly and easily.",
     url: "/tools/image-to-word",

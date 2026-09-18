@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   ChangeEvent,
@@ -274,7 +274,7 @@ export default function ScanToPDF() {
     const link = document.createElement("a");
 
     link.href = resultUrl;
-    link.download = "imgswift-scanned-document.pdf";
+    link.download = "ToolsGift-scanned-document.pdf";
 
     document.body.appendChild(link);
     link.click();
@@ -314,7 +314,7 @@ export default function ScanToPDF() {
               />
 
               <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-2xl shadow-sm">
-                📷
+                ðŸ“·
               </div>
 
               <h2 className="font-semibold text-slate-800">
@@ -338,7 +338,7 @@ export default function ScanToPDF() {
               />
 
               <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-2xl shadow-sm">
-                🖼️
+                ðŸ–¼ï¸
               </div>
 
               <h2 className="font-semibold text-slate-800">
@@ -370,7 +370,7 @@ export default function ScanToPDF() {
             </p>
 
             <p className="mt-1 text-xs text-slate-400">
-              Up to 50 pages • Maximum 25MB per image
+              Up to 50 pages â€¢ Maximum 25MB per image
             </p>
           </div>
 
@@ -435,7 +435,7 @@ export default function ScanToPDF() {
                         disabled={index === 0}
                         className="rounded-lg border border-slate-300 py-2 text-sm hover:bg-slate-50 disabled:opacity-40"
                       >
-                        ↑
+                        â†‘
                       </button>
 
                       <button
@@ -448,7 +448,7 @@ export default function ScanToPDF() {
                         }
                         className="rounded-lg border border-slate-300 py-2 text-sm hover:bg-slate-50 disabled:opacity-40"
                       >
-                        ↓
+                        â†“
                       </button>
 
                       <button
@@ -458,7 +458,7 @@ export default function ScanToPDF() {
                         }
                         className="rounded-lg border border-red-200 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
                       >
-                        ×
+                        Ã—
                       </button>
                     </div>
                   </div>
@@ -468,7 +468,7 @@ export default function ScanToPDF() {
           ) : (
             <div className="mt-4 flex min-h-[220px] items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 text-center">
               <div>
-                <div className="mb-3 text-4xl">📄</div>
+                <div className="mb-3 text-4xl">ðŸ“„</div>
 
                 <p className="font-medium text-slate-700">
                   No scanned pages yet
@@ -524,7 +524,7 @@ export default function ScanToPDF() {
               ) : (
                 <div className="flex min-h-[280px] items-center justify-center px-6 text-center">
                   <div>
-                    <div className="mb-3 text-4xl">📑</div>
+                    <div className="mb-3 text-4xl">ðŸ“‘</div>
 
                     <p className="font-medium text-slate-700">
                       Your scanned PDF will appear here

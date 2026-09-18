@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFToPowerPoint from "../../components/PDFToPowerPoint";
 
 export const metadata: Metadata = {
   title: "PDF to PowerPoint Converter Online",
   description:
-    "Convert PDF files to PowerPoint PPTX presentations online quickly and easily with ImgSwift.",
+    "Convert PDF files to PowerPoint PPTX presentations online quickly and easily with ToolsGift.",
   keywords: [
     "PDF to PowerPoint",
     "PDF to PPT",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-to-powerpoint",
   },
   openGraph: {
-    title: "PDF to PowerPoint Converter Online | ImgSwift",
+    title: "PDF to PowerPoint Converter Online | ToolsGift",
     description:
       "Convert PDF files to PowerPoint PPTX presentations online quickly and easily.",
     url: "/tools/pdf-to-powerpoint",

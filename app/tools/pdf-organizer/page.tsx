@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFOrganizer from "../../components/PDFOrganizer";
 
 export const metadata: Metadata = {
   title: "Organize PDF Online",
   description:
-    "Reorder, duplicate, delete and organize PDF pages online quickly and easily with ImgSwift.",
+    "Reorder, duplicate, delete and organize PDF pages online quickly and easily with ToolsGift.",
   keywords: [
     "organize PDF",
     "organize PDF online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-organizer",
   },
   openGraph: {
-    title: "Organize PDF Online | ImgSwift",
+    title: "Organize PDF Online | ToolsGift",
     description:
       "Reorder, duplicate, delete and organize PDF pages online quickly and easily.",
     url: "/tools/pdf-organizer",

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFCropper from "../../components/PDFCropper";
 
 export const metadata: Metadata = {
   title: "Crop PDF Online",
   description:
-    "Crop PDF pages online by removing unwanted margins and adjusting page boundaries with ImgSwift.",
+    "Crop PDF pages online by removing unwanted margins and adjusting page boundaries with ToolsGift.",
   keywords: [
     "crop PDF",
     "crop PDF online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-cropper",
   },
   openGraph: {
-    title: "Crop PDF Online | ImgSwift",
+    title: "Crop PDF Online | ToolsGift",
     description:
       "Crop PDF pages online by removing unwanted margins and adjusting page boundaries.",
     url: "/tools/pdf-cropper",

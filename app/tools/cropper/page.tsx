@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import ImageCropper from "../../components/ImageCropper";
 
 export const metadata: Metadata = {
   title: "Image Cropper Online",
   description:
-    "Crop JPG, PNG and WebP images online to a custom area with precise controls using ImgSwift.",
+    "Crop JPG, PNG and WebP images online to a custom area with precise controls using ToolsGift.",
   keywords: [
     "image cropper",
     "crop image online",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     canonical: "/tools/cropper",
   },
   openGraph: {
-    title: "Image Cropper Online | ImgSwift",
+    title: "Image Cropper Online | ToolsGift",
     description:
       "Crop JPG, PNG and WebP images online to a custom area with precise controls.",
     url: "/tools/cropper",

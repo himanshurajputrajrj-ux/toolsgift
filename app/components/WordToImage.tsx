@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { DragEvent, useRef, useState } from "react";
 
@@ -178,7 +178,7 @@ export default function WordToImage() {
     const link = document.createElement("a");
 
     link.href = resultUrl;
-    link.download = `imgswift-word-to-image.${extension}`;
+    link.download = `ToolsGift-word-to-image.${extension}`;
 
     document.body.appendChild(link);
     link.click();
@@ -233,11 +233,11 @@ export default function WordToImage() {
               className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
             >
               <option value="png">
-                PNG — Lossless Quality
+                PNG â€” Lossless Quality
               </option>
 
               <option value="jpeg">
-                JPG — High Quality
+                JPG â€” High Quality
               </option>
             </select>
           </div>
@@ -283,7 +283,7 @@ export default function WordToImage() {
         />
 
         <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-2xl">
-          📄
+          ðŸ“„
         </div>
 
         <h3 className="text-lg font-semibold text-slate-900">
@@ -451,7 +451,7 @@ export default function WordToImage() {
             <div className="flex min-h-[280px] items-center justify-center text-center text-slate-400">
               <div>
                 <div className="mb-3 text-4xl">
-                  📄
+                  ðŸ“„
                 </div>
 
                 <p className="font-medium">
@@ -509,15 +509,15 @@ export default function WordToImage() {
             </div>
 
             <div className="mt-4 text-center text-sm text-slate-500">
-              Output size: {formatSize(resultSize)} ·{" "}
-              {format.toUpperCase()} · 2X Quality
+              Output size: {formatSize(resultSize)} Â·{" "}
+              {format.toUpperCase()} Â· 2X Quality
             </div>
           </div>
         ) : (
           <div className="flex min-h-[260px] items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50">
             <div className="text-center">
               <div className="mb-3 text-4xl">
-                🖼️
+                ðŸ–¼ï¸
               </div>
 
               <p className="font-medium text-slate-600">

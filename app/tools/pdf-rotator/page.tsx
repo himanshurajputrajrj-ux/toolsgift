@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFRotator from "../../components/PDFRotator";
 
 export const metadata: Metadata = {
   title: "Rotate PDF Online",
   description:
-    "Rotate PDF pages online by 90, 180, or 270 degrees quickly and easily with ImgSwift.",
+    "Rotate PDF pages online by 90, 180, or 270 degrees quickly and easily with ToolsGift.",
   keywords: [
     "rotate PDF",
     "rotate PDF online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-rotator",
   },
   openGraph: {
-    title: "Rotate PDF Online | ImgSwift",
+    title: "Rotate PDF Online | ToolsGift",
     description:
       "Rotate PDF pages online by 90, 180, or 270 degrees quickly and easily.",
     url: "/tools/pdf-rotator",

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFPageNumbers from "../../components/PDFPageNumbers";
 
 export const metadata: Metadata = {
   title: "Add PDF Page Numbers Online",
   description:
-    "Add customizable page numbers to PDF files online with flexible position, starting number, font size and margin options using ImgSwift.",
+    "Add customizable page numbers to PDF files online with flexible position, starting number, font size and margin options using ToolsGift.",
   keywords: [
     "add PDF page numbers",
     "PDF page numbers",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-page-numbers",
   },
   openGraph: {
-    title: "Add PDF Page Numbers Online | ImgSwift",
+    title: "Add PDF Page Numbers Online | ToolsGift",
     description:
       "Add customizable page numbers to PDF files online with flexible position, starting number, font size and margin options.",
     url: "/tools/pdf-page-numbers",

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import BatchConverter from "../../components/BatchConverter";
 
 export const metadata: Metadata = {
   title: "Batch Image Converter Online",
   description:
-    "Convert multiple JPG, PNG and WebP images at once with ImgSwift's fast online batch image converter.",
+    "Convert multiple JPG, PNG and WebP images at once with ToolsGift's fast online batch image converter.",
   keywords: [
     "batch image converter",
     "batch converter online",
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     canonical: "/tools/batch-converter",
   },
   openGraph: {
-    title: "Batch Image Converter Online | ImgSwift",
+    title: "Batch Image Converter Online | ToolsGift",
     description:
-      "Convert multiple JPG, PNG and WebP images at once with ImgSwift's fast online batch image converter.",
+      "Convert multiple JPG, PNG and WebP images at once with ToolsGift's fast online batch image converter.",
     url: "/tools/batch-converter",
     type: "website",
   },

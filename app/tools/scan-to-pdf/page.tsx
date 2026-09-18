@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import ScanToPDF from "../../components/ScanToPDF";
 
 export const metadata: Metadata = {
   title: "Scan to PDF Online",
   description:
-    "Scan documents with your camera or upload images and convert them to PDF online quickly and easily with ImgSwift.",
+    "Scan documents with your camera or upload images and convert them to PDF online quickly and easily with ToolsGift.",
   keywords: [
     "scan to PDF",
     "scan to PDF online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/scan-to-pdf",
   },
   openGraph: {
-    title: "Scan to PDF Online | ImgSwift",
+    title: "Scan to PDF Online | ToolsGift",
     description:
       "Scan documents with your camera or upload images and convert them to PDF online quickly and easily.",
     url: "/tools/scan-to-pdf",

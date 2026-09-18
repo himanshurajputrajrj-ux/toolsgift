@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import OCRPDF from "../../components/OCRPDF";
 
 export const metadata: Metadata = {
   title: "OCR PDF Online",
   description:
-    "Extract text from scanned PDF documents using OCR technology online with ImgSwift.",
+    "Extract text from scanned PDF documents using OCR technology online with ToolsGift.",
   keywords: [
     "OCR PDF",
     "OCR PDF online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/ocr-pdf",
   },
   openGraph: {
-    title: "OCR PDF Online | ImgSwift",
+    title: "OCR PDF Online | ToolsGift",
     description:
       "Extract text from scanned PDF documents using OCR technology online.",
     url: "/tools/ocr-pdf",

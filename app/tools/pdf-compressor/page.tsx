@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFCompressor from "../../components/PDFCompressor";
 
 export const metadata: Metadata = {
   title: "Compress PDF Online",
   description:
-    "Compress PDF files online and reduce document file size quickly and easily with ImgSwift.",
+    "Compress PDF files online and reduce document file size quickly and easily with ToolsGift.",
   keywords: [
     "compress PDF",
     "compress PDF online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-compressor",
   },
   openGraph: {
-    title: "Compress PDF Online | ImgSwift",
+    title: "Compress PDF Online | ToolsGift",
     description:
       "Compress PDF files online and reduce document file size quickly and easily.",
     url: "/tools/pdf-compressor",

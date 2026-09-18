@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
   description:
-    "Learn how ImgSwift uses cookies and similar technologies for functionality, analytics, security and advertising.",
+    "Learn how ToolsGift uses cookies and similar technologies for functionality, analytics, security and advertising.",
   alternates: {
     canonical: "/cookies",
   },
@@ -38,11 +38,11 @@ export default function CookiesPage() {
 
             <section>
               <h2 className="text-2xl font-semibold text-slate-900">
-                2. How ImgSwift Uses Cookies
+                2. How ToolsGift Uses Cookies
               </h2>
 
               <p className="mt-3">
-                ImgSwift may use cookies and similar technologies for several
+                ToolsGift may use cookies and similar technologies for several
                 purposes, including essential website functionality, security,
                 preferences, analytics, performance measurement, and
                 advertising.
@@ -68,7 +68,7 @@ export default function CookiesPage() {
               </h2>
 
               <p className="mt-3">
-                ImgSwift may use analytics services to understand how visitors
+                ToolsGift may use analytics services to understand how visitors
                 interact with the website. Analytics information can help us
                 identify popular pages, understand usage patterns, detect
                 technical problems, and improve the website.
@@ -86,7 +86,7 @@ export default function CookiesPage() {
               </h2>
 
               <p className="mt-3">
-                ImgSwift may use third-party advertising services, including
+                ToolsGift may use third-party advertising services, including
                 Google AdSense, to display advertisements.
               </p>
 
@@ -104,7 +104,7 @@ export default function CookiesPage() {
               </h2>
 
               <p className="mt-3">
-                Third-party services used on ImgSwift may place their own
+                Third-party services used on ToolsGift may place their own
                 cookies or similar technologies on your device. These services
                 operate according to their own privacy policies and terms.
               </p>
@@ -136,7 +136,7 @@ export default function CookiesPage() {
               <p className="mt-3">
                 Depending on your location and applicable law, you may have
                 choices regarding cookies, personalized advertising, and other
-                forms of data processing. Where required, ImgSwift may provide
+                forms of data processing. Where required, ToolsGift may provide
                 appropriate consent or privacy controls.
               </p>
             </section>
@@ -160,7 +160,7 @@ export default function CookiesPage() {
 
               <p className="mt-3">
                 If you have questions about this Cookie Policy or how cookies
-                are used on ImgSwift, please contact us through the Contact Us
+                are used on ToolsGift, please contact us through the Contact Us
                 page.
               </p>
             </section>

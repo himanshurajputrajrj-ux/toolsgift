@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import { PDFDocument } from "pdf-lib";
@@ -243,7 +243,7 @@ export default function PDFProtector() {
             />
 
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-100 text-3xl">
-              🔐
+              ðŸ”
             </div>
 
             <h2 className="text-lg font-semibold text-slate-800">
@@ -255,7 +255,7 @@ export default function PDFProtector() {
             </p>
 
             <p className="mt-2 text-xs text-slate-400">
-              PDF • Maximum 50MB
+              PDF â€¢ Maximum 50MB
             </p>
           </div>
 
@@ -329,7 +329,7 @@ export default function PDFProtector() {
           {/* Security note */}
           <div className="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4">
             <div className="flex gap-3">
-              <span className="text-lg">⚠️</span>
+              <span className="text-lg">âš ï¸</span>
 
               <div>
                 <p className="text-sm font-semibold text-amber-900">
@@ -337,7 +337,7 @@ export default function PDFProtector() {
                 </p>
 
                 <p className="mt-1 text-xs leading-5 text-amber-800">
-                  The current browser PDF library used by ImgSwift does not
+                  The current browser PDF library used by ToolsGift does not
                   provide native PDF password encryption. We do not label an
                   unencrypted PDF as protected.
                 </p>
@@ -391,7 +391,7 @@ export default function PDFProtector() {
               ) : (
                 <div className="flex min-h-[280px] items-center justify-center px-6 text-center">
                   <div>
-                    <div className="mb-3 text-4xl">🔐</div>
+                    <div className="mb-3 text-4xl">ðŸ”</div>
 
                     <p className="font-medium text-slate-700">
                       Your protected PDF will appear here

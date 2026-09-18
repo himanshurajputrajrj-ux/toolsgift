@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn more about ImgSwift, an online platform providing simple image and PDF tools for everyday file processing.",
+    "Learn more about ToolsGift, an online platform providing simple image and PDF tools for everyday file processing.",
   alternates: {
     canonical: "/about",
   },
@@ -15,17 +15,17 @@ export default function AboutPage() {
       <article className="mx-auto max-w-4xl px-6 py-16">
         <div className="rounded-2xl bg-white p-8 shadow-sm sm:p-12">
           <h1 className="text-4xl font-bold text-slate-900">
-            About ImgSwift
+            About ToolsGift
           </h1>
 
           <div className="mt-10 space-y-8 text-[16px] leading-8 text-slate-700">
             <section>
               <h2 className="text-2xl font-semibold text-slate-900">
-                What is ImgSwift?
+                What is ToolsGift?
               </h2>
 
               <p className="mt-3">
-                ImgSwift is an online file-processing platform designed to
+                ToolsGift is an online file-processing platform designed to
                 provide simple and accessible tools for working with images
                 and PDF documents.
               </p>
@@ -39,11 +39,11 @@ export default function AboutPage() {
 
             <section>
               <h2 className="text-2xl font-semibold text-slate-900">
-                What Can You Do With ImgSwift?
+                What Can You Do With ToolsGift?
               </h2>
 
               <p className="mt-3">
-                ImgSwift provides a growing collection of tools for image and
+                ToolsGift provides a growing collection of tools for image and
                 PDF processing. Depending on the tool, users can perform tasks
                 such as compressing, converting, resizing, cropping, rotating,
                 editing, merging, splitting and organizing files.
@@ -76,11 +76,11 @@ export default function AboutPage() {
 
             <section>
               <h2 className="text-2xl font-semibold text-slate-900">
-                Why ImgSwift?
+                Why ToolsGift?
               </h2>
 
               <p className="mt-3">
-                ImgSwift brings multiple everyday image and PDF utilities
+                ToolsGift brings multiple everyday image and PDF utilities
                 together in a single platform. Instead of searching for a
                 separate service for every task, users can access a variety of
                 tools from one website.
@@ -98,7 +98,7 @@ export default function AboutPage() {
               </h2>
 
               <p className="mt-3">
-                ImgSwift is continuously being developed and improved. We may
+                ToolsGift is continuously being developed and improved. We may
                 introduce new tools, improve existing functionality and update
                 the website experience over time.
               </p>
@@ -111,7 +111,7 @@ export default function AboutPage() {
 
               <p className="mt-3">
                 If you have questions, feedback, suggestions or need to
-                contact us regarding ImgSwift, please use our Contact Us page.
+                contact us regarding ToolsGift, please use our Contact Us page.
               </p>
             </section>
           </div>

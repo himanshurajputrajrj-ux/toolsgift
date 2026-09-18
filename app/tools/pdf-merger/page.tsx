@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import MergePDF from "../../components/MergePDF";
 
 export const metadata: Metadata = {
   title: "Merge PDF Online",
   description:
-    "Merge multiple PDF files into one PDF document online quickly and easily with ImgSwift.",
+    "Merge multiple PDF files into one PDF document online quickly and easily with ToolsGift.",
   keywords: [
     "merge PDF",
     "merge PDF online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-merger",
   },
   openGraph: {
-    title: "Merge PDF Online | ImgSwift",
+    title: "Merge PDF Online | ToolsGift",
     description:
       "Merge multiple PDF files into one PDF document online quickly and easily.",
     url: "/tools/pdf-merger",

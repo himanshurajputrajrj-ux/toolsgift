@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PassportPhotoMaker from "../../components/PassportPhotoMaker";
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "/tools/passport-photo",
   },
   openGraph: {
-    title: "Passport Size Photo Maker Online | ImgSwift",
+    title: "Passport Size Photo Maker Online | ToolsGift",
     description:
       "Create passport size photos online with standard dimensions and printable A4 photo sheets.",
     url: "/tools/passport-photo",

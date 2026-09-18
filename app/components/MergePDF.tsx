@@ -207,7 +207,7 @@ export default function MergePDF() {
     const link = document.createElement("a");
 
     link.href = resultUrl;
-    link.download = "imgswift-merged.pdf";
+    link.download = "ToolsGift-merged.pdf";
 
     document.body.appendChild(link);
     link.click();
@@ -454,4 +454,5 @@ export default function MergePDF() {
     </div>
   );
 }
+
 

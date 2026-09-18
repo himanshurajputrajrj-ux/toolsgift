@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import ImageEnhancer from "../../components/ImageEnhancer";
 
 export const metadata: Metadata = {
   title: "Image Enhancer Online",
   description:
-    "Enhance JPG, PNG and WebP images online by adjusting brightness, contrast, saturation and sharpness with ImgSwift.",
+    "Enhance JPG, PNG and WebP images online by adjusting brightness, contrast, saturation and sharpness with ToolsGift.",
   keywords: [
     "image enhancer",
     "image enhancer online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/enhancer",
   },
   openGraph: {
-    title: "Image Enhancer Online | ImgSwift",
+    title: "Image Enhancer Online | ToolsGift",
     description:
       "Enhance JPG, PNG and WebP images online by adjusting brightness, contrast, saturation and sharpness.",
     url: "/tools/enhancer",

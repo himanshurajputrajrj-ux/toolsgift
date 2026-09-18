@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Disclaimer",
   description:
-    "Read the ImgSwift Disclaimer regarding the use, accuracy, availability and limitations of our online image and PDF tools.",
+    "Read the ToolsGift Disclaimer regarding the use, accuracy, availability and limitations of our online image and PDF tools.",
   alternates: {
     canonical: "/disclaimer",
   },
@@ -29,7 +29,7 @@ export default function DisclaimerPage() {
               </h2>
 
               <p className="mt-3">
-                The information and tools provided on ImgSwift are intended
+                The information and tools provided on ToolsGift are intended
                 for general informational and file-processing purposes. While
                 we aim to provide useful and reliable tools, we do not
                 guarantee that all information, features, or generated results
@@ -44,7 +44,7 @@ export default function DisclaimerPage() {
               </h2>
 
               <p className="mt-3">
-                ImgSwift provides tools for processing images, PDF documents,
+                ToolsGift provides tools for processing images, PDF documents,
                 and other supported files. Results may vary depending on the
                 file format, file structure, content, browser, device, and the
                 particular tool being used.
@@ -95,14 +95,14 @@ export default function DisclaimerPage() {
               </h2>
 
               <p className="mt-3">
-                Certain ImgSwift features may use third-party services when
+                Certain ToolsGift features may use third-party services when
                 required for their functionality. Third-party services may have
                 their own terms, privacy policies, technical limitations, and
                 availability requirements.
               </p>
 
               <p className="mt-3">
-                ImgSwift is not responsible for the policies, availability, or
+                ToolsGift is not responsible for the policies, availability, or
                 performance of third-party services.
               </p>
             </section>
@@ -113,7 +113,7 @@ export default function DisclaimerPage() {
               </h2>
 
               <p className="mt-3">
-                ImgSwift may contain links to websites or services operated by
+                ToolsGift may contain links to websites or services operated by
                 third parties. We do not control those external websites and
                 are not responsible for their content, security, availability,
                 or privacy practices.
@@ -126,7 +126,7 @@ export default function DisclaimerPage() {
               </h2>
 
               <p className="mt-3">
-                ImgSwift may display advertisements from third-party
+                ToolsGift may display advertisements from third-party
                 advertising providers. Advertisements may be selected or
                 personalized by those providers according to their applicable
                 policies and user privacy choices.
@@ -134,7 +134,7 @@ export default function DisclaimerPage() {
 
               <p className="mt-3">
                 The presence of an advertisement does not constitute an
-                endorsement or guarantee by ImgSwift of the advertised product
+                endorsement or guarantee by ToolsGift of the advertised product
                 or service.
               </p>
             </section>
@@ -145,7 +145,7 @@ export default function DisclaimerPage() {
               </h2>
 
               <p className="mt-3">
-                ImgSwift does not provide legal, financial, medical,
+                ToolsGift does not provide legal, financial, medical,
                 professional, or other specialized advice through its tools or
                 website content. Information available on the website should
                 not be treated as a substitute for advice from a qualified
@@ -159,7 +159,7 @@ export default function DisclaimerPage() {
               </h2>
 
               <p className="mt-3">
-                To the extent permitted by applicable law, ImgSwift is not
+                To the extent permitted by applicable law, ToolsGift is not
                 responsible for losses, damages, data loss, processing errors,
                 or other consequences resulting from reliance on the website,
                 its tools, or generated files.
@@ -185,7 +185,7 @@ export default function DisclaimerPage() {
 
               <p className="mt-3">
                 If you have questions about this Disclaimer, please contact
-                ImgSwift through the Contact Us page.
+                ToolsGift through the Contact Us page.
               </p>
             </section>
           </div>

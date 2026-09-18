@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFSigner from "../../components/PDFSigner";
 
 export const metadata: Metadata = {
   title: "Sign PDF Online",
   description:
-    "Add a handwritten signature to PDF documents online quickly and easily with ImgSwift.",
+    "Add a handwritten signature to PDF documents online quickly and easily with ToolsGift.",
   keywords: [
     "sign PDF",
     "sign PDF online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-signer",
   },
   openGraph: {
-    title: "Sign PDF Online | ImgSwift",
+    title: "Sign PDF Online | ToolsGift",
     description:
       "Add a handwritten signature to PDF documents online quickly and easily.",
     url: "/tools/pdf-signer",

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import ImageCompressor from "../../components/ImageCompressor";
 
 export const metadata: Metadata = {
   title: "Image Compressor Online",
   description:
-    "Compress JPG, PNG and WebP images online while maintaining excellent quality. Reduce image file size quickly with ImgSwift.",
+    "Compress JPG, PNG and WebP images online while maintaining excellent quality. Reduce image file size quickly with ToolsGift.",
   keywords: [
     "image compressor",
     "compress image",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "/tools/compressor",
   },
   openGraph: {
-    title: "Image Compressor Online | ImgSwift",
+    title: "Image Compressor Online | ToolsGift",
     description:
       "Compress JPG, PNG and WebP images online while maintaining excellent quality.",
     url: "/tools/compressor",

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFWatermark from "../../components/PDFWatermark";
 
 export const metadata: Metadata = {
   title: "PDF Watermark Online",
   description:
-    "Add text watermarks to PDF documents online and customize their position, size and appearance with ImgSwift.",
+    "Add text watermarks to PDF documents online and customize their position, size and appearance with ToolsGift.",
   keywords: [
     "PDF watermark",
     "PDF watermark online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-watermark",
   },
   openGraph: {
-    title: "PDF Watermark Online | ImgSwift",
+    title: "PDF Watermark Online | ToolsGift",
     description:
       "Add text watermarks to PDF documents online and customize their position, size and appearance.",
     url: "/tools/pdf-watermark",

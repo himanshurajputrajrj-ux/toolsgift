@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 
@@ -427,7 +427,7 @@ export default function Header() {
         <a
           href="/"
           className="group flex shrink-0 items-center gap-1 text-2xl tracking-tight"
-          aria-label="ImgSwift Home"
+          aria-label="ToolsGift Home"
         >
           <span className="font-black text-[#202124]">Img</span>
           <span className="font-medium text-[#202124]">Swift</span>
@@ -435,7 +435,7 @@ export default function Header() {
             className="ml-0.5 -mt-3 text-sm font-bold text-[#c9a227] transition-transform duration-300 group-hover:rotate-12"
             aria-hidden="true"
           >
-            ✦
+            âœ¦
           </span>
         </a>
 
@@ -1055,7 +1055,7 @@ function MobileCategory({
             </span>
 
             <span className="ml-auto text-black/25">
-              →
+              â†’
             </span>
 
           </a>

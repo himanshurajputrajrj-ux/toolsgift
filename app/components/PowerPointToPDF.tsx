@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import JSZip from "jszip";
@@ -230,7 +230,7 @@ export default function PowerPointToPDF() {
         pdf.setTextColor(100, 116, 139);
 
         pdf.text(
-          `Slide ${slide.number} • Converted by ImgSwift`,
+          `Slide ${slide.number} â€¢ Converted by ToolsGift`,
           margin,
           pageHeight - 10
         );
@@ -320,7 +320,7 @@ export default function PowerPointToPDF() {
             />
 
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-2xl">
-              📊
+              ðŸ“Š
             </div>
 
             <h3 className="mt-4 font-semibold text-slate-900">
@@ -349,7 +349,7 @@ export default function PowerPointToPDF() {
                   <p className="mt-1 text-sm text-slate-500">
                     {formatSize(file.size)}
                     {slides.length > 0 &&
-                      ` • ${slides.length} slides`}
+                      ` â€¢ ${slides.length} slides`}
                   </p>
                 </div>
 
@@ -404,7 +404,7 @@ export default function PowerPointToPDF() {
               <div className="flex min-h-[280px] items-center justify-center text-center">
                 <div>
                   <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 text-3xl">
-                    📑
+                    ðŸ“‘
                   </div>
 
                   <p className="mt-4 font-medium text-slate-600">

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFToPDFA from "../../components/PDFToPDFA";
 
 export const metadata: Metadata = {
   title: "PDF to PDF/A Converter Online",
   description:
-    "Convert PDF documents into archival-oriented PDF/A-style files online with ImgSwift.",
+    "Convert PDF documents into archival-oriented PDF/A-style files online with ToolsGift.",
   keywords: [
     "PDF to PDF/A",
     "PDF to PDF/A converter",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-to-pdfa",
   },
   openGraph: {
-    title: "PDF to PDF/A Converter Online | ImgSwift",
+    title: "PDF to PDF/A Converter Online | ToolsGift",
     description:
       "Convert PDF documents into archival-oriented PDF/A-style files online.",
     url: "/tools/pdf-to-pdfa",

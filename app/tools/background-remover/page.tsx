@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import BackgroundRemover from "../../components/BackgroundRemover";
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: "/tools/background-remover",
   },
   openGraph: {
-    title: "Background Remover Online | ImgSwift",
+    title: "Background Remover Online | ToolsGift",
     description:
       "Remove image backgrounds with AI and replace them with professional backgrounds.",
     url: "/tools/background-remover",

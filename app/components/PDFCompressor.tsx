@@ -110,10 +110,10 @@ export default function PDFCompressor() {
         outputPdf.setAuthor("");
         outputPdf.setSubject("");
         outputPdf.setKeywords([]);
-        outputPdf.setProducer("ImgSwift");
-        outputPdf.setCreator("ImgSwift");
+        outputPdf.setProducer("ToolsGift");
+        outputPdf.setCreator("ToolsGift");
       } else if (compression === "medium") {
-        outputPdf.setProducer("ImgSwift");
+        outputPdf.setProducer("ToolsGift");
       }
 
       const pdfBytes = await outputPdf.save({
@@ -396,5 +396,6 @@ export default function PDFCompressor() {
     </section>
   );
 }
+
 
 

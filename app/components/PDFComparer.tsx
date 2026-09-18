@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   ChangeEvent,
@@ -343,7 +343,7 @@ export default function PDFComparer() {
                 />
 
                 <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-2xl">
-                  📄
+                  ðŸ“„
                 </div>
 
                 <p className="font-semibold text-slate-800">
@@ -419,7 +419,7 @@ export default function PDFComparer() {
                 />
 
                 <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-2xl">
-                  📄
+                  ðŸ“„
                 </div>
 
                 <p className="font-semibold text-slate-800">
@@ -466,7 +466,7 @@ export default function PDFComparer() {
           {/* Info */}
           <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50 p-4">
             <div className="flex gap-3">
-              <span className="text-lg">ℹ️</span>
+              <span className="text-lg">â„¹ï¸</span>
 
               <div>
                 <p className="text-sm font-semibold text-blue-900">
@@ -474,7 +474,7 @@ export default function PDFComparer() {
                 </p>
 
                 <p className="mt-1 text-xs leading-5 text-blue-800">
-                  ImgSwift compares page count and selectable text
+                  ToolsGift compares page count and selectable text
                   page-by-page. Scanned PDFs without a text layer
                   may require OCR before meaningful text comparison
                   is possible.
@@ -515,7 +515,7 @@ export default function PDFComparer() {
             {!compared ? (
               <div className="flex min-h-[280px] items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 px-6 text-center">
                 <div>
-                  <div className="mb-3 text-4xl">⚖️</div>
+                  <div className="mb-3 text-4xl">âš–ï¸</div>
 
                   <p className="font-medium text-slate-700">
                     Comparison result will appear here
@@ -538,7 +538,7 @@ export default function PDFComparer() {
                 >
                   <div className="flex items-center gap-3">
                     <div className="text-3xl">
-                      {identical ? "✅" : "⚠️"}
+                      {identical ? "âœ…" : "âš ï¸"}
                     </div>
 
                     <div>

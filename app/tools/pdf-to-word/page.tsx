@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFToWord from "../../components/PDFToWord";
 
 export const metadata: Metadata = {
   title: "PDF to Word Converter Online",
   description:
-    "Convert PDF files to editable Word DOCX documents online quickly and easily with ImgSwift.",
+    "Convert PDF files to editable Word DOCX documents online quickly and easily with ToolsGift.",
   keywords: [
     "PDF to Word",
     "PDF to Word converter",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-to-word",
   },
   openGraph: {
-    title: "PDF to Word Converter Online | ImgSwift",
+    title: "PDF to Word Converter Online | ToolsGift",
     description:
       "Convert PDF files to editable Word DOCX documents online quickly and easily.",
     url: "/tools/pdf-to-word",

@@ -288,7 +288,7 @@ export default function PDFRepair() {
                 </p>
 
                 <p className="mt-1 text-xs leading-5 text-blue-800">
-                  ImgSwift loads the readable PDF structure, copies its pages
+                  ToolsGift loads the readable PDF structure, copies its pages
                   into a new PDF document, and rebuilds the output structure.
                   This can help with minor structural problems but cannot
                   recover data that is completely unreadable.
@@ -383,4 +383,5 @@ export default function PDFRepair() {
     </section>
   );
 }
+
 

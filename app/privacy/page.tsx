@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Read the ImgSwift Privacy Policy to understand how we handle information, files, cookies, analytics and advertising.",
+    "Read the ToolsGift Privacy Policy to understand how we handle information, files, cookies, analytics and advertising.",
   alternates: {
     canonical: "/privacy",
   },
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
                 1. Introduction
               </h2>
               <p className="mt-3">
-                Welcome to ImgSwift. This Privacy Policy explains how
+                Welcome to ToolsGift. This Privacy Policy explains how
                 information may be collected, used and protected when you use
                 our website and online image and PDF tools.
               </p>
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
                 2. Information We Collect
               </h2>
               <p className="mt-3">
-                ImgSwift is designed to provide online file-processing tools.
+                ToolsGift is designed to provide online file-processing tools.
                 Depending on how you use the website, we may collect limited
                 technical information such as your browser type, device
                 information, approximate location, IP address, pages visited,
@@ -57,7 +57,7 @@ export default function PrivacyPage() {
                 3. Uploaded Files
               </h2>
               <p className="mt-3">
-                ImgSwift provides tools for processing images and PDF
+                ToolsGift provides tools for processing images and PDF
                 documents. Some tools process files directly in your browser.
                 Where browser-based processing is used, the file may remain on
                 your device and is not intentionally uploaded to our servers
@@ -77,7 +77,7 @@ export default function PrivacyPage() {
                 4. How We Use Information
               </h2>
               <p className="mt-3">
-                Information may be used to operate and maintain ImgSwift,
+                Information may be used to operate and maintain ToolsGift,
                 improve our tools and website, understand how visitors use our
                 services, prevent abuse, troubleshoot technical problems,
                 communicate with users who contact us, and comply with legal
@@ -90,7 +90,7 @@ export default function PrivacyPage() {
                 5. Cookies
               </h2>
               <p className="mt-3">
-                ImgSwift may use cookies and similar technologies for essential
+                ToolsGift may use cookies and similar technologies for essential
                 website functionality, analytics, preferences, security, and
                 advertising purposes.
               </p>
@@ -106,7 +106,7 @@ export default function PrivacyPage() {
                 6. Advertising
               </h2>
               <p className="mt-3">
-                ImgSwift may display advertisements provided by third-party
+                ToolsGift may display advertisements provided by third-party
                 advertising partners, including Google AdSense or other
                 advertising services.
               </p>
@@ -123,7 +123,7 @@ export default function PrivacyPage() {
                 7. Third-Party Services
               </h2>
               <p className="mt-3">
-                Some ImgSwift tools may rely on third-party services to provide
+                Some ToolsGift tools may rely on third-party services to provide
                 specific functionality. When a tool sends information to an
                 external service, that processing may be governed by the
                 third party's own privacy policy and terms.
@@ -136,7 +136,7 @@ export default function PrivacyPage() {
               </h2>
               <p className="mt-3">
                 We take reasonable measures to protect information associated
-                with the operation of ImgSwift. However, no website,
+                with the operation of ToolsGift. However, no website,
                 transmission method, or electronic storage system can be
                 guaranteed to be completely secure.
               </p>
@@ -147,7 +147,7 @@ export default function PrivacyPage() {
                 9. Children's Privacy
               </h2>
               <p className="mt-3">
-                ImgSwift is not intended to knowingly collect personal
+                ToolsGift is not intended to knowingly collect personal
                 information from children in violation of applicable law. If
                 you believe a child has provided personal information to us,
                 please contact us so that the information can be reviewed and,
@@ -160,7 +160,7 @@ export default function PrivacyPage() {
                 10. External Links
               </h2>
               <p className="mt-3">
-                ImgSwift may contain links to third-party websites or
+                ToolsGift may contain links to third-party websites or
                 services. We are not responsible for the privacy practices,
                 content, or security of external websites.
               </p>
@@ -196,7 +196,7 @@ export default function PrivacyPage() {
               </h2>
               <p className="mt-3">
                 If you have questions about this Privacy Policy or our privacy
-                practices, please contact ImgSwift through the Contact Us page
+                practices, please contact ToolsGift through the Contact Us page
                 on this website.
               </p>
             </section>

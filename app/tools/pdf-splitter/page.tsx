@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFSplitter from "../../components/PDFSplitter";
 
 export const metadata: Metadata = {
   title: "Split PDF Online",
   description:
-    "Split PDF files online into separate documents or extract specific pages quickly and easily with ImgSwift.",
+    "Split PDF files online into separate documents or extract specific pages quickly and easily with ToolsGift.",
   keywords: [
     "split PDF",
     "split PDF online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-splitter",
   },
   openGraph: {
-    title: "Split PDF Online | ImgSwift",
+    title: "Split PDF Online | ToolsGift",
     description:
       "Split PDF files online into separate documents or extract specific pages quickly and easily.",
     url: "/tools/pdf-splitter",

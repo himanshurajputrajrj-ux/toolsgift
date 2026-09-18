@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFForms from "../../components/PDFForms";
 
 export const metadata: Metadata = {
   title: "Fill PDF Forms Online",
   description:
-    "Fill interactive PDF forms online, enter information into form fields and download completed PDF documents with ImgSwift.",
+    "Fill interactive PDF forms online, enter information into form fields and download completed PDF documents with ToolsGift.",
   keywords: [
     "PDF forms",
     "fill PDF forms",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-forms",
   },
   openGraph: {
-    title: "Fill PDF Forms Online | ImgSwift",
+    title: "Fill PDF Forms Online | ToolsGift",
     description:
       "Fill interactive PDF forms online and download completed PDF documents quickly and easily.",
     url: "/tools/pdf-forms",

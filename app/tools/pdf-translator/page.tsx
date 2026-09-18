@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PDFTranslator from "../../components/PDFTranslator";
 
 export const metadata: Metadata = {
   title: "PDF Translator Online",
   description:
-    "Translate text from PDF documents into multiple languages online quickly and easily with ImgSwift.",
+    "Translate text from PDF documents into multiple languages online quickly and easily with ToolsGift.",
   keywords: [
     "PDF translator",
     "PDF translator online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "/tools/pdf-translator",
   },
   openGraph: {
-    title: "PDF Translator Online | ImgSwift",
+    title: "PDF Translator Online | ToolsGift",
     description:
       "Translate text from PDF documents into multiple languages online quickly and easily.",
     url: "/tools/pdf-translator",

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import SocialQRCard from "../../components/SocialQRCard";
 
 export const metadata: Metadata = {
   title: "Social Media QR Code Generator",
   description:
-    "Create a single QR code for WhatsApp, Instagram, Facebook, X, YouTube, LinkedIn and other contact links with ImgSwift.",
+    "Create a single QR code for WhatsApp, Instagram, Facebook, X, YouTube, LinkedIn and other contact links with ToolsGift.",
   keywords: [
     "social media QR code",
     "social media QR code generator",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     canonical: "/tools/social-qr-card",
   },
   openGraph: {
-    title: "Social Media QR Code Generator | ImgSwift",
+    title: "Social Media QR Code Generator | ToolsGift",
     description:
       "Create one QR code for your social media profiles and contact links.",
     url: "/tools/social-qr-card",

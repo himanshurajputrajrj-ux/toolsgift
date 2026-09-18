@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef, useState } from "react";
 
@@ -116,7 +116,7 @@ export default function ImageRotator() {
             onClick={() => inputRef.current?.click()}
             className="border-2 border-dashed border-gray-300 rounded-2xl p-10 text-center cursor-pointer hover:border-black transition"
           >
-            <div className="text-5xl mb-4">🔄</div>
+            <div className="text-5xl mb-4">ðŸ”„</div>
 
             <h2 className="text-xl font-semibold text-gray-900">
               Upload Image
@@ -187,7 +187,7 @@ export default function ImageRotator() {
                           : "border-gray-200 hover:bg-gray-50"
                       }`}
                     >
-                      90°
+                      90Â°
                     </button>
 
                     <button
@@ -199,7 +199,7 @@ export default function ImageRotator() {
                           : "border-gray-200 hover:bg-gray-50"
                       }`}
                     >
-                      180°
+                      180Â°
                     </button>
 
                     <button
@@ -211,7 +211,7 @@ export default function ImageRotator() {
                           : "border-gray-200 hover:bg-gray-50"
                       }`}
                     >
-                      270°
+                      270Â°
                     </button>
 
                     <button
@@ -223,7 +223,7 @@ export default function ImageRotator() {
                           : "border-gray-200 hover:bg-gray-50"
                       }`}
                     >
-                      360°
+                      360Â°
                     </button>
 
                   </div>
@@ -235,7 +235,7 @@ export default function ImageRotator() {
                   disabled={isRotating}
                   className="w-full mt-6 px-6 py-3 rounded-xl bg-black text-white font-semibold hover:bg-gray-800 disabled:opacity-50 transition"
                 >
-                  {isRotating ? "Rotating..." : `Rotate ${angle}°`}
+                  {isRotating ? "Rotating..." : `Rotate ${angle}Â°`}
                 </button>
 
                 <button
@@ -252,7 +252,7 @@ export default function ImageRotator() {
             {downloadUrl && (
               <a
                 href={downloadUrl}
-                download="imgswift-rotated-image.jpg"
+                download="ToolsGift-rotated-image.jpg"
                 className="block w-full mt-6 text-center px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition"
               >
                 Download Rotated Image
