@@ -586,6 +586,26 @@ export default function ImageEnhancer() {
           </div>
         </div>
       </div>
+      <section className="mx-auto mt-10 max-w-4xl rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+        <h2 className="text-2xl font-bold text-slate-900">What is an Image Enhancer?</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          An image enhancer is a tool that improves the visual appearance of an image by applying image-processing adjustments. ToolsGift Image Enhancer applies browser-based processing to help improve image details and overall appearance.
+        </p>
+        <h2 className="mt-7 text-2xl font-bold text-slate-900">How to Enhance an Image</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          Upload an image and start the enhancement process. ToolsGift processes the image in your browser and provides an enhanced result that you can preview and download.
+        </p>
+        <h2 className="mt-7 text-2xl font-bold text-slate-900">Enhance JPG, PNG and WebP Images</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          Enhance common image formats for websites, documents, social media and everyday image editing. The tool creates a processed image that can be downloaded after enhancement.
+        </p>
+        <h2 className="mt-7 text-2xl font-bold text-slate-900">Image Enhancement in Your Browser</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          ToolsGift processes image enhancement directly in your web browser using standard image, canvas and pixel-processing features. The selected image is processed locally in the browser rather than being uploaded to a server by this tool.
+        </p>
+      </section>
     </main>
   );
 }
+
+
