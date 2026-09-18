@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ToolsGift.com"),
+  metadataBase: new URL("https://toolsgift.com"),
 
   title: {
     default: "ToolsGift — Fast & Simple Image & PDF Tools",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     title: "ToolsGift — Fast & Simple Image & PDF Tools",
     description:
       "Fast and simple online image and PDF tools for converting, editing, compressing and managing files.",
-    url: "https://ToolsGift.com",
+    url: "https://toolsgift.com",
   },
 
   twitter: {
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://ToolsGift.com",
+    canonical: "https://toolsgift.com",
   },
 };
 
@@ -95,4 +95,5 @@ export default function RootLayout({
     </html>
   );
 }
+
 
