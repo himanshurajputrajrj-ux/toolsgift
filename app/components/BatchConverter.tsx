@@ -568,6 +568,26 @@ export default function BatchConverter() {
           </div>
         </div>
       </div>
+      <section className="mx-auto mt-10 max-w-4xl rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+        <h2 className="text-2xl font-bold text-slate-900">What is a Batch Image Converter?</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          A batch image converter lets you convert multiple images in one process instead of converting each file individually. ToolsGift Batch Converter is designed to make multi-image conversion quick and convenient.
+        </p>
+        <h2 className="mt-7 text-2xl font-bold text-slate-900">How to Convert Multiple Images</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          Upload multiple images, choose the output format, and start the conversion. The converted images are displayed as individual results, and you can download files separately or download all converted images together.
+        </p>
+        <h2 className="mt-7 text-2xl font-bold text-slate-900">Convert Multiple JPG, PNG and WebP Images</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          Convert multiple images between supported formats such as JPG, PNG and WebP. Batch conversion can save time when you need to process several images for websites, documents, social media or other projects.
+        </p>
+        <h2 className="mt-7 text-2xl font-bold text-slate-900">Batch Image Conversion in Your Browser</h2>
+        <p className="mt-3 leading-7 text-slate-600">
+          ToolsGift processes batch image conversion directly in your web browser using standard image and canvas features. The conversion is performed locally in the browser rather than uploading your images to a server by this tool.
+        </p>
+      </section>
     </main>
   );
 }
+
+
