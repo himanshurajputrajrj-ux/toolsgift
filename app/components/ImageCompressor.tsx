@@ -587,8 +587,36 @@ export default function ImageCompressor() {
           </button>
 
         </section>
-
+        <section className="mt-10 rounded-3xl bg-white p-6 shadow-sm md:p-8">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="text-2xl font-bold text-slate-900">
+              What is an Image Compressor?
+            </h2>
+            <p className="mt-3 text-slate-600 leading-7">
+              An image compressor reduces the file size of an image while aiming to preserve good visual quality. It can help make JPG, PNG and WebP images easier to store, share and upload.
+            </p>
+            <h2 className="mt-8 text-2xl font-bold text-slate-900">
+              How to Compress an Image
+            </h2>
+            <p className="mt-3 text-slate-600 leading-7">
+              Upload an image, choose the output format and adjust the quality level. A lower quality setting can produce a smaller file, while a higher setting generally keeps more visual detail. When you are satisfied with the result, download the compressed image.
+            </p>
+            <h2 className="mt-8 text-2xl font-bold text-slate-900">
+              Supported Image Formats
+            </h2>
+            <p className="mt-3 text-slate-600 leading-7">
+              ToolsGift supports common image formats including JPG, PNG, WebP, GIF and BMP for image compression.
+            </p>
+            <h2 className="mt-8 text-2xl font-bold text-slate-900">
+              Image Compression in Your Browser
+            </h2>
+            <p className="mt-3 text-slate-600 leading-7">
+              Image compression is performed directly in your browser using the image and canvas processing capabilities available on your device.
+            </p>
+          </div>
+        </section>
       </div>
     </main>
   );
 }
+
