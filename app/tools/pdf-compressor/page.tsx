@@ -1,0 +1,39 @@
+import type { Metadata } from "next";
+import PDFCompressor from "../../components/PDFCompressor";
+
+export const metadata: Metadata = {
+  title: "Compress PDF Online",
+  description:
+    "Compress PDF files online and reduce document file size quickly and easily with ImgSwift.",
+  keywords: [
+    "compress PDF",
+    "compress PDF online",
+    "PDF compressor",
+    "PDF compression tool",
+    "reduce PDF size",
+    "reduce PDF file size",
+    "compress PDF file",
+    "make PDF smaller",
+    "shrink PDF size",
+    "online PDF compressor",
+    "PDF size reducer",
+  ],
+  alternates: {
+    canonical: "/tools/pdf-compressor",
+  },
+  openGraph: {
+    title: "Compress PDF Online | ImgSwift",
+    description:
+      "Compress PDF files online and reduce document file size quickly and easily.",
+    url: "/tools/pdf-compressor",
+    type: "website",
+  },
+};
+
+export default function CompressPDFPage() {
+  return (
+    <main className="min-h-screen bg-slate-50">
+      <PDFCompressor />
+    </main>
+  );
+}

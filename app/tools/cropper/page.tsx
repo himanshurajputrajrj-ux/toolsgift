@@ -1,0 +1,38 @@
+import type { Metadata } from "next";
+import ImageCropper from "../../components/ImageCropper";
+
+export const metadata: Metadata = {
+  title: "Image Cropper Online",
+  description:
+    "Crop JPG, PNG and WebP images online to a custom area with precise controls using ImgSwift.",
+  keywords: [
+    "image cropper",
+    "crop image online",
+    "crop images online",
+    "JPG cropper",
+    "PNG cropper",
+    "WebP cropper",
+    "online image cropper",
+    "image cropping tool",
+    "crop photo online",
+    "custom image crop",
+  ],
+  alternates: {
+    canonical: "/tools/cropper",
+  },
+  openGraph: {
+    title: "Image Cropper Online | ImgSwift",
+    description:
+      "Crop JPG, PNG and WebP images online to a custom area with precise controls.",
+    url: "/tools/cropper",
+    type: "website",
+  },
+};
+
+export default function CropperPage() {
+  return (
+    <main className="min-h-screen bg-slate-50">
+      <ImageCropper />
+    </main>
+  );
+}

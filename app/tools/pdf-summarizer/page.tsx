@@ -1,0 +1,39 @@
+import type { Metadata } from "next";
+import PDFSummarizer from "../../components/PDFSummarizer";
+
+export const metadata: Metadata = {
+  title: "PDF Summarizer Online",
+  description:
+    "Summarize PDF documents online directly in your browser and quickly extract the most important information with ImgSwift.",
+  keywords: [
+    "PDF summarizer",
+    "PDF summarizer online",
+    "summarize PDF",
+    "summarize PDF online",
+    "PDF summary generator",
+    "PDF document summarizer",
+    "summarize PDF document",
+    "PDF text summarizer",
+    "online PDF summarizer",
+    "PDF summary tool",
+    "document summarizer",
+  ],
+  alternates: {
+    canonical: "/tools/pdf-summarizer",
+  },
+  openGraph: {
+    title: "PDF Summarizer Online | ImgSwift",
+    description:
+      "Summarize PDF documents online directly in your browser and quickly extract the most important information.",
+    url: "/tools/pdf-summarizer",
+    type: "website",
+  },
+};
+
+export default function PDFSummarizerPage() {
+  return (
+    <main className="min-h-screen bg-slate-50">
+      <PDFSummarizer />
+    </main>
+  );
+}
