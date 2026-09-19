@@ -1,6 +1,7 @@
-﻿import RelatedTools from "../../components/RelatedTools";
+import RelatedTools from "../../components/RelatedTools";
 import type { Metadata } from "next";
 import ImageResizer from "../../components/ImageResizer";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 import Breadcrumbs from "../../components/Breadcrumbs";
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function ResizerPage() {
     <main className="min-h-screen bg-slate-50">
       <Breadcrumbs toolName="Image Resizer Online" />
       <ImageResizer />
+      <ToolSEOContent toolKey="resizer" />
           <RelatedTools tools={[
         { name: "Image Compressor", href: "/tools/compressor" },
         { name: "Image Converter", href: "/tools/converter" },

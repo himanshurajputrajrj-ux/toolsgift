@@ -1,6 +1,7 @@
-﻿import RelatedTools from "../../components/RelatedTools";
+import RelatedTools from "../../components/RelatedTools";
 import type { Metadata } from "next";
 import ImageCropper from "../../components/ImageCropper";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 import Breadcrumbs from "../../components/Breadcrumbs";
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function CropperPage() {
     <main className="min-h-screen bg-slate-50">
       <Breadcrumbs toolName="Image Cropper Online" />
       <ImageCropper />
+      <ToolSEOContent toolKey="cropper" />
           <RelatedTools tools={[
         { name: "Image Resizer", href: "/tools/resizer" },
         { name: "Image Compressor", href: "/tools/compressor" },

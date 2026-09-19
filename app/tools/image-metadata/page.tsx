@@ -1,4 +1,4 @@
-﻿import RelatedTools from "../../components/RelatedTools";
+import RelatedTools from "../../components/RelatedTools";
 import type { Metadata } from "next";
 import ImageMetadataTool from "@/app/components/ImageMetadataTool";
 

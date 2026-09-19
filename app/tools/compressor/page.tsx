@@ -1,6 +1,7 @@
-﻿import RelatedTools from "../../components/RelatedTools";
+import RelatedTools from "../../components/RelatedTools";
 import type { Metadata } from "next";
 import ImageCompressor from "../../components/ImageCompressor";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 import Breadcrumbs from "../../components/Breadcrumbs";
 export const metadata: Metadata = {
@@ -34,7 +35,7 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   name: "Image Compressor Online",
-  url: "https://toolsgift.com/tools/compressor",
+  url: "https://www.toolsgift.com/tools/compressor",
   description:
     "Compress JPG, PNG and WebP images online while maintaining excellent quality. Reduce image file size quickly with ToolsGift.",
   applicationCategory: "UtilitiesApplication",
@@ -57,6 +58,7 @@ export default function CompressorPage() {
         }}
       />
       <ImageCompressor />
+      <ToolSEOContent toolKey="compressor" />
     
       <RelatedTools tools={[
         { name: "Image Converter", href: "/tools/converter" },

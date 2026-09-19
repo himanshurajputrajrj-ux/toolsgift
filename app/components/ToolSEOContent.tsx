@@ -1,4 +1,4 @@
-﻿import type { ReactNode } from "react";
+import type { ReactNode } from "react";
 type ToolSEOContentProps = {
   toolKey: string;
 };
@@ -251,7 +251,78 @@ const RELATED_TOOLS: Record<string, RelatedTool[]> = {
     useCase: "sharing spreadsheets as fixed-layout documents",
     benefit: "making spreadsheet files easier to share and print",
   },
-  "html-to-pdf": {
+  "compressor": {
+    name: "Image Compressor",
+    description: "Compress JPG, PNG and WebP images online to reduce file size while keeping useful image quality.",
+    action: "compress an image and reduce its file size",
+    input: "a supported JPG, PNG or WebP image",
+    output: "a compressed image file",
+    useCase: "reducing image sizes for websites, uploads, email attachments and storage",
+    benefit: "making images easier to upload, share and store",
+  },
+  "converter": {
+    name: "Image Converter",
+    description: "Convert images online between JPG, PNG and WebP formats for flexible image use and sharing.",
+    action: "convert an image from one supported format to another",
+    input: "a supported JPG, PNG or WebP image",
+    output: "an image in the selected output format",
+    useCase: "changing image formats for websites, editing workflows, uploads and compatibility",
+    benefit: "getting images into the format needed for different uses",
+  },
+  "batch-converter": {
+    name: "Batch Image Converter",
+    description: "Convert multiple JPG, PNG and WebP images online in one batch for faster image-processing workflows.",
+    action: "convert multiple images together",
+    input: "multiple supported JPG, PNG or WebP images",
+    output: "converted image files in the selected format",
+    useCase: "bulk image conversion for websites, projects, uploads and organized file collections",
+    benefit: "converting multiple images without processing them one by one",
+  },
+  "cropper": {
+    name: "Image Cropper",
+    description: "Crop JPG, PNG and WebP images online to remove unwanted areas and create cleaner compositions.",
+    action: "crop an image to the selected area",
+    input: "a supported image file",
+    output: "a cropped image file",
+    useCase: "removing unwanted edges, changing framing and preparing images for different layouts",
+    benefit: "creating cleaner image compositions with the area you need",
+  },
+  "enhancer": {
+    name: "Image Enhancer",
+    description: "Enhance images online to improve clarity and overall visual quality for everyday image-processing needs.",
+    action: "enhance the appearance of an image",
+    input: "a supported image file",
+    output: "an enhanced image file",
+    useCase: "improving images for websites, social media, documents and personal projects",
+    benefit: "making images look clearer and more refined",
+  },
+  "image-metadata": {
+    name: "Image Metadata",
+    description: "View and manage image metadata online to inspect file information and remove supported metadata when needed.",
+    action: "inspect or clean supported image metadata",
+    input: "a supported image file",
+    output: "image metadata information or a cleaned image file",
+    useCase: "checking image file information and preparing images for sharing",
+    benefit: "understanding and managing information stored inside image files",
+  },
+  "resizer": {
+    name: "Image Resizer",
+    description: "Resize JPG, PNG and WebP images online to specific dimensions for websites, uploads, documents and other uses.",
+    action: "change the dimensions of an image",
+    input: "a supported image file",
+    output: "an image with the selected dimensions",
+    useCase: "preparing images for websites, social media, documents and uploads",
+    benefit: "getting images to the dimensions required for different platforms and layouts",
+  },
+  "rotator": {
+    name: "Image Rotator",
+    description: "Rotate JPG, PNG and WebP images online to correct orientation or create the desired image angle.",
+    action: "rotate an image to the selected orientation",
+    input: "a supported image file",
+    output: "a rotated image file",
+    useCase: "correcting image orientation and adjusting image presentation",
+    benefit: "quickly fixing or changing the orientation of an image",
+  },  "html-to-pdf": {
     name: "HTML to PDF",
     description: "Convert HTML content into PDF documents for saving, sharing, printing and document workflows.",
     action: "turn HTML content into a PDF document",

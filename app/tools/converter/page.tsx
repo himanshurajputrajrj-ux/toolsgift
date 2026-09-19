@@ -1,6 +1,7 @@
-﻿import RelatedTools from "../../components/RelatedTools";
+import RelatedTools from "../../components/RelatedTools";
 import type { Metadata } from "next";
 import ImageConverter from "../../components/ImageConverter";
+import ToolSEOContent from "../../components/ToolSEOContent";
 import StructuredData from "../../components/StructuredData";
 
 import Breadcrumbs from "../../components/Breadcrumbs";
@@ -38,8 +39,9 @@ export default function ConverterPage() {
   return (
     <main className="min-h-screen bg-slate-50">
       <Breadcrumbs toolName="Image Converter Online" />
-      <StructuredData name="Image Converter Online" description="Convert images online between JPG, PNG and WebP formats quickly and easily with ToolsGift." url="https://toolsgift.com/tools/converter" />
+      <StructuredData name="Image Converter Online" description="Convert images online between JPG, PNG and WebP formats quickly and easily with ToolsGift." url="https://www.toolsgift.com/tools/converter" />
       <ImageConverter />
+      <ToolSEOContent toolKey="converter" />
           <RelatedTools tools={[
         { name: "Image Compressor", href: "/tools/compressor" },
         { name: "Image Resizer", href: "/tools/resizer" },

@@ -1,6 +1,7 @@
-﻿import RelatedTools from "../../components/RelatedTools";
+import RelatedTools from "../../components/RelatedTools";
 import type { Metadata } from "next";
 import BatchConverter from "../../components/BatchConverter";
+import ToolSEOContent from "../../components/ToolSEOContent";
 
 import Breadcrumbs from "../../components/Breadcrumbs";
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default function BatchConverterPage() {
     <main className="min-h-screen bg-slate-50">
       <Breadcrumbs toolName="Batch Image Converter" />
       <BatchConverter />
+      <ToolSEOContent toolKey="batch-converter" />
     
       <RelatedTools tools={[
         { name: "Image Converter", href: "/tools/converter" },
