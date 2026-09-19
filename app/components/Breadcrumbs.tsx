@@ -23,14 +23,14 @@ export default function Breadcrumbs({ toolName }: BreadcrumbsProps) {
   return (
     <>
       <nav aria-label="Breadcrumb" className="mx-auto max-w-7xl px-5 pt-5 sm:px-8">
-        <ol className="flex flex-wrap items-center gap-2 text-sm text-[#202124]/70 dark:text-white/75">
+        <ol className="flex flex-wrap items-center gap-2 text-sm text-blue-600 dark:text-blue-400">
           <li>
-            <Link href="/" className="transition hover:text-[#202124] dark:hover:text-white">
+            <Link href="/" className="transition hover:text-blue-700 dark:hover:text-blue-300">
               Home
             </Link>
           </li>
-          <li aria-hidden="true" className="text-[#202124]/40 dark:text-white/50">/</li>
-          <li aria-current="page" className="font-medium text-[#202124] dark:text-white">
+          <li aria-hidden="true" className="text-blue-400 dark:text-blue-500">/</li>
+          <li aria-current="page" className="font-medium text-blue-600 dark:text-blue-400">
             {toolName}
           </li>
         </ol>
