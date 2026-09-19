@@ -1,4 +1,4 @@
-﻿import type { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export default function SiteStructuredData(): ReactNode {
   const structuredData = {
@@ -7,12 +7,12 @@ export default function SiteStructuredData(): ReactNode {
       {
         "@type": "Organization",
         name: "ToolsGift",
-        url: "https://toolsgift.com",
+        url: "https://www.toolsgift.com",
       },
       {
         "@type": "WebSite",
         name: "ToolsGift",
-        url: "https://toolsgift.com",
+        url: "https://www.toolsgift.com",
       },
     ],
   };
