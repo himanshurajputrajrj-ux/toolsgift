@@ -12,6 +12,7 @@ export default function SiteStructuredData(): ReactNode {
       {
         "@type": "WebSite",
         name: "ToolsGift",
+        alternateName: "Tools Gift",
         url: "https://www.toolsgift.com",
       },
     ],
