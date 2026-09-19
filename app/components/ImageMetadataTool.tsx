@@ -29,7 +29,7 @@ function formatBytes(bytes: number) {
 
 function formatValue(value: unknown): string {
   if (value === null || value === undefined) {
-    return "â€”";
+    return "—";
   }
 
   if (value instanceof Date) {
@@ -55,7 +55,7 @@ function getAspectRatio(
   width: number,
   height: number
 ) {
-  if (!width || !height) return "â€”";
+  if (!width || !height) return "—";
 
   const gcd = (a: number, b: number): number => {
     while (b) {
@@ -835,7 +835,7 @@ export default function ImageMetadataTool() {
             >
 
               <span className="text-5xl">
-                ðŸ–¼ï¸
+                🖼️
               </span>
 
               <span className="mt-4 text-sm font-bold">
@@ -923,8 +923,8 @@ export default function ImageMetadataTool() {
             >
 
               {cleaning
-                ? "ðŸ§¹ Removing Metadata..."
-                : "ðŸ§¹ Remove All Metadata"}
+                ? "🧹 Removing Metadata..."
+                : "🧹 Remove All Metadata"}
 
             </button>
 
@@ -939,7 +939,7 @@ export default function ImageMetadataTool() {
               }
               className="mt-3 w-full rounded-xl border border-black/10 bg-white px-5 py-4 text-sm font-bold text-black transition hover:bg-black/[0.03] disabled:cursor-not-allowed disabled:opacity-40"
             >
-              â†“ Download Clean Image
+              ↓ Download Clean Image
             </button>
 
             {/* REPORT */}
@@ -957,8 +957,8 @@ export default function ImageMetadataTool() {
                 className="rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm font-bold text-black transition hover:bg-black/[0.03] disabled:cursor-not-allowed disabled:opacity-40"
               >
                 {copied
-                  ? "âœ“ Copied"
-                  : "ðŸ“‹ Copy Metadata"}
+                  ? "✓ Copied"
+                  : "📋 Copy Metadata"}
               </button>
 
               <button
@@ -972,7 +972,7 @@ export default function ImageMetadataTool() {
                 }
                 className="rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm font-bold text-black transition hover:bg-black/[0.03] disabled:cursor-not-allowed disabled:opacity-40"
               >
-                â†“ Metadata Report
+                ↓ Metadata Report
               </button>
 
             </div>
@@ -991,7 +991,7 @@ export default function ImageMetadataTool() {
               <div className="flex items-start gap-3">
 
                 <span className="text-xl">
-                  ðŸ”’
+                  🔒
                 </span>
 
                 <div>
@@ -1115,7 +1115,7 @@ export default function ImageMetadataTool() {
                   <div className="flex items-start gap-3">
 
                     <span className="text-xl">
-                      ðŸ§¹
+                      🧹
                     </span>
 
                     <div>
@@ -1143,7 +1143,7 @@ export default function ImageMetadataTool() {
                 <div>
 
                   <div className="text-5xl">
-                    ðŸ”Ž
+                    🔎
                   </div>
 
                   <h3 className="mt-4 text-lg font-bold">
@@ -1175,22 +1175,22 @@ export default function ImageMetadataTool() {
 
             {[
               [
-                "ðŸ”Ž",
+                "🔎",
                 "View Metadata",
                 "Inspect available image information.",
               ],
               [
-                "ðŸ“·",
+                "📷",
                 "Camera Data",
                 "View camera, lens and shooting information when available.",
               ],
               [
-                "ðŸ“",
+                "📍",
                 "GPS Information",
                 "Check whether location coordinates are embedded.",
               ],
               [
-                "ðŸ§¹",
+                "🧹",
                 "Clean Image",
                 "Create a fresh copy without the original embedded metadata.",
               ],
