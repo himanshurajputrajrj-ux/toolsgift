@@ -75,6 +75,14 @@ const tools: Array<{
   },
   {
     icon: "converter",
+    title: "Image to Text",
+    description:
+      "Extract text from JPG, PNG, WebP and other images with browser-based OCR.",
+    link: "/tools/image-to-text",
+    category: "Image",
+  },
+  {
+    icon: "converter",
     title: "Image Converter",
     description:
       "Convert JPG, PNG, WebP and other popular image formats.",

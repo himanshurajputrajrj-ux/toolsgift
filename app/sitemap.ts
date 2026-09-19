@@ -1,4 +1,4 @@
-﻿import type { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 const baseUrl = "https://www.toolsgift.com";
 
@@ -16,6 +16,7 @@ const tools = [
   // Image Tools
   "compressor",
   "compress-image-to-kb",
+    "image-to-text",
   "heic-to-jpg",
   "converter",
   "resizer",
