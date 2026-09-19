@@ -2,6 +2,16 @@
 
 const baseUrl = "https://toolsgift.com";
 
+const staticPages = [
+  "",
+  "about",
+  "contact",
+  "privacy",
+  "terms",
+  "cookies",
+  "disclaimer",
+];
+
 const tools = [
   // Image Tools
   "compressor",
@@ -57,11 +67,11 @@ const tools = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    {
-      url: baseUrl,
-      changeFrequency: "weekly",
-      priority: 1,
-    },
+    ...staticPages.map((page) => ({
+      url: page ? `${baseUrl}/${page}` : baseUrl,
+      changeFrequency: page === "" ? ("weekly" as const) : ("monthly" as const),
+      priority: page === "" ? 1 : 0.6,
+    })),
 
     ...tools.map((tool) => ({
       url: `${baseUrl}/tools/${tool}`,
@@ -70,4 +80,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 }
-
