@@ -795,7 +795,7 @@ export default function ImageMetadataTool() {
             Image Metadata Tool
           </h1>
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-[#202124]/70 dark:text-white sm:text-base">
+          <p className="image-metadata-subtitle mx-auto mt-4 max-w-2xl text-sm leading-6 sm:text-base">
             View image metadata, inspect EXIF information,
             remove embedded metadata and download a clean
             image copy.
