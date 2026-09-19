@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useMemo, useState } from "react";
 import SiteStructuredData from "./components/SiteStructuredData";
@@ -456,7 +456,7 @@ export default function Home() {
         <div className="relative mx-auto max-w-7xl px-5 pb-20 pt-24 text-center md:pb-28 md:pt-32">
 
           <p className="mb-5 text-xs font-bold tracking-[0.28em] text-black/60">
-            FAST • SIMPLE • PRIVATE
+            TOOLSGIFT • FAST • SIMPLE • PRIVATE
           </p>
 
           <h1 className="text-5xl font-extrabold leading-[0.98] tracking-tight sm:text-6xl md:text-8xl">
