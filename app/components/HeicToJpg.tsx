@@ -95,12 +95,17 @@ export default function HeicToJpg() {
   };
   const downloadResult = () => {
     if (!result) return;
+
+    const downloadUrl = URL.createObjectURL(result.blob);
     const link = document.createElement("a");
-    link.href = result.preview;
+
+    link.href = downloadUrl;
     link.download = result.name;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
+    URL.revokeObjectURL(downloadUrl);
   };
   const removeFile = () => {
     if (result) {
@@ -264,14 +269,24 @@ export default function HeicToJpg() {
                 </p>
               </div>
             </div>
-            <button
-              type="button"
-              onClick={downloadResult}
-              className="mt-6 flex w-full items-center justify-center gap-3 rounded-xl bg-green-600 px-6 py-4 font-bold text-white transition hover:bg-green-700"
-            >
-              <span>⬇</span>
-              Download JPG
-            </button>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <button
+                type="button"
+                onClick={downloadResult}
+                className="flex w-full items-center justify-center gap-3 rounded-xl bg-green-600 px-6 py-4 font-bold text-white transition hover:bg-green-700"
+              >
+                <span>⬇</span>
+                Download JPG
+              </button>
+
+              <button
+                type="button"
+                onClick={removeFile}
+                className="flex w-full items-center justify-center gap-3 rounded-xl border border-gray-300 bg-white px-6 py-4 font-bold text-gray-700 transition hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+              >
+                Clear & Reset
+              </button>
+            </div>
           </section>
         )}
         <section className="mt-10 rounded-3xl bg-white p-6 shadow-sm md:p-8">
