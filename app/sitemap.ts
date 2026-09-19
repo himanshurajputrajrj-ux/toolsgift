@@ -1,6 +1,6 @@
 ﻿import type { MetadataRoute } from "next";
 
-const baseUrl = "https://toolsgift.com";
+const baseUrl = "https://www.toolsgift.com";
 
 const staticPages = [
   "",
@@ -69,7 +69,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticPages.map((page) => ({
       url: page ? `${baseUrl}/${page}` : baseUrl,
-      changeFrequency: page === "" ? ("weekly" as const) : ("monthly" as const),
+      changeFrequency:
+        page === "" ? ("weekly" as const) : ("monthly" as const),
       priority: page === "" ? 1 : 0.6,
     })),
 
