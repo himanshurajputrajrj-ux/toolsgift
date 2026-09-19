@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 
@@ -361,8 +361,22 @@ const otherTools: Tool[] = [
 export default function Header() {
   const [toolsOpen, setToolsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const [themeReady, setThemeReady] = useState(false);
+    useEffect(() => {
+      const savedTheme = localStorage.getItem("toolsgift-theme");
+      if (savedTheme === "dark") {
+        setDarkMode(true);
+      }
+      setThemeReady(true);
+    }, []);
 
   const toolsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+    localStorage.setItem("toolsgift-theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
 
   useEffect(() => {
     function handleOutsideClick(event: MouseEvent) {
@@ -412,9 +426,14 @@ export default function Header() {
     setToolsOpen(false);
     setMobileOpen(false);
   }
+    if (!themeReady) return null;
 
-  return (
-    <header className="sticky top-0 z-[100] border-b border-black/[0.08] bg-[#f8f5ed]/95 shadow-[0_8px_30px_rgba(32,33,36,0.04)] backdrop-blur-xl">
+    return (
+      <header className={`sticky top-0 z-[100] border-b shadow-[0_8px_30px_rgba(32,33,36,0.04)] backdrop-blur-xl ${
+  darkMode
+    ? "border-white/[0.10] bg-[#182235]/95"
+    : "border-black/[0.08] bg-[#f8f5ed]/95"
+}`}>
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#c9a227]/50 to-transparent" />
 
       {/* =====================================================
@@ -434,7 +453,7 @@ export default function Header() {
             className="ml-0.5 -mt-3 text-sm font-bold text-[#c9a227] transition-transform duration-300 group-hover:rotate-12"
             aria-hidden="true"
           >
-            ✦
+            ?
           </span>
         </a>
 
@@ -504,6 +523,54 @@ export default function Header() {
 
         </nav>
 
+        {/* Dark Mode Toggle */}
+        <button
+          type="button"
+          onClick={() => setDarkMode((value) => !value)}
+          className={`hidden h-10 shrink-0 items-center justify-center gap-2 rounded-xl border px-4 text-sm font-bold shadow-sm transition md:flex ${
+  darkMode
+    ? "border-[#c9a227]/40 bg-[#1e293b] text-[#f4d77b] hover:bg-[#334155]"
+    : "border-[#c9a227]/20 bg-white/70 text-[#202124] hover:bg-white"
+}`}
+          aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+          title={darkMode ? "Light mode" : "Dark mode"}
+        >
+            <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
+          {darkMode ? (
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                strokeLinecap="round"
+              />
+            </svg>
+          ) : (
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              aria-hidden="true"
+            >
+              <path
+                d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.7 6.7 0 0 0 9.8 9.8Z"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
+        </button>
+
         {/* Desktop CTA */}
         <a
           href="/#tools"
@@ -518,7 +585,11 @@ export default function Header() {
           onClick={() =>
             setMobileOpen((value) => !value)
           }
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#c9a227]/20 bg-white/70 text-[#202124] shadow-sm md:hidden"
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border shadow-sm md:hidden ${
+  darkMode
+    ? "border-[#c9a227]/30 bg-[#1e293b] text-[#f4d77b]"
+    : "border-[#c9a227]/20 bg-white/70 text-[#202124]"
+}`}
           aria-label="Open menu"
         >
           {mobileOpen ? (
@@ -707,12 +778,18 @@ export default function Header() {
       ===================================================== */}
 
       {mobileOpen && (
-        <div className="absolute left-0 right-0 top-full border-b border-[#c9a227]/20 bg-[#fffdf8] shadow-xl md:hidden">
+        <div className={`absolute left-0 right-0 top-full border-b shadow-xl md:hidden ${
+  darkMode
+    ? "border-[#c9a227]/20 bg-[#151f32]"
+    : "border-[#c9a227]/20 bg-[#fffdf8]"
+}`}>
 
           <div className="max-h-[calc(100vh-72px)] overflow-y-auto px-5 py-5">
 
             <div className="mb-3">
-              <span className="text-lg font-extrabold text-white">
+              <span className={`text-lg font-extrabold ${
+  darkMode ? "text-white" : "text-[#202124]"
+}`}>
                 Menu
               </span>
             </div>
@@ -722,7 +799,11 @@ export default function Header() {
               onClick={() =>
                 setToolsOpen((value) => !value)
               }
-              className="flex w-full items-center justify-between border-b border-black/10 py-4 text-base font-bold text-black"
+              className={`flex w-full items-center justify-between border-b py-4 text-base font-bold ${
+  darkMode
+    ? "border-white/10 text-white"
+    : "border-black/10 text-black"
+}`}
             >
               <span>Tools</span>
 
@@ -748,7 +829,9 @@ export default function Header() {
             </button>
 
             {toolsOpen && (
-              <div className="mt-3 rounded-2xl border border-[#c9a227]/15 bg-[#f8f5ed] p-3">
+              <div className={`mt-3 rounded-2xl border border-[#c9a227]/15 p-3 ${
+  darkMode ? "bg-[#1e293b]" : "bg-[#f8f5ed]"
+}`}>
 
                 <MobileCategory
                   title="Image Tools"
@@ -807,12 +890,16 @@ export default function Header() {
               </div>
             )}
 
-            <div className="mt-3 border-t border-black/10 pt-2">
+            <div className={`mt-3 border-t pt-2 ${
+  darkMode ? "border-white/10" : "border-black/10"
+}`}>
 
               <a
                 href="/#features"
                 onClick={closeMenus}
-                className="block py-4 text-base font-bold text-black/75"
+                className={`block py-4 text-base font-bold ${
+  darkMode ? "text-slate-300" : "text-black/75"
+}`}
               >
                 Features
               </a>
@@ -820,15 +907,33 @@ export default function Header() {
               <a
                 href="/#how-it-works"
                 onClick={closeMenus}
-                className="block py-4 text-base font-bold text-black/75"
+                className={`block py-4 text-base font-bold ${
+  darkMode ? "text-slate-300" : "text-black/75"
+}`}
               >
                 How it works
               </a>
 
+              <button
+                type="button"
+                onClick={() => setDarkMode((value) => !value)}
+                className={`my-2 flex w-full items-center justify-between rounded-xl border px-4 py-3 text-sm font-bold ${
+  darkMode
+    ? "border-white/10 bg-[#1e293b] text-white"
+    : "border-black/10 bg-white text-black"
+}`}
+                aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+              >
+                <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
+                <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
+              </button>
+
               <a
                 href="/#faq"
                 onClick={closeMenus}
-                className="block py-4 text-base font-bold text-black/75"
+                className={`block py-4 text-base font-bold ${
+  darkMode ? "text-slate-300" : "text-black/75"
+}`}
               >
                 FAQ
               </a>
@@ -1054,7 +1159,7 @@ function MobileCategory({
             </span>
 
             <span className="ml-auto text-black/25">
-              →
+              ?
             </span>
 
           </a>
@@ -1471,5 +1576,14 @@ function IconShape({
       );
   }
 }
+
+
+
+
+
+
+
+
+
 
 

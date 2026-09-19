@@ -1,26 +1,402 @@
 @import "tailwindcss";
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* =========================================================
+   TOOLS GIFT ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â GLOBAL THEME
+========================================================= */
+html.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  color-scheme: dark;
 }
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+/* =========================================================
+   DARK MODE ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â BACKGROUNDS
+========================================================= */
+html.dark body {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+}
+html.dark .bg-white {
+  background-color: #1e293b !important;
+}
+html.dark .bg-slate-50 {
+  background-color: #162033 !important;
+}
+html.dark .bg-slate-100 {
+  background-color: #243247 !important;
+}
+html.dark .bg-\[\#f7f7f5\] {
+  background-color: #111827 !important;
+}
+html.dark .bg-\[\#f8f5ed\] {
+  background-color: #182235 !important;
+}
+html.dark .bg-\[\#fffdf8\] {
+  background-color: #151f32 !important;
+}
+/* =========================================================
+   DARK MODE ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â TEXT
+========================================================= */
+html.dark .text-black,
+html.dark .text-\[\#202124\] {
+  color: #f8fafc !important;
+}
+html.dark .text-black\/60,
+html.dark .text-black\/65,
+html.dark .text-black\/75 {
+  color: #cbd5e1 !important;
+}
+html.dark .text-slate-900 {
+  color: #f8fafc !important;
+}
+html.dark .text-slate-800 {
+  color: #e2e8f0 !important;
+}
+html.dark .text-slate-700 {
+  color: #cbd5e1 !important;
+}
+html.dark .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+html.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+/* =========================================================
+   DARK MODE ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â BORDERS
+========================================================= */
+html.dark .border-black\/10 {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+html.dark .border-black\/\[0\.08\] {
+  border-color: rgba(255, 255, 255, 0.10) !important;
+}
+html.dark .border-slate-200 {
+  border-color: #334155 !important;
+}
+html.dark .border-slate-300 {
+  border-color: #475569 !important;
+}
+/* =========================================================
+   DARK MODE ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â SHADOWS
+========================================================= */
+html.dark .shadow-sm {
+  --tw-shadow-color: rgba(0, 0, 0, 0.30);
+}
+/* =========================================================
+   DARK MODE ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â FORM ELEMENTS
+========================================================= */
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #475569 !important;
+}
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #94a3b8 !important;
+}
+/* =========================================================
+   DARK MODE ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â LINKS / BUTTON HOVER CONTRAST
+========================================================= */
+html.dark .hover\:bg-white:hover {
+  background-color: #334155 !important;
+}
+html.dark .hover\:bg-black\/\[0\.045\]:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+html.dark .hover\:text-\[\#202124\]:hover {
+  color: #ffffff !important;
+}
+/* =========================================================
+   TOOLS GIFT ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â HOMEPAGE DARK MODE OVERRIDES
+========================================================= */
+/* Main homepage background */
+html.dark .bg-\[\#F8F5ED\] {
+  background-color: #0f172a !important;
+}
+/* Light homepage sections */
+html.dark .bg-white {
+  background-color: #111827 !important;
+}
+/* Warm/gold light surfaces */
+html.dark .bg-\[\#F3E7B3\] {
+  background-color: #243244 !important;
+}
+html.dark .bg-\[\#E5B900\] {
+  background-color: #c9a227 !important;
+}
+/* Dark-mode text for hard-coded black text */
+html.dark .text-black\/55,
+html.dark .text-black\/60,
+html.dark .text-black\/65,
+html.dark .text-black\/75 {
+  color: #cbd5e1 !important;
+}
+html.dark .text-black\/40 {
+  color: #94a3b8 !important;
+}
+html.dark .text-black {
+  color: #f8fafc !important;
+}
+/* Homepage borders/dividers */
+html.dark .border-black\/10,
+html.dark .border-black\/15,
+html.dark .border-black\/\[0\.09\] {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+html.dark .divide-black\/10 > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgba(255, 255, 255, 0.10) !important;
+}
+/* Homepage gold search/filter elements */
+html.dark .bg-yellow-200\/45 {
+  background-color: rgba(180, 130, 20, 0.18) !important;
+}
+html.dark .bg-amber-100\/55 {
+  background-color: rgba(180, 130, 20, 0.12) !important;
+}
+html.dark .bg-black\/5 {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+/* Homepage card surfaces */
+html.dark .bg-red-100 {
+  background-color: #3b2025 !important;
+}
+html.dark .bg-green-100 {
+  background-color: #19352a !important;
+}
+html.dark .bg-yellow-100 {
+  background-color: #3a3218 !important;
+}
+html.dark .bg-blue-100 {
+  background-color: #1e3048 !important;
+}
+html.dark .bg-purple-100 {
+  background-color: #302445 !important;
+}
+html.dark .bg-orange-100 {
+  background-color: #3b2a1d !important;
+}
+/* Inputs / search controls */
+html.dark .placeholder\:text-black\/60::placeholder {
+  color: #94a3b8 !important;
+}
+/* Keep the gold branding visible */
+html.dark .text-yellow-600 {
+  color: #f4d77b !important;
+}
+/* =========================================================
+   TOOLS GIFT Ã¢â‚¬â€ GLOBAL DARK MODE FOR ALL TOOL PAGES
+========================================================= */
+/* Page and section surfaces */
+html.dark .bg-gray-50,
+html.dark .bg-gray-100,
+html.dark .bg-slate-50,
+html.dark .bg-slate-100 {
+  background-color: #162033 !important;
+}
+html.dark .bg-gray-200,
+html.dark .bg-slate-200 {
+  background-color: #243247 !important;
+}
+html.dark .bg-gray-300,
+html.dark .bg-slate-300 {
+  background-color: #334155 !important;
+}
+/* White UI surfaces */
+html.dark .bg-white {
+  background-color: #111827 !important;
+}
+html.dark .bg-white\/50,
+html.dark .bg-white\/60,
+html.dark .bg-white\/70,
+html.dark .bg-white\/80,
+html.dark .bg-white\/90 {
+  background-color: rgba(30, 41, 59, 0.90) !important;
+}
+/* Common dark text colors */
+html.dark .text-gray-900,
+html.dark .text-gray-800,
+html.dark .text-slate-900,
+html.dark .text-slate-800 {
+  color: #f8fafc !important;
+}
+html.dark .text-gray-700,
+html.dark .text-gray-600,
+html.dark .text-slate-700,
+html.dark .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+html.dark .text-gray-500,
+html.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+/* Common borders */
+html.dark .border-gray-100,
+html.dark .border-gray-200,
+html.dark .border-slate-100,
+html.dark .border-slate-200 {
+  border-color: #334155 !important;
+}
+html.dark .border-gray-300,
+html.dark .border-slate-300 {
+  border-color: #475569 !important;
+}
+/* Dividers */
+html.dark .divide-gray-200 > :not([hidden]) ~ :not([hidden]),
+html.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #334155 !important;
+}
+/* Common muted panels */
+html.dark .bg-gray-50\/50,
+html.dark .bg-slate-50\/50 {
+  background-color: rgba(22, 32, 51, 0.75) !important;
+}
+/* File upload / drop zones */
+html.dark .border-dashed {
+  border-color: #64748b !important;
+}
+/* Buttons and interactive controls */
+html.dark .hover\:bg-gray-50:hover,
+html.dark .hover\:bg-gray-100:hover,
+html.dark .hover\:bg-slate-50:hover,
+html.dark .hover\:bg-slate-100:hover {
+  background-color: #243247 !important;
+}
+html.dark .hover\:bg-gray-200:hover,
+html.dark .hover\:bg-slate-200:hover {
+  background-color: #334155 !important;
+}
+/* Common white text backgrounds used by controls */
+html.dark .placeholder\:text-gray-400::placeholder,
+html.dark .placeholder\:text-slate-400::placeholder {
+  color: #94a3b8 !important;
+}
+/* Tool page body surfaces */
+html.dark main {
+  color: #f8fafc;
+}
+/* Keep actual media/document previews usable */
+html.dark img,
+html.dark canvas {
+  color-scheme: light;
+}/* =========================================================
+   TOOLS GIFT â€” CUSTOM SURFACE DARK MODE
+========================================================= */
+html.dark .bg-\[\#f7f7f5\],
+html.dark .bg-\[\#F8F5ED\],
+html.dark .bg-\[\#fff9e8\],
+html.dark .bg-\[\#fffdf8\] {
+  background-color: #0f172a !important;
+}
+html.dark .bg-\[\#F3E7B3\] {
+  background-color: #243244 !important;
+}
+html.dark .bg-\[\#F4C430\],
+html.dark .bg-\[\#C9A227\] {
+  background-color: #c9a227 !important;
+}
+html.dark .bg-\[\#202124\] {
+  background-color: #0f172a !important;
+}
+/* Light text colors commonly paired with custom surfaces */
+html.dark .text-\[\#202124\] {
+  color: #f8fafc !important;
+}
+/* Custom light borders */
+html.dark .border-\[\#202124\] {
+  border-color: rgba(255,255,255,0.12) !important;
+}/* =========================================================
+   TOOLS GIFT — DARK MODE DISABLED CONTROLS
+   Applies across ALL tool pages
+========================================================= */
+html.dark button:disabled,
+html.dark input:disabled,
+html.dark select:disabled,
+html.dark textarea:disabled {
+  background-color: #334155 !important;
+  color: #94a3b8 !important;
+  border-color: #475569 !important;
+  opacity: 1 !important;
+  cursor: not-allowed !important;
+}
+/* Disabled buttons that use Tailwind light disabled backgrounds */
+html.dark .disabled\:bg-slate-300:disabled,
+html.dark .disabled\:bg-slate-100:disabled,
+html.dark .disabled\:bg-gray-300:disabled,
+html.dark .disabled\:bg-gray-100:disabled {
+  background-color: #334155 !important;
+  color: #94a3b8 !important;
+  border-color: #475569 !important;
+  opacity: 1 !important;
+}
+/* Disabled buttons with opacity utilities */
+html.dark button:disabled.disabled\:opacity-40,
+html.dark button:disabled.disabled\:opacity-50,
+html.dark button:disabled.disabled\:opacity-60 {
+  opacity: 1 !important;
+}
+/* Range sliders — prevent the native white track in Dark Mode */
+html.dark input[type="range"] {
+  background: transparent !important;
+  color-scheme: dark !important;
+  accent-color: #60a5fa !important;
+}
+html.dark input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 9999px;
+  background: #334155 !important;
+}
+html.dark input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: #60a5fa !important;
+  border: 2px solid #0f172a !important;
+}
+html.dark input[type="range"]::-moz-range-track {
+  height: 6px;
+  border-radius: 9999px;
+  background: #334155 !important;
+}
+html.dark input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #60a5fa !important;
+  border: 2px solid #0f172a !important;
+}
+/* Disabled range */
+html.dark input[type="range"]:disabled::-webkit-slider-runnable-track {
+  background: #334155 !important;
+}
+html.dark input[type="range"]:disabled::-webkit-slider-thumb {
+  background: #64748b !important;
+}
+html.dark input[type="range"]:disabled::-moz-range-track {
+  background: #334155 !important;
+}
+html.dark input[type="range"]:disabled::-moz-range-thumb {
+  background: #64748b !important;
+}
+/* Native select/options */
+html.dark select,
+html.dark select option {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
 }
