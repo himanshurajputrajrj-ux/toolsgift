@@ -155,7 +155,7 @@ export default function ImageMetadataTool() {
   const [cleaning, setCleaning] =
     useState(false);
 
-  const [message, setMessage] =
+  const [, setMessage] =
     useState("");
 
   const [copied, setCopied] =
@@ -669,9 +669,6 @@ export default function ImageMetadataTool() {
       let mimeType =
         "image/jpeg";
 
-      let extension =
-        "jpg";
-
       if (
         file.type ===
         "image/png"
@@ -679,8 +676,6 @@ export default function ImageMetadataTool() {
         mimeType =
           "image/png";
 
-        extension =
-          "png";
       } else if (
         file.type ===
         "image/webp"
@@ -688,8 +683,6 @@ export default function ImageMetadataTool() {
         mimeType =
           "image/webp";
 
-        extension =
-          "webp";
       }
 
       const blob =
@@ -748,21 +741,17 @@ export default function ImageMetadataTool() {
       return;
     }
 
-    let extension =
+    const extension =
       "jpg";
 
     if (
       file.type ===
       "image/png"
     ) {
-      extension =
-        "png";
     } else if (
       file.type ===
       "image/webp"
     ) {
-      extension =
-        "webp";
     }
 
     const baseName =

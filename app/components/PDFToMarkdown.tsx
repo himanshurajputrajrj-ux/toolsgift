@@ -10,8 +10,6 @@ import { PDFDocument } from "pdf-lib";
 
 export default function PDFToMarkdown() {
   const [file, setFile] = useState<File | null>(null);
-  const [pdfBytes, setPdfBytes] =
-    useState<ArrayBuffer | null>(null);
 
   const [pageCount, setPageCount] = useState(0);
   const [markdown, setMarkdown] = useState("");
@@ -171,8 +169,7 @@ export default function PDFToMarkdown() {
         await extractPDFText(bytes);
 
       setFile(selectedFile);
-      setPdfBytes(bytes);
-      setPageCount(pdf.getPageCount());
+            setPageCount(pdf.getPageCount());
       setSourceText(extracted.text);
 
       if (!extracted.text.trim()) {
@@ -437,8 +434,7 @@ export default function PDFToMarkdown() {
     }
 
     setFile(null);
-    setPdfBytes(null);
-    setPageCount(0);
+        setPageCount(0);
     setSourceText("");
     setMarkdown("");
 

@@ -291,9 +291,11 @@ export default function PDFRedactor() {
     }
   };
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     renderPage();
   }, [pdfBytes, currentPage, redactions, currentRect]);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   const applyRedactions = async () => {
     if (!pdfBytes) {
@@ -696,5 +698,3 @@ export default function PDFRedactor() {
     </section>
   );
 }
-
-

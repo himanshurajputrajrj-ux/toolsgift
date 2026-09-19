@@ -443,6 +443,7 @@ export default function PDFEditor() {
     }
   };
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (!pdfDoc) return;
 
@@ -455,6 +456,7 @@ export default function PDFEditor() {
     currentDrawing,
     fontSize,
   ]);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   const exportPDF = async () => {
     if (!file) return;
@@ -872,5 +874,3 @@ export default function PDFEditor() {
     </section>
   );
 }
-
-

@@ -34,8 +34,6 @@ const languages: Language[] = [
 
 export default function PDFTranslator() {
   const [file, setFile] = useState<File | null>(null);
-  const [pdfBytes, setPdfBytes] =
-    useState<ArrayBuffer | null>(null);
 
   const [pageCount, setPageCount] = useState(0);
   const [sourceLanguage, setSourceLanguage] =
@@ -144,8 +142,7 @@ export default function PDFTranslator() {
         await extractText(bytes);
 
       setFile(selectedFile);
-      setPdfBytes(bytes);
-      setPageCount(pdf.getPageCount());
+            setPageCount(pdf.getPageCount());
       setSourceText(extracted.text);
 
       if (!extracted.text.trim()) {
@@ -397,8 +394,7 @@ export default function PDFTranslator() {
     }
 
     setFile(null);
-    setPdfBytes(null);
-    setPageCount(0);
+        setPageCount(0);
 
     setSourceText("");
     setTranslatedText("");

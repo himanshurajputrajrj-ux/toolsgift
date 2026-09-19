@@ -231,9 +231,7 @@ export default function ExcelToPDF() {
       const margin = 10;
 
       const usableWidth = pageWidth - margin * 2;
-      const usableHeight = pageHeight - margin * 2;
-
-      const rowHeight = 7;
+            const rowHeight = 7;
       const headerHeight = 9;
 
       const maxColumns = Math.min(columnCount, 12);
@@ -627,4 +625,3 @@ export default function ExcelToPDF() {
     </section>
   );
 }
-
