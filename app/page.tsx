@@ -58,6 +58,14 @@ const tools: Array<{
     category: "Image",
   },
   {
+    icon: "converter",
+    title: "HEIC to JPG",
+    description:
+      "Convert HEIC and HEIF images to JPG online for free.",
+    link: "/tools/heic-to-jpg",
+    category: "Image",
+  },
+  {
     icon: "compress",
     title: "Compress Image to KB",
     description:

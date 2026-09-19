@@ -16,6 +16,7 @@ const tools = [
   // Image Tools
   "compressor",
   "compress-image-to-kb",
+  "heic-to-jpg",
   "converter",
   "resizer",
   "cropper",
