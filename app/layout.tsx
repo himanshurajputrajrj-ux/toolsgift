@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://toolsgift.com"),
+  metadataBase: new URL("https://www.toolsgift.com"),
 
   title: {
     default: "ToolsGift | Fast & Simple Image & PDF Tools",
@@ -58,8 +58,15 @@ export const metadata: Metadata = {
     title: "ToolsGift | Fast & Simple Image & PDF Tools",
     description:
       "Fast and simple online image and PDF tools for converting, editing, compressing and managing files.",
-    url: "https://toolsgift.com",
-    images: [{ url: "/toolsgift-og.png", width: 1200, height: 630, alt: "ToolsGift | Fast & Simple Image & PDF Tools" }],
+    url: "https://www.toolsgift.com",
+    images: [
+      {
+        url: "/toolsgift-og.png",
+        width: 1200,
+        height: 630,
+        alt: "ToolsGift | Fast & Simple Image & PDF Tools",
+      },
+    ],
   },
 
   twitter: {
@@ -71,7 +78,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://toolsgift.com",
+    canonical: "https://www.toolsgift.com",
   },
 };
 
@@ -83,7 +90,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <head>
         <script
@@ -92,6 +100,7 @@ export default function RootLayout({
           }}
         />
       </head>
+
       <body className="min-h-full bg-[#f7f7f5] text-[#202124]">
         <Header />
 
@@ -104,11 +113,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
-
-
-
-
-
-
