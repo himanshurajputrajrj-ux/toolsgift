@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -126,7 +126,7 @@ export default function PrivacyPage() {
                 Some ToolsGift tools may rely on third-party services to provide
                 specific functionality. When a tool sends information to an
                 external service, that processing may be governed by the
-                third party's own privacy policy and terms.
+                third party&apos;s own privacy policy and terms.
               </p>
             </section>
 
@@ -144,7 +144,7 @@ export default function PrivacyPage() {
 
             <section>
               <h2 className="text-2xl font-semibold text-slate-900">
-                9. Children's Privacy
+                9. Children&apos;s Privacy
               </h2>
               <p className="mt-3">
                 ToolsGift is not intended to knowingly collect personal

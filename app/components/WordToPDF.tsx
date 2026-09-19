@@ -138,8 +138,8 @@ export default function WordToPDF() {
 
       const imageRatio = imgWidth / imgHeight;
 
-      let renderWidth = contentWidth;
-      let renderHeight = renderWidth / imageRatio;
+      const renderWidth = contentWidth;
+      const renderHeight = renderWidth / imageRatio;
 
       if (renderHeight <= contentHeight) {
         const imageData = canvas.toDataURL("image/jpeg", 0.92);

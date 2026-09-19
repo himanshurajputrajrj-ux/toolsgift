@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -128,7 +128,7 @@ export default function TermsPage() {
 
               <p className="mt-3">
                 Some features may depend on third-party services. Your use of
-                those features may also be subject to the third party's terms
+                those features may also be subject to the third party&apos;s terms
                 and policies.
               </p>
 
@@ -162,7 +162,7 @@ export default function TermsPage() {
               </h2>
 
               <p className="mt-3">
-                ToolsGift is provided on an "as is" and "as available" basis to
+                ToolsGift is provided on an &quot;as is&quot; and &quot;as available&quot; basis to
                 the extent permitted by applicable law. We do not guarantee
                 that every file will be processed successfully or that every
                 generated result will meet a particular purpose or requirement.

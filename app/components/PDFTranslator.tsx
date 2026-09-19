@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import {
   ChangeEvent,
@@ -464,7 +464,7 @@ export default function PDFTranslator() {
             />
 
             <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-2xl">
-              🌐
+              ??
             </div>
 
             <p className="font-semibold text-slate-800">
@@ -575,7 +575,7 @@ export default function PDFTranslator() {
               PDF text is sent to the translation service for
               translation. Do not use this mode for confidential
               documents unless you are comfortable with that
-              service's terms and privacy policy.
+              service&apos;s terms and privacy policy.
             </p>
           </div>
 
@@ -589,7 +589,7 @@ export default function PDFTranslator() {
               <div className="flex min-h-[220px] items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 px-6 text-center">
                 <div>
                   <div className="mb-3 text-4xl">
-                    📄
+                    ??
                   </div>
 
                   <p className="font-medium text-slate-700">
@@ -671,7 +671,7 @@ export default function PDFTranslator() {
               <div className="flex min-h-[280px] items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 px-6 text-center">
                 <div>
                   <div className="mb-3 text-4xl">
-                    🌍
+                    ??
                   </div>
 
                   <p className="font-medium text-slate-700">
@@ -719,4 +719,3 @@ export default function PDFTranslator() {
     </section>
   );
 }
-

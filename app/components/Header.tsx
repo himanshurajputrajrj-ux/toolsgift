@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 type Tool = {
@@ -366,6 +367,8 @@ export default function Header() {
     useEffect(() => {
       const savedTheme = localStorage.getItem("toolsgift-theme");
       if (savedTheme === "dark") {
+        // Theme is restored from localStorage after mount.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setDarkMode(true);
       }
       setThemeReady(true);
@@ -443,7 +446,7 @@ export default function Header() {
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-8">
 
         {/* Logo */}
-        <a
+        <Link
           href="/"
           className="group flex shrink-0 items-center gap-1 text-2xl tracking-tight"
           aria-label="ToolsGift Home"
@@ -455,7 +458,7 @@ export default function Header() {
           >
             ?
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-7 md:flex">
@@ -500,26 +503,26 @@ export default function Header() {
             </button>
           </div>
 
-          <a
+          <Link
             href="/#features"
             className="rounded-full px-4 py-2.5 text-sm font-semibold text-black/60 transition hover:bg-black/[0.045] hover:text-[#202124]"
           >
             Features
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="/#how-it-works"
             className="rounded-full px-4 py-2.5 text-sm font-semibold text-black/60 transition hover:bg-black/[0.045] hover:text-[#202124]"
           >
             How it works
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="/#faq"
             className="rounded-full px-4 py-2.5 text-sm font-semibold text-black/60 transition hover:bg-black/[0.045] hover:text-[#202124]"
           >
             FAQ
-          </a>
+          </Link>
 
         </nav>
 
@@ -572,12 +575,12 @@ export default function Header() {
         </button>
 
         {/* Desktop CTA */}
-        <a
+        <Link
           href="/#tools"
           className="group hidden shrink-0 items-center gap-2 rounded-full bg-[#202124] px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#c9a227] hover:text-[#202124] hover:shadow-[0_10px_30px_rgba(201,162,39,0.25)] md:flex"
         >
           Get Started
-        </a>
+        </Link>
 
         {/* Mobile Button */}
         <button
@@ -650,7 +653,7 @@ export default function Header() {
                   </p>
                 </div>
 
-                <a
+                <Link
                   href="/#tools"
                   onClick={() =>
                     setToolsOpen(false)
@@ -658,7 +661,7 @@ export default function Header() {
                   className="rounded-full border border-[#c9a227]/45 bg-transparent px-4 py-2 text-xs font-bold text-[#e1c66f] transition hover:bg-[#c9a227] hover:text-[#202124]"
                 >
                   View All
-                </a>
+                </Link>
 
               </div>
 
@@ -894,7 +897,7 @@ export default function Header() {
   darkMode ? "border-white/10" : "border-black/10"
 }`}>
 
-              <a
+              <Link
                 href="/#features"
                 onClick={closeMenus}
                 className={`block py-4 text-base font-bold ${
@@ -902,9 +905,9 @@ export default function Header() {
 }`}
               >
                 Features
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/#how-it-works"
                 onClick={closeMenus}
                 className={`block py-4 text-base font-bold ${
@@ -912,7 +915,7 @@ export default function Header() {
 }`}
               >
                 How it works
-              </a>
+              </Link>
 
               <button
                 type="button"
@@ -928,7 +931,7 @@ export default function Header() {
                 <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
               </button>
 
-              <a
+              <Link
                 href="/#faq"
                 onClick={closeMenus}
                 className={`block py-4 text-base font-bold ${
@@ -936,17 +939,17 @@ export default function Header() {
 }`}
               >
                 FAQ
-              </a>
+              </Link>
 
             </div>
 
-            <a
+            <Link
               href="/#tools"
               onClick={closeMenus}
               className="mt-3 block rounded-xl bg-[#202124] px-5 py-3 text-center text-sm font-bold text-white"
             >
               Get Started
-            </a>
+            </Link>
 
           </div>
 
