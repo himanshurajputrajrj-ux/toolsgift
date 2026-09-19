@@ -58,6 +58,14 @@ const tools: Array<{
     category: "Image",
   },
   {
+    icon: "compress",
+    title: "Compress Image to KB",
+    description:
+      "Compress images to 20KB, 50KB, 100KB, 200KB or a custom target size.",
+    link: "/tools/compress-image-to-kb",
+    category: "Image",
+  },
+  {
     icon: "converter",
     title: "Image Converter",
     description:

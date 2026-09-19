@@ -15,6 +15,7 @@ const staticPages = [
 const tools = [
   // Image Tools
   "compressor",
+  "compress-image-to-kb",
   "converter",
   "resizer",
   "cropper",
