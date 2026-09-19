@@ -2,7 +2,6 @@
 import PDFRepair from "../../components/PDFRepair";
 import ToolSEOContent from "../../components/ToolSEOContent";
 import Breadcrumbs from "../../components/Breadcrumbs";
-import RelatedTools from "../../components/RelatedTools";
 
 export const metadata: Metadata = {
   title: "Repair PDF Online",
@@ -39,14 +38,9 @@ export default function PDFRepairPage() {
       <Breadcrumbs toolName="Repair PDF" />
       <PDFRepair />
       <ToolSEOContent toolKey="pdf-repair" />
-      <RelatedTools tools={[
-        { name: "PDF Compressor", href: "/tools/pdf-compressor" },
-        { name: "PDF Protector", href: "/tools/pdf-protector" },
-        { name: "PDF Unlocker", href: "/tools/pdf-unlocker" },
-        { name: "PDF Merger", href: "/tools/pdf-merger" },
-      ]} />
     </main>
   );
 }
+
 
 

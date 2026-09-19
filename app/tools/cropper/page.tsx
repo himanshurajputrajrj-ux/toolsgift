@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+﻿import RelatedTools from "../../components/RelatedTools";
+import type { Metadata } from "next";
 import ImageCropper from "../../components/ImageCropper";
 
 import Breadcrumbs from "../../components/Breadcrumbs";
@@ -35,8 +36,15 @@ export default function CropperPage() {
     <main className="min-h-screen bg-slate-50">
       <Breadcrumbs toolName="Image Cropper Online" />
       <ImageCropper />
-    </main>
+          <RelatedTools tools={[
+        { name: "Image Resizer", href: "/tools/resizer" },
+        { name: "Image Compressor", href: "/tools/compressor" },
+        { name: "Image Enhancer", href: "/tools/enhancer" },
+        { name: "Passport Photo", href: "/tools/passport-photo" }
+      ]} /></main>
   );
 }
+
+
 
 

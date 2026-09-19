@@ -2,7 +2,6 @@
 import MergePDF from "../../components/MergePDF";
 import ToolSEOContent from "../../components/ToolSEOContent";
 import Breadcrumbs from "../../components/Breadcrumbs";
-import RelatedTools from "../../components/RelatedTools";
 
 export const metadata: Metadata = {
   title: "Merge PDF Online",
@@ -39,15 +38,10 @@ export default function MergePDFPage() {
       <Breadcrumbs toolName="Merge PDF" />
       <MergePDF />
       <ToolSEOContent toolKey="pdf-merger" />
-      <RelatedTools tools={[
-        { name: "PDF Compressor", href: "/tools/pdf-compressor" },
-        { name: "PDF Splitter", href: "/tools/pdf-splitter" },
-        { name: "PDF Organizer", href: "/tools/pdf-organizer" },
-        { name: "PDF Protector", href: "/tools/pdf-protector" },
-      ]} />
     </main>
   );
 }
+
 
 
 

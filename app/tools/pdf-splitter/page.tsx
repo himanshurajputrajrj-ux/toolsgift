@@ -2,7 +2,6 @@
 import PDFSplitter from "../../components/PDFSplitter";
 import ToolSEOContent from "../../components/ToolSEOContent";
 import Breadcrumbs from "../../components/Breadcrumbs";
-import RelatedTools from "../../components/RelatedTools";
 
 export const metadata: Metadata = {
   title: "Split PDF Online",
@@ -39,14 +38,9 @@ export default function PDFSplitterPage() {
       <Breadcrumbs toolName="Split PDF" />
       <PDFSplitter />
       <ToolSEOContent toolKey="pdf-splitter" />
-      <RelatedTools tools={[
-        { name: "PDF Compressor", href: "/tools/pdf-compressor" },
-        { name: "PDF Merger", href: "/tools/pdf-merger" },
-        { name: "PDF Organizer", href: "/tools/pdf-organizer" },
-        { name: "PDF to Word", href: "/tools/pdf-to-word" },
-      ]} />
     </main>
   );
 }
+
 
 

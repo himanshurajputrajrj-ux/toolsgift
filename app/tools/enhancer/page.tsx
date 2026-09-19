@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+﻿import RelatedTools from "../../components/RelatedTools";
+import type { Metadata } from "next";
 import ImageEnhancer from "../../components/ImageEnhancer";
 
 import Breadcrumbs from "../../components/Breadcrumbs";
@@ -36,8 +37,15 @@ export default function ImageEnhancerPage() {
     <main className="min-h-screen bg-slate-50">
       <Breadcrumbs toolName="Image Enhancer Online" />
       <ImageEnhancer />
-    </main>
+          <RelatedTools tools={[
+        { name: "Image Compressor", href: "/tools/compressor" },
+        { name: "Image Resizer", href: "/tools/resizer" },
+        { name: "Image Cropper", href: "/tools/cropper" },
+        { name: "Background Remover", href: "/tools/background-remover" }
+      ]} /></main>
   );
 }
+
+
 
 

@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+﻿import RelatedTools from "../../components/RelatedTools";
+import type { Metadata } from "next";
 import ImageCompressor from "../../components/ImageCompressor";
 
 import Breadcrumbs from "../../components/Breadcrumbs";
@@ -56,7 +57,17 @@ export default function CompressorPage() {
         }}
       />
       <ImageCompressor />
-    </main>
+    
+      <RelatedTools tools={[
+        { name: "Image Converter", href: "/tools/converter" },
+        { name: "Image Resizer", href: "/tools/resizer" },
+        { name: "Image Enhancer", href: "/tools/enhancer" },
+        { name: "WebP Converter", href: "/tools/webp-converter" }
+      ]} />
+</main>
   );
 }
+
+
+
 

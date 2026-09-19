@@ -11,7 +11,228 @@ type ToolData = {
   useCase: string;
   benefit: string;
 };
-const TOOLS: Record<string, ToolData> = {
+type RelatedTool = {
+  name: string;
+  href: string;
+};
+const RELATED_TOOLS: Record<string, RelatedTool[]> = {
+  "pdf-comparer": [
+    { name: "PDF Editor", href: "/tools/pdf-editor" },
+    { name: "PDF Organizer", href: "/tools/pdf-organizer" },
+    { name: "PDF Merger", href: "/tools/pdf-merger" },
+    { name: "PDF Splitter", href: "/tools/pdf-splitter" },
+  ],
+  "pdf-compressor": [
+    { name: "PDF Merger", href: "/tools/pdf-merger" },
+    { name: "PDF Splitter", href: "/tools/pdf-splitter" },
+    { name: "PDF to Word", href: "/tools/pdf-to-word" },
+    { name: "PDF Protector", href: "/tools/pdf-protector" },
+  ],
+  "pdf-cropper": [
+    { name: "PDF Rotator", href: "/tools/pdf-rotator" },
+    { name: "PDF Organizer", href: "/tools/pdf-organizer" },
+    { name: "PDF Editor", href: "/tools/pdf-editor" },
+    { name: "PDF Page Numbers", href: "/tools/pdf-page-numbers" },
+  ],
+  "pdf-editor": [
+    { name: "PDF Forms", href: "/tools/pdf-forms" },
+    { name: "PDF Redactor", href: "/tools/pdf-redactor" },
+    { name: "PDF Signer", href: "/tools/pdf-signer" },
+    { name: "PDF Watermark", href: "/tools/pdf-watermark" },
+  ],
+  "pdf-forms": [
+    { name: "PDF Editor", href: "/tools/pdf-editor" },
+    { name: "PDF Signer", href: "/tools/pdf-signer" },
+    { name: "PDF Protector", href: "/tools/pdf-protector" },
+    { name: "PDF Redactor", href: "/tools/pdf-redactor" },
+  ],
+  "pdf-merger": [
+    { name: "PDF Compressor", href: "/tools/pdf-compressor" },
+    { name: "PDF Splitter", href: "/tools/pdf-splitter" },
+    { name: "PDF Organizer", href: "/tools/pdf-organizer" },
+    { name: "PDF Protector", href: "/tools/pdf-protector" },
+  ],
+  "pdf-organizer": [
+    { name: "PDF Compressor", href: "/tools/pdf-compressor" },
+    { name: "PDF Merger", href: "/tools/pdf-merger" },
+    { name: "PDF Splitter", href: "/tools/pdf-splitter" },
+    { name: "PDF Page Numbers", href: "/tools/pdf-page-numbers" },
+  ],
+  "pdf-page-numbers": [
+    { name: "PDF Organizer", href: "/tools/pdf-organizer" },
+    { name: "PDF Editor", href: "/tools/pdf-editor" },
+    { name: "PDF Cropper", href: "/tools/pdf-cropper" },
+    { name: "PDF Rotator", href: "/tools/pdf-rotator" },
+  ],
+  "pdf-protector": [
+    { name: "PDF Unlocker", href: "/tools/pdf-unlocker" },
+    { name: "PDF Signer", href: "/tools/pdf-signer" },
+    { name: "PDF Watermark", href: "/tools/pdf-watermark" },
+    { name: "PDF Redactor", href: "/tools/pdf-redactor" },
+  ],
+  "pdf-redactor": [
+    { name: "PDF Protector", href: "/tools/pdf-protector" },
+    { name: "PDF Unlocker", href: "/tools/pdf-unlocker" },
+    { name: "PDF Editor", href: "/tools/pdf-editor" },
+    { name: "PDF Watermark", href: "/tools/pdf-watermark" },
+  ],
+  "pdf-repair": [
+    { name: "PDF Compressor", href: "/tools/pdf-compressor" },
+    { name: "PDF Protector", href: "/tools/pdf-protector" },
+    { name: "PDF Unlocker", href: "/tools/pdf-unlocker" },
+    { name: "PDF Merger", href: "/tools/pdf-merger" },
+  ],
+  "pdf-rotator": [
+    { name: "PDF Cropper", href: "/tools/pdf-cropper" },
+    { name: "PDF Organizer", href: "/tools/pdf-organizer" },
+    { name: "PDF Editor", href: "/tools/pdf-editor" },
+    { name: "PDF Page Numbers", href: "/tools/pdf-page-numbers" },
+  ],
+  "pdf-signer": [
+    { name: "PDF Protector", href: "/tools/pdf-protector" },
+    { name: "PDF Editor", href: "/tools/pdf-editor" },
+    { name: "PDF Forms", href: "/tools/pdf-forms" },
+    { name: "PDF Watermark", href: "/tools/pdf-watermark" },
+  ],
+  "pdf-splitter": [
+    { name: "PDF Compressor", href: "/tools/pdf-compressor" },
+    { name: "PDF Merger", href: "/tools/pdf-merger" },
+    { name: "PDF Organizer", href: "/tools/pdf-organizer" },
+    { name: "PDF to Word", href: "/tools/pdf-to-word" },
+  ],
+  "pdf-summarizer": [
+    { name: "PDF to Word", href: "/tools/pdf-to-word" },
+    { name: "PDF to Markdown", href: "/tools/pdf-to-markdown" },
+    { name: "PDF Translator", href: "/tools/pdf-translator" },
+    { name: "PDF Comparer", href: "/tools/pdf-comparer" },
+  ],
+  "pdf-to-excel": [
+    { name: "PDF to Word", href: "/tools/pdf-to-word" },
+    { name: "PDF to PowerPoint", href: "/tools/pdf-to-powerpoint" },
+    { name: "PDF to Markdown", href: "/tools/pdf-to-markdown" },
+    { name: "PDF to PDF/A", href: "/tools/pdf-to-pdfa" },
+  ],
+  "pdf-to-jpg": [
+    { name: "Image to PDF", href: "/tools/image-to-pdf" },
+    { name: "PDF Compressor", href: "/tools/pdf-compressor" },
+    { name: "PDF Cropper", href: "/tools/pdf-cropper" },
+    { name: "PDF Rotator", href: "/tools/pdf-rotator" },
+  ],
+  "pdf-to-markdown": [
+    { name: "PDF to Word", href: "/tools/pdf-to-word" },
+    { name: "PDF Summarizer", href: "/tools/pdf-summarizer" },
+    { name: "PDF Translator", href: "/tools/pdf-translator" },
+    { name: "PDF to Excel", href: "/tools/pdf-to-excel" },
+  ],
+  "pdf-to-pdfa": [
+    { name: "PDF Compressor", href: "/tools/pdf-compressor" },
+    { name: "PDF Repair", href: "/tools/pdf-repair" },
+    { name: "PDF Protector", href: "/tools/pdf-protector" },
+    { name: "PDF Organizer", href: "/tools/pdf-organizer" },
+  ],
+  "pdf-to-powerpoint": [
+    { name: "PDF to Word", href: "/tools/pdf-to-word" },
+    { name: "PDF to Excel", href: "/tools/pdf-to-excel" },
+    { name: "PDF to Markdown", href: "/tools/pdf-to-markdown" },
+    { name: "PowerPoint to PDF", href: "/tools/powerpoint-to-pdf" },
+  ],
+  "pdf-to-word": [
+    { name: "PDF to Excel", href: "/tools/pdf-to-excel" },
+    { name: "PDF to PowerPoint", href: "/tools/pdf-to-powerpoint" },
+    { name: "PDF to Markdown", href: "/tools/pdf-to-markdown" },
+    { name: "Word to PDF", href: "/tools/word-to-pdf" },
+  ],
+  "pdf-translator": [
+    { name: "PDF Summarizer", href: "/tools/pdf-summarizer" },
+    { name: "PDF to Word", href: "/tools/pdf-to-word" },
+    { name: "PDF to Markdown", href: "/tools/pdf-to-markdown" },
+    { name: "PDF Editor", href: "/tools/pdf-editor" },
+  ],
+  "pdf-unlocker": [
+    { name: "PDF Protector", href: "/tools/pdf-protector" },
+    { name: "PDF Repair", href: "/tools/pdf-repair" },
+    { name: "PDF Editor", href: "/tools/pdf-editor" },
+    { name: "PDF Redactor", href: "/tools/pdf-redactor" },
+  ],
+  "pdf-watermark": [
+    { name: "PDF Protector", href: "/tools/pdf-protector" },
+    { name: "PDF Redactor", href: "/tools/pdf-redactor" },
+    { name: "PDF Signer", href: "/tools/pdf-signer" },
+    { name: "PDF Editor", href: "/tools/pdf-editor" },
+  ],
+  "background-remover": [
+    { name: "Image Enhancer", href: "/tools/enhancer" },
+    { name: "Image Compressor", href: "/tools/compressor" },
+    { name: "Image Converter", href: "/tools/converter" },
+    { name: "Image Resizer", href: "/tools/resizer" },
+  ],
+  "excel-to-pdf": [
+    { name: "Word to PDF", href: "/tools/word-to-pdf" },
+    { name: "PowerPoint to PDF", href: "/tools/powerpoint-to-pdf" },
+    { name: "PDF Compressor", href: "/tools/pdf-compressor" },
+    { name: "PDF Protector", href: "/tools/pdf-protector" },
+  ],
+  "html-to-pdf": [
+    { name: "Word to PDF", href: "/tools/word-to-pdf" },
+    { name: "PowerPoint to PDF", href: "/tools/powerpoint-to-pdf" },
+    { name: "Image to PDF", href: "/tools/image-to-pdf" },
+    { name: "PDF Compressor", href: "/tools/pdf-compressor" },
+  ],
+  "image-to-pdf": [
+    { name: "Image Converter", href: "/tools/converter" },
+    { name: "Image Compressor", href: "/tools/compressor" },
+    { name: "PDF Compressor", href: "/tools/pdf-compressor" },
+    { name: "PDF Merger", href: "/tools/pdf-merger" },
+  ],
+  "image-to-word": [
+    { name: "Word to PDF", href: "/tools/word-to-pdf" },
+    { name: "Image to PDF", href: "/tools/image-to-pdf" },
+    { name: "OCR PDF", href: "/tools/ocr-pdf" },
+    { name: "Image Converter", href: "/tools/converter" },
+  ],
+  "ocr-pdf": [
+    { name: "PDF to Word", href: "/tools/pdf-to-word" },
+    { name: "PDF to Markdown", href: "/tools/pdf-to-markdown" },
+    { name: "PDF Summarizer", href: "/tools/pdf-summarizer" },
+    { name: "Image to PDF", href: "/tools/image-to-pdf" },
+  ],
+  "passport-photo": [
+    { name: "Image Cropper", href: "/tools/cropper" },
+    { name: "Image Resizer", href: "/tools/resizer" },
+    { name: "Image Enhancer", href: "/tools/enhancer" },
+    { name: "Image Compressor", href: "/tools/compressor" },
+  ],
+  "scan-to-pdf": [
+    { name: "Image to PDF", href: "/tools/image-to-pdf" },
+    { name: "OCR PDF", href: "/tools/ocr-pdf" },
+    { name: "PDF Compressor", href: "/tools/pdf-compressor" },
+    { name: "PDF Organizer", href: "/tools/pdf-organizer" },
+  ],
+  "social-qr-card": [
+    { name: "Image Converter", href: "/tools/converter" },
+    { name: "Image Compressor", href: "/tools/compressor" },
+    { name: "Image Resizer", href: "/tools/resizer" },
+    { name: "WebP Converter", href: "/tools/webp-converter" },
+  ],
+  "webp-converter": [
+    { name: "Image Converter", href: "/tools/converter" },
+    { name: "Image Compressor", href: "/tools/compressor" },
+    { name: "Image Resizer", href: "/tools/resizer" },
+    { name: "Batch Converter", href: "/tools/batch-converter" },
+  ],
+  "word-to-image": [
+    { name: "Word to PDF", href: "/tools/word-to-pdf" },
+    { name: "Image Converter", href: "/tools/converter" },
+    { name: "Image Compressor", href: "/tools/compressor" },
+    { name: "PDF to JPG", href: "/tools/pdf-to-jpg" },
+  ],
+  "word-to-pdf": [
+    { name: "PDF to Word", href: "/tools/pdf-to-word" },
+    { name: "PowerPoint to PDF", href: "/tools/powerpoint-to-pdf" },
+    { name: "Excel to PDF", href: "/tools/excel-to-pdf" },
+    { name: "PDF Compressor", href: "/tools/pdf-compressor" },
+  ],
+};const TOOLS: Record<string, ToolData> = {
   "background-remover": {
     name: "Background Remover",
     description: "Remove the background from images online to create cleaner product photos, profile graphics and visual assets.",
@@ -419,6 +640,25 @@ export default function ToolSEOContent({
           </div>
         ))}
       </div>
-    </section>
+      {RELATED_TOOLS[toolKey] && (
+        <div className="mt-8 border-t border-slate-200 pt-6">
+          <h2 className="text-2xl font-bold text-slate-900">Related Tools</h2>
+          <p className="mt-2 text-sm text-slate-600">Explore more useful tools for working with your files.</p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {RELATED_TOOLS[toolKey].map((relatedTool) => (
+              <a
+                key={relatedTool.href}
+                href={relatedTool.href}
+                className="rounded-xl border border-black/10 bg-slate-50 px-4 py-3 text-sm font-medium text-black transition hover:border-black/20 hover:bg-slate-100"
+              >
+                {relatedTool.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}    </section>
   );
 }
+
+
+

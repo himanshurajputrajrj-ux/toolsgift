@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+﻿import RelatedTools from "../../components/RelatedTools";
+import type { Metadata } from "next";
 import ImageResizer from "../../components/ImageResizer";
 
 import Breadcrumbs from "../../components/Breadcrumbs";
@@ -35,8 +36,15 @@ export default function ResizerPage() {
     <main className="min-h-screen bg-slate-50">
       <Breadcrumbs toolName="Image Resizer Online" />
       <ImageResizer />
-    </main>
+          <RelatedTools tools={[
+        { name: "Image Compressor", href: "/tools/compressor" },
+        { name: "Image Converter", href: "/tools/converter" },
+        { name: "Image Cropper", href: "/tools/cropper" },
+        { name: "Batch Converter", href: "/tools/batch-converter" }
+      ]} /></main>
   );
 }
+
+
 
 

@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+﻿import RelatedTools from "../../components/RelatedTools";
+import type { Metadata } from "next";
 import BatchConverter from "../../components/BatchConverter";
 
 import Breadcrumbs from "../../components/Breadcrumbs";
@@ -36,8 +37,17 @@ export default function BatchConverterPage() {
     <main className="min-h-screen bg-slate-50">
       <Breadcrumbs toolName="Batch Image Converter" />
       <BatchConverter />
-    </main>
+    
+      <RelatedTools tools={[
+        { name: "Image Converter", href: "/tools/converter" },
+        { name: "Image Compressor", href: "/tools/compressor" },
+        { name: "WebP Converter", href: "/tools/webp-converter" },
+        { name: "Image Resizer", href: "/tools/resizer" }
+      ]} />
+</main>
   );
 }
+
+
 
 

@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+﻿import RelatedTools from "../../components/RelatedTools";
+import type { Metadata } from "next";
 import ImageConverter from "../../components/ImageConverter";
 import StructuredData from "../../components/StructuredData";
 
@@ -39,9 +40,16 @@ export default function ConverterPage() {
       <Breadcrumbs toolName="Image Converter Online" />
       <StructuredData name="Image Converter Online" description="Convert images online between JPG, PNG and WebP formats quickly and easily with ToolsGift." url="https://toolsgift.com/tools/converter" />
       <ImageConverter />
-    </main>
+          <RelatedTools tools={[
+        { name: "Image Compressor", href: "/tools/compressor" },
+        { name: "Image Resizer", href: "/tools/resizer" },
+        { name: "WebP Converter", href: "/tools/webp-converter" },
+        { name: "Batch Converter", href: "/tools/batch-converter" }
+      ]} /></main>
   );
 }
+
+
 
 
 

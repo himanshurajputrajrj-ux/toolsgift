@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+﻿import RelatedTools from "../../components/RelatedTools";
+import type { Metadata } from "next";
 import ImageRotator from "../../components/ImageRotator";
 
 import Breadcrumbs from "../../components/Breadcrumbs";
@@ -36,8 +37,15 @@ export default function ImageRotatorPage() {
     <main className="min-h-screen bg-slate-50">
       <Breadcrumbs toolName="Image Rotator Online" />
       <ImageRotator />
-    </main>
+          <RelatedTools tools={[
+        { name: "Image Cropper", href: "/tools/cropper" },
+        { name: "Image Resizer", href: "/tools/resizer" },
+        { name: "Image Compressor", href: "/tools/compressor" },
+        { name: "Image Converter", href: "/tools/converter" }
+      ]} /></main>
   );
 }
+
+
 
 

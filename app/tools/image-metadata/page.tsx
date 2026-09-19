@@ -1,3 +1,4 @@
+﻿import RelatedTools from "../../components/RelatedTools";
 import type { Metadata } from "next";
 import ImageMetadataTool from "@/app/components/ImageMetadataTool";
 
@@ -30,5 +31,18 @@ export const metadata: Metadata = {
 };
 
 export default function ImageMetadataPage() {
-  return <ImageMetadataTool />;
+  return (
+    <>
+      <ImageMetadataTool />
+      <RelatedTools tools={[
+        { name: "Image Compressor", href: "/tools/compressor" },
+        { name: "Image Converter", href: "/tools/converter" },
+        { name: "WebP Converter", href: "/tools/webp-converter" },
+        { name: "Social QR Card", href: "/tools/social-qr-card" }
+      ]} />
+    </>
+  );
 }
+
+
+
