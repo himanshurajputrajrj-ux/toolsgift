@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import {
   ChangeEvent,
@@ -795,7 +795,7 @@ export default function ImageMetadataTool() {
             Image Metadata Tool
           </h1>
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-black/70 sm:text-base">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-white sm:text-base">
             View image metadata, inspect EXIF information,
             remove embedded metadata and download a clean
             image copy.
