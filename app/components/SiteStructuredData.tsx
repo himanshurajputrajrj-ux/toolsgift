@@ -15,6 +15,16 @@ export default function SiteStructuredData(): ReactNode {
         alternateName: "Tools Gift",
         url: "https://www.toolsgift.com",
       },
+      {
+        "@type": "WebPage",
+        name: "ToolsGift | Fast & Simple Image & PDF Tools",
+        url: "https://www.toolsgift.com",
+        isPartOf: {
+          "@type": "WebSite",
+          name: "ToolsGift",
+          url: "https://www.toolsgift.com",
+        },
+      },
     ],
   };
 
