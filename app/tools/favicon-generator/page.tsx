@@ -43,7 +43,68 @@ const structuredData = {
     priceCurrency: "USD",
   },
 };
-export default function FaviconGeneratorPage() {
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is a favicon?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A favicon is a small icon used to identify a website in browser tabs, bookmarks, search results and other places where a site identity is displayed.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I create a favicon from an image?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Upload your PNG, JPG, WebP or SVG image to the Favicon Generator. ToolsGift automatically creates multiple favicon sizes in your browser.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What image formats can I use?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can use PNG, JPG, WebP and SVG images. The generated favicon files are provided as PNG images.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What favicon sizes does ToolsGift generate?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "ToolsGift generates 16×16, 32×32, 48×48, 180×180, 192×192 and 512×512 PNG favicon sizes.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is this favicon generator free?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. You can use the ToolsGift Favicon Generator for free in your browser.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is my image uploaded to a server?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No. The image is processed directly in your browser, so favicon generation does not require uploading the image to a server.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I use the generated favicon on my website?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. The generated PNG favicon sizes can be used for website icons, app icons and other web projects that support PNG images.",
+      },
+    },
+  ],
+};export default function FaviconGeneratorPage() {
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-10">
       <div className="mx-auto w-full max-w-5xl">
@@ -68,6 +129,11 @@ export default function FaviconGeneratorPage() {
         </section>
         <FaviconGenerator />
         <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqStructuredData),
+          }}
+        />        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(structuredData),

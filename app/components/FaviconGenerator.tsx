@@ -286,6 +286,120 @@ export default function FaviconGenerator() {
           </p>
         </div>
       </section>
+      <section className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
+        <h2 className="text-2xl font-bold text-slate-900">
+          Frequently Asked Questions
+        </h2>
+        <div className="mt-6 space-y-5">
+          <div>
+            <h3 className="font-bold text-slate-900">What is a favicon?</h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              A favicon is a small icon used to identify a website in browser
+              tabs, bookmarks, search results and other places where a site
+              identity is displayed.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold text-slate-900">
+              How do I create a favicon from an image?
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              Upload your PNG, JPG, WebP or SVG image to the Favicon Generator.
+              ToolsGift automatically creates multiple favicon sizes in your
+              browser.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold text-slate-900">
+              What image formats can I use?
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              You can use PNG, JPG, WebP and SVG images. The generated favicon
+              files are provided as PNG images.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold text-slate-900">
+              What favicon sizes does ToolsGift generate?
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              ToolsGift generates 16×16, 32×32, 48×48, 180×180, 192×192 and
+              512×512 PNG favicon sizes.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold text-slate-900">
+              Is this favicon generator free?
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              Yes. You can use the ToolsGift Favicon Generator for free in your
+              browser.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold text-slate-900">
+              Is my image uploaded to a server?
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              No. The image is processed directly in your browser, so the
+              favicon generation does not require uploading the image to a
+              server.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold text-slate-900">
+              Can I use the generated favicon on my website?
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              Yes. The generated PNG favicon sizes can be used for website
+              icons, app icons and other web projects that support PNG images.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
+        <h2 className="text-2xl font-bold text-slate-900">Related Tools</h2>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <a href="/tools/converter" className="rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/40">
+            <h3 className="font-bold text-slate-900">Image Converter</h3>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              Convert images between popular formats quickly in your browser.
+            </p>
+          </a>
+          <a href="/tools/resizer" className="rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/40">
+            <h3 className="font-bold text-slate-900">Image Resizer</h3>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              Resize images to the dimensions you need for websites and apps.
+            </p>
+          </a>
+          <a href="/tools/compressor" className="rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/40">
+            <h3 className="font-bold text-slate-900">Image Compressor</h3>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              Reduce image file size while keeping your images useful for web
+              and everyday use.
+            </p>
+          </a>
+          <a href="/tools/image-to-text" className="rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/40">
+            <h3 className="font-bold text-slate-900">Image to Text</h3>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              Extract readable text from images with browser-based OCR.
+            </p>
+          </a>
+          <a href="/tools/compress-image-to-kb" className="rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/40">
+            <h3 className="font-bold text-slate-900">Compress Image to KB</h3>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              Compress images to a target file size such as 20KB, 50KB or
+              100KB.
+            </p>
+          </a>
+          <a href="/tools/heic-to-jpg" className="rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/40">
+            <h3 className="font-bold text-slate-900">HEIC to JPG</h3>
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              Convert HEIC and HEIF images to JPG directly in your browser.
+            </p>
+          </a>
+        </div>
+      </section>
     </div>
   );
 }
