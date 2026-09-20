@@ -59,6 +59,14 @@ const tools: Array<{
   },
   {
     icon: "converter",
+    title: "Favicon Generator",
+    description:
+      "Create favicon images in multiple sizes from PNG, JPG, WebP or SVG files.",
+    link: "/tools/favicon-generator",
+    category: "Image",
+  },
+  {
+    icon: "converter",
     title: "HEIC to JPG",
     description:
       "Convert HEIC and HEIF images to JPG online for free.",

@@ -15,6 +15,7 @@ const staticPages = [
 const tools = [
   // Image Tools
   "compressor",
+  "favicon-generator",
   "compress-image-to-kb",
     "image-to-text",
   "heic-to-jpg",
