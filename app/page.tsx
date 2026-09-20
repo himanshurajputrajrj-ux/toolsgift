@@ -64,6 +64,13 @@ const tools: Array<{
       "Create favicon images in multiple sizes from PNG, JPG, WebP or SVG files.",
     link: "/tools/favicon-generator",
     category: "Image",
+  },  {
+    icon: "converter",
+    title: "Word Counter",
+    description:
+      "Count words, characters, sentences, paragraphs and lines instantly.",
+    link: "/tools/word-counter",
+    category: "Text",
   },
   {
     icon: "converter",
