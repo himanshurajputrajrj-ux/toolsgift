@@ -18,6 +18,7 @@ const tools = [
   "favicon-generator",
   "word-counter",
   "qr-code-generator",
+  "unit-converter",
   "percentage-calculator",
   "case-converter",
   "character-counter",

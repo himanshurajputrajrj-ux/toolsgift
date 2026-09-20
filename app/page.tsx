@@ -74,6 +74,14 @@ const tools: Array<{
   },
   {
     icon: "converter",
+    title: "Unit Converter",
+    description:
+      "Convert length, weight and temperature units instantly with an easy online converter.",
+    link: "/tools/unit-converter",
+    category: "Utility",
+  },
+  {
+    icon: "converter",
     title: "Percentage Calculator",
     description:
       "Calculate a percentage of any number quickly and easily.",
