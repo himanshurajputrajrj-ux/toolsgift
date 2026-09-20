@@ -17,6 +17,7 @@ const tools = [
   "compressor",
   "favicon-generator",
   "word-counter",
+  "qr-code-generator",
   "percentage-calculator",
   "case-converter",
   "character-counter",

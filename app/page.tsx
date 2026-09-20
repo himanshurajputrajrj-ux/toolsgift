@@ -66,6 +66,14 @@ const tools: Array<{
     category: "Image",
   },  {
     icon: "converter",
+    title: "QR Code Generator",
+    description:
+      "Create QR codes from URLs, text and other information instantly.",
+    link: "/tools/qr-code-generator",
+    category: "Generator",
+  },
+  {
+    icon: "converter",
     title: "Percentage Calculator",
     description:
       "Calculate a percentage of any number quickly and easily.",
