@@ -17,6 +17,7 @@ const tools = [
   "compressor",
   "favicon-generator",
   "word-counter",
+  "percentage-calculator",
   "case-converter",
   "character-counter",
   "compress-image-to-kb",

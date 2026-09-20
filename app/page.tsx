@@ -66,6 +66,14 @@ const tools: Array<{
     category: "Image",
   },  {
     icon: "converter",
+    title: "Percentage Calculator",
+    description:
+      "Calculate a percentage of any number quickly and easily.",
+    link: "/tools/percentage-calculator",
+    category: "Calculator",
+  },
+  {
+    icon: "converter",
     title: "Case Converter",
     description:
       "Convert text to uppercase, lowercase, title case or sentence case instantly.",
