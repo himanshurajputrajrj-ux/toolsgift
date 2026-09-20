@@ -17,6 +17,7 @@ const tools = [
   "compressor",
   "favicon-generator",
   "word-counter",
+  "character-counter",
   "compress-image-to-kb",
     "image-to-text",
   "heic-to-jpg",

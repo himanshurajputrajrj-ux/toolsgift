@@ -66,6 +66,12 @@ const tools: Array<{
     category: "Image",
   },  {
     icon: "converter",
+    title: "Character Counter",
+    description:
+      "Count characters, spaces, words, sentences and paragraphs instantly.",
+    link: "/tools/character-counter",
+    category: "Text",  },  {
+    icon: "converter",
     title: "Word Counter",
     description:
       "Count words, characters, sentences, paragraphs and lines instantly.",
