@@ -350,7 +350,68 @@ const intelligenceTools: Tool[] = [
   },
 ];
 
-const otherTools: Tool[] = [
+const utilityTools: Tool[] = [
+  {
+    title: "Favicon Generator",
+    link: "/tools/favicon-generator",
+    icon: "image",
+    color: "blue",
+  },
+  {
+    title: "QR Code Generator",
+    link: "/tools/qr-code-generator",
+    icon: "qr",
+    color: "blue",
+  },
+  {
+    title: "Percentage Calculator",
+    link: "/tools/percentage-calculator",
+    icon: "converter",
+    color: "green",
+  },
+  {
+    title: "Case Converter",
+    link: "/tools/case-converter",
+    icon: "converter",
+    color: "purple",
+  },
+  {
+    title: "Character Counter",
+    link: "/tools/character-counter",
+    icon: "converter",
+    color: "blue",
+  },
+  {
+    title: "Word Counter",
+    link: "/tools/word-counter",
+    icon: "converter",
+    color: "blue",
+  },
+  {
+    title: "HEIC to JPG",
+    link: "/tools/heic-to-jpg",
+    icon: "converter",
+    color: "yellow",
+  },
+  {
+    title: "Compress Image to KB",
+    link: "/tools/compress-image-to-kb",
+    icon: "compress",
+    color: "green",
+  },
+  {
+    title: "Image to Text",
+    link: "/tools/image-to-text",
+    icon: "ocr",
+    color: "purple",
+  },
+  {
+    title: "Unit Converter",
+    link: "/tools/unit-converter",
+    icon: "converter",
+    color: "orange",
+  },
+];const otherTools: Tool[] = [
   {
     title: "Social Media QR Card",
     link: "/tools/social-qr-card",
@@ -746,6 +807,19 @@ export default function Header() {
               </div>
 
 
+              {/* UTILITY & TEXT TOOLS */}
+              <div className="mt-8">
+                <SectionTitle title="Utility & Text Tools" />
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                  {utilityTools.map((tool) => (
+                    <ToolLink
+                      key={tool.title}
+                      tool={tool}
+                      onSelect={() => setToolsOpen(false)}
+                    />
+                  ))}
+                </div>
+              </div>
               {/* OTHER TOOLS */}
 
               <div className="mt-8">
