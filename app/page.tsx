@@ -66,6 +66,14 @@ const tools: Array<{
     category: "Image",
   },  {
     icon: "converter",
+    title: "Case Converter",
+    description:
+      "Convert text to uppercase, lowercase, title case or sentence case instantly.",
+    link: "/tools/case-converter",
+    category: "Text",
+  },
+  {
+    icon: "converter",
     title: "Character Counter",
     description:
       "Count characters, spaces, words, sentences and paragraphs instantly.",
