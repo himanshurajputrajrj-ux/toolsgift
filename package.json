@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@imgly/background-removal": "^1.7.0",
+    "@vercel/blob": "^2.8.0",
     "docx": "^9.7.1",
     "docx-preview": "^0.4.0",
     "exifr": "^7.1.3",
