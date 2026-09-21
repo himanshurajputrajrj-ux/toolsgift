@@ -161,6 +161,15 @@ export default function ImageMetadataTool() {
   const [copied, setCopied] =
     useState(false);
 
+  const [shareUrl, setShareUrl] =
+    useState("");
+
+  const [shareLoading, setShareLoading] =
+    useState(false);
+
+  const [shareMessage, setShareMessage] =
+    useState("");
+
   useEffect(() => {
     previewUrlRef.current =
       previewUrl;
@@ -187,6 +196,143 @@ export default function ImageMetadataTool() {
     };
   }, []);
 
+  async function copyText(value: string) {
+    if (!value) return false;
+    try {
+      const textarea = document.createElement("textarea");
+      textarea.value = value;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      textarea.style.top = "0";
+      textarea.style.width = "1px";
+      textarea.style.height = "1px";
+      textarea.style.opacity = "0";
+      textarea.style.pointerEvents = "none";
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      textarea.setSelectionRange(0, value.length);
+      const copied = document.execCommand("copy");
+      document.body.removeChild(textarea);
+      if (copied) return true;
+    } catch (error) {
+      console.error("Textarea copy failed:", error);
+    }
+    try {
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(value);
+        return true;
+      }
+    } catch (error) {
+      console.error("Clipboard API copy failed:", error);
+    }
+    return false;
+  }
+  function clearShareState() {
+    setShareUrl("");
+    setShareMessage("");
+  }
+  async function createShareLink() {
+    const report = createReport();
+    if (!report || shareLoading) return "";
+    if (shareUrl) {
+      return shareUrl;
+    }
+    setShareLoading(true);
+    setShareMessage("");
+    try {
+      const response = await fetch("/api/share", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          tool: "image-metadata",
+          resultTitle: "Image Metadata Report",
+          value: report,
+          filename: "image-metadata-report.txt",
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok || !data.shareUrl) {
+        throw new Error(
+          data.error || "Failed to create share link."
+        );
+      }
+      setShareUrl(data.shareUrl);
+      return data.shareUrl;
+    } catch (error) {
+      console.error("Share link creation failed:", error);
+      setShareMessage(
+        "Failed to generate share link. Please try again."
+      );
+      return "";
+    } finally {
+      setShareLoading(false);
+    }
+  }
+  async function generateShareLink() {
+    const url = await createShareLink();
+    if (url) {
+      setShareMessage("Share link generated successfully.");
+      setTimeout(() => {
+        setShareMessage("");
+      }, 2500);
+    }
+  }
+  async function shareMetadata() {
+    const url = await createShareLink();
+    if (!url) return;
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: "ToolsGift Image Metadata Report",
+          text: "Check out this shared image metadata report.",
+          url,
+        });
+        setShareMessage("Shared successfully.");
+        setTimeout(() => {
+          setShareMessage("");
+        }, 2500);
+      } else {
+        const copied = await copyText(url);
+        setShareMessage(
+          copied
+            ? "Sharing is not supported here, so the share link was copied."
+            : "Sharing is not supported here. Please copy the link manually."
+        );
+      }
+    } catch (error) {
+      if (
+        error instanceof DOMException &&
+        error.name === "AbortError"
+      ) {
+        return;
+      }
+      console.error("Native sharing failed:", error);
+      const copied = await copyText(url);
+      setShareMessage(
+        copied
+          ? "Share failed, so the share link was copied instead."
+          : "Share failed. Please copy the link manually."
+      );
+    }
+  }
+  async function copyShareLink() {
+    if (!shareUrl) return;
+    const copied = await copyText(shareUrl);
+    setShareMessage(
+      copied
+        ? "Share link copied successfully."
+        : "Copy failed. Please copy the link manually."
+    );
+    if (copied) {
+      setTimeout(() => {
+        setShareMessage("");
+      }, 2000);
+    }
+  }
   function clearPreviewUrl() {
     if (previewUrlRef.current) {
       URL.revokeObjectURL(
@@ -977,6 +1123,21 @@ export default function ImageMetadataTool() {
 
             </div>
 
+            {metadata.length > 0 && (
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                <button type="button" onClick={generateShareLink} disabled={shareLoading} className="rounded-xl bg-blue-600 px-4 py-3.5 text-sm font-bold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50">{shareLoading ? "Generating..." : "?? Generate Link"}</button>
+                <button type="button" onClick={shareMetadata} disabled={shareLoading} className="rounded-xl bg-black px-4 py-3.5 text-sm font-bold text-white transition hover:bg-black/80 disabled:cursor-not-allowed disabled:opacity-50">? Share</button>
+              </div>
+            )}
+            {shareUrl && (
+              <div className="mt-3 space-y-2">
+                <input type="text" readOnly value={shareUrl} className="w-full rounded-xl border border-black/10 bg-[#f7f7f5] px-4 py-3 text-sm text-black outline-none" aria-label="Share link" />
+                <button type="button" onClick={copyShareLink} className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 text-sm font-bold text-black transition hover:bg-black/[0.03]">Copy Link</button>
+              </div>
+            )}
+            {shareMessage && (
+              <p className="mt-2 text-center text-xs font-medium text-black/60">{shareMessage}</p>
+            )}
             <button
               type="button"
               onClick={clearAll}
@@ -1223,3 +1384,9 @@ export default function ImageMetadataTool() {
     </section>
   );
 }
+
+
+
+
+
+
