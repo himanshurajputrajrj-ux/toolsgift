@@ -19,17 +19,15 @@ type SharePageProps = {
 async function getShareData(id: string): Promise<SharePayload | null> {
   const requestHeaders = await headers();
 
-  const host =
-    requestHeaders.get("x-forwarded-host") ||
-    requestHeaders.get("host");
-
-  const protocol =
-    requestHeaders.get("x-forwarded-proto") ||
-    "http";
+  const host = requestHeaders.get("host");
 
   if (!host) {
     return null;
   }
+
+  const protocol =
+    requestHeaders.get("x-forwarded-proto") ||
+    (process.env.NODE_ENV === "development" ? "http" : "https");
 
   const baseUrl = `${protocol}://${host}`;
 
@@ -46,13 +44,17 @@ async function getShareData(id: string): Promise<SharePayload | null> {
     }
 
     return (await response.json()) as SharePayload;
-  } catch {
+  } catch (error) {
+    console.error("Failed to load share data:", error);
     return null;
   }
 }
 
-export default async function SharePage({ params }: SharePageProps) {
+export default async function SharePage({
+  params,
+}: SharePageProps) {
   const { id } = await params;
+
   const share = await getShareData(id);
 
   if (!share) {

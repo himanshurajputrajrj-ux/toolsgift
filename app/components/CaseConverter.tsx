@@ -44,46 +44,74 @@ export default function CaseConverter() {
   };
 
   /*
-   * Robust copy function.
-   * First tries Clipboard API.
-   * If that is unavailable, uses the browser fallback.
+   * Universal copy function.
+   *
+   * First uses the browser's textarea copy method.
+   * If that fails, it tries the Clipboard API.
    */
   const copyText = async (value: string): Promise<boolean> => {
     if (!value) return false;
 
     try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(value);
-        return true;
-      }
-
       const textarea = document.createElement("textarea");
 
       textarea.value = value;
+      textarea.setAttribute("readonly", "");
       textarea.style.position = "fixed";
       textarea.style.left = "-9999px";
       textarea.style.top = "0";
+      textarea.style.width = "1px";
+      textarea.style.height = "1px";
       textarea.style.opacity = "0";
-      textarea.setAttribute("readonly", "");
+      textarea.style.pointerEvents = "none";
 
       document.body.appendChild(textarea);
 
       textarea.focus();
       textarea.select();
-      textarea.setSelectionRange(0, textarea.value.length);
+      textarea.setSelectionRange(0, value.length);
 
       const copied = document.execCommand("copy");
 
       document.body.removeChild(textarea);
 
-      if (!copied) {
-        throw new Error("Copy failed");
+      if (copied) {
+        return true;
       }
-
-      return true;
     } catch (error) {
-      console.error("Copy failed:", error);
-      return false;
+      console.error("Textarea copy failed:", error);
+    }
+
+    try {
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(value);
+        return true;
+      }
+    } catch (error) {
+      console.error("Clipboard API copy failed:", error);
+    }
+
+    return false;
+  };
+
+  const copyResult = async (result: Result) => {
+    const copied = await copyText(result.value);
+
+    setShareMessage((previous) => ({
+      ...previous,
+      [result.title]: copied
+        ? "Text copied successfully."
+        : "Copy failed. Please copy the text manually.",
+    }));
+
+    if (copied) {
+      setTimeout(() => {
+        setShareMessage((previous) => {
+          const next = { ...previous };
+          delete next[result.title];
+          return next;
+        });
+      }, 2000);
     }
   };
 
@@ -184,18 +212,12 @@ export default function CaseConverter() {
 
     const copied = await copyText(share.shareUrl);
 
-    if (copied) {
-      setShareMessage((previous) => ({
-        ...previous,
-        [result.title]: "Link generated and copied.",
-      }));
-    } else {
-      setShareMessage((previous) => ({
-        ...previous,
-        [result.title]:
-          "Link generated. Copy it using the Copy Link button.",
-      }));
-    }
+    setShareMessage((previous) => ({
+      ...previous,
+      [result.title]: copied
+        ? "Link generated and copied."
+        : "Link generated. Use the Copy Link button below.",
+    }));
   };
 
   const shareResult = async (result: Result) => {
@@ -215,7 +237,7 @@ export default function CaseConverter() {
 
         setShareMessage((previous) => ({
           ...previous,
-          [result.title]: "Share dialog opened.",
+          [result.title]: "Shared successfully.",
         }));
       } catch (error) {
         if (
@@ -227,7 +249,8 @@ export default function CaseConverter() {
 
         setShareMessage((previous) => ({
           ...previous,
-          [result.title]: "Link generated. You can copy it below.",
+          [result.title]:
+            "Link generated. You can copy it using Copy Link.",
         }));
       }
     } else {
@@ -237,20 +260,33 @@ export default function CaseConverter() {
         ...previous,
         [result.title]: copied
           ? "Sharing is not supported here. Link copied instead."
-          : "Link generated. Copy it using the Copy Link button.",
+          : "Link generated. Use the Copy Link button below.",
       }));
     }
   };
 
-  const copyShareLink = async (result: Result, shareUrl: string) => {
+  const copyShareLink = async (
+    result: Result,
+    shareUrl: string
+  ) => {
     const copied = await copyText(shareUrl);
 
     setShareMessage((previous) => ({
       ...previous,
       [result.title]: copied
-        ? "Link copied!"
-        : "Copy failed. Please select and copy the link manually.",
+        ? "Link copied successfully."
+        : "Copy failed. Please copy the link manually.",
     }));
+
+    if (copied) {
+      setTimeout(() => {
+        setShareMessage((previous) => {
+          const next = { ...previous };
+          delete next[result.title];
+          return next;
+        });
+      }, 2000);
+    }
   };
 
   const results: Result[] = [
@@ -371,7 +407,7 @@ export default function CaseConverter() {
               <div className="mt-4 flex flex-wrap gap-3">
                 <button
                   type="button"
-                  onClick={() => copyText(result.value)}
+                  onClick={() => copyResult(result)}
                   disabled={!result.value}
                   className="rounded-xl bg-blue-600 px-4 py-2.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
                 >
