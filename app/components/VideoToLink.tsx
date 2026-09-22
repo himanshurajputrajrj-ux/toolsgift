@@ -82,15 +82,26 @@ export default function VideoToLink() {
     setShareUrl("");
     setExpiresAt("");
     try {
-      const formData = new FormData();
-      formData.append("tool", "video-to-link");
-      formData.append("resultTitle", "Video Share");
-      formData.append("filename", file.name);
-      formData.append("video", file);
-      formData.append("expiry", expiry);
+      const { upload } = await import("@vercel/blob/client");
+      const pathname = `video-uploads/${crypto.randomUUID()}-${file.name}`;
+      const blob = await upload(pathname, file, {
+        access: "private",
+        handleUploadUrl: "/api/video-upload",
+        multipart: true,
+      });
       const response = await fetch("/api/share", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          tool: "video-to-link",
+          resultTitle: "Video Share",
+          filename: file.name,
+          assetKey: blob.pathname,
+          contentType: file.type,
+          expiry,
+        }),
       });
       const data = await response.json();
       if (!response.ok || typeof data.shareUrl !== "string") {
@@ -108,8 +119,7 @@ export default function VideoToLink() {
     } finally {
       setLoading(false);
     }
-  };
-  const copyLink = async () => {
+  };  const copyLink = async () => {
     if (!shareUrl) {
       return;
     }
@@ -221,7 +231,7 @@ export default function VideoToLink() {
                 {file.name}
               </p>
               <p className="mt-1 text-sm text-slate-500">
-                {formatSize(file.size)} · {file.type || "Video"}
+                {formatSize(file.size)} Â· {file.type || "Video"}
               </p>
             </div>
             <button

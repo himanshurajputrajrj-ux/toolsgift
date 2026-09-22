@@ -265,44 +265,81 @@ export async function POST(request: Request) {
       }
     } else {
       const body = await request.json();
-      const { tool, resultTitle, value, filename } = body;
-      if (
-        typeof tool !== "string" ||
-        typeof resultTitle !== "string" ||
-        typeof value !== "string" ||
-        typeof filename !== "string"
-      ) {
-        return Response.json(
-          { error: "Invalid share data." },
-          { status: 400 }
-        );
+      if (body.tool === "video-to-link") {
+        const {
+          resultTitle,
+          filename,
+          assetKey,
+          contentType,
+          expiry,
+        } = body;
+        if (
+          typeof resultTitle !== "string" ||
+          typeof filename !== "string" ||
+          typeof assetKey !== "string" ||
+          typeof contentType !== "string" ||
+          typeof expiry !== "string"
+        ) {
+          return Response.json(
+            { error: "Invalid video share data." },
+            { status: 400 }
+          );
+        }
+        if (!assetKey.startsWith("video-uploads/")) {
+          return Response.json(
+            { error: "Invalid video asset." },
+            { status: 400 }
+          );
+        }
+        const expiresIn = getVideoExpiryMs(expiry as VideoExpiry);
+        if (!expiresIn) {
+          return Response.json(
+            { error: "Invalid expiry option." },
+            { status: 400 }
+          );
+        }
+        const expiresAt = new Date(now + expiresIn);
+        payload = {
+          tool: "video-to-link",
+          resultTitle,
+          kind: "video",
+          value: assetKey,
+          filename,
+          contentType,
+          createdAt: new Date(now).toISOString(),
+          expiresAt: expiresAt.toISOString(),
+        };
+      } else {
+        const { tool, resultTitle, value, filename } = body;
+        if (
+          typeof tool !== "string" ||
+          typeof resultTitle !== "string" ||
+          typeof value !== "string" ||
+          typeof filename !== "string"
+        ) {
+          return Response.json(
+            { error: "Invalid share data." },
+            { status: 400 }
+          );
+        }
+        if (!value.trim()) {
+          return Response.json(
+            { error: "Cannot share an empty result." },
+            { status: 400 }
+          );
+        }
+        const expiresAt = new Date(now + ONE_MONTH_MS);
+        payload = {
+          tool,
+          resultTitle,
+          kind: "text",
+          value,
+          filename,
+          createdAt: new Date(now).toISOString(),
+          expiresAt: expiresAt.toISOString(),
+        };
       }
-      if (!value.trim()) {
-        return Response.json(
-          { error: "Cannot share an empty result." },
-          { status: 400 }
-        );
-      }
-      const expiresAt = new Date(now + ONE_MONTH_MS);
-      payload = {
-        tool,
-        resultTitle,
-        kind: "text",
-        value,
-        filename,
-        createdAt: new Date(now).toISOString(),
-        expiresAt: expiresAt.toISOString(),
-      };
-    }
-    await put(
-      `shares/${shareId}.json`,
-      JSON.stringify(payload),
-      {
-        access: "private",
-        contentType: "application/json",
-      }
-    );
-    const origin = new URL(request.url).origin;
+    }    const origin = new URL(request.url).origin;
     const shareUrl = `${origin}/share/${shareId}`;
     return Response.json({
       shareId,
