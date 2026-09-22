@@ -1,11 +1,13 @@
-import { headers } from "next/headers";
+﻿import { headers } from "next/headers";
 import ShareResultActions from "./ShareResultActions";
 
 type SharePayload = {
   tool: string;
   resultTitle: string;
+  kind?: "text" | "image";
   value: string;
   filename: string;
+  contentType?: string;
   createdAt: string;
   expiresAt: string;
 };
@@ -63,7 +65,7 @@ export default async function SharePage({
         <div className="mx-auto max-w-2xl">
           <div className="rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm dark:border-gray-800 dark:bg-gray-900">
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-red-100 text-2xl dark:bg-red-950">
-              ⚠️
+              âš ï¸
             </div>
 
             <h1 className="mt-5 text-2xl font-bold text-gray-900 dark:text-white">
@@ -123,18 +125,38 @@ export default async function SharePage({
           </div>
 
           <div className="mt-6">
-            <textarea
-              value={share.value}
-              readOnly
-              className="min-h-80 w-full resize-y rounded-xl border border-gray-300 bg-gray-50 p-5 text-base leading-7 text-gray-900 outline-none dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100"
-              aria-label="Shared result"
-            />
+            {share.kind === "image" ? (
+              <div className="overflow-auto rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-950">
+                <img
+                  src={`/api/share/image?id=${encodeURIComponent(id)}`}
+                  alt={share.resultTitle}
+                  className="mx-auto max-h-[800px] w-auto rounded-lg bg-white shadow-sm"
+                />
+              </div>
+            ) : (
+              <textarea
+                value={share.value}
+                readOnly
+                className="min-h-80 w-full resize-y rounded-xl border border-gray-300 bg-gray-50 p-5 text-base leading-7 text-gray-900 outline-none dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100"
+                aria-label="Shared result"
+              />
+            )}
           </div>
 
-          <ShareResultActions
-            value={share.value}
-            filename={share.filename}
-          />
+          {share.kind === "image" ? (
+            <a
+              href={`/api/share/image?id=${encodeURIComponent(id)}`}
+              download={share.filename}
+              className="mt-5 flex w-full items-center justify-center rounded-xl bg-emerald-600 px-5 py-3.5 font-semibold text-white transition hover:bg-emerald-700"
+            >
+              Download Image
+            </a>
+          ) : (
+            <ShareResultActions
+              value={share.value}
+              filename={share.filename}
+            />
+          )}
 
           <div className="mt-6 rounded-xl bg-gray-50 p-4 dark:bg-gray-950">
             <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -148,7 +170,11 @@ export default async function SharePage({
             href={
               share.tool === "case-converter"
                 ? "/tools/case-converter"
-                : "/"
+                : share.tool === "word-to-image"
+                  ? "/tools/word-to-image"
+                  : share.tool === "image-metadata"
+                    ? "/tools/image-metadata"
+                    : "/"
             }
             className="inline-flex rounded-xl border border-gray-300 bg-white px-5 py-3 font-semibold text-gray-700 transition hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
           >
@@ -163,3 +189,9 @@ export default async function SharePage({
     </main>
   );
 }
+
+
+
+
+
+
