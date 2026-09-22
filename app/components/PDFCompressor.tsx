@@ -122,7 +122,7 @@ export default function PDFCompressor() {
         updateFieldAppearances: false,
       });
 
-      const blob = new Blob([pdfBytes], {
+      const blob = new Blob([new Uint8Array(pdfBytes)], {
         type: "application/pdf",
       });
 

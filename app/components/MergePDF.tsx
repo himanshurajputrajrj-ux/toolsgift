@@ -178,7 +178,7 @@ export default function MergePDF() {
 
       const pdfBytes = await mergedPdf.save();
 
-      const blob = new Blob([pdfBytes], {
+      const blob = new Blob([new Uint8Array(pdfBytes)], {
         type: "application/pdf",
       });
 

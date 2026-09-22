@@ -1,4 +1,4 @@
-﻿import { get } from "@vercel/blob";
+import { get } from "@vercel/blob";
 export async function GET(request: Request) {
   try {
     const shareId = new URL(request.url).searchParams.get("id");
@@ -18,32 +18,46 @@ export async function GET(request: Request) {
     if (Date.now() >= new Date(payload.expiresAt).getTime()) {
       return new Response("This share link has expired.", { status: 410 });
     }
-    if ((payload.kind !== "image" && payload.kind !== "batch") || typeof payload.value !== "string") {
-      return new Response("This share does not contain an image.", {
+    if (
+      payload.kind !== "image" &&
+      payload.kind !== "batch" &&
+      payload.kind !== "video"
+    ) {
+      return new Response("This share does not contain a supported file.", {
         status: 400,
       });
     }
-    const imageBlob = await get(payload.value, {
+    if (typeof payload.value !== "string") {
+      return new Response("Invalid shared file.", { status: 400 });
+    }
+    const assetBlob = await get(payload.value, {
       access: "private",
       useCache: false,
     });
-    if (!imageBlob || !("stream" in imageBlob)) {
-      return new Response("Shared image not found.", { status: 404 });
+    if (!assetBlob || !("stream" in assetBlob)) {
+      return new Response("Shared file not found.", { status: 404 });
     }
-    return new Response(imageBlob.stream, {
+    const isDownload = payload.kind === "batch";
+    return new Response(assetBlob.stream, {
       status: 200,
       headers: {
-        "Content-Type": payload.contentType || "application/octet-stream",
-        "Content-Disposition": `${payload.kind === "batch" ? "attachment" : "inline"}; filename="${payload.filename || "shared-file"}"`,
+        "Content-Type":
+          payload.contentType || "application/octet-stream",
+        "Content-Disposition": `${
+          isDownload ? "attachment" : "inline"
+        }; filename="${payload.filename || "shared-file"}"`,
         "Cache-Control": "private, max-age=3600",
+        ...(payload.kind === "video"
+          ? {
+              "Accept-Ranges": "bytes",
+            }
+          : {}),
       },
     });
   } catch (error) {
-    console.error("Shared image retrieval error:", error);
-    return new Response("Unable to load shared image.", {
+    console.error("Shared file retrieval error:", error);
+    return new Response("Unable to load shared file.", {
       status: 404,
     });
   }
 }
-
-

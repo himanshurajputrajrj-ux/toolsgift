@@ -1,8 +1,10 @@
-﻿import { get, put } from "@vercel/blob";
+import { get, put } from "@vercel/blob";
 import { randomBytes } from "crypto";
 import JSZip from "jszip";
 const ONE_MONTH_MS = 30 * 24 * 60 * 60 * 1000;
 const MAX_IMAGE_SIZE = 4 * 1024 * 1024;
+const MAX_VIDEO_SIZE = 500 * 1024 * 1024;
+type VideoExpiry = "1h" | "6h" | "24h" | "3d" | "7d";
 type SharePayload =
   | {
       tool: string;
@@ -32,12 +34,37 @@ type SharePayload =
       contentType: string;
       createdAt: string;
       expiresAt: string;
+    }
+  | {
+      tool: string;
+      resultTitle: string;
+      kind: "video";
+      value: string;
+      filename: string;
+      contentType: string;
+      createdAt: string;
+      expiresAt: string;
     };
+function getVideoExpiryMs(expiry: VideoExpiry): number {
+  switch (expiry) {
+    case "1h":
+      return 1 * 60 * 60 * 1000;
+    case "6h":
+      return 6 * 60 * 60 * 1000;
+    case "24h":
+      return 24 * 60 * 60 * 1000;
+    case "3d":
+      return 3 * 24 * 60 * 60 * 1000;
+    case "7d":
+      return 7 * 24 * 60 * 60 * 1000;
+    default:
+      return 7 * 24 * 60 * 60 * 1000;
+  }
+}
 export async function POST(request: Request) {
   try {
     const shareId = randomBytes(16).toString("hex");
     const now = Date.now();
-    const expiresAt = new Date(now + ONE_MONTH_MS);
     const requestContentType = request.headers.get("content-type") || "";
     let payload: SharePayload;
     if (requestContentType.includes("multipart/form-data")) {
@@ -45,106 +72,196 @@ export async function POST(request: Request) {
       const tool = formData.get("tool");
       const resultTitle = formData.get("resultTitle");
       const filename = formData.get("filename");
-      const image = formData.get("image");
-      const images = formData.getAll("images");
-      const isBatch = images.length > 0;
-      if (
-        typeof tool !== "string" ||
-        typeof resultTitle !== "string" ||
-        typeof filename !== "string" ||
-        (!isBatch && !(image instanceof File)) ||
-        (isBatch && !images.every((item) => item instanceof File))
-      ) {
-        return Response.json(
-          { error: "Invalid image share data." },
-          { status: 400 }
-        );
-      }
-      if (!isBatch && image instanceof File && !image.type.startsWith("image/")) {
-        return Response.json(
-          { error: "Only image files can be shared." },
-          { status: 400 }
-        );
-      }
-      if (!isBatch && image instanceof File && image.size > MAX_IMAGE_SIZE) {
-        return Response.json(
-          { error: "Image is too large. Maximum share image size is 4 MB." },
-          { status: 413 }
-        );
-      }
-      if (isBatch) {
-        const totalBatchSize = images.reduce((total, item) => total + (item as File).size, 0);
-
-        if (totalBatchSize > 20 * 1024 * 1024) {
+      const video = formData.get("video");
+      const expiry = formData.get("expiry");
+      if (tool === "video-to-link") {
+        if (
+          typeof tool !== "string" ||
+          typeof resultTitle !== "string" ||
+          typeof filename !== "string" ||
+          !(video instanceof File)
+        ) {
           return Response.json(
-            { error: "Batch is too large. Maximum total share size is 20 MB." },
+            { error: "Invalid video share data." },
+            { status: 400 }
+          );
+        }
+        if (!video.type.startsWith("video/")) {
+          return Response.json(
+            { error: "Only video files can be shared." },
+            { status: 400 }
+          );
+        }
+        if (video.size > MAX_VIDEO_SIZE) {
+          return Response.json(
+            { error: "Video is too large. Maximum video size is 500 MB." },
             { status: 413 }
           );
         }
-        const zip = new JSZip();
-        for (const item of images) {
-          const batchFile = item as File;
-          if (!batchFile.type.startsWith("image/")) {
-            return Response.json(
-              { error: "Only image files can be shared." },
-              { status: 400 }
-            );
-          }
-          if (batchFile.size > MAX_IMAGE_SIZE) {
-            return Response.json(
-              { error: `${batchFile.name} is too large. Maximum share image size is 4 MB per image.` },
-              { status: 413 }
-            );
-          }
-          const arrayBuffer = await batchFile.arrayBuffer();
-          zip.file(batchFile.name || "converted-image", arrayBuffer);
-        }
-        const zipBuffer = await zip.generateAsync({ type: "nodebuffer" });
-        const assetKey = `share-assets/${shareId}.zip`;
-        await put(assetKey, zipBuffer, {
+        const validExpiries: VideoExpiry[] = [
+          "1h",
+          "6h",
+          "24h",
+          "3d",
+          "7d",
+        ];
+        const selectedExpiry: VideoExpiry = validExpiries.includes(
+          expiry as VideoExpiry
+        )
+          ? (expiry as VideoExpiry)
+          : "7d";
+        const expiresAt = new Date(
+          now + getVideoExpiryMs(selectedExpiry)
+        );
+        const extension =
+          video.type === "video/mp4"
+            ? "mp4"
+            : video.type === "video/webm"
+              ? "webm"
+              : video.type === "video/quicktime"
+                ? "mov"
+                : "video";
+        const assetKey = `share-assets/${shareId}.${extension}`;
+        await put(assetKey, video, {
           access: "private",
-          contentType: "application/zip",
+          contentType: video.type,
         });
         payload = {
           tool,
           resultTitle,
-          kind: "batch",
+          kind: "video",
           value: assetKey,
-          filename: "toolsgift-batch-converted-images.zip",
-          contentType: "application/zip",
+          filename,
+          contentType: video.type,
           createdAt: new Date(now).toISOString(),
           expiresAt: expiresAt.toISOString(),
         };
       } else {
-        if (!(image instanceof File)) {
+        const image = formData.get("image");
+        const images = formData.getAll("images");
+        const isBatch = images.length > 0;
+        const expiresAt = new Date(now + ONE_MONTH_MS);
+        if (
+          typeof tool !== "string" ||
+          typeof resultTitle !== "string" ||
+          typeof filename !== "string" ||
+          (!isBatch && !(image instanceof File)) ||
+          (isBatch && !images.every((item) => item instanceof File))
+        ) {
           return Response.json(
-            { error: "Invalid image file." },
+            { error: "Invalid image share data." },
             { status: 400 }
           );
         }
-        const extension =
-          image.type === "image/jpeg"
-            ? "jpg"
-            : image.type === "image/png"
-              ? "png"
-              : image.type === "image/webp"
-                ? "webp"
-                : "img";
-        const assetKey = `share-assets/${shareId}.${extension}`;
-        await put(assetKey, image, {
-          access: "private",
-          contentType: image.type,
-        });
-        payload = {
-          tool,
-          resultTitle,
-          kind: "image",
-          value: assetKey,
-          filename,
-          contentType: image.type,
-          createdAt: new Date(now).toISOString(),
-          expiresAt: expiresAt.toISOString(),
-        };
+        if (
+          !isBatch &&
+          image instanceof File &&
+          !image.type.startsWith("image/")
+        ) {
+          return Response.json(
+            { error: "Only image files can be shared." },
+            { status: 400 }
+          );
+        }
+        if (
+          !isBatch &&
+          image instanceof File &&
+          image.size > MAX_IMAGE_SIZE
+        ) {
+          return Response.json(
+            {
+              error:
+                "Image is too large. Maximum share image size is 4 MB.",
+            },
+            { status: 413 }
+          );
+        }
+        if (isBatch) {
+          const totalBatchSize = images.reduce(
+            (total, item) => total + (item as File).size,
+            0
+          );
+          if (totalBatchSize > 20 * 1024 * 1024) {
+            return Response.json(
+              {
+                error:
+                  "Batch is too large. Maximum total share size is 20 MB.",
+              },
+              { status: 413 }
+            );
+          }
+          const zip = new JSZip();
+          for (const item of images) {
+            const batchFile = item as File;
+            if (!batchFile.type.startsWith("image/")) {
+              return Response.json(
+                { error: "Only image files can be shared." },
+                { status: 400 }
+              );
+            }
+            if (batchFile.size > MAX_IMAGE_SIZE) {
+              return Response.json(
+                {
+                  error: `${batchFile.name} is too large. Maximum share image size is 4 MB per image.`,
+                },
+                { status: 413 }
+              );
+            }
+            const arrayBuffer = await batchFile.arrayBuffer();
+            zip.file(
+              batchFile.name || "converted-image",
+              arrayBuffer
+            );
+          }
+          const zipBuffer = await zip.generateAsync({
+            type: "nodebuffer",
+          });
+          const assetKey = `share-assets/${shareId}.zip`;
+          await put(assetKey, zipBuffer, {
+            access: "private",
+            contentType: "application/zip",
+          });
+          payload = {
+            tool,
+            resultTitle,
+            kind: "batch",
+            value: assetKey,
+            filename: "toolsgift-batch-converted-images.zip",
+            contentType: "application/zip",
+            createdAt: new Date(now).toISOString(),
+            expiresAt: expiresAt.toISOString(),
+          };
+        } else {
+          if (!(image instanceof File)) {
+            return Response.json(
+              { error: "Invalid image file." },
+              { status: 400 }
+            );
+          }
+          const extension =
+            image.type === "image/jpeg"
+              ? "jpg"
+              : image.type === "image/png"
+                ? "png"
+                : image.type === "image/webp"
+                  ? "webp"
+                  : "img";
+          const assetKey = `share-assets/${shareId}.${extension}`;
+          await put(assetKey, image, {
+            access: "private",
+            contentType: image.type,
+          });
+          payload = {
+            tool,
+            resultTitle,
+            kind: "image",
+            value: assetKey,
+            filename,
+            contentType: image.type,
+            createdAt: new Date(now).toISOString(),
+            expiresAt: expiresAt.toISOString(),
+          };
+        }
       }
     } else {
       const body = await request.json();
@@ -166,6 +283,7 @@ export async function POST(request: Request) {
           { status: 400 }
         );
       }
+      const expiresAt = new Date(now + ONE_MONTH_MS);
       payload = {
         tool,
         resultTitle,
@@ -242,12 +360,3 @@ export async function GET(request: Request) {
     );
   }
 }
-
-
-
-
-
-
-
-
-
