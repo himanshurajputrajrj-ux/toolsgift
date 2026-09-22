@@ -3,40 +3,122 @@ import { useEffect, useRef, useState } from "react";
 export default function QRCodeGenerator() {
   const [text, setText] = useState("");
   const [qrReady, setQrReady] = useState(false);
+  const [shareUrl, setShareUrl] = useState("");
+  const [shareLoading, setShareLoading] = useState(false);
+  const [shareMessage, setShareMessage] = useState("");
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  useEffect(() => {
-    let cancelled = false;
-    const generateQR = async () => {
-      if (!text.trim() || !canvasRef.current) {
-        setQrReady(false);
+  const generateQR = async () => {
+    if (!text.trim() || !canvasRef.current) {
+      setQrReady(false);
+      return;
+    }
+    try {
+      const QRCode = (await import("qrcode")).default;
+      if (!canvasRef.current) return;
+      await QRCode.toCanvas(canvasRef.current, text.trim(), {
+        width: 320,
+        margin: 2,
+        errorCorrectionLevel: "M",
+        color: {
+          dark: "#111827",
+          light: "#ffffff",
+        },
+      });
+      setQrReady(true);
+      clearShareState();
+    } catch (error) {
+      console.error("QR generation error:", error);
+      setQrReady(false);
+    }
+  };
+  const createShareLink = async (): Promise<string> => {
+    if (!canvasRef.current || !qrReady) {
+      throw new Error("No QR code is available to share.");
+    }
+    if (shareUrl) {
+      return shareUrl;
+    }
+    setShareLoading(true);
+    setShareMessage("");
+    try {
+      const imageBlob = await new Promise<Blob>((resolve, reject) => {
+        canvasRef.current?.toBlob(
+          (blob) => {
+            if (blob) {
+              resolve(blob);
+            } else {
+              reject(new Error("Unable to prepare the QR code for sharing."));
+            }
+          },
+          "image/png"
+        );
+      });
+      if (imageBlob.size > 4 * 1024 * 1024) {
+        throw new Error("QR code is too large to share. Maximum size is 4 MB.");
+      }
+      const formData = new FormData();
+      formData.append("tool", "qr-code-generator");
+      formData.append("resultTitle", "QR Code Result");
+      formData.append("filename", "toolsgift-qr-code.png");
+      formData.append("image", imageBlob, "toolsgift-qr-code.png");
+      const response = await fetch("/api/share", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      if (!response.ok || typeof data.shareUrl !== "string") {
+        throw new Error(data.error || "Failed to create share link.");
+      }
+      setShareUrl(data.shareUrl);
+      setShareMessage("Share link generated.");
+      return data.shareUrl;
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Failed to create share link.";
+      setShareMessage(message);
+      throw error;
+    } finally {
+      setShareLoading(false);
+    }
+  };
+  const copyShareLink = async () => {
+    try {
+      const url = await createShareLink();
+      await navigator.clipboard.writeText(url);
+      setShareMessage("Share link copied.");
+    } catch {
+      // Error message is already handled by createShareLink.
+    }
+  };
+  const shareResult = async () => {
+    try {
+      const url = await createShareLink();
+      if (navigator.share) {
+        await navigator.share({
+          title: "ToolsGift - QR Code",
+          text: "View my QR Code result on ToolsGift",
+          url,
+        });
+        setShareMessage("Share link ready.");
+      } else {
+        await navigator.clipboard.writeText(url);
+        setShareMessage("Share link copied.");
+      }
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
         return;
       }
-      try {
-        const QRCode = (await import("qrcode")).default;
-        if (cancelled || !canvasRef.current) return;
-        await QRCode.toCanvas(canvasRef.current, text.trim(), {
-          width: 320,
-          margin: 2,
-          errorCorrectionLevel: "M",
-          color: {
-            dark: "#111827",
-            light: "#ffffff",
-          },
-        });
-        if (!cancelled) {
-          setQrReady(true);
-        }
-      } catch {
-        if (!cancelled) {
-          setQrReady(false);
-        }
+      if (!(error instanceof Error && error.message)) {
+        setShareMessage("Unable to share this result.");
       }
-    };
-    generateQR();
-    return () => {
-      cancelled = true;
-    };
-  }, [text]);
+    }
+  };
+  const clearShareState = () => {
+    setShareUrl("");
+    setShareMessage("");
+  };
   const downloadQR = () => {
     if (!canvasRef.current || !qrReady) return;
     const link = document.createElement("a");
@@ -49,6 +131,7 @@ export default function QRCodeGenerator() {
   const clear = () => {
     setText("");
     setQrReady(false);
+    clearShareState();
     if (canvasRef.current) {
       const context = canvasRef.current.getContext("2d");
       if (context) {
@@ -86,6 +169,17 @@ export default function QRCodeGenerator() {
             placeholder="Enter a website URL, text, contact information or anything else..."
             className="min-h-32 w-full resize-y rounded-xl border border-gray-300 bg-gray-50 p-4 text-gray-900 outline-none focus:border-blue-500 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
           />
+          <button
+            type="button"
+            onClick={() => {
+              console.log("Generate QR Code button clicked");
+              generateQR();
+            }}
+            disabled={!text.trim() || shareLoading}
+            className="mt-4 w-full rounded-xl bg-blue-600 px-6 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            Generate QR Code
+          </button>
           <div className="mt-5 flex flex-wrap gap-3">
             <button
               type="button"
@@ -104,6 +198,51 @@ export default function QRCodeGenerator() {
               Clear
             </button>
           </div>
+          <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <button
+              type="button"
+              onClick={() => {
+                createShareLink().catch(() => {});
+              }}
+              disabled={!qrReady || shareLoading}
+              className="w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+            >
+              {shareLoading ? "Generating..." : "Generate Link"}
+            </button>
+            <button
+              type="button"
+              onClick={shareResult}
+              disabled={!qrReady || shareLoading}
+              className="w-full rounded-xl bg-slate-900 px-5 py-3.5 font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300"
+            >
+              Share
+            </button>
+          </div>
+          {shareUrl && (
+            <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <input
+                  type="text"
+                  value={shareUrl}
+                  readOnly
+                  className="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 outline-none"
+                />
+                <button
+                  type="button"
+                  onClick={copyShareLink}
+                  disabled={shareLoading}
+                  className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+                >
+                  Copy Link
+                </button>
+              </div>
+            </div>
+          )}
+          {shareMessage && (
+            <p className="mt-3 text-center text-sm text-slate-500">
+              {shareMessage}
+            </p>
+          )}
         </div>
       </section>
       <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
@@ -111,22 +250,23 @@ export default function QRCodeGenerator() {
           QR Code Preview
         </h2>
         <div className="mt-5 flex min-h-80 items-center justify-center rounded-2xl border border-gray-200 bg-gray-50 p-6 dark:border-gray-800 dark:bg-gray-950">
-          {qrReady ? (
+          <div className={qrReady ? "flex items-center justify-center" : "hidden"}>
             <canvas
               ref={canvasRef}
               className="max-w-full rounded-lg bg-white"
               aria-label="Generated QR code"
             />
-          ) : (
+          </div>
+          {!qrReady && (
             <p className="text-center text-gray-500 dark:text-gray-400">
-              Enter text or a URL above to generate your QR code.
+              Enter text or a URL above, then click Generate QR Code.
             </p>
           )}
         </div>
       </section>
       <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-        Your text is processed in your browser. Nothing is uploaded to a
-        server.
+        QR code generation happens in your browser. Your QR image is uploaded
+        to the server only when you choose Generate Link or Share.
       </p>
       <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -183,7 +323,7 @@ export default function QRCodeGenerator() {
               Is my data uploaded to a server?
             </h3>
             <p className="mt-2 text-gray-600 dark:text-gray-400">
-              No. QR code generation happens directly in your browser.
+              QR code generation happens directly in your browser. Your QR image is uploaded to the server only when you choose Generate Link or Share.
             </p>
           </div>
         </div>
@@ -214,3 +354,16 @@ export default function QRCodeGenerator() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
