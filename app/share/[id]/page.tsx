@@ -4,7 +4,7 @@ import ShareResultActions from "./ShareResultActions";
 type SharePayload = {
   tool: string;
   resultTitle: string;
-  kind?: "text" | "image";
+  kind?: "text" | "image" | "batch";
   value: string;
   filename: string;
   contentType?: string;
@@ -133,6 +133,18 @@ export default async function SharePage({
                   className="mx-auto max-h-[800px] w-auto rounded-lg bg-white shadow-sm"
                 />
               </div>
+            ) : share.kind === "batch" ? (
+              <div className="rounded-xl border border-gray-200 bg-gray-50 p-8 text-center dark:border-gray-800 dark:bg-gray-950">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-sm font-bold text-blue-700 dark:bg-blue-950 dark:text-blue-300">
+                  ZIP
+                </div>
+                <h2 className="mt-4 text-xl font-bold text-gray-900 dark:text-white">
+                  Batch Converted Images
+                </h2>
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                  Your converted images are packaged together in a ZIP file.
+                </p>
+              </div>
             ) : (
               <textarea
                 value={share.value}
@@ -150,6 +162,14 @@ export default async function SharePage({
               className="mt-5 flex w-full items-center justify-center rounded-xl bg-emerald-600 px-5 py-3.5 font-semibold text-white transition hover:bg-emerald-700"
             >
               Download Image
+            </a>
+          ) : share.kind === "batch" ? (
+            <a
+              href={`/api/share/image?id=${encodeURIComponent(id)}`}
+              download={share.filename}
+              className="mt-5 flex w-full items-center justify-center rounded-xl bg-emerald-600 px-5 py-3.5 font-semibold text-white transition hover:bg-emerald-700"
+            >
+              Download ZIP
             </a>
           ) : (
             <ShareResultActions
@@ -189,6 +209,9 @@ export default async function SharePage({
     </main>
   );
 }
+
+
+
 
 
 

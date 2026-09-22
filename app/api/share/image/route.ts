@@ -18,7 +18,7 @@ export async function GET(request: Request) {
     if (Date.now() >= new Date(payload.expiresAt).getTime()) {
       return new Response("This share link has expired.", { status: 410 });
     }
-    if (payload.kind !== "image" || typeof payload.value !== "string") {
+    if ((payload.kind !== "image" && payload.kind !== "batch") || typeof payload.value !== "string") {
       return new Response("This share does not contain an image.", {
         status: 400,
       });
@@ -34,7 +34,7 @@ export async function GET(request: Request) {
       status: 200,
       headers: {
         "Content-Type": payload.contentType || "application/octet-stream",
-        "Content-Disposition": `inline; filename="${payload.filename || "shared-image"}"`,
+        "Content-Disposition": `${payload.kind === "batch" ? "attachment" : "inline"}; filename="${payload.filename || "shared-file"}"`,
         "Cache-Control": "private, max-age=3600",
       },
     });
@@ -45,3 +45,5 @@ export async function GET(request: Request) {
     });
   }
 }
+
+

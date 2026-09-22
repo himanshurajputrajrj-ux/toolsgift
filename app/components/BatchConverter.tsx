@@ -1,4 +1,5 @@
 ﻿"use client";
+import JSZip from "jszip";
 
 import { DragEvent, useRef, useState } from "react";
 
@@ -23,6 +24,9 @@ export default function BatchConverter() {
   const [loading, setLoading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const [error, setError] = useState("");
+  const [shareUrl, setShareUrl] = useState("");
+  const [shareLoading, setShareLoading] = useState(false);
+  const [shareMessage, setShareMessage] = useState("");
 
   const maxFileSize = 25 * 1024 * 1024;
 
@@ -35,6 +39,7 @@ export default function BatchConverter() {
   const addFiles = (selectedFiles: FileList | File[]) => {
     setError("");
     setResults([]);
+    clearShareState();
 
     const imageFiles = Array.from(selectedFiles).filter((file) =>
       file.type.startsWith("image/")
@@ -92,12 +97,14 @@ export default function BatchConverter() {
     );
 
     setResults([]);
+    clearShareState();
   };
 
   const clearAll = () => {
     setFiles([]);
     setPreviews([]);
     setResults([]);
+    clearShareState();
     setError("");
 
     if (inputRef.current) {
@@ -111,6 +118,7 @@ export default function BatchConverter() {
     setLoading(true);
     setError("");
     setResults([]);
+    clearShareState();
 
     const converted: ConvertedFile[] = [];
 
@@ -201,7 +209,94 @@ export default function BatchConverter() {
     }
   };
 
-  const downloadSingle = (result: ConvertedFile) => {
+  const createShareLink = async (): Promise<string> => {
+    if (results.length === 0) {
+      throw new Error("No converted images are available to share.");
+    }
+    if (shareUrl) {
+      return shareUrl;
+    }
+    setShareLoading(true);
+    setShareMessage("");
+    try {
+      const formData = new FormData();
+      formData.append("tool", "batch-converter");
+      formData.append("resultTitle", "Batch Image Converter Results");
+    formData.append("filename", "toolsgift-batch-converted-images.zip");
+      const shareFiles: File[] = [];
+      for (const result of results) {
+        const response = await fetch(result.url);
+        const blob = await response.blob();
+        if (blob.size > 4 * 1024 * 1024) {
+          throw new Error(`${result.name} is too large to share. Maximum size is 4 MB per image.`);
+        }
+        shareFiles.push(new File([blob], result.name, { type: blob.type }));
+      }
+      const totalSize = shareFiles.reduce((total, file) => total + file.size, 0);
+      if (totalSize > 20 * 1024 * 1024) {
+        throw new Error("Batch is too large to share. Maximum total share size is 20 MB.");
+      }
+      for (const shareFile of shareFiles) {
+        formData.append("images", shareFile, shareFile.name);
+      }
+      const shareResponse = await fetch("/api/share", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await shareResponse.json();
+      if (!shareResponse.ok || typeof data.shareUrl !== "string") {
+        throw new Error(data.error || "Failed to create share link.");
+      }
+      setShareUrl(data.shareUrl);
+      setShareMessage("Share link generated.");
+      return data.shareUrl;
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Failed to create share link.";
+      setShareMessage(message);
+      throw error;
+    } finally {
+      setShareLoading(false);
+    }
+  };
+  const copyShareLink = async () => {
+    try {
+      const url = await createShareLink();
+      await navigator.clipboard.writeText(url);
+      setShareMessage("Share link copied.");
+    } catch {
+      // Error message is already handled by createShareLink.
+    }
+  };
+  const shareResult = async () => {
+    try {
+      const url = await createShareLink();
+      if (navigator.share) {
+        await navigator.share({
+          title: "ToolsGift - Batch Image Converter",
+          text: "View my converted images on ToolsGift",
+          url,
+        });
+        setShareMessage("Share link ready.");
+      } else {
+        await navigator.clipboard.writeText(url);
+        setShareMessage("Share link copied.");
+      }
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        return;
+      }
+      if (!(error instanceof Error && error.message)) {
+        setShareMessage("Unable to share this result.");
+      }
+    }
+  };
+  const clearShareState = () => {
+    setShareUrl("");
+    setShareMessage("");
+  };  const downloadSingle = (result: ConvertedFile) => {
     const link = document.createElement("a");
 
     link.href = result.url;
@@ -212,14 +307,26 @@ export default function BatchConverter() {
     document.body.removeChild(link);
   };
 
-  const downloadAll = () => {
+  const downloadAll = async () => {
     if (results.length === 0) return;
 
-    results.forEach((result, index) => {
-      setTimeout(() => {
-        downloadSingle(result);
-      }, index * 250);
-    });
+    const zip = new JSZip();
+
+    for (const result of results) {
+      const response = await fetch(result.url);
+      const blob = await response.blob();
+      zip.file(result.name, blob);
+    }
+
+    const zipBlob = await zip.generateAsync({ type: "blob" });
+    const url = URL.createObjectURL(zipBlob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "toolsgift-batch-converted-images.zip";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -233,11 +340,11 @@ export default function BatchConverter() {
           </p>
 
           <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">
-            Batch Converter
+            Batch Image Converter
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-            Convert multiple images to JPG, PNG, or WebP at once.
+            Convert multiple images to JPG, PNG, or WebP in one go.
           </p>
         </div>
 
@@ -279,7 +386,7 @@ export default function BatchConverter() {
             </button>
 
             <p className="mt-4 text-xs text-slate-400">
-              JPG, PNG, WebP and other image formats • Max 25 MB each
+              JPG, PNG and WebP • Max 25 MB per file
             </p>
           </div>
 
@@ -380,7 +487,7 @@ export default function BatchConverter() {
             {/* Format */}
             <div className="mt-5">
               <label className="mb-3 block text-sm font-semibold text-slate-700">
-                Convert all images to
+                Output Format
               </label>
 
               <div className="grid grid-cols-3 gap-3">
@@ -558,24 +665,88 @@ export default function BatchConverter() {
             {/* Download All - ALWAYS VISIBLE */}
             <button
               type="button"
-              onClick={downloadAll}
+              onClick={() => {
+                results.forEach((result, index) => {
+                  setTimeout(() => downloadSingle(result), index * 250);
+                });
+              }}
               disabled={results.length === 0}
               className="mt-5 w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              Download All Converted Images
+              Download All Images
             </button>
 
+            <button
+              type="button"
+              onClick={downloadAll}
+              disabled={results.length === 0}
+              className="mt-3 w-full rounded-xl bg-slate-900 px-5 py-3.5 font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Download ZIP
+            </button>
+
+
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={createShareLink}
+                  disabled={results.length === 0 || shareLoading}
+                  className="w-full rounded-xl border border-blue-200 bg-white px-5 py-3.5 font-semibold text-blue-600 transition hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {shareLoading ? "Generating..." : "Generate Link"}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={shareResult}
+                  disabled={results.length === 0 || shareLoading}
+                  className="w-full rounded-xl bg-slate-900 px-5 py-3.5 font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Share
+                </button>
+              </div>
+
+              {shareUrl && (
+                <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                  <p className="mb-2 text-sm font-semibold text-slate-700">
+                    Share Link
+                  </p>
+                  <div className="flex flex-col gap-2 sm:flex-row">
+                    <input
+                      type="text"
+                      value={shareUrl}
+                      readOnly
+                      className="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none"
+                      aria-label="Share link"
+                    />
+                    <button
+                      type="button"
+                      onClick={copyShareLink}
+                      disabled={shareLoading}
+                      className="rounded-lg border border-blue-200 bg-white px-4 py-2.5 text-sm font-semibold text-blue-600 transition hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      Copy Link
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {shareMessage && (
+                <p className="mt-3 text-center text-sm text-slate-500">
+                  {shareMessage}
+                </p>
+              )}
           </div>
         </div>
       </div>
       <section className="mx-auto mt-10 max-w-4xl rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
         <h2 className="text-2xl font-bold text-slate-900">What is a Batch Image Converter?</h2>
         <p className="mt-3 leading-7 text-slate-600">
-          A batch image converter lets you convert multiple images in one process instead of converting each file individually. ToolsGift Batch Converter is designed to make multi-image conversion quick and convenient.
+          A batch image converter lets you convert multiple images in one process instead of converting each file individually. ToolsGift Batch Image Converter is designed to make multi-image conversion quick and convenient.
         </p>
         <h2 className="mt-7 text-2xl font-bold text-slate-900">How to Convert Multiple Images</h2>
         <p className="mt-3 leading-7 text-slate-600">
-          Upload multiple images, choose the output format, and start the conversion. The converted images are displayed as individual results, and you can download files separately or download all converted images together.
+          Upload multiple images, choose the output format, and start the conversion. The converted images are displayed as individual results, and you can download them separately or download all images together.
         </p>
         <h2 className="mt-7 text-2xl font-bold text-slate-900">Convert Multiple JPG, PNG and WebP Images</h2>
         <p className="mt-3 leading-7 text-slate-600">
@@ -589,5 +760,14 @@ export default function BatchConverter() {
     </main>
   );
 }
+
+
+
+
+
+
+
+
+
 
 
