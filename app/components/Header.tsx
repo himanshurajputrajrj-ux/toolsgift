@@ -46,7 +46,8 @@ type IconType =
   | "metadata"
   | "passport"
   | "batch"
-  | "qr";
+  | "qr"
+  | "video";
 
 type IconColor =
   | "red"
@@ -412,6 +413,12 @@ const utilityTools: Tool[] = [
     color: "orange",
   },
 ];const otherTools: Tool[] = [
+  {
+    title: "Video Ã¢â€ â€™ Link",
+    link: "/tools/video-to-link",
+    icon: "video",
+    color: "blue",
+  },
   {
     title: "Social Media QR Card",
     link: "/tools/social-qr-card",
@@ -1625,6 +1632,13 @@ function IconShape({
         </svg>
       );
 
+    case "video":
+      return (
+        <svg {...common}>
+          <rect x="3" y="6" width="15" height="12" rx="2" />
+          <path d="M18 10l4-2v8l-4-2z" />
+        </svg>
+      );
     case "qr":
       return (
         <svg {...common}>
