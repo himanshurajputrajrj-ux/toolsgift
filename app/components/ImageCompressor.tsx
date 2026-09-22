@@ -17,6 +17,9 @@ export default function ImageCompressor() {
   const [resultSize, setResultSize] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [shareUrl, setShareUrl] = useState("");
+  const [shareLoading, setShareLoading] = useState(false);
+  const [shareMessage, setShareMessage] = useState("");
 
   const formatSize = (bytes: number) => {
     if (bytes < 1024) return `${bytes} B`;
@@ -55,6 +58,8 @@ export default function ImageCompressor() {
     setPreview(previewUrl);
     setResult("");
     setResultSize(0);
+    setShareUrl("");
+    setShareMessage("");
   };
 
   const handleFileChange = (
@@ -158,6 +163,8 @@ export default function ImageCompressor() {
 
       setResult(resultUrl);
       setResultSize(blob.size);
+      setShareUrl("");
+      setShareMessage("");
     } catch (err) {
       console.error(err);
       setError(
@@ -196,6 +203,66 @@ export default function ImageCompressor() {
     document.body.removeChild(link);
   };
 
+  const createShareLink = async (): Promise<string> => {
+    if (!result || !file) throw new Error("No compressed image is available to share.");
+    if (shareUrl) return shareUrl;
+
+    setShareLoading(true);
+    setShareMessage("");
+
+    try {
+      const blob = await fetch(result).then((response) => response.blob());
+      if (blob.size > 4 * 1024 * 1024) {
+        throw new Error("Image is too large to share. Maximum size is 4 MB.");
+      }
+
+      const extension = format === "image/png" ? "png" : format === "image/webp" ? "webp" : "jpg";
+      const formData = new FormData();
+      formData.append("tool", "compressor");
+      formData.append("resultTitle", "Compressed Image");
+      formData.append("filename", `compressed-${file.name.replace(/\.[^/.]+$/, "")}.${extension}`);
+      formData.append("image", new File([blob], `compressed-image.${extension}`, { type: blob.type }));
+
+      const response = await fetch("/api/share", { method: "POST", body: formData });
+      const data = await response.json();
+      if (!response.ok || typeof data.shareUrl !== "string") {
+        throw new Error(data.error || "Failed to create share link.");
+      }
+
+      setShareUrl(data.shareUrl);
+      setShareMessage("Share link generated.");
+      return data.shareUrl;
+    } catch (error) {
+      setShareMessage(error instanceof Error ? error.message : "Failed to create share link.");
+      throw error;
+    } finally {
+      setShareLoading(false);
+    }
+  };
+
+  const copyShareLink = async () => {
+    try {
+      const url = await createShareLink();
+      await navigator.clipboard.writeText(url);
+      setShareMessage("Share link copied.");
+    } catch {}
+  };
+
+  const shareResult = async () => {
+    try {
+      const url = await createShareLink();
+      if (navigator.share) {
+        await navigator.share({ title: "Compressed Image", text: "Check out this compressed image from ToolsGift.", url });
+        setShareMessage("Share link ready.");
+      } else {
+        await navigator.clipboard.writeText(url);
+        setShareMessage("Share link copied.");
+      }
+    } catch {
+      setShareMessage("Unable to share this result.");
+    }
+  };
+
   const removeImage = () => {
     if (preview) {
       URL.revokeObjectURL(preview);
@@ -210,6 +277,8 @@ export default function ImageCompressor() {
     setResult("");
     setResultSize(0);
     setError("");
+    setShareUrl("");
+    setShareMessage("");
 
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
@@ -585,6 +654,26 @@ export default function ImageCompressor() {
             <span>⬇</span>
             Download Compressed Image
           </button>
+
+          {result && (
+            <div className="mt-4">
+              <div className="flex flex-wrap gap-3">
+                <button type="button" onClick={createShareLink} disabled={shareLoading} className="rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60">
+                  {shareLoading ? "Generating..." : "Generate Link"}
+                </button>
+                <button type="button" onClick={shareResult} disabled={shareLoading} className="rounded-xl bg-purple-600 px-5 py-3 font-semibold text-white transition hover:bg-purple-700 disabled:cursor-not-allowed disabled:opacity-60">
+                  Share
+                </button>
+              </div>
+              {shareUrl && (
+                <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                  <input type="text" value={shareUrl} readOnly aria-label="Share link" className="min-w-0 flex-1 rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-700 outline-none" />
+                  <button type="button" onClick={copyShareLink} disabled={shareLoading} className="rounded-xl border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-700 transition hover:bg-slate-100 disabled:opacity-60">Copy Link</button>
+                </div>
+              )}
+              {shareMessage && <p className="mt-3 text-sm text-slate-600">{shareMessage}</p>}
+            </div>
+          )}
 
         </section>
         <section className="mt-10 rounded-3xl bg-white p-6 shadow-sm md:p-8">

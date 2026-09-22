@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { DragEvent, useRef, useState } from "react";
+import ShareResult from "./ShareResult";
 
 export default function ImageResizer() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -497,6 +498,8 @@ export default function ImageResizer() {
             >
               Download Resized Image
             </button>
+
+            {result && <ShareResult key={result} tool="resizer" resultTitle="Resized Image" imageUrl={result} filename="resized-image.jpg" />}
 
           </div>
         </div>

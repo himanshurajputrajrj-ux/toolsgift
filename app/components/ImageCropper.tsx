@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { DragEvent, useRef, useState } from "react";
+import ShareResult from "./ShareResult";
 
 export default function ImageCropper() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -523,6 +524,8 @@ export default function ImageCropper() {
             >
               Download Cropped Image
             </button>
+
+            {result && <ShareResult key={result} tool="cropper" resultTitle="Cropped Image" imageUrl={result} filename="cropped-image.jpg" />}
 
           </div>
         </div>

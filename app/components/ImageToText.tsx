@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
+import ShareResult from "./ShareResult";
 import { createWorker } from "tesseract.js";
 type OCRResult = {
   name: string;
@@ -167,6 +168,7 @@ export default function ImageToText() {
             >
               Download Text
             </button>
+            <ShareResult key={result.text} tool="image-to-text" resultTitle="Extracted Image Text" value={result.text} filename={`${result.name.replace(/\.[^/.]+$/, "")}.txt`} />
             <button
               type="button"
               onClick={clearAndReset}

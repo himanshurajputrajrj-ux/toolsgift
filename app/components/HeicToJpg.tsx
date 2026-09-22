@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
+import ShareResult from "./ShareResult";
 type ConvertedFile = {
   blob: Blob;
   name: string;
@@ -278,6 +279,8 @@ export default function HeicToJpg() {
                 <span>⬇</span>
                 Download JPG
               </button>
+
+              <ShareResult key={result.preview} tool="heic-to-jpg" resultTitle="Converted JPG Image" imageUrl={result.preview} filename={result.name} />
 
               <button
                 type="button"

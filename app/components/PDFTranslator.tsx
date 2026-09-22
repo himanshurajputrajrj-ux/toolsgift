@@ -5,6 +5,7 @@ import {
   DragEvent,
   useState,
 } from "react";
+import ShareResult from "./ShareResult";
 import * as pdfjsLib from "pdfjs-dist";
 import { PDFDocument } from "pdf-lib";
 
@@ -701,6 +702,8 @@ export default function PDFTranslator() {
           >
             Download Translation
           </button>
+
+          {translatedText && <ShareResult key={translatedText} tool="pdf-translator" resultTitle="PDF Translation" value={translatedText} filename="pdf-translation.txt" />}
 
           {/* Reset */}
           <button

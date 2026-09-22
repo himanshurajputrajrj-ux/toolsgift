@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
 } from "react";
+import ShareResult from "./ShareResult";
 import * as pdfjsLib from "pdfjs-dist";
 import { createWorker } from "tesseract.js";
 
@@ -470,6 +471,7 @@ export default function OCRPDF() {
             >
               Download OCR Text
             </button>
+            {results.length > 0 && <ShareResult key={results.map((result) => result.text).join("|")} tool="ocr-pdf" resultTitle="OCR PDF Text" value={results.map((result) => result.text).join("\n\n")} filename="ocr-result.txt" />}
           </div>
 
           {/* Reset */}

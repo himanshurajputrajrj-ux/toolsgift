@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { DragEvent, useRef, useState } from "react";
+import ShareResult from "./ShareResult";
 
 export default function ImageEnhancer() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -582,6 +583,8 @@ export default function ImageEnhancer() {
             >
               Download Enhanced Image
             </button>
+
+            {result && <ShareResult key={result} tool="enhancer" resultTitle="Enhanced Image" imageUrl={result} filename="enhanced-image.jpg" />}
 
           </div>
         </div>

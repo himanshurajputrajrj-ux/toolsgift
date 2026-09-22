@@ -5,6 +5,7 @@ import {
   DragEvent,
   useState,
 } from "react";
+import ShareResult from "./ShareResult";
 import * as pdfjsLib from "pdfjs-dist";
 import { PDFDocument } from "pdf-lib";
 
@@ -674,6 +675,8 @@ export default function PDFToMarkdown() {
           >
             Download Markdown (.md)
           </button>
+
+          {markdown && <ShareResult key={markdown} tool="pdf-to-markdown" resultTitle="PDF Markdown" value={markdown} filename="pdf-markdown.md" />}
 
           {/* Reset */}
           <button

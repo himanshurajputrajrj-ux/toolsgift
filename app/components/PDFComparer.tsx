@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
 } from "react";
+import ShareResult from "./ShareResult";
 import { PDFDocument } from "pdf-lib";
 import * as pdfjsLib from "pdfjs-dist";
 
@@ -287,7 +288,10 @@ export default function PDFComparer() {
     firstPDF &&
     secondPDF &&
     firstPDF.pageCount === secondPDF.pageCount &&
-    differences.length === 0;
+      differences.length === 0;
+  const comparisonSummary = compared
+    ? `PDF comparison result\n\nPDF 1 pages: ${firstPDF?.pageCount || 0}\nPDF 2 pages: ${secondPDF?.pageCount || 0}\nStatus: ${identical ? "PDFs appear identical" : "Differences found"}\nDifferences: ${differences.length}`
+    : "";
 
   return (
     <section className="min-h-screen bg-slate-50 px-4 py-10">
@@ -646,6 +650,8 @@ export default function PDFComparer() {
               </div>
             )}
           </div>
+
+          {compared && <ShareResult key={comparisonSummary} tool="pdf-comparer" resultTitle="PDF Comparison Result" value={comparisonSummary} filename="pdf-comparison.txt" />}
 
           {/* Clear */}
           <button

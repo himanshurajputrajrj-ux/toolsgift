@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { DragEvent, useRef, useState } from "react";
+import ShareResult from "./ShareResult";
 
 export default function WebPConverter() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -388,6 +389,8 @@ export default function WebPConverter() {
             >
               Download WebP Image
             </button>
+
+            {result && <ShareResult key={result} tool="webp-converter" resultTitle="Converted WebP Image" imageUrl={result} filename="converted-image.webp" />}
 
           </div>
         </div>

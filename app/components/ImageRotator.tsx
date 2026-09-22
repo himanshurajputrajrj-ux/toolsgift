@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useRef, useState } from "react";
+import ShareResult from "./ShareResult";
 
 export default function ImageRotator() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -250,13 +251,10 @@ export default function ImageRotator() {
             </div>
 
             {downloadUrl && (
-              <a
-                href={downloadUrl}
-                download="ToolsGift-rotated-image.jpg"
-                className="block w-full mt-6 text-center px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition"
-              >
-                Download Rotated Image
-              </a>
+              <>
+                <a href={downloadUrl} download="ToolsGift-rotated-image.jpg" className="block w-full mt-6 text-center px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition">Download Rotated Image</a>
+                <ShareResult key={downloadUrl} tool="rotator" resultTitle="Rotated Image" imageUrl={downloadUrl} filename="ToolsGift-rotated-image.jpg" />
+              </>
             )}
           </>
         )}

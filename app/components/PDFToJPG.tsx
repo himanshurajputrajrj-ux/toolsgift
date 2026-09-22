@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
 } from "react";
+import ShareResult from "./ShareResult";
 import JSZip from "jszip";
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
@@ -533,6 +534,8 @@ export default function PDFToJPG() {
           >
             Download All JPGs (ZIP)
           </button>
+
+          {results.length > 0 && <ShareResult key={results.map((result) => result.url).join("|")} tool="pdf-to-jpg" resultTitle="PDF Pages as JPG Images" filename="toolsgift-pdf-pages.zip" images={results.map((result) => ({ url: result.url, name: `page-${result.page}.jpg` }))} />}
 
           <p className="mt-3 text-center text-xs text-slate-400">
             All PDF pages are rendered locally in your browser.

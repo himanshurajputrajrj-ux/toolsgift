@@ -1,23 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+type ShareImage = {
+  url: string;
+  name: string;
+};
 
 type ShareResultProps = {
   tool: string;
   resultTitle: string;
-  value: string;
+  value?: string;
   filename: string;
+  imageUrl?: string;
+  images?: ShareImage[];
 };
 
 export default function ShareResult({
   tool,
   resultTitle,
-  value,
+  value = "",
   filename,
+  imageUrl,
+  images,
 }: ShareResultProps) {
   const [shareUrl, setShareUrl] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const imagesKey = images?.map((image) => `${image.url}:${image.name}`).join("|") || "";
+
+  useEffect(() => {
+    setShareUrl("");
+    setMessage("");
+  }, [imageUrl, imagesKey, value]);
 
   const copyText = async (text: string): Promise<boolean> => {
     try {
@@ -52,7 +67,7 @@ export default function ShareResult({
       return shareUrl;
     }
 
-    if (!value.trim()) {
+    if (!value.trim() && !imageUrl && !images?.length) {
       setMessage("There is no result to share.");
       return null;
     }
@@ -61,18 +76,53 @@ export default function ShareResult({
     setMessage("");
 
     try {
-      const response = await fetch("/api/share", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          tool,
-          resultTitle,
-          value,
-          filename,
-        }),
-      });
+      let response: Response;
+
+      if (images?.length) {
+        const formData = new FormData();
+
+        formData.append("tool", tool);
+        formData.append("resultTitle", resultTitle);
+        formData.append("filename", filename);
+
+        for (const image of images) {
+          const blob = await fetch(image.url).then((result) => result.blob());
+
+          formData.append(
+            "images",
+            new File([blob], image.name, { type: blob.type })
+          );
+        }
+
+        response = await fetch("/api/share", {
+          method: "POST",
+          body: formData,
+        });
+      } else if (imageUrl) {
+        const blob = await fetch(imageUrl).then((result) => result.blob());
+        const formData = new FormData();
+
+        formData.append("tool", tool);
+        formData.append("resultTitle", resultTitle);
+        formData.append("filename", filename);
+        formData.append(
+          "image",
+          new File([blob], filename, { type: blob.type })
+        );
+
+        response = await fetch("/api/share", {
+          method: "POST",
+          body: formData,
+        });
+      } else {
+        response = await fetch("/api/share", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ tool, resultTitle, value, filename }),
+        });
+      }
 
       const data = await response.json();
 

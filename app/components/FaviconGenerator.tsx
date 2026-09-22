@@ -1,5 +1,6 @@
 "use client";
 import { ChangeEvent, DragEvent, useEffect, useRef, useState } from "react";
+import ShareResult from "./ShareResult";
 type FaviconSize = {
   label: string;
   size: number;
@@ -230,6 +231,7 @@ export default function FaviconGenerator() {
               Download All
             </button>
           </div>
+          <ShareResult key={icons.map((icon) => icon.url).join("|")} tool="favicon-generator" resultTitle="Generated Favicons" filename="toolsgift-favicons.zip" images={icons.map((icon) => ({ url: icon.url, name: `favicon-${icon.size}x${icon.size}.png` }))} />
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {icons.map((icon) => (
               <div

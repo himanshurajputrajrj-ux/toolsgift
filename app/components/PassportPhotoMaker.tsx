@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
 } from "react";
+import ShareResult from "./ShareResult";
 
 import { removeBackground } from "@imgly/background-removal";
 
@@ -2246,6 +2247,8 @@ export default function PassportPhotoMaker() {
 
               </div>
             </div>
+
+            {resultUrl && <ShareResult key={resultUrl} tool="passport-photo" resultTitle="Passport Photo" imageUrl={resultUrl} filename={`toolsgift-passport-photo.${background === "transparent" ? "png" : "jpg"}`} />}
 
             {/* PROCESSING INFO */}
             <div className="mt-5 rounded-2xl bg-[#f7f7f5] p-4">
