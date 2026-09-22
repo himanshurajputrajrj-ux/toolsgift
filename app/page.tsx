@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useMemo, useState } from "react";
 import SiteStructuredData from "./components/SiteStructuredData";
@@ -1190,6 +1190,13 @@ function IconShape({ type }: { type: IconType }) {
         </svg>
       );
 
+    case "video":
+      return (
+        <svg {...common}>
+          <rect x="3" y="6" width="15" height="12" rx="2" />
+          <path d="M18 10l4-2v8l-4-2z" />
+        </svg>
+      );
     case "pdfa":
       return (
         <svg {...common}>
