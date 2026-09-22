@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useRef, useState } from "react";
 type OutputFormat = "image/jpeg" | "image/webp";
 type CompressionResult = {
@@ -20,6 +20,9 @@ export default function CompressImageToKB() {
   const [resultHeight, setResultHeight] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [shareUrl, setShareUrl] = useState("");
+  const [shareLoading, setShareLoading] = useState(false);
+  const [shareMessage, setShareMessage] = useState("");
   const formatSize = (bytes: number) => {
     if (bytes < 1024) return `${bytes} B`;
     if (bytes < 1024 * 1024) {
@@ -234,7 +237,93 @@ export default function CompressImageToKB() {
       setLoading(false);
     }
   };
-  const downloadResult = () => {
+  const createShareLink = async (): Promise<string> => {
+    if (!result || !file) {
+      throw new Error("Please compress an image first.");
+    }
+    if (shareUrl) {
+      return shareUrl;
+    }
+    setShareLoading(true);
+    setShareMessage("");
+    try {
+      const response = await fetch(result);
+      const blob = await response.blob();
+      if (blob.size > 4 * 1024 * 1024) {
+        throw new Error("Compressed image is too large to share. Maximum size is 4 MB.");
+      }
+      const extension = format === "image/webp" ? "webp" : "jpg";
+      const formData = new FormData();
+      formData.append("tool", "compress-image-to-kb");
+      formData.append("resultTitle", "Compressed Image");
+      formData.append(
+        "filename",
+        `${file.name.replace(/\.[^/.]+$/, "")}-${targetKB || customKB}kb.${extension}`
+      );
+      formData.append(
+        "image",
+        new File([blob], `compressed-image.${extension}`, {
+          type: blob.type,
+        })
+      );
+      const shareResponse = await fetch("/api/share", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await shareResponse.json();
+      if (!shareResponse.ok || typeof data.shareUrl !== "string") {
+        throw new Error(data.error || "Failed to create share link.");
+      }
+      setShareUrl(data.shareUrl);
+      setShareMessage("Share link generated.");
+      return data.shareUrl;
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Failed to create share link.";
+      setShareMessage(message);
+      throw error;
+    } finally {
+      setShareLoading(false);
+    }
+  };
+  const copyShareLink = async () => {
+    try {
+      const url = await createShareLink();
+      await navigator.clipboard.writeText(url);
+      setShareMessage("Share link copied.");
+    } catch {
+      // Error message is already handled by createShareLink.
+    }
+  };
+  const shareResult = async () => {
+    try {
+      const url = await createShareLink();
+      if (navigator.share) {
+        await navigator.share({
+          title: "ToolsGift - Compress Image to KB",
+          text: "View my compressed image on ToolsGift",
+          url,
+        });
+        setShareMessage("Share link ready.");
+      } else {
+        await navigator.clipboard.writeText(url);
+        setShareMessage("Share link copied.");
+      }
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        return;
+      }
+      if (!(error instanceof Error && error.message)) {
+        setShareMessage("Unable to share this result.");
+      }
+    }
+  };
+  const clearShareState = () => {
+    setShareUrl("");
+    setShareMessage("");
+  };  const downloadResult = () => {
     if (!result || !file) return;
     const originalName = file.name.replace(
       /\.[^/.]+$/,
@@ -298,7 +387,7 @@ export default function CompressImageToKB() {
             className="flex min-h-[300px] cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-blue-200 bg-slate-50 px-6 text-center transition hover:border-blue-400 hover:bg-blue-50"
           >
             <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-blue-100 text-4xl">
-              🖼️
+              <svg viewBox="0 0 24 24" className="h-10 w-10 text-blue-500" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m5 17 4.5-4.5 3 3 2-2L19 17"/></svg>
             </div>
             <h2 className="text-2xl font-semibold text-slate-900">
               {file ? "Image Selected" : "Upload an image"}
@@ -465,7 +554,7 @@ export default function CompressImageToKB() {
               </>
             ) : (
               <>
-                <span>⚡</span>
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
                 Compress to {targetKB === 0 ? customKB || "Custom" : targetKB} KB
               </>
             )}
@@ -484,7 +573,7 @@ export default function CompressImageToKB() {
             <div className="flex min-h-[180px] items-center justify-center rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 text-center">
               <div>
                 <div className="text-3xl opacity-40">
-                  📦
+                  <svg viewBox="0 0 24 24" className="h-10 w-10" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M7 3h7l5 5v13H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M14 3v6h5"/><path d="m8 16 2-2 2 2 2-2 2 2"/></svg>
                 </div>
                 <p className="mt-3 text-sm font-medium text-slate-400">
                   No compressed result yet
@@ -528,7 +617,7 @@ export default function CompressImageToKB() {
                     <strong>{formatSize(resultSize)}</strong>
                   </p>
                   <p className="mt-1 text-xs text-slate-500">
-                    {resultWidth} × {resultHeight}px
+                    {resultWidth} Ã— {resultHeight}px
                   </p>
                 </div>
               </div>
@@ -545,9 +634,47 @@ export default function CompressImageToKB() {
                 onClick={downloadResult}
                 className="mt-6 flex w-full items-center justify-center gap-3 rounded-xl bg-green-600 px-6 py-4 font-bold text-white transition hover:bg-green-700"
               >
-                <span>⬇</span>
+                <span>â¬‡</span>
                 Download Compressed Image
               </button>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={createShareLink}
+                  disabled={shareLoading}
+                  className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-gray-600 dark:hover:bg-gray-800"
+                >
+                  {shareLoading ? "Generating..." : "Generate Link"}
+                </button>
+                <button
+                  type="button"
+                  onClick={shareResult}
+                  disabled={shareLoading}
+                  className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-gray-600 dark:hover:bg-gray-800"
+                >
+                  Share
+                </button>
+              </div>
+              {shareUrl && (
+                <div className="mt-3 space-y-2">
+                  <div className="break-all rounded-lg bg-gray-100 p-3 text-sm dark:bg-gray-800">
+                    {shareUrl}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={copyShareLink}
+                    disabled={shareLoading}
+                    className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-gray-600 dark:hover:bg-gray-800"
+                  >
+                    Copy Link
+                  </button>
+                </div>
+              )}
+              {shareMessage && (
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                  {shareMessage}
+                </p>
+              )}
             </>
           )}
         </section>
@@ -592,3 +719,11 @@ export default function CompressImageToKB() {
     </main>
   );
 }
+
+
+
+
+
+
+
+
