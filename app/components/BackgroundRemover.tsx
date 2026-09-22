@@ -34,6 +34,9 @@ export default function BackgroundRemover() {
   const [processing, setProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState("");
+  const [shareUrl, setShareUrl] = useState("");
+  const [shareLoading, setShareLoading] = useState(false);
+  const [shareMessage, setShareMessage] = useState("");
 
   useEffect(() => {
     return () => {
@@ -323,7 +326,88 @@ export default function BackgroundRemover() {
     }
   };
 
-  /* =========================
+  const createShareLink = async (): Promise<string> => {
+    if (!resultUrl) {
+      throw new Error("No processed image is available to share.");
+    }
+    if (shareUrl) {
+      return shareUrl;
+    }
+    setShareLoading(true);
+    setShareMessage("");
+    try {
+      const response = await fetch(resultUrl);
+      const imageBlob = await response.blob();
+      if (imageBlob.size > 4 * 1024 * 1024) {
+        throw new Error("Image is too large to share. Maximum size is 4 MB.");
+      }
+      const formData = new FormData();
+      formData.append("tool", "background-remover");
+      formData.append("resultTitle", "Background Remover Result");
+      const filename =
+        background === "transparent"
+          ? "background-removed.png"
+          : "background-changed.png";
+      formData.append("filename", filename);
+      formData.append("image", imageBlob, filename);
+      const shareResponse = await fetch("/api/share", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await shareResponse.json();
+      if (!shareResponse.ok || typeof data.shareUrl !== "string") {
+        throw new Error(data.error || "Failed to create share link.");
+      }
+      setShareUrl(data.shareUrl);
+      setShareMessage("Share link generated.");
+      return data.shareUrl;
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Failed to create share link.";
+      setShareMessage(message);
+      throw error;
+    } finally {
+      setShareLoading(false);
+    }
+  };
+  const copyShareLink = async () => {
+    try {
+      const url = await createShareLink();
+      await navigator.clipboard.writeText(url);
+      setShareMessage("Share link copied.");
+    } catch {
+      // Error message is already handled by createShareLink.
+    }
+  };
+  const shareResult = async () => {
+    try {
+      const url = await createShareLink();
+      if (navigator.share) {
+        await navigator.share({
+          title: "ToolsGift - Background Remover",
+          text: "View my processed image on ToolsGift",
+          url,
+        });
+        setShareMessage("Share link ready.");
+      } else {
+        await navigator.clipboard.writeText(url);
+        setShareMessage("Share link copied.");
+      }
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        return;
+      }
+      if (!(error instanceof Error && error.message)) {
+        setShareMessage("Unable to share this result.");
+      }
+    }
+  };
+  const clearShareState = () => {
+    setShareUrl("");
+    setShareMessage("");
+  };  /* =========================
      DOWNLOAD
   ========================= */
 
@@ -703,6 +787,52 @@ export default function BackgroundRemover() {
               Clear
             </button>
 
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <button
+                type="button"
+                onClick={createShareLink}
+                disabled={!resultUrl || shareLoading}
+                className="w-full rounded-xl border border-slate-300 bg-white px-5 py-3.5 font-bold text-[#202124] transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                {shareLoading ? "Generating..." : "Generate Link"}
+              </button>
+
+              <button
+                type="button"
+                onClick={shareResult}
+                disabled={!resultUrl || shareLoading}
+                className="w-full rounded-xl bg-[#202124] px-5 py-3.5 font-bold text-white transition hover:bg-black disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                Share
+              </button>
+            </div>
+
+            {shareUrl && (
+              <div className="mt-4 space-y-3">
+                <input
+                  type="text"
+                  value={shareUrl}
+                  readOnly
+                  className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-700 outline-none"
+                />
+
+                <button
+                  type="button"
+                  onClick={copyShareLink}
+                  className="w-full rounded-xl border border-slate-300 bg-white px-5 py-3.5 font-bold text-[#202124] transition hover:bg-slate-50"
+                >
+                  Copy Link
+                </button>
+              </div>
+            )}
+
+            {shareMessage && (
+              <div className="mt-3 rounded-xl bg-slate-50 px-4 py-3 text-center text-xs font-semibold text-slate-600">
+                {shareMessage}
+              </div>
+            )}
+
+
             {/* PROGRESS */}
 
             {processing && (
@@ -847,3 +977,8 @@ export default function BackgroundRemover() {
     </section>
   );
 }
+
+
+
+
+
