@@ -39,13 +39,13 @@ const platforms = [
   { key: "whatsapp", label: "WhatsApp", icon: "WA" },
   { key: "instagram", label: "Instagram", icon: "IG" },
   { key: "facebook", label: "Facebook", icon: "f" },
-  { key: "x", label: "X", icon: "𝕏" },
-  { key: "youtube", label: "YouTube", icon: "▶" },
+  { key: "x", label: "X", icon: "??" },
+  { key: "youtube", label: "YouTube", icon: "?" },
   { key: "linkedin", label: "LinkedIn", icon: "in" },
   { key: "telegram", label: "Telegram", icon: "TG" },
-  { key: "website", label: "Website", icon: "↗" },
+  { key: "website", label: "Website", icon: "?" },
   { key: "email", label: "Email", icon: "@" },
-  { key: "phone", label: "Phone", icon: "☎" },
+  { key: "phone", label: "Phone", icon: "?" },
 ] as const;
 
 const templates = [
@@ -158,7 +158,8 @@ export default function SocialQRCard() {
   const [template, setTemplate] = useState("black");
   const [accent, setAccent] = useState("#c9a227");
   const [cardQR, setCardQR] = useState("");
-  const [cardCreated, setCardCreated] = useState(false);
+  const [cardCreated, setCardCreated] = useState(false);  const [quickShareUrl, setQuickShareUrl] = useState("");
+  const [premiumShareUrl, setPremiumShareUrl] = useState("");  const [shareLoading, setShareLoading] = useState(false);  const [shareMessage, setShareMessage] = useState("");
 
   const activeLinks = useMemo(() => {
     return platforms
@@ -216,6 +217,85 @@ export default function SocialQRCard() {
     );
   };
 
+  const createShareLink = async (imageDataUrl: string, filename: string, resultTitle: string, existingShareUrl: string, setResultShareUrl: (url: string) => void): Promise<string> => {
+    if (!imageDataUrl) {
+      throw new Error("No result is available to share.");
+    }
+    if (existingShareUrl) {
+      return existingShareUrl;
+    }
+    setShareLoading(true);
+    setShareMessage("");
+    try {
+      const response = await fetch(imageDataUrl);
+      const imageBlob = await response.blob();
+      if (imageBlob.size > 4 * 1024 * 1024) {
+        throw new Error("Image is too large to share. Maximum size is 4 MB.");
+      }
+      const formData = new FormData();
+      formData.append("tool", "social-qr-card");
+      formData.append("resultTitle", resultTitle);
+      formData.append("filename", filename);
+      formData.append("image", imageBlob, filename);
+      const shareResponse = await fetch("/api/share", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await shareResponse.json();
+      if (!shareResponse.ok || typeof data.shareUrl !== "string") {
+        throw new Error(data.error || "Failed to create share link.");
+      }
+      setResultShareUrl(data.shareUrl);
+      setShareMessage("Share link generated.");
+      return data.shareUrl;
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Failed to create share link.";
+      setShareMessage(message);
+      throw error;
+    } finally {
+      setShareLoading(false);
+    }
+  };
+  const copyShareLink = async (imageDataUrl: string, filename: string, resultTitle: string, existingShareUrl: string, setResultShareUrl: (url: string) => void) => {
+    try {
+      const url = await createShareLink(imageDataUrl, filename, resultTitle, existingShareUrl, setResultShareUrl);
+      await navigator.clipboard.writeText(url);
+      setShareMessage("Share link copied.");
+    } catch {
+      // Error message is already handled by createShareLink.
+    }
+  };
+  const shareResult = async (imageDataUrl: string, filename: string, resultTitle: string, existingShareUrl: string, setResultShareUrl: (url: string) => void) => {
+    try {
+      const url = await createShareLink(imageDataUrl, filename, resultTitle, existingShareUrl, setResultShareUrl);
+      if (navigator.share) {
+        await navigator.share({
+          title: "ToolsGift - Social QR Card",
+          text: "View my Social QR Card result on ToolsGift",
+          url,
+        });
+        setShareMessage("Share link ready.");
+      } else {
+        await navigator.clipboard.writeText(url);
+        setShareMessage("Share link copied.");
+      }
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        return;
+      }
+      if (!(error instanceof Error && error.message)) {
+        setShareMessage("Unable to share this result.");
+      }
+    }
+  };
+  const clearShareState = () => {
+    setQuickShareUrl("");
+    setPremiumShareUrl("");
+    setShareMessage("");
+  };
   /* ---------------- PREMIUM CARD ---------------- */
 
   const generateCardQR = async () => {
@@ -261,13 +341,13 @@ export default function SocialQRCard() {
 
   /* ---------------- PREMIUM CARD PNG ---------------- */
 
-  const downloadPremiumCard = async () => {
-    if (!cardQR || !cardCreated) return;
+  const downloadPremiumCard = async (shouldDownload = true): Promise<string> => {
+    if (!cardQR || !cardCreated) return "";
 
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
 
-    if (!ctx) return;
+    if (!ctx) return "";
 
     /*
       Compact visiting-card ratio
@@ -521,13 +601,19 @@ export default function SocialQRCard() {
       DOWNLOAD
     */
 
-    downloadDataUrl(
-      canvas.toDataURL(
-        "image/png",
-        1
-      ),
-      "premium-qr-profile-card.png"
+    const dataUrl = canvas.toDataURL(
+      "image/png",
+      1
     );
+
+    if (shouldDownload) {
+      downloadDataUrl(
+        dataUrl,
+        "premium-qr-profile-card.png"
+      );
+    }
+
+    return dataUrl;
   };
 
   const clearQuick = () => {
@@ -671,10 +757,51 @@ export default function SocialQRCard() {
                 Generate QR Code
               </button>
 
+              <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={() => createShareLink(quickQR, "toolsgift-social-qr.png", "Social QR Card - Quick QR", quickShareUrl, setQuickShareUrl)}
+                  disabled={!quickQR || shareLoading}
+                  className="w-full rounded-xl border border-gray-300 bg-white px-5 py-3.5 font-bold text-gray-900 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800 sm:w-auto"
+                >
+                  {shareLoading ? "Generating..." : "Generate Link"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => shareResult(quickQR, "toolsgift-social-qr.png", "Social QR Card - Quick QR", quickShareUrl, setQuickShareUrl)}
+                  disabled={!quickQR || shareLoading}
+                  className="w-full rounded-xl bg-[#202124] px-5 py-3.5 font-bold text-white hover:bg-black disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
+                >
+                  Share
+                </button>
+              </div>
+              {quickShareUrl && (
+                <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+                  <input
+                    type="text"
+                    value={quickShareUrl}
+                    readOnly
+                    className="min-w-0 flex-1 rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 outline-none dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100"
+                    aria-label="Generated share link"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => copyShareLink(quickQR, "toolsgift-social-qr.png", "Social QR Card - Quick QR", quickShareUrl, setQuickShareUrl)}
+                    className="rounded-xl border border-gray-300 bg-white px-5 py-3 font-bold text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800"
+                  >
+                    Copy Link
+                  </button>
+                </div>
+              )}
+              {shareMessage && (
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                  {shareMessage}
+                </p>
+              )}
               <button
                 type="button"
                 onClick={clearQuick}
-                className="rounded-xl border border-slate-300 px-5 py-3.5 font-bold text-[#202124] hover:bg-slate-50"
+                className="mt-3 w-full rounded-xl border border-slate-300 px-5 py-3.5 font-bold text-[#202124] hover:bg-slate-50 sm:w-auto"
               >
                 Clear
               </button>
@@ -943,12 +1070,74 @@ export default function SocialQRCard() {
 
               <button
                 type="button"
-                onClick={downloadPremiumCard}
+                onClick={() => downloadPremiumCard()}
                 disabled={!cardCreated || !cardQR}
                 className="mt-3 w-full rounded-xl border border-slate-300 bg-white px-5 py-4 font-bold text-[#202124] transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Download Premium Card
-              </button>
+              </button>                <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      try {
+                        const imageDataUrl = await downloadPremiumCard(false);
+                        await createShareLink(
+                          imageDataUrl,
+                          "premium-qr-profile-card.png",
+                          "Social QR Card - Premium Card",
+                          premiumShareUrl,
+                          setPremiumShareUrl
+                        );
+                      } catch {}
+                    }}
+                    disabled={!cardQR || !cardCreated || shareLoading}
+                    className="w-full rounded-xl border border-gray-300 bg-white px-5 py-3.5 font-bold text-gray-900 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800 sm:w-auto"
+                  >
+                    {shareLoading ? "Generating..." : "Generate Link"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      try {
+                        const imageDataUrl = await downloadPremiumCard(false);
+                        await shareResult(
+                          imageDataUrl,
+                          "premium-qr-profile-card.png",
+                          "Social QR Card - Premium Card",
+                          premiumShareUrl,
+                          setPremiumShareUrl
+                        );
+                      } catch {}
+                    }}
+                    disabled={!cardQR || !cardCreated || shareLoading}
+                    className="w-full rounded-xl bg-[#202124] px-5 py-3.5 font-bold text-white hover:bg-black disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
+                  >
+                    Share
+                  </button>
+                </div>
+                {premiumShareUrl && (
+                  <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+                    <input
+                      type="text"
+                      value={premiumShareUrl}
+                      readOnly
+                      className="min-w-0 flex-1 rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 outline-none dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100"
+                      aria-label="Generated share link"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => navigator.clipboard.writeText(premiumShareUrl)}
+                      className="rounded-xl border border-gray-300 bg-white px-5 py-3 font-bold text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800"
+                    >
+                      Copy Link
+                    </button>
+                  </div>
+                )}
+                {shareMessage && (
+                  <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    {shareMessage}
+                  </p>
+                )}
 
               <button
                 type="button"
@@ -1105,4 +1294,26 @@ function darkTemplateForTemplate(template: string) {
     template === "navy"
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
