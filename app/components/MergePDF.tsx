@@ -178,7 +178,9 @@ export default function MergePDF() {
 
       const pdfBytes = await mergedPdf.save();
 
-      const blob = new Blob([new Uint8Array(pdfBytes).slice().buffer], { type: "application/pdf" });
+      const blob = new Blob([pdfBytes], {
+        type: "application/pdf",
+      });
 
       if (resultUrl) {
         URL.revokeObjectURL(resultUrl);
@@ -454,6 +456,3 @@ export default function MergePDF() {
     </div>
   );
 }
-
-
-

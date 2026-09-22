@@ -122,7 +122,9 @@ export default function PDFCompressor() {
         updateFieldAppearances: false,
       });
 
-      const blob = new Blob([new Uint8Array(pdfBytes).slice().buffer], { type: "application/pdf" });
+      const blob = new Blob([pdfBytes], {
+        type: "application/pdf",
+      });
 
       setResultBlob(blob);
       setResultUrl(URL.createObjectURL(blob));
@@ -396,7 +398,3 @@ export default function PDFCompressor() {
     </section>
   );
 }
-
-
-
-

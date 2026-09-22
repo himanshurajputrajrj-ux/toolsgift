@@ -262,7 +262,7 @@ export default function PDFSplitter() {
         const pdfBytes =
           await outputPdf.save();
 
-        const blob = new Blob([new Uint8Array(pdfBytes).slice().buffer], { type: "application/pdf" });
+        const blob = new Blob([pdfBytes], { type: "application/pdf" });
 
         const url =
           URL.createObjectURL(blob);
@@ -648,6 +648,3 @@ export default function PDFSplitter() {
     </div>
   );
 }
-
-
-
