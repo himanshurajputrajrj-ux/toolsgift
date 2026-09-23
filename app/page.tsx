@@ -502,455 +502,237 @@ const tools: Array<{
 ];
 
 export default function Home() {
-  const [search, setSearch] =
-    useState("");
+  const [search, setSearch] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
 
-  const filteredTools =
-    useMemo(() => {
-      const query =
-        search.trim().toLowerCase();
+  const filteredTools = useMemo(() => {
+    const query = search.trim().toLowerCase();
 
-      if (!query) {
-        return tools;
+    return tools.filter((tool) => {
+      const matchesSearch =
+        !query ||
+        tool.title.toLowerCase().includes(query) ||
+        tool.description.toLowerCase().includes(query) ||
+        tool.category.toLowerCase().includes(query);
+
+      let matchesCategory = true;
+
+      if (activeCategory === "Images") {
+        matchesCategory =
+          tool.category === "Image" ||
+          tool.title.toLowerCase().includes("image") ||
+          tool.title.toLowerCase().includes("jpg") ||
+          tool.title.toLowerCase().includes("webp") ||
+          tool.title.toLowerCase().includes("heic");
       }
 
-      return tools.filter(
-        (tool) =>
-          tool.title
-            .toLowerCase()
-            .includes(query) ||
-          tool.description
-            .toLowerCase()
-            .includes(query) ||
-          tool.category
-            .toLowerCase()
-            .includes(query)
-      );
-    }, [search]);
+      if (activeCategory === "PDF") {
+        matchesCategory =
+          tool.category === "PDF" ||
+          tool.title.toLowerCase().includes("pdf");
+      }
+
+      if (activeCategory === "Convert") {
+        const title = tool.title.toLowerCase();
+        matchesCategory =
+          title.includes("convert") ||
+          title.includes(" to ") ||
+          title.includes("converter") ||
+          title.includes("heic to") ||
+          title.includes("image to") ||
+          title.includes("word to") ||
+          title.includes("pdf to") ||
+          title.includes("html to");
+      }
+
+      if (activeCategory === "Compress") {
+        matchesCategory = tool.title.toLowerCase().includes("compress");
+      }
+
+      return matchesSearch && matchesCategory;
+    });
+  }, [search, activeCategory]);
+
+  const clearFilters = () => {
+    setSearch("");
+    setActiveCategory("All");
+  };
 
   return (
     <main className="min-h-screen bg-[#F8F5ED] text-[#202124]">
       <SiteStructuredData />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.10),transparent_42%)] before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(rgba(32,33,36,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(32,33,36,0.025)_1px,transparent_1px)] before:bg-[size:32px_32px] before:[mask-image:linear-gradient(to_bottom,black,transparent_80%)]">
+      <section className="relative overflow-hidden border-b border-black/[0.06] bg-[#F8F5ED]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.13),transparent_48%)]" />
+        <div className="pointer-events-none absolute -left-32 top-20 h-80 w-80 rounded-full bg-yellow-200/30 blur-3xl" />
+        <div className="pointer-events-none absolute -right-32 top-10 h-96 w-96 rounded-full bg-amber-100/40 blur-3xl" />
 
-        <div className="absolute left-[-120px] top-20 h-80 w-80 rounded-full bg-yellow-200/45 blur-3xl" />
-
-        <div className="absolute right-[-100px] top-10 h-96 w-96 rounded-full bg-amber-100/55 blur-3xl" />
-
-        <div className="relative mx-auto max-w-7xl px-5 pb-20 pt-24 text-center md:pb-28 md:pt-32">
-
-          <p className="mb-5 text-xs font-bold tracking-[0.28em] text-black/60">
-            TOOLSGIFT • FAST • SIMPLE • PRIVATE
-          </p>
-
-          <h1 className="text-5xl font-extrabold leading-[0.98] tracking-tight sm:text-6xl md:text-8xl">
-            Every file tool
-            <br />
-            <span className="font-normal">
-              in one place.
-            </span>
+        <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-20 text-center sm:px-8 md:pb-20 md:pt-28">
+          <h1 className="mx-auto max-w-4xl text-5xl font-extrabold leading-[1.02] tracking-[-0.04em] sm:text-6xl md:text-7xl">
+            Everything you need to
+            <span className="block font-normal">work with your files.</span>
           </h1>
 
-          <p className="mx-auto mt-7 max-w-2xl text-base leading-7 text-black/55 sm:text-lg">
-            Compress, convert, resize, edit and
-            transform your images and PDF files
-            with fast, simple tools built for
-            everyday use.
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-black/60 sm:text-lg">
+            Convert, compress, resize, edit and manage images, PDFs and
+            everyday files with simple online tools.
           </p>
 
-          <div className="mt-8">
-            <a
-              href="#tools"
-              className="inline-flex rounded-xl bg-[#202124] px-7 py-3.5 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#C9A227] hover:text-[#202124] hover:shadow-lg"
-            >
-              Explore All Tools →
-            </a>
-          </div>
+          <div className="mx-auto mt-9 max-w-2xl">
+            <label className="sr-only" htmlFor="tool-search">
+              Search tools
+            </label>
 
-        </div>
-
-      </section>
-
-      {/* Tools */}
-      <section
-        id="tools"
-        className="bg-white px-5 py-20 sm:px-8 md:py-28"
-      >
-
-        <div className="mx-auto max-w-7xl">
-
-          <div className="text-center">
-
-            <p className="text-xs font-bold tracking-[0.28em] text-black/60">
-              ALL TOOLS
-            </p>
-
-            <h2 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
-              Everything you need.
-            </h2>
-
-            <p className="mx-auto mt-4 max-w-xl leading-7 text-black/60">
-              Explore all ToolsGift tools or search
-              for exactly what you need.
-            </p>
-
-          </div>
-
-          {/* Search */}
-          <div className="mx-auto mt-12 max-w-3xl">
-
-            <div className="text-center">
-
-              <p className="text-xs font-bold tracking-[0.28em] text-black/60">
-                SEARCH & TOOLS
-              </p>
-
-              <h3 className="mt-3 text-2xl font-bold sm:text-3xl">
-                Find the right tool in seconds.
-              </h3>
-
-              <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-black/60 sm:text-base">
-                Search by tool name, file type,
-                or what you want to do.
-              </p>
-
-            </div>
-
-            <div className="mt-7 flex items-center rounded-2xl border border-black/10 bg-[#F3E7B3] px-5 py-4 shadow-sm transition focus-within:border-[#E5B900]/40 focus-within:bg-white focus-within:shadow-md">
-
-              <span className="mr-3 text-xl text-black/40">
+            <div className="flex items-center rounded-2xl border border-black/10 bg-white px-5 py-4 shadow-[0_12px_40px_rgba(32,33,36,0.08)] transition focus-within:border-[#C9A227]/60 focus-within:shadow-[0_16px_45px_rgba(32,33,36,0.12)]">
+              <span className="mr-3 text-xl text-black/35" aria-hidden="true">
                 ⌕
               </span>
 
               <input
+                id="tool-search"
                 type="text"
                 value={search}
-                onChange={(e) =>
-                  setSearch(e.target.value)
-                }
+                onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search tools, PDF, image, compress, convert..."
-                className="w-full bg-transparent text-base outline-none placeholder:text-black/60"
+                className="w-full bg-transparent text-base outline-none placeholder:text-black/40"
                 aria-label="Search tools"
               />
 
               {search && (
                 <button
                   type="button"
-                  onClick={() =>
-                    setSearch("")
-                  }
-                  className="ml-3 rounded-full px-2 text-lg text-black/40 transition hover:bg-black/5 hover:text-black"
+                  onClick={() => setSearch("")}
+                  className="ml-3 rounded-full px-2 text-lg text-black/35 transition hover:bg-black/5 hover:text-black"
                   aria-label="Clear search"
                 >
                   ×
                 </button>
               )}
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* Tools */}
+      <section id="tools" className="bg-white px-5 py-16 sm:px-8 md:py-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col gap-5 border-b border-black/[0.08] pb-7 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-black/45">
+                Tools
+              </p>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+                Find the tool you need.
+              </h2>
+              <p className="mt-2 max-w-xl text-sm leading-6 text-black/55 sm:text-base">
+                Browse the collection or search by what you want to do.
+              </p>
             </div>
 
-            {/* Filters */}
-            <div className="mt-4 flex flex-wrap justify-center gap-2">
-
-              <button
-                type="button"
-                onClick={() =>
-                  setSearch("")
-                }
-                className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
-                  !search
-                    ? "bg-[#F4C430] text-[#202124] shadow-sm"
-                    : "bg-[#F3E7B3] text-black/60 hover:bg-[#C9A227]/25 hover:text-black"
-                }`}
-              >
-                All Tools
-              </button>
-
-              <button
-                type="button"
-                onClick={() =>
-                  setSearch("image")
-                }
-                className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
-                  search.toLowerCase() ===
-                  "image"
-                    ? "bg-[#F4C430] text-[#202124] shadow-sm"
-                    : "bg-[#F3E7B3] text-black/60 hover:bg-[#C9A227]/25 hover:text-black"
-                }`}
-              >
-                Image Tools
-              </button>
-
-              <button
-                type="button"
-                onClick={() =>
-                  setSearch("pdf")
-                }
-                className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
-                  search.toLowerCase() ===
-                  "pdf"
-                    ? "bg-[#F4C430] text-[#202124] shadow-sm"
-                    : "bg-[#F3E7B3] text-black/60 hover:bg-[#C9A227]/25 hover:text-black"
-                }`}
-              >
-                PDF Tools
-              </button>
-
-              <button
-                type="button"
-                onClick={() =>
-                  setSearch("convert")
-                }
-                className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
-                  search.toLowerCase() ===
-                  "convert"
-                    ? "bg-[#F4C430] text-[#202124] shadow-sm"
-                    : "bg-[#F3E7B3] text-black/60 hover:bg-[#C9A227]/25 hover:text-black"
-                }`}
-              >
-                Convert
-              </button>
-
-              <button
-                type="button"
-                onClick={() =>
-                  setSearch("compress")
-                }
-                className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
-                  search.toLowerCase() ===
-                  "compress"
-                    ? "bg-[#F4C430] text-[#202124] shadow-sm"
-                    : "bg-[#F3E7B3] text-black/60 hover:bg-[#C9A227]/25 hover:text-black"
-                }`}
-              >
-                Compress
-              </button>
-
-            </div>
-
+            <p className="text-sm font-medium text-black/45">
+              {filteredTools.length}{" "}
+              {filteredTools.length === 1 ? "tool" : "tools"}
+            </p>
           </div>
 
-          {/* Search Result Count */}
-          <div className="mt-10">
-
-            {search.trim() && (
-              <p className="mb-5 text-sm font-medium text-black/60">
-                {filteredTools.length}{" "}
-                {filteredTools.length === 1
-                  ? "tool"
-                  : "tools"}{" "}
-                found
-              </p>
+          {/* Categories */}
+          <div className="mt-7 flex gap-2 overflow-x-auto pb-1">
+            {["All", "Images", "PDF", "Convert", "Compress"].map(
+              (category) => (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setActiveCategory(category)}
+                  className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition ${
+                    activeCategory === category
+                      ? "border-[#202124] bg-[#202124] text-white"
+                      : "border-black/10 bg-white text-black/60 hover:border-black/20 hover:text-black"
+                  }`}
+                >
+                  {category}
+                </button>
+              )
             )}
+          </div>
 
+          <div className="mt-9">
             {filteredTools.length > 0 ? (
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {filteredTools.map((tool) => (
+                  <a
+                    key={tool.title}
+                    href={tool.link}
+                    className="group relative flex min-h-[215px] flex-col overflow-hidden rounded-2xl border border-black/[0.09] bg-white p-6 text-left transition duration-200 hover:-translate-y-0.5 hover:border-[#C9A227]/50 hover:shadow-[0_16px_40px_rgba(32,33,36,0.10)]"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <ToolIcon
+                        type={tool.icon}
+                        color={getIconColor(tool)}
+                      />
 
-                {filteredTools.map(
-                  (tool) => (
-                    <a
-                      key={tool.title}
-                      href={tool.link}
-                      className="group min-h-[235px] relative overflow-hidden rounded-2xl border border-black/[0.09] bg-white p-7 shadow-[0_8px_30px_rgba(32,33,36,0.04)] before:absolute before:left-0 before:right-0 before:top-0 before:h-[2px] before:bg-[#C9A227] before:opacity-0 before:transition-opacity group-hover:before:opacity-100 text-left transition hover:-translate-y-1 hover:border-[#E5B900]/45 hover:shadow-[0_18px_45px_rgba(32,33,36,0.12)]"
-                    >
+                      <span className="rounded-full bg-[#F8F5ED] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-black/45">
+                        {tool.category}
+                      </span>
+                    </div>
 
-                      <div className="flex items-center justify-between">
+                    <h3 className="mt-7 text-lg font-bold tracking-tight">
+                      {tool.title}
+                    </h3>
 
-                        <ToolIcon
-                          type={tool.icon}
-                          color={getIconColor(tool)}
-                        />
+                    <p className="mt-2 text-sm leading-6 text-black/55">
+                      {tool.description}
+                    </p>
 
-                        <span className="rounded-full bg-[#F3E7B3] px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-black/55">
-                          {tool.category}
-                        </span>
-
-                      </div>
-
-                      <h3 className="mt-8 text-xl font-bold">
-                        {tool.title}
-                      </h3>
-
-                      <p className="mt-2 leading-6 text-black/60">
-                        {tool.description}
-                      </p>
-
-                      <div className="mt-6 text-sm font-bold transition group-hover:translate-x-1">
-                        Open tool →
-                      </div>
-
-                    </a>
-                  )
-                )}
-
+                    <div className="mt-auto pt-5 text-sm font-semibold text-black/70 transition group-hover:translate-x-1 group-hover:text-black">
+                      Open tool <span aria-hidden="true">→</span>
+                    </div>
+                  </a>
+                ))}
               </div>
             ) : (
-              <div className="rounded-2xl border border-[#E5B900]/20 bg-[#F3E7B3] px-6 py-16 text-center">
-
-                <div className="text-3xl">
+              <div className="rounded-2xl border border-black/[0.08] bg-[#F8F5ED] px-6 py-16 text-center">
+                <div className="text-3xl text-black/35" aria-hidden="true">
                   ⌕
                 </div>
 
-                <h3 className="mt-3 text-xl font-bold">
-                  No tools found
-                </h3>
+                <h3 className="mt-3 text-xl font-bold">No tools found</h3>
 
-                <p className="mt-2 text-black/60">
-                  Try searching for PDF, image,
-                  compress, convert, or another
-                  tool.
+                <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-black/55">
+                  Try a different search term or choose another category.
                 </p>
 
                 <button
                   type="button"
-                  onClick={() =>
-                    setSearch("")
-                  }
-                  className="mt-6 rounded-xl bg-[#202124] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#C9A227] hover:text-[#202124] hover:shadow-lg"
+                  onClick={clearFilters}
+                  className="mt-6 rounded-xl bg-[#202124] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#C9A227] hover:text-[#202124]"
                 >
-                  Show All Tools
+                  Clear search
                 </button>
-
               </div>
             )}
-
           </div>
-
         </div>
-
       </section>
 
-      {/* Features */}
-      <section
-        id="features"
-        className="px-5 py-20 sm:px-8 md:py-28"
-      >
-
-        <div className="mx-auto max-w-7xl">
-
-          <p className="text-xs font-bold tracking-[0.28em] text-black/60">
-            WHY ToolsGift
+      {/* Trust / Product statement */}
+      <section className="border-t border-black/[0.06] bg-[#F8F5ED] px-5 py-16 sm:px-8 md:py-20">
+        <div className="mx-auto max-w-5xl text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-black/45">
+            ToolsGift
           </p>
 
-          <h2 className="mt-3 text-4xl font-bold sm:text-5xl">
-            Powerful tools.
-            <br />
-            Simple workflow.
+          <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl">
+            Useful tools without the unnecessary complexity.
           </h2>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
-
-            <Feature
-              number="01"
-              title="Fast Processing"
-              text="Designed to make common image and PDF tasks quick."
-            />
-
-            <Feature
-              number="02"
-              title="Simple Interface"
-              text="Clean controls that make file processing easy."
-            />
-
-            <Feature
-              number="03"
-              title="Privacy First"
-              text="Browser-based processing whenever possible."
-            />
-
-          </div>
-
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-black/55 sm:text-base">
+            ToolsGift brings everyday file, document and utility tools
+            together in one clean place, so you can get the task done without
+            jumping between different websites.
+          </p>
         </div>
-
       </section>
-
-      {/* How It Works */}
-      <section
-        id="how-it-works"
-        className="bg-white px-5 py-20 sm:px-8 md:py-28"
-      >
-
-        <div className="mx-auto max-w-7xl">
-
-          <div className="text-center">
-
-            <p className="text-xs font-bold tracking-[0.28em] text-black/60">
-              HOW IT WORKS
-            </p>
-
-            <h2 className="mt-3 text-4xl font-bold sm:text-5xl">
-              Three simple steps.
-            </h2>
-
-          </div>
-
-          <div className="mt-14 grid gap-10 md:grid-cols-3">
-
-            <Step
-              number="01"
-              title="Upload"
-              text="Choose an image or PDF file."
-            />
-
-            <Step
-              number="02"
-              title="Process"
-              text="Select your tool and options."
-            />
-
-            <Step
-              number="03"
-              title="Download"
-              text="Download your finished file."
-            />
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* FAQ */}
-      <section
-        id="faq"
-        className="bg-white px-5 py-20 sm:px-8 md:py-28"
-      >
-
-        <div className="mx-auto max-w-4xl">
-
-          <h2 className="text-center text-4xl font-bold sm:text-5xl">
-            Frequently asked questions.
-          </h2>
-
-          <div className="mt-12 divide-y divide-black/10 border-y border-black/10">
-
-            <Faq
-              question="Is ToolsGift free?"
-              answer="The initial version is designed around free image and PDF utilities."
-            />
-
-            <Faq
-              question="Which formats will ToolsGift support?"
-              answer="JPG, PNG and WebP are supported in the current image architecture, with PDF tools also available."
-            />
-
-            <Faq
-              question="Does ToolsGift work on mobile?"
-              answer="Yes, the interface is designed for phones, tablets and desktops."
-            />
-
-            <Faq
-              question="Can I search for a tool?"
-              answer="Yes. Use the Search & Tools section to instantly find image and PDF tools by name, type, or description."
-            />
-
-          </div>
-
-        </div>
-
-      </section>
-
     </main>
   );
 }
@@ -1387,91 +1169,4 @@ function IconShape({ type }: { type: IconType }) {
       );
   }
 }
-
-
-function Feature({
-  number,
-  title,
-  text,
-}: {
-  number: string;
-  title: string;
-  text: string;
-}) {
-  return (
-    <div className="relative overflow-hidden rounded-2xl border border-black/[0.09] bg-white p-7 shadow-[0_8px_30px_rgba(32,33,36,0.04)] before:absolute before:left-0 before:right-0 before:top-0 before:h-[2px] before:bg-[#C9A227] before:opacity-0 before:transition-opacity group-hover:before:opacity-100">
-
-      <div className="text-xs font-bold text-black/60">
-        {number}
-      </div>
-
-      <h3 className="mt-10 text-2xl font-bold">
-        {title}
-      </h3>
-
-      <p className="mt-3 leading-7 text-black/60">
-        {text}
-      </p>
-
-    </div>
-  );
-}
-
-function Step({
-  number,
-  title,
-  text,
-}: {
-  number: string;
-  title: string;
-  text: string;
-}) {
-  return (
-    <div className="border-t border-black/15 pt-6">
-
-      <div className="text-xs font-bold text-black/60">
-        {number}
-      </div>
-
-      <h3 className="mt-5 text-2xl font-bold">
-        {title}
-      </h3>
-
-      <p className="mt-3 leading-7 text-black/60">
-        {text}
-      </p>
-
-    </div>
-  );
-}
-
-function Faq({
-  question,
-  answer,
-}: {
-  question: string;
-  answer: string;
-}) {
-  return (
-    <details className="py-6">
-
-      <summary className="cursor-pointer text-lg font-semibold">
-        {question}
-      </summary>
-
-      <p className="mt-4 leading-7 text-black/60">
-        {answer}
-      </p>
-
-    </details>
-  );
-}
-
-
-
-
-
-
-
-
 
