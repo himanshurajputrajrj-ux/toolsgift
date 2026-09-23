@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -414,7 +414,7 @@ const utilityTools: Tool[] = [
   },
 ];const otherTools: Tool[] = [
   {
-    title: "Video Ã¢â€ â€™ Link",
+    title: "Video \u2192 Link",
     link: "/tools/video-to-link",
     icon: "video",
     color: "blue",
@@ -442,7 +442,7 @@ export default function Header() {
       setThemeReady(true);
     }, []);
 
-  const toolsRef = useRef<HTMLDivElement>(null);
+  const toolsRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", darkMode);
@@ -500,7 +500,9 @@ export default function Header() {
     if (!themeReady) return null;
 
     return (
-      <header className={`sticky top-0 z-[100] border-b shadow-[0_8px_30px_rgba(32,33,36,0.04)] backdrop-blur-xl ${
+      <header
+      ref={toolsRef}
+      className={`sticky top-0 z-[100] border-b shadow-[0_8px_30px_rgba(32,33,36,0.04)] backdrop-blur-xl ${
   darkMode
     ? "border-white/[0.10] bg-[#182235]/95"
     : "border-black/[0.08] bg-[#f8f5ed]/95"
@@ -532,7 +534,6 @@ export default function Header() {
         <nav className="hidden items-center gap-7 md:flex">
 
           <div
-            ref={toolsRef}
             className="static"
           >
             <button
@@ -1172,9 +1173,8 @@ function ToolLink({
   compact?: boolean;
 }) {
   return (
-    <a
-      href={tool.link}
-      onClick={onSelect}
+    <Link href={tool.link}
+      onClick={(event) => { event.preventDefault(); window.location.assign(tool.link); }}
       title={tool.title}
       className={`group flex items-center gap-2 rounded-lg border border-transparent transition hover:border-[#c9a227]/25 hover:bg-[#fff9e8] hover:shadow-sm ${
         compact
@@ -1198,7 +1198,7 @@ function ToolLink({
         {tool.title}
       </span>
 
-    </a>
+    </Link>
   );
 }
 
@@ -1226,10 +1226,10 @@ function MobileCategory({
       <div className="overflow-hidden rounded-xl bg-white">
 
         {tools.map((tool) => (
-          <a
+          <Link
             key={tool.title}
             href={tool.link}
-            onClick={onSelect}
+            onClick={(event) => { event.preventDefault(); window.location.assign(tool.link); }}
             className="flex items-center gap-3 border-b border-black/[0.06] px-4 py-3 last:border-b-0"
           >
 
@@ -1246,7 +1246,7 @@ function MobileCategory({
               ?
             </span>
 
-          </a>
+          </Link>
         ))}
 
       </div>
@@ -1667,6 +1667,9 @@ function IconShape({
       );
   }
 }
+
+
+
 
 
 

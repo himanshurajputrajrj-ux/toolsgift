@@ -542,7 +542,7 @@ export default function Home() {
         <div className="relative mx-auto max-w-7xl px-5 pb-20 pt-24 text-center md:pb-28 md:pt-32">
 
           <p className="mb-5 text-xs font-bold tracking-[0.28em] text-black/60">
-            TOOLSGIFT â€¢ FAST â€¢ SIMPLE â€¢ PRIVATE
+            TOOLSGIFT • FAST • SIMPLE • PRIVATE
           </p>
 
           <h1 className="text-5xl font-extrabold leading-[0.98] tracking-tight sm:text-6xl md:text-8xl">
@@ -565,7 +565,7 @@ export default function Home() {
               href="#tools"
               className="inline-flex rounded-xl bg-[#202124] px-7 py-3.5 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#C9A227] hover:text-[#202124] hover:shadow-lg"
             >
-              Explore All Tools â†’
+              Explore All Tools →
             </a>
           </div>
 
@@ -621,7 +621,7 @@ export default function Home() {
             <div className="mt-7 flex items-center rounded-2xl border border-black/10 bg-[#F3E7B3] px-5 py-4 shadow-sm transition focus-within:border-[#E5B900]/40 focus-within:bg-white focus-within:shadow-md">
 
               <span className="mr-3 text-xl text-black/40">
-                âŒ•
+                ⌕
               </span>
 
               <input
@@ -644,7 +644,7 @@ export default function Home() {
                   className="ml-3 rounded-full px-2 text-lg text-black/40 transition hover:bg-black/5 hover:text-black"
                   aria-label="Clear search"
                 >
-                  Ã—
+                  ×
                 </button>
               )}
 
@@ -777,7 +777,7 @@ export default function Home() {
                       </p>
 
                       <div className="mt-6 text-sm font-bold transition group-hover:translate-x-1">
-                        Open tool â†’
+                        Open tool →
                       </div>
 
                     </a>
@@ -789,7 +789,7 @@ export default function Home() {
               <div className="rounded-2xl border border-[#E5B900]/20 bg-[#F3E7B3] px-6 py-16 text-center">
 
                 <div className="text-3xl">
-                  âŒ•
+                  ⌕
                 </div>
 
                 <h3 className="mt-3 text-xl font-bold">
