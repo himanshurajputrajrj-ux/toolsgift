@@ -112,10 +112,12 @@ export default function RootLayout({
           </main>
 
           <Footer />
+          <CookieConsent />
         </LanguageProvider>
       </body>
     </html>
   );
 }
+
 
 
