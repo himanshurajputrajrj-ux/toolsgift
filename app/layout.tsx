@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import { LanguageProvider } from "@/app/providers/LanguageProvider";
+import CookieConsent from "@/app/components/CookieConsent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,7 +60,7 @@ export const metadata: Metadata = {
     title: "ToolsGift | Fast & Simple Image & PDF Tools",
     description:
       "Fast and simple online image and PDF tools for converting, editing, compressing and managing files.",
-    url: "https://www.toolsgift.com",
+    url: "https://www.www.toolsgift.com",
     images: [
       {
         url: "/toolsgift-og.png",
@@ -102,14 +104,17 @@ export default function RootLayout({
       </head>
 
       <body className="min-h-full bg-[#f7f7f5] text-[#202124]">
-        <Header />
+        <LanguageProvider>
+          <Header />
 
-        <main className="min-h-[calc(100vh-80px)]">
-          {children}
-        </main>
+          <main className="min-h-[calc(100vh-80px)]">
+            {children}
+          </main>
 
-        <Footer />
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
 }
+
