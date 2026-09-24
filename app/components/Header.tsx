@@ -1,7 +1,9 @@
 ﻿"use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { languageOptions } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type Tool = {
   title: string;
@@ -427,45 +429,26 @@ const utilityTools: Tool[] = [
   },
 ];
 
-const allTools: Tool[] = [
-  ...imageTools,
-  ...organizeTools,
-  ...optimizeTools,
-  ...convertToPdfTools,
-  ...convertFromPdfTools,
-  ...editTools,
-  ...securityTools,
-  ...intelligenceTools,
-  ...utilityTools,
-  ...otherTools,
-];
-
-const allToolCategories = [
-  { title: "Image Tools", tools: imageTools },
-  { title: "Organize PDF", tools: organizeTools },
-  { title: "Optimize PDF", tools: optimizeTools },
-  { title: "Convert to PDF", tools: convertToPdfTools },
-  { title: "Convert from PDF", tools: convertFromPdfTools },
-  { title: "Edit PDF", tools: editTools },
-  { title: "PDF Security", tools: securityTools },
-  { title: "PDF Intelligence", tools: intelligenceTools },
-  { title: "Utility & Other", tools: [...utilityTools, ...otherTools] },
-];
-
 export default function Header() {
-  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const { locale, t, setLocale } = useLanguage();
+  const [toolsOpen, setToolsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [languageOpen, setLanguageOpen] = useState(false);
+  const [desktopDropdown, setDesktopDropdown] = useState<"all" | "images" | "pdf" | "convert" | null>(null);
+  const [moreOpen, setMoreOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [themeReady, setThemeReady] = useState(false);
-  const toolsRef = useRef<HTMLElement>(null);
+    useEffect(() => {
+      const savedTheme = localStorage.getItem("toolsgift-theme");
+      if (savedTheme === "dark") {
+        // Theme is restored from localStorage after mount.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setDarkMode(true);
+      }
+      setThemeReady(true);
+    }, []);
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("toolsgift-theme");
-    // Theme is restored from localStorage after mount.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setDarkMode(savedTheme === "dark");
-    setThemeReady(true);
-  }, []);
+  const toolsRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", darkMode);
@@ -478,571 +461,529 @@ export default function Header() {
         toolsRef.current &&
         !toolsRef.current.contains(event.target as Node)
       ) {
-        setOpenMenu(null);
+        setToolsOpen(false);
       }
     }
 
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => document.removeEventListener("mousedown", handleOutsideClick);
+    document.addEventListener(
+      "mousedown",
+      handleOutsideClick
+    );
+
+    return () => {
+      document.removeEventListener(
+        "mousedown",
+        handleOutsideClick
+      );
+    };
   }, []);
 
   useEffect(() => {
     function handleEscape(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setOpenMenu(null);
+        setToolsOpen(false);
         setMobileOpen(false);
+        setLanguageOpen(false);
       }
     }
 
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
+    document.addEventListener(
+      "keydown",
+      handleEscape
+    );
+
+    return () => {
+      document.removeEventListener(
+        "keydown",
+        handleEscape
+      );
+    };
   }, []);
 
   function closeMenus() {
-    setOpenMenu(null);
+    setToolsOpen(false);
     setMobileOpen(false);
+    setLanguageOpen(false);
+    setDesktopDropdown(null);
+    setMoreOpen(false);
   }
+    if (!themeReady) return null;
 
-  function goToTools() {
-    closeMenus();
-    window.location.assign("/#tools");
-  }
-
-  if (!themeReady) return null;
-
-  const navButton = (label: string, key: string) => (
-    <button
-      type="button"
-      onClick={() => setOpenMenu((value) => (value === key ? null : key))}
-      className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold transition ${
-        openMenu === key
-          ? darkMode
-            ? "bg-white/[0.08] text-white"
-            : "bg-black/[0.045] text-[#202124]"
-          : darkMode
-            ? "text-white/75 hover:bg-white/[0.05] hover:text-white"
-            : "text-black/65 hover:bg-black/[0.045] hover:text-[#202124]"
-      }`}
-      aria-expanded={openMenu === key}
-    >
-      {label}
-      <svg
-        width="13"
-        height="13"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        aria-hidden="true"
-        className={`transition-transform ${openMenu === key ? "rotate-180" : ""}`}
-      >
-        <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </button>
-  );
-
-  return (
-    <header
+    return (
+      <header
       ref={toolsRef}
-      className={`sticky top-0 z-[100] border-b backdrop-blur-xl transition-colors ${
-        darkMode
-          ? "border-white/[0.08] bg-[#101827]/95"
-          : "border-black/[0.07] bg-[#f8f5ed]/95"
-      }`}
-    >
-      <div
-        className={`absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#c9a227]/45 to-transparent ${
-          darkMode ? "opacity-70" : ""
-        }`}
-      />
+      className={`sticky top-0 z-[100] border-b shadow-[0_8px_30px_rgba(32,33,36,0.04)] backdrop-blur-xl ${
+  darkMode
+    ? "border-white/[0.10] bg-[#182235]/95"
+    : "border-black/[0.08] bg-[#f8f5ed]/95"
+}`}>
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#c9a227]/50 to-transparent" />
 
-      <div className="mx-auto flex h-[70px] max-w-7xl items-center px-5 sm:px-8">
-        {/* Brand */}
+      {/* =====================================================
+          MAIN HEADER
+      ===================================================== */}
+
+      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-8">
+
+        {/* Logo */}
         <Link
           href="/"
-          onClick={closeMenus}
-          className="group flex shrink-0 items-center tracking-[-0.035em]"
+          className="group flex shrink-0 items-center gap-1 text-2xl tracking-tight"
           aria-label="ToolsGift Home"
         >
+          <span className="font-black text-[#202124]">Tools</span><span className="font-medium text-[#202124]">Gift</span>
           <span
-            className={`text-[25px] font-black ${
-              darkMode ? "text-white" : "text-[#202124]"
-            }`}
-          >
-            Tools
-          </span>
-          <span
-            className={`text-[25px] font-medium ${
-              darkMode ? "text-white" : "text-[#202124]"
-            }`}
-          >
-            Gift
-          </span>
-          <span
-            className="ml-1 -mt-3 text-[13px] font-black text-[#c9a227] transition-transform duration-300 group-hover:rotate-12"
+            className="ml-0.5 -mt-3 text-sm font-bold text-[#c9a227] transition-transform duration-300 group-hover:rotate-12"
             aria-hidden="true"
           >
             ✦
           </span>
         </Link>
 
-        {/* Desktop navigation */}
-        <nav className="ml-auto hidden items-center gap-1 md:flex">
-          {navButton("All Tools", "all")}
-          {navButton("Images", "images")}
-          {navButton("PDF", "pdf")}
-          {navButton("Convert", "convert")}
+        {/* Desktop Navigation */}
+        <nav className="hidden items-center gap-1 lg:flex">
+          <DesktopDropdown label={t.nav.allTools} open={desktopDropdown === "all"} onClick={() => { setDesktopDropdown((v) => v === "all" ? null : "all"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
+            <DesktopAllToolsContent onSelect={closeMenus} />
+          </DesktopDropdown>
 
-          <button
-            type="button"
-            onClick={goToTools}
-            className={`rounded-lg px-3 py-2 text-sm font-semibold transition ${
-              darkMode
-                ? "text-white/75 hover:bg-white/[0.05] hover:text-white"
-                : "text-black/65 hover:bg-black/[0.045] hover:text-[#202124]"
-            }`}
-          >
-            Search
-          </button>
+          <DesktopDropdown label={t.nav.images} open={desktopDropdown === "images"} onClick={() => { setDesktopDropdown((v) => v === "images" ? null : "images"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
+            <DesktopToolList tools={imageTools} onSelect={closeMenus} />
+          </DesktopDropdown>
 
-          {/* Existing Dark / Light toggle — behavior intentionally preserved */}
-          <button
-            type="button"
-            onClick={() => setDarkMode((value) => !value)}
-            className={`ml-2 flex h-10 shrink-0 items-center justify-center gap-2 rounded-xl border px-3.5 text-sm font-bold shadow-sm transition ${
-              darkMode
-                ? "border-[#c9a227]/35 bg-[#1e293b] text-[#f4d77b] hover:bg-[#334155]"
-                : "border-[#c9a227]/20 bg-white/75 text-[#202124] hover:bg-white"
-            }`}
-            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-            title={darkMode ? "Light mode" : "Dark mode"}
-          >
-            <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
-            {darkMode ? (
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <circle cx="12" cy="12" r="4" />
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" strokeLinecap="round" />
-              </svg>
-            ) : (
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-                <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.7 6.7 0 0 0 9.8 9.8Z" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            )}
-          </button>
+          <DesktopDropdown label={t.nav.pdf} open={desktopDropdown === "pdf"} onClick={() => { setDesktopDropdown((v) => v === "pdf" ? null : "pdf"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
+            <DesktopPdfContent onSelect={closeMenus} />
+          </DesktopDropdown>
 
-          {/* Six-dot secondary menu */}
-          <button
-            type="button"
-            onClick={() => setOpenMenu((value) => (value === "more" ? null : "more"))}
-            className={`ml-1 flex h-10 w-10 items-center justify-center rounded-xl border transition ${
-              openMenu === "more"
-                ? darkMode
-                  ? "border-[#c9a227]/50 bg-[#c9a227] text-[#202124]"
-                  : "border-[#202124] bg-[#202124] text-white"
-                : darkMode
-                  ? "border-white/10 bg-white/[0.04] text-white hover:border-[#c9a227]/40 hover:text-[#f4d77b]"
-                  : "border-black/10 bg-white/75 text-[#202124] shadow-sm hover:border-[#c9a227]/45 hover:bg-white"
-            }`}
-            aria-label="More navigation"
-            aria-expanded={openMenu === "more"}
-            title="More"
-          >
-            <span className="grid grid-cols-2 gap-[3px]" aria-hidden="true">
-              {Array.from({ length: 6 }).map((_, index) => (
-                <span key={index} className="h-[4px] w-[4px] rounded-full bg-current" />
-              ))}
-            </span>
-          </button>
+          <DesktopDropdown label={t.nav.convert} open={desktopDropdown === "convert"} onClick={() => { setDesktopDropdown((v) => v === "convert" ? null : "convert"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
+            <DesktopConvertContent onSelect={closeMenus} />
+          </DesktopDropdown>
+
+          <Link href="/#tools" className="rounded-full px-3.5 py-2.5 text-sm font-semibold text-black/65 transition hover:bg-black/[0.045] hover:text-[#202124]">
+            {t.nav.search}
+          </Link>
         </nav>
 
-        {/* Mobile */}
-        <div className="ml-auto flex items-center gap-2 md:hidden">
-          <button
-            type="button"
-            onClick={() => setDarkMode((value) => !value)}
-            className={`flex h-10 items-center justify-center gap-2 rounded-xl border px-3 text-xs font-bold shadow-sm transition ${
-              darkMode
-                ? "border-[#c9a227]/35 bg-[#1e293b] text-[#f4d77b]"
-                : "border-[#c9a227]/20 bg-white/75 text-[#202124]"
-            }`}
-            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-            title={darkMode ? "Light mode" : "Dark mode"}
-          >
-            <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
-            {darkMode ? (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <circle cx="12" cy="12" r="4" />
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" strokeLinecap="round" />
-              </svg>
-            ) : (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-                <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.7 6.7 0 0 0 9.8 9.8Z" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            )}
+        {/* Desktop Language Selector */}
+        <div className="relative hidden lg:block">
+          <button type="button" onClick={() => { setLanguageOpen((v) => !v); setToolsOpen(false); }} className={`flex h-10 items-center justify-center gap-2 rounded-xl border px-3.5 text-sm font-bold shadow-sm transition ${darkMode ? "border-white/10 bg-[#1e293b] text-white hover:bg-[#334155]" : "border-black/10 bg-white/70 text-[#202124] hover:bg-white"}`} aria-expanded={languageOpen}>
+            <span aria-hidden="true">🌐</span><span>{languageOptions.find((language) => language.code === locale)?.name ?? "Language"}</span>
           </button>
+          {languageOpen && <div className={`absolute right-0 top-full mt-3 w-80 rounded-2xl border p-3 shadow-2xl ${darkMode ? "border-white/10 bg-[#151f32]" : "border-[#c9a227]/20 bg-[#fffdf8]"}`}>
+            <div className="grid max-h-[65vh] grid-cols-2 gap-1 overflow-y-auto">
+              {languageOptions.map((language) => <button key={language.code} type="button" onClick={() => { setLocale(language.code); setLanguageOpen(false); }} className={`rounded-xl px-3 py-2.5 text-left text-sm font-semibold transition ${darkMode ? "text-slate-200 hover:bg-white/10" : "text-black/75 hover:bg-black/[0.05]"}`}>{language.name}</button>)}
+            </div>
+          </div>}
+        </div>
 
-          <button
-            type="button"
-            onClick={() => setMobileOpen((value) => !value)}
-            className={`flex h-10 w-10 items-center justify-center rounded-xl border shadow-sm transition ${
-              darkMode
-                ? "border-white/10 bg-white/[0.04] text-white"
-                : "border-black/10 bg-white/75 text-[#202124]"
-            }`}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-          >
-            {mobileOpen ? (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-                <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" />
-              </svg>
-            ) : (
-              <span className="grid grid-cols-2 gap-[3px]" aria-hidden="true">
-                {Array.from({ length: 6 }).map((_, index) => (
-                  <span key={index} className="h-[4px] w-[4px] rounded-full bg-current" />
-                ))}
-              </span>
-            )}
+        {/* Dark Mode Toggle */}
+        <button
+          type="button"
+          onClick={() => setDarkMode((value) => !value)}
+          className={`hidden h-10 shrink-0 items-center justify-center gap-2 rounded-xl border px-4 text-sm font-bold shadow-sm transition md:flex ${
+  darkMode
+    ? "border-[#c9a227]/40 bg-[#1e293b] text-[#f4d77b] hover:bg-[#334155]"
+    : "border-[#c9a227]/20 bg-white/70 text-[#202124] hover:bg-white"
+}`}
+          aria-label={darkMode ? t.nav.lightMode : t.nav.darkMode}
+          title={darkMode ? t.nav.lightMode : t.nav.darkMode}
+        >
+            <span>{darkMode ? t.nav.lightMode : t.nav.darkMode}</span>
+          {darkMode ? (
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                strokeLinecap="round"
+              />
+            </svg>
+          ) : (
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              aria-hidden="true"
+            >
+              <path
+                d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.7 6.7 0 0 0 9.8 9.8Z"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
+        </button>
+
+        {/* Desktop Secondary Menu */}
+        <div className="relative hidden lg:block">
+          <button type="button" onClick={() => { setToolsOpen(false); setLanguageOpen(false); setDesktopDropdown(null); setMoreOpen((v) => !v); }} className={`flex h-10 w-10 items-center justify-center rounded-xl border shadow-sm transition ${darkMode ? "border-white/10 bg-[#1e293b] text-white hover:bg-[#334155]" : "border-black/10 bg-white/70 text-[#202124] hover:bg-white"}`} aria-label={t.nav.more} title={t.nav.more}>
+            <span className="grid grid-cols-2 gap-1">{Array.from({length:4}).map((_,i)=><span key={i} className="h-1.5 w-1.5 rounded-full bg-current" />)}</span>
           </button>
         </div>
+
+        {moreOpen && (
+          <div className={`absolute right-5 top-[66px] z-[130] hidden w-56 rounded-2xl border p-2 shadow-2xl lg:block ${darkMode ? "border-white/10 bg-[#151f32]" : "border-[#c9a227]/20 bg-[#fffdf8]"}`}>
+            {[
+              [t.nav.features, "/#features"],
+              [t.nav.howItWorks, "/#how-it-works"],
+              [t.nav.faq, "/#faq"],
+              [t.footer.about, "/about"],
+              [t.footer.contact, "/contact"],
+              [t.footer.privacy, "/privacy"],
+              [t.footer.terms, "/terms"],
+              [t.footer.cookies, "/cookies"],
+              [t.footer.disclaimer, "/disclaimer"],
+            ].map(([label, href]) => (
+              <Link key={href} href={href} onClick={() => setMoreOpen(false)} className={`block rounded-xl px-3 py-2.5 text-sm font-semibold ${darkMode ? "text-slate-200 hover:bg-white/10" : "text-black/75 hover:bg-black/[0.05]"}`}>
+                {label}
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {/* Mobile Button */}
+        <button
+          type="button"
+          onClick={() =>
+            setMobileOpen((value) => !value)
+          }
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border shadow-sm md:hidden ${
+  darkMode
+    ? "border-[#c9a227]/30 bg-[#1e293b] text-[#f4d77b]"
+    : "border-[#c9a227]/20 bg-white/70 text-[#202124]"
+}`}
+          aria-label="Open menu"
+        >
+          {mobileOpen ? (
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+            >
+              <path
+                d="M6 6l12 12M18 6 6 18"
+                strokeLinecap="round"
+              />
+            </svg>
+          ) : (
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+            >
+              <path
+                d="M4 6h16M4 12h16M4 18h16"
+                strokeLinecap="round"
+              />
+            </svg>
+          )}
+        </button>
+
       </div>
 
-      {/* Desktop dropdowns */}
-      {openMenu && !["more"].includes(openMenu) && (
-        <div
-          className={`absolute left-0 right-0 top-full border-b shadow-[0_24px_70px_rgba(32,33,36,0.16)] ${
-            darkMode
-              ? "border-white/10 bg-[#111a2a]"
-              : "border-black/[0.07] bg-[#fffdf8]"
-          }`}
-        >
-          <div className="mx-auto max-w-7xl px-5 py-6 sm:px-8">            {openMenu === "all" && (
-              <div>
-                <div className="mb-4 flex items-end justify-between gap-4">
-                  <div>
-                    <p className={`text-[10px] font-extrabold uppercase tracking-[0.16em] ${darkMode ? "text-[#d8b94e]" : "text-[#9b7818]"}`}>
-                      ToolsGift
-                    </p>
-                    <h2 className={`mt-1 text-xl font-bold ${darkMode ? "text-white" : "text-[#202124]"}`}>
-                      All Tools
-                    </h2>
-                  </div>
-                  <span className={`text-xs font-medium ${darkMode ? "text-white/40" : "text-black/40"}`}>
-                    {allTools.length} tools
-                  </span>
-                </div>
-                <div className="grid max-h-[62vh] grid-cols-2 gap-x-6 gap-y-5 overflow-y-auto pr-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-                  {allToolCategories.map((category) => (
-                    <div key={category.title}>
-                      <MenuHeading title={category.title} darkMode={darkMode} />
-                      <div className="space-y-0.5">
-                        {category.tools.map((tool) => (
-                          <ToolLink key={`${category.title}-${tool.title}`} tool={tool} onSelect={closeMenus} compact darkMode={darkMode} />
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
 
+      {/* =====================================================
+          MOBILE MENU
+      ===================================================== */}
 
-            {openMenu === "images" && (
-              <div>
-                <MenuIntro title="Image Tools" text="Work with images quickly and easily." darkMode={darkMode} />
-                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
-                  {imageTools.map((tool) => (
-                    <ToolLink key={tool.title} tool={tool} onSelect={closeMenus} darkMode={darkMode} />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {openMenu === "pdf" && (
-              <div className="grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
-                <ToolColumn title="Organize PDF" tools={organizeTools} onSelect={closeMenus} darkMode={darkMode} />
-                <ToolColumn title="Optimize PDF" tools={optimizeTools} onSelect={closeMenus} darkMode={darkMode} />
-                <ToolColumn title="Edit PDF" tools={editTools} onSelect={closeMenus} darkMode={darkMode} />
-                <ToolColumn title="PDF Security" tools={securityTools} onSelect={closeMenus} darkMode={darkMode} />
-                <ToolColumn title="PDF Intelligence" tools={intelligenceTools} onSelect={closeMenus} darkMode={darkMode} />
-              </div>
-            )}
-
-            {openMenu === "convert" && (
-              <div className="grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
-                <ToolColumn title="Convert to PDF" tools={convertToPdfTools} onSelect={closeMenus} darkMode={darkMode} />
-                <ToolColumn title="Convert from PDF" tools={convertFromPdfTools} onSelect={closeMenus} darkMode={darkMode} />
-                <ToolColumn title="Image Conversion" tools={imageTools.filter((tool) => tool.title.includes("Converter") || tool.title.includes("WebP") || tool.title.includes("HEIC"))} onSelect={closeMenus} darkMode={darkMode} />
-                <ToolColumn title="Other Tools" tools={otherTools} onSelect={closeMenus} darkMode={darkMode} />
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* Six-dot secondary menu */}
-      {openMenu === "more" && (
-        <div
-          className={`absolute right-5 top-full mt-3 w-[300px] overflow-hidden rounded-2xl border shadow-[0_24px_70px_rgba(32,33,36,0.18)] sm:right-8 ${
-            darkMode
-              ? "border-white/10 bg-[#111a2a]"
-              : "border-black/[0.07] bg-[#fffdf8]"
-          }`}
-        >
-          <div className="p-3">
-            <div className={`rounded-xl px-4 py-3 ${darkMode ? "bg-white/[0.04]" : "bg-[#f8f5ed]"}`}>
-              <p className={`text-[10px] font-extrabold uppercase tracking-[0.18em] ${darkMode ? "text-[#d8b94e]" : "text-[#9b7818]"}`}>
-                ToolsGift
-              </p>
-              <p className={`mt-1 text-sm font-semibold ${darkMode ? "text-white" : "text-[#202124]"}`}>
-                More from ToolsGift
-              </p>
-            </div>
-
-            <div className="mt-2 grid grid-cols-2 gap-1">
-              {[
-                ["/about", "About"],
-                ["/contact", "Contact"],
-                ["/privacy", "Privacy"],
-                ["/terms", "Terms"],
-                ["/cookies", "Cookies"],
-                ["/disclaimer", "Disclaimer"],
-              ].map(([href, label]) => (
-                <Link
-                  key={href}
-                  href={href}
-                  onClick={closeMenus}
-                  className={`rounded-xl px-3 py-3 text-sm font-semibold transition ${
-                    darkMode
-                      ? "text-white/70 hover:bg-white/[0.06] hover:text-white"
-                      : "text-black/65 hover:bg-[#fff9e8] hover:text-black"
-                  }`}
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
-
-            <div className={`mt-2 border-t pt-2 ${darkMode ? "border-white/10" : "border-black/[0.07]"}`}>
-              <Link
-                href="/#tools"
-                onClick={closeMenus}
-                className={`block rounded-xl px-3 py-3 text-sm font-semibold ${
-                  darkMode
-                    ? "text-white/70 hover:bg-white/[0.06] hover:text-white"
-                    : "text-black/65 hover:bg-[#fff9e8] hover:text-black"
-                }`}
-              >
-                Search & All Tools →
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Mobile menu */}
       {mobileOpen && (
-        <div
-          className={`absolute left-0 right-0 top-full border-b shadow-[0_24px_60px_rgba(32,33,36,0.16)] md:hidden ${
-            darkMode
-              ? "border-white/10 bg-[#111a2a]"
-              : "border-black/[0.07] bg-[#fffdf8]"
-          }`}
-        >
-          <div className="max-h-[calc(100vh-70px)] overflow-y-auto px-5 py-5">
-            <div className="mb-4">
-              <p className={`text-[10px] font-extrabold uppercase tracking-[0.2em] ${darkMode ? "text-[#d8b94e]" : "text-[#9b7818]"}`}>
-                ToolsGift
-              </p>
-              <h2 className={`mt-1 text-xl font-bold ${darkMode ? "text-white" : "text-[#202124]"}`}>
-                Browse tools
-              </h2>
+        <div className={`absolute left-0 right-0 top-full border-b shadow-xl md:hidden ${
+  darkMode
+    ? "border-[#c9a227]/20 bg-[#151f32]"
+    : "border-[#c9a227]/20 bg-[#fffdf8]"
+}`}>
+
+          <div className="max-h-[calc(100vh-72px)] overflow-y-auto px-5 py-5">
+
+            <div className="mb-3">
+              <span className={`text-lg font-extrabold ${
+  darkMode ? "text-white" : "text-[#202124]"
+}`}>
+                {t.nav.menu}
+              </span>
             </div>
-            <MobileNavButton label="All Tools" open={openMenu === "all"} onClick={() => setOpenMenu(openMenu === "all" ? null : "all")} darkMode={darkMode} />
-            {openMenu === "all" && (
-              <div className="mt-2 space-y-4">
-                {allToolCategories.map((category) => (
-                  <MobileCategory key={category.title} title={category.title} tools={category.tools} onSelect={closeMenus} darkMode={darkMode} />
-                ))}
-              </div>
-            )}
-
-            <MobileNavButton label="Images" open={openMenu === "images"} onClick={() => setOpenMenu(openMenu === "images" ? null : "images")} darkMode={darkMode} />
-            {openMenu === "images" && (
-              <div className="mt-2">
-                <MobileCategory title="Image Tools" tools={imageTools} onSelect={closeMenus} darkMode={darkMode} />
-              </div>
-            )}
-
-            <MobileNavButton label="PDF" open={openMenu === "pdf"} onClick={() => setOpenMenu(openMenu === "pdf" ? null : "pdf")} darkMode={darkMode} />
-            {openMenu === "pdf" && (
-              <div className="mt-2">
-                <MobileCategory title="PDF Tools" tools={[...organizeTools, ...optimizeTools, ...editTools, ...securityTools, ...intelligenceTools]} onSelect={closeMenus} darkMode={darkMode} />
-              </div>
-            )}
-
-            <MobileNavButton label="Convert" open={openMenu === "convert"} onClick={() => setOpenMenu(openMenu === "convert" ? null : "convert")} darkMode={darkMode} />
-            {openMenu === "convert" && (
-              <div className="mt-2">
-                <MobileCategory title="Convert to PDF" tools={convertToPdfTools} onSelect={closeMenus} darkMode={darkMode} />
-                <MobileCategory title="Convert from PDF" tools={convertFromPdfTools} onSelect={closeMenus} darkMode={darkMode} />
-              </div>
-            )}
 
             <button
               type="button"
-              onClick={goToTools}
-              className={`block w-full border-b py-4 text-left text-base font-bold ${darkMode ? "border-white/10 text-white/80" : "border-black/10 text-black/75"}`}
+              onClick={() =>
+                setToolsOpen((value) => !value)
+              }
+              className={`flex w-full items-center justify-between border-b py-4 text-base font-bold ${
+  darkMode
+    ? "border-white/10 text-white"
+    : "border-black/10 text-black"
+}`}
             >
-              Search
+              <span>{t.nav.tools}</span>
+
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                className={`transition-transform ${
+                  toolsOpen
+                    ? "rotate-180"
+                    : ""
+                }`}
+              >
+                <path
+                  d="m6 9 6 6 6-6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </button>
 
-            <div className="mt-4 grid grid-cols-2 gap-2">
-              {[
-                ["/about", "About"],
-                ["/contact", "Contact"],
-                ["/privacy", "Privacy"],
-                ["/terms", "Terms"],
-                ["/cookies", "Cookies"],
-                ["/disclaimer", "Disclaimer"],
-              ].map(([href, label]) => (
-                <Link
-                  key={href}
-                  href={href}
-                  onClick={closeMenus}
-                  className={`rounded-xl border px-4 py-3 text-center text-sm font-bold ${
-                    darkMode
-                      ? "border-white/10 text-white/75"
-                      : "border-black/10 text-black/70"
-                  }`}
+            {toolsOpen && (
+              <div className={`mt-3 rounded-2xl border border-[#c9a227]/15 p-3 ${
+  darkMode ? "bg-[#1e293b]" : "bg-[#f8f5ed]"
+}`}>
+
+                <MobileCategory
+                  title={t.categories.imageTools}
+                  tools={imageTools}
+                  onSelect={closeMenus}
+                />
+
+                <MobileCategory
+                  title={t.categories.organizePdf}
+                  tools={organizeTools}
+                  onSelect={closeMenus}
+                />
+
+                <MobileCategory
+                  title={t.categories.optimizePdf}
+                  tools={optimizeTools}
+                  onSelect={closeMenus}
+                />
+
+                <MobileCategory
+                  title={t.categories.convertToPdf}
+                  tools={convertToPdfTools}
+                  onSelect={closeMenus}
+                />
+
+                <MobileCategory
+                  title={t.categories.convertFromPdf}
+                  tools={convertFromPdfTools}
+                  onSelect={closeMenus}
+                />
+
+                <MobileCategory
+                  title={t.categories.editPdf}
+                  tools={editTools}
+                  onSelect={closeMenus}
+                />
+
+                <MobileCategory
+                  title={t.categories.pdfSecurity}
+                  tools={securityTools}
+                  onSelect={closeMenus}
+                />
+
+                <MobileCategory
+                  title={t.categories.pdfIntelligence}
+                  tools={intelligenceTools}
+                  onSelect={closeMenus}
+                />
+
+                <MobileCategory
+                  title="Other Tools"
+                  tools={otherTools}
+                  onSelect={closeMenus}
+                />
+
+              </div>
+            )}
+
+            <div className={`mt-3 border-t pt-2 ${
+  darkMode ? "border-white/10" : "border-black/10"
+}`}>
+
+              <Link
+                href="/#features"
+                onClick={closeMenus}
+                className={`block py-4 text-base font-bold ${
+  darkMode ? "text-slate-300" : "text-black/75"
+}`}
+              >
+                {t.nav.features}
+              </Link>
+
+              <Link
+                href="/#how-it-works"
+                onClick={closeMenus}
+                className={`block py-4 text-base font-bold ${
+  darkMode ? "text-slate-300" : "text-black/75"
+}`}
+              >
+                {t.nav.howItWorks}
+              </Link>
+
+              {/* LANGUAGE */}
+              <div
+                className={`border-b ${
+  darkMode ? "border-white/10" : "border-black/10"
+}`}
+              >
+                <button
+                  type="button"
+                  onClick={() => setLanguageOpen((value) => !value)}
+                  className={`flex w-full items-center justify-between py-4 text-base font-bold ${
+  darkMode ? "text-slate-300" : "text-black/75"
+}`}
                 >
-                  {label}
-                </Link>
-              ))}
+                  <span className="flex items-center gap-3">
+                    <span aria-hidden="true">🌐</span>
+                    <span>{languageOptions.find((language) => language.code === locale)?.name ?? t.nav.language}</span>
+                  </span>
+
+                  <svg
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    className={`transition-transform ${
+                      languageOpen ? "rotate-180" : ""
+                    }`}
+                  >
+                    <path
+                      d="m6 9 6 6 6-6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+
+                {languageOpen && (
+                  <div
+                    className={`mb-3 max-h-64 overflow-y-auto rounded-2xl border p-2 ${
+  darkMode
+    ? "border-white/10 bg-[#1e293b]"
+    : "border-black/10 bg-[#f8f5ed]"
+}`}
+                  >
+                    {languageOptions.map((language) => (
+                      <button
+                        key={language.code}
+                        type="button"
+                        onClick={() => {
+                          setLocale(language.code);
+                          setLanguageOpen(false);
+                        }}
+                        className={`block w-full rounded-xl px-3 py-3 text-left text-sm font-semibold transition ${
+  darkMode
+    ? "text-slate-200 hover:bg-white/10"
+    : "text-black/75 hover:bg-black/[0.05]"
+}`}
+                      >
+                        {language.name}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setDarkMode((value) => !value)}
+                className={`my-2 flex w-full items-center justify-between rounded-xl border px-4 py-3 text-sm font-bold ${
+  darkMode
+    ? "border-white/10 bg-[#1e293b] text-white"
+    : "border-black/10 bg-white text-black"
+}`}
+                aria-label={darkMode ? t.nav.lightMode : t.nav.darkMode}
+              >
+                <span>{darkMode ? t.nav.lightMode : t.nav.darkMode}</span>
+              </button>
+
+              <Link
+                href="/#faq"
+                onClick={closeMenus}
+                className={`block py-4 text-base font-bold ${
+  darkMode ? "text-slate-300" : "text-black/75"
+}`}
+              >
+                {t.nav.faq}
+              </Link>
+
             </div>
+
+            <Link
+              href="/#tools"
+              onClick={closeMenus}
+              className="mt-3 block rounded-xl bg-[#202124] px-5 py-3 text-center text-sm font-bold text-white"
+            >
+              {t.nav.getStarted}
+            </Link>
+
           </div>
+
         </div>
       )}
+
     </header>
   );
 }
 
-function MenuHeading({
-  title,
-  darkMode,
-}: {
-  title: string;
-  darkMode: boolean;
-}) {
-  return (
-    <h3
-      className={`mb-3 text-[10px] font-extrabold uppercase tracking-[0.14em] ${
-        darkMode ? "text-white/35" : "text-black/40"
-      }`}
-    >
-      {title}
-    </h3>
-  );
-}
 
-function MenuIntro({
-  title,
-  text,
-  darkMode,
-}: {
-  title: string;
-  text: string;
-  darkMode: boolean;
-}) {
+function DesktopDropdown({ label, open, onClick, children }: { label: string; open: boolean; onClick: () => void; children: ReactNode }) {
   return (
-    <div className="mb-5">
-      <h2 className={`text-xl font-bold ${darkMode ? "text-white" : "text-[#202124]"}`}>
-        {title}
-      </h2>
-      <p className={`mt-1 text-sm ${darkMode ? "text-white/50" : "text-black/50"}`}>
-        {text}
-      </p>
+    <div className="relative">
+      <button type="button" onClick={onClick} className={`flex items-center gap-1.5 rounded-full px-3.5 py-2.5 text-sm font-semibold transition ${open ? "bg-[#202124] text-white" : "text-black/65 hover:bg-black/[0.045] hover:text-[#202124]"}`}>
+        {label}
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      </button>
+      {open && <div className="absolute left-0 top-full z-[120] mt-3 w-[720px] overflow-hidden rounded-2xl border border-[#c9a227]/20 bg-[#fffdf8] p-5 shadow-[0_28px_80px_rgba(32,33,36,0.20)]">{children}</div>}
     </div>
   );
 }
 
-function MobileNavButton({
-  label,
-  open,
-  onClick,
-  darkMode,
-}: {
-  label: string;
-  open: boolean;
-  onClick: () => void;
-  darkMode: boolean;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`flex w-full items-center justify-between border-b py-4 text-base font-bold ${
-        darkMode
-          ? "border-white/10 text-white"
-          : "border-black/10 text-black"
-      }`}
-    >
-      <span>{label}</span>
-      <svg
-        width="17"
-        height="17"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        className={`transition-transform ${open ? "rotate-180" : ""}`}
-        aria-hidden="true"
-      >
-        <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </button>
-  );
+function DesktopToolList({ tools, onSelect }: { tools: Tool[]; onSelect: () => void }) {
+  return <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">{tools.map((tool) => <ToolLink key={tool.title} tool={tool} onSelect={onSelect} />)}</div>;
 }
 
-function MenuColumn({
-  title,
-  tools,
-  darkMode,
-  onSelect,
-}: {
-  title: string;
-  tools: Tool[];
-  darkMode: boolean;
-  onSelect: () => void;
-}) {
-  return (
-    <div>
-      <h3 className={`mb-3 text-[10px] font-extrabold uppercase tracking-[0.14em] ${darkMode ? "text-white/35" : "text-black/40"}`}>
-        {title}
-      </h3>
-      <div className="space-y-1">
-        {tools.map((tool) => (
-          <Link
-            key={tool.title}
-            href={tool.link}
-            onClick={(event) => {
-              event.preventDefault();
-              onSelect();
-              window.location.assign(tool.link);
-            }}
-            className={`flex items-center gap-2 rounded-lg px-2 py-2 text-xs font-semibold transition ${
-              darkMode
-                ? "text-white/75 hover:bg-white/[0.06] hover:text-white"
-                : "text-black/65 hover:bg-[#fff9e8] hover:text-black"
-            }`}
-          >
-            <ToolIcon type={tool.icon} color={tool.color} />
-            <span className="truncate">{tool.title}</span>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
+function DesktopAllToolsContent({ onSelect }: { onSelect: () => void }) {
+  const { t } = useLanguage();
+  return <div className="max-h-[70vh] overflow-y-auto">
+    <div className="mb-5 rounded-2xl bg-[#202124] px-5 py-4 text-white"><h2 className="text-lg font-extrabold">{t.nav.allTools}</h2><p className="mt-1 text-xs font-medium text-white/55">{t.home.toolsDescription}</p></div>
+    <ToolSection title={t.categories.imageTools} tools={imageTools} onSelect={onSelect} />
+    <div className="mt-7"><SectionTitle title={t.home.pdf} /><div className="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-3 lg:grid-cols-4">
+      <ToolColumn title={t.categories.organizePdf} tools={organizeTools} onSelect={onSelect}/><ToolColumn title={t.categories.optimizePdf} tools={optimizeTools} onSelect={onSelect}/><ToolColumn title={t.categories.convertToPdf} tools={convertToPdfTools} onSelect={onSelect}/><ToolColumn title={t.categories.convertFromPdf} tools={convertFromPdfTools} onSelect={onSelect}/><ToolColumn title={t.categories.editPdf} tools={editTools} onSelect={onSelect}/><ToolColumn title={t.categories.pdfSecurity} tools={securityTools} onSelect={onSelect}/><ToolColumn title={t.categories.pdfIntelligence} tools={intelligenceTools} onSelect={onSelect}/>
+    </div></div>
+    <div className="mt-7"><SectionTitle title={t.categories.utilityOther} /><DesktopToolList tools={utilityTools} onSelect={onSelect}/></div>
+    <div className="mt-7"><SectionTitle title={t.categories.utilityOther} /><DesktopToolList tools={otherTools} onSelect={onSelect}/></div>
+  </div>;
+}
+
+function DesktopPdfContent({ onSelect }: { onSelect: () => void }) {
+  const { t } = useLanguage();
+  return <div className="grid grid-cols-2 gap-6 sm:grid-cols-3"><ToolColumn title={t.categories.organizePdf} tools={organizeTools} onSelect={onSelect}/><ToolColumn title={t.categories.optimizePdf} tools={optimizeTools} onSelect={onSelect}/><ToolColumn title={t.categories.editPdf} tools={editTools} onSelect={onSelect}/><ToolColumn title={t.categories.pdfSecurity} tools={securityTools} onSelect={onSelect}/><ToolColumn title={t.categories.pdfIntelligence} tools={intelligenceTools} onSelect={onSelect}/></div>;
+}
+
+function DesktopConvertContent({ onSelect }: { onSelect: () => void }) {
+  const { t } = useLanguage();
+  return <div className="grid grid-cols-2 gap-6"><ToolColumn title={t.categories.convertToPdf} tools={convertToPdfTools} onSelect={onSelect}/><ToolColumn title={t.categories.convertFromPdf} tools={convertFromPdfTools} onSelect={onSelect}/></div>;
 }
 
 /* =========================================================
@@ -1131,17 +1072,15 @@ function ToolColumn({
   title,
   tools,
   onSelect,
-  darkMode = false,
 }: {
   title: string;
   tools: Tool[];
   onSelect: () => void;
-  darkMode?: boolean;
 }) {
   return (
     <div>
 
-      <h3 className={`mb-3 text-[10px] font-extrabold uppercase tracking-[0.12em] ${darkMode ? "text-white/35" : "text-black/40"}`}>
+      <h3 className="mb-3 text-[10px] font-extrabold uppercase tracking-[0.12em] text-black/40">
         {title}
       </h3>
 
@@ -1153,7 +1092,6 @@ function ToolColumn({
             tool={tool}
             onSelect={onSelect}
             compact
-            darkMode={darkMode}
           />
         ))}
 
@@ -1172,18 +1110,16 @@ function ToolLink({
   tool,
   onSelect,
   compact = false,
-  darkMode = false,
 }: {
   tool: Tool;
   onSelect: () => void;
   compact?: boolean;
-  darkMode?: boolean;
 }) {
   return (
     <Link href={tool.link}
       onClick={(event) => { event.preventDefault(); window.location.assign(tool.link); }}
       title={tool.title}
-      className={`group flex items-center gap-2 rounded-lg border border-transparent transition ${darkMode ? "text-white/75 hover:border-white/10 hover:bg-white/[0.05] hover:text-white" : "hover:border-[#c9a227]/25 hover:bg-[#fff9e8] hover:shadow-sm"} ${
+      className={`group flex items-center gap-2 rounded-lg border border-transparent transition hover:border-[#c9a227]/25 hover:bg-[#fff9e8] hover:shadow-sm ${
         compact
           ? "px-1.5 py-1.5"
           : "px-2.5 py-2"
@@ -1196,7 +1132,7 @@ function ToolLink({
       />
 
       <span
-        className={`min-w-0 truncate font-semibold ${darkMode ? "text-white/75" : "text-[#202124]"} ${
+        className={`min-w-0 truncate font-semibold text-[#202124] ${
           compact
             ? "text-[11px]"
             : "text-[12px]"
@@ -1218,28 +1154,26 @@ function MobileCategory({
   title,
   tools,
   onSelect,
-  darkMode = false,
 }: {
   title: string;
   tools: Tool[];
   onSelect: () => void;
-  darkMode?: boolean;
 }) {
   return (
     <section className="mb-5 last:mb-0">
 
-      <h3 className={`mb-2 px-2 text-[10px] font-extrabold uppercase tracking-[0.14em] ${darkMode ? "text-white/35" : "text-black/40"}`}>
+      <h3 className="mb-2 px-2 text-[10px] font-extrabold uppercase tracking-[0.14em] text-black/40">
         {title}
       </h3>
 
-      <div className={`overflow-hidden rounded-xl ${darkMode ? "bg-white/[0.04]" : "bg-white"}`}>
+      <div className="overflow-hidden rounded-xl bg-white">
 
         {tools.map((tool) => (
           <Link
             key={tool.title}
             href={tool.link}
-            onClick={(event) => { event.preventDefault(); onSelect(); window.location.assign(tool.link); }}
-            className={`flex items-center gap-3 border-b px-4 py-3 last:border-b-0 ${darkMode ? "border-white/[0.07]" : "border-black/[0.06]"}`}
+            onClick={(event) => { event.preventDefault(); window.location.assign(tool.link); }}
+            className="flex items-center gap-3 border-b border-black/[0.06] px-4 py-3 last:border-b-0"
           >
 
             <ToolIcon
@@ -1247,12 +1181,12 @@ function MobileCategory({
               color={tool.color}
             />
 
-            <span className={`truncate text-[13px] font-bold ${darkMode ? "text-white/85" : "text-[#202124]"}`}>
+            <span className="truncate text-[13px] font-bold text-[#202124]">
               {tool.title}
             </span>
 
-            <span className={darkMode ? "ml-auto text-white/25" : "ml-auto text-black/25"}>
-              →
+            <span className="ml-auto text-black/25">
+              ?
             </span>
 
           </Link>
