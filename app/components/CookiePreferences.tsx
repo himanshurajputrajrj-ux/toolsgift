@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useEffect, useState } from "react";
 import {
   CONSENT_KEY,
@@ -24,9 +24,6 @@ export default function CookiePreferences() {
       setAdvertising(false);
     }
   }
-  useEffect(() => {
-    loadPreferences();
-  }, []);
   useEffect(() => {
     if (!open) {
       document.body.style.overflow = "";

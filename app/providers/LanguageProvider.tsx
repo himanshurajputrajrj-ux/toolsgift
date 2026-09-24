@@ -40,6 +40,7 @@ export function LanguageProvider({
 
     if (isRefresh) {
       sessionStorage.removeItem("toolsgift-language");
+// eslint-disable-next-line react-hooks/set-state-in-effect
       setLocaleState("en");
       return;
     }

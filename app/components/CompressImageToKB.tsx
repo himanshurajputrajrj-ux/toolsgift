@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useRef, useState } from "react";
 type OutputFormat = "image/jpeg" | "image/webp";
 type CompressionResult = {
@@ -320,10 +320,7 @@ export default function CompressImageToKB() {
       }
     }
   };
-  const clearShareState = () => {
-    setShareUrl("");
-    setShareMessage("");
-  };  const downloadResult = () => {
+  const downloadResult = () => {
     if (!result || !file) return;
     const originalName = file.name.replace(
       /\.[^/.]+$/,

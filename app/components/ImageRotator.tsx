@@ -115,6 +115,18 @@ export default function ImageRotator() {
         {!file ? (
           <div
             onClick={() => inputRef.current?.click()}
+            onDragOver={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+            }}
+            onDrop={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              const droppedFile = event.dataTransfer.files?.[0];
+              if (droppedFile) {
+                handleFile(droppedFile);
+              }
+            }}
             className="border-2 border-dashed border-gray-300 rounded-2xl p-10 text-center cursor-pointer hover:border-black transition"
           >
             <div className="text-5xl mb-4">🔄</div>

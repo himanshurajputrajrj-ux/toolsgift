@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import {
   ChangeEvent,
@@ -756,6 +756,18 @@ export default function PDFEditor() {
               onClick={() =>
                 inputRef.current?.click()
               }
+              onDragOver={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+              }}
+              onDrop={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                const droppedFile = event.dataTransfer.files?.[0];
+                if (droppedFile) {
+                  loadPDF(droppedFile);
+                }
+              }}
               className="cursor-pointer rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 p-6 text-center hover:border-blue-400 hover:bg-blue-50"
             >
               <input

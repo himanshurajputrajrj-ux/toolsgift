@@ -1,5 +1,5 @@
-﻿"use client";
-import { useEffect, useRef, useState } from "react";
+"use client";
+import { useRef, useState } from "react";
 export default function QRCodeGenerator() {
   const [text, setText] = useState("");
   const [qrReady, setQrReady] = useState(false);

@@ -30,6 +30,7 @@ export default function ShareResult({
   const imagesKey = images?.map((image) => `${image.url}:${image.name}`).join("|") || "";
 
   useEffect(() => {
+// eslint-disable-next-line react-hooks/set-state-in-effect
     setShareUrl("");
     setMessage("");
   }, [imageUrl, imagesKey, value]);

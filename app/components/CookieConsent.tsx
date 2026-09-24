@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useEffect, useState } from "react";
 import { CONSENT_KEY } from "@/app/lib/cookieConsent";
 export default function CookieConsent() {
@@ -6,7 +6,7 @@ export default function CookieConsent() {
   useEffect(() => {
     const consent = localStorage.getItem(CONSENT_KEY);
     if (!consent) {
-      setVisible(true);
+      queueMicrotask(() => setVisible(true));
     }
   }, []);
   function saveConsent(analytics: boolean, advertising: boolean) {

@@ -543,19 +543,19 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-1 lg:flex">
           <DesktopDropdown label={t.nav.allTools} open={desktopDropdown === "all"} onClick={() => { setDesktopDropdown((v) => v === "all" ? null : "all"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
-            <DesktopAllToolsContent onSelect={closeMenus} />
+            <DesktopAllToolsContent />
           </DesktopDropdown>
 
           <DesktopDropdown label={t.nav.images} open={desktopDropdown === "images"} onClick={() => { setDesktopDropdown((v) => v === "images" ? null : "images"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
-            <DesktopToolList tools={imageTools} onSelect={closeMenus} />
+            <DesktopToolList tools={imageTools} />
           </DesktopDropdown>
 
           <DesktopDropdown label={t.nav.pdf} open={desktopDropdown === "pdf"} onClick={() => { setDesktopDropdown((v) => v === "pdf" ? null : "pdf"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
-            <DesktopPdfContent onSelect={closeMenus} />
+            <DesktopPdfContent />
           </DesktopDropdown>
 
           <DesktopDropdown label={t.nav.convert} open={desktopDropdown === "convert"} onClick={() => { setDesktopDropdown((v) => v === "convert" ? null : "convert"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
-            <DesktopConvertContent onSelect={closeMenus} />
+            <DesktopConvertContent />
           </DesktopDropdown>
 
           <Link href="/#tools" className="rounded-full px-3.5 py-2.5 text-sm font-semibold text-black/65 transition hover:bg-black/[0.045] hover:text-[#202124]">
@@ -760,55 +760,46 @@ export default function Header() {
                 <MobileCategory
                   title={t.categories.imageTools}
                   tools={imageTools}
-                  onSelect={closeMenus}
                 />
 
                 <MobileCategory
                   title={t.categories.organizePdf}
                   tools={organizeTools}
-                  onSelect={closeMenus}
                 />
 
                 <MobileCategory
                   title={t.categories.optimizePdf}
                   tools={optimizeTools}
-                  onSelect={closeMenus}
                 />
 
                 <MobileCategory
                   title={t.categories.convertToPdf}
                   tools={convertToPdfTools}
-                  onSelect={closeMenus}
                 />
 
                 <MobileCategory
                   title={t.categories.convertFromPdf}
                   tools={convertFromPdfTools}
-                  onSelect={closeMenus}
                 />
 
                 <MobileCategory
                   title={t.categories.editPdf}
                   tools={editTools}
-                  onSelect={closeMenus}
                 />
 
                 <MobileCategory
                   title={t.categories.pdfSecurity}
                   tools={securityTools}
-                  onSelect={closeMenus}
                 />
 
                 <MobileCategory
                   title={t.categories.pdfIntelligence}
                   tools={intelligenceTools}
-                  onSelect={closeMenus}
                 />
 
                 <MobileCategory
                   title="Other Tools"
                   tools={otherTools}
-                  onSelect={closeMenus}
                 />
 
               </div>
@@ -959,31 +950,31 @@ function DesktopDropdown({ label, open, onClick, children }: { label: string; op
   );
 }
 
-function DesktopToolList({ tools, onSelect }: { tools: Tool[]; onSelect: () => void }) {
-  return <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">{tools.map((tool) => <ToolLink key={tool.title} tool={tool} onSelect={onSelect} />)}</div>;
+function DesktopToolList({ tools }: { tools: Tool[] }) {
+  return <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">{tools.map((tool) => <ToolLink key={tool.title} tool={tool} />)}</div>;
 }
 
-function DesktopAllToolsContent({ onSelect }: { onSelect: () => void }) {
+function DesktopAllToolsContent() {
   const { t } = useLanguage();
   return <div className="max-h-[70vh] overflow-y-auto">
     <div className="mb-5 rounded-2xl bg-[#202124] px-5 py-4 text-white"><h2 className="text-lg font-extrabold">{t.nav.allTools}</h2><p className="mt-1 text-xs font-medium text-white/55">{t.home.toolsDescription}</p></div>
-    <ToolSection title={t.categories.imageTools} tools={imageTools} onSelect={onSelect} />
+    <ToolSection title={t.categories.imageTools} tools={imageTools} />
     <div className="mt-7"><SectionTitle title={t.home.pdf} /><div className="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-3 lg:grid-cols-4">
-      <ToolColumn title={t.categories.organizePdf} tools={organizeTools} onSelect={onSelect}/><ToolColumn title={t.categories.optimizePdf} tools={optimizeTools} onSelect={onSelect}/><ToolColumn title={t.categories.convertToPdf} tools={convertToPdfTools} onSelect={onSelect}/><ToolColumn title={t.categories.convertFromPdf} tools={convertFromPdfTools} onSelect={onSelect}/><ToolColumn title={t.categories.editPdf} tools={editTools} onSelect={onSelect}/><ToolColumn title={t.categories.pdfSecurity} tools={securityTools} onSelect={onSelect}/><ToolColumn title={t.categories.pdfIntelligence} tools={intelligenceTools} onSelect={onSelect}/>
+      <ToolColumn title={t.categories.organizePdf} tools={organizeTools}/><ToolColumn title={t.categories.optimizePdf} tools={optimizeTools}/><ToolColumn title={t.categories.convertToPdf} tools={convertToPdfTools}/><ToolColumn title={t.categories.convertFromPdf} tools={convertFromPdfTools}/><ToolColumn title={t.categories.editPdf} tools={editTools}/><ToolColumn title={t.categories.pdfSecurity} tools={securityTools}/><ToolColumn title={t.categories.pdfIntelligence} tools={intelligenceTools}/>
     </div></div>
-    <div className="mt-7"><SectionTitle title={t.categories.utilityOther} /><DesktopToolList tools={utilityTools} onSelect={onSelect}/></div>
-    <div className="mt-7"><SectionTitle title={t.categories.utilityOther} /><DesktopToolList tools={otherTools} onSelect={onSelect}/></div>
+    <div className="mt-7"><SectionTitle title={t.categories.utilityOther} /><DesktopToolList tools={utilityTools}/></div>
+    <div className="mt-7"><SectionTitle title={t.categories.utilityOther} /><DesktopToolList tools={otherTools}/></div>
   </div>;
 }
 
-function DesktopPdfContent({ onSelect }: { onSelect: () => void }) {
+function DesktopPdfContent() {
   const { t } = useLanguage();
-  return <div className="grid grid-cols-2 gap-6 sm:grid-cols-3"><ToolColumn title={t.categories.organizePdf} tools={organizeTools} onSelect={onSelect}/><ToolColumn title={t.categories.optimizePdf} tools={optimizeTools} onSelect={onSelect}/><ToolColumn title={t.categories.editPdf} tools={editTools} onSelect={onSelect}/><ToolColumn title={t.categories.pdfSecurity} tools={securityTools} onSelect={onSelect}/><ToolColumn title={t.categories.pdfIntelligence} tools={intelligenceTools} onSelect={onSelect}/></div>;
+  return <div className="grid grid-cols-2 gap-6 sm:grid-cols-3"><ToolColumn title={t.categories.organizePdf} tools={organizeTools}/><ToolColumn title={t.categories.optimizePdf} tools={optimizeTools}/><ToolColumn title={t.categories.editPdf} tools={editTools}/><ToolColumn title={t.categories.pdfSecurity} tools={securityTools}/><ToolColumn title={t.categories.pdfIntelligence} tools={intelligenceTools}/></div>;
 }
 
-function DesktopConvertContent({ onSelect }: { onSelect: () => void }) {
+function DesktopConvertContent() {
   const { t } = useLanguage();
-  return <div className="grid grid-cols-2 gap-6"><ToolColumn title={t.categories.convertToPdf} tools={convertToPdfTools} onSelect={onSelect}/><ToolColumn title={t.categories.convertFromPdf} tools={convertFromPdfTools} onSelect={onSelect}/></div>;
+  return <div className="grid grid-cols-2 gap-6"><ToolColumn title={t.categories.convertToPdf} tools={convertToPdfTools}/><ToolColumn title={t.categories.convertFromPdf} tools={convertFromPdfTools}/></div>;
 }
 
 /* =========================================================
@@ -1033,15 +1024,7 @@ function SectionTitle({
    IMAGE TOOL SECTION
 ========================================================= */
 
-function ToolSection({
-  title,
-  tools,
-  onSelect,
-}: {
-  title: string;
-  tools: Tool[];
-  onSelect: () => void;
-}) {
+function ToolSection({ title, tools }: { title: string; tools: Tool[] }) {
   return (
     <section>
 
@@ -1053,7 +1036,6 @@ function ToolSection({
           <ToolLink
             key={tool.title}
             tool={tool}
-            onSelect={onSelect}
           />
         ))}
 
@@ -1068,15 +1050,7 @@ function ToolSection({
    TOOL COLUMN
 ========================================================= */
 
-function ToolColumn({
-  title,
-  tools,
-  onSelect,
-}: {
-  title: string;
-  tools: Tool[];
-  onSelect: () => void;
-}) {
+function ToolColumn({ title, tools }: { title: string; tools: Tool[] }) {
   return (
     <div>
 
@@ -1090,7 +1064,6 @@ function ToolColumn({
           <ToolLink
             key={tool.title}
             tool={tool}
-            onSelect={onSelect}
             compact
           />
         ))}
@@ -1108,12 +1081,10 @@ function ToolColumn({
 
 function ToolLink({
   tool,
-  onSelect,
   compact = false,
 }: {
   tool: Tool;
-  onSelect: () => void;
-  compact?: boolean;
+    compact?: boolean;
 }) {
   return (
     <Link href={tool.link}
@@ -1153,12 +1124,10 @@ function ToolLink({
 function MobileCategory({
   title,
   tools,
-  onSelect,
-}: {
+  }: {
   title: string;
   tools: Tool[];
-  onSelect: () => void;
-}) {
+  }) {
   return (
     <section className="mb-5 last:mb-0">
 
@@ -1610,17 +1579,5 @@ function IconShape({
       );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 

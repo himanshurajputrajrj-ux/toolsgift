@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import {
   ChangeEvent,
@@ -24,28 +24,28 @@ const SIZE_PRESETS: SizePreset[] = [
     name: "India Passport",
     width: 35,
     height: 45,
-    label: "35 × 45 mm",
+    label: "35 Ãƒâ€” 45 mm",
   },
   {
     id: "standard",
     name: "Standard Passport",
     width: 35,
     height: 45,
-    label: "35 × 45 mm",
+    label: "35 Ãƒâ€” 45 mm",
   },
   {
     id: "us",
     name: "US Passport",
     width: 51,
     height: 51,
-    label: "2 × 2 inch",
+    label: "2 Ãƒâ€” 2 inch",
   },
   {
     id: "uk",
     name: "UK Passport",
     width: 35,
     height: 45,
-    label: "35 × 45 mm",
+    label: "35 Ãƒâ€” 45 mm",
   },
 ];
 
@@ -225,10 +225,11 @@ export default function PassportPhotoMaker() {
   }
 
   function handleFile(
-    event: ChangeEvent<HTMLInputElement>
+    event: ChangeEvent<HTMLInputElement> | File
   ) {
-    const selectedFile =
-      event.target.files?.[0];
+    const selectedFile = event instanceof File
+      ? event
+      : event.target.files?.[0];
 
     if (!selectedFile) {
       return;
@@ -649,7 +650,7 @@ export default function PassportPhotoMaker() {
   }
 
   /*
-   * Enhancement → Background Removal
+   * Enhancement Ã¢â€ â€™ Background Removal
    */
   async function prepareSubject() {
     if (!file) {
@@ -934,9 +935,9 @@ export default function PassportPhotoMaker() {
        * Processing order:
        *
        * Enhancement (if ON)
-       * ↓
+       * Ã¢â€ â€œ
        * Background Removal (if ON)
-       * ↓
+       * Ã¢â€ â€œ
        * Passport Size
        */
       const subjectUrl =
@@ -1473,11 +1474,23 @@ export default function PassportPhotoMaker() {
               onClick={() =>
                 inputRef.current?.click()
               }
+              onDragOver={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+              }}
+              onDrop={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                const droppedFile = event.dataTransfer.files?.[0];
+                if (droppedFile) {
+                  handleFile(droppedFile);
+                }
+              }}
               className="mt-6 flex min-h-48 w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-black/15 bg-[#f7f7f5] px-5 text-center transition hover:border-black/30 hover:bg-white"
             >
 
               <span className="text-4xl">
-                📷
+                Ã°Å¸â€œÂ·
               </span>
 
               <span className="mt-4 font-bold text-black">
@@ -1519,7 +1532,7 @@ export default function PassportPhotoMaker() {
                   <div className="flex items-center gap-2">
 
                     <div className="text-sm font-bold text-black">
-                      ✨ Photo Enhancement
+                      Ã¢Å“Â¨ Photo Enhancement
                     </div>
 
                     <span className="rounded-full bg-black/[0.07] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-black/60">
@@ -1568,7 +1581,7 @@ export default function PassportPhotoMaker() {
 
               {processingEnhance && (
                 <div className="mt-4 rounded-xl bg-white p-3 text-center text-xs font-bold text-black">
-                  ✨ Enhancing photo...
+                  Ã¢Å“Â¨ Enhancing photo...
                 </div>
               )}
 
@@ -1600,7 +1613,7 @@ export default function PassportPhotoMaker() {
                   <div className="flex items-center gap-2">
 
                     <div className="text-sm font-bold text-black">
-                      ✂️ AI Background Removal
+                      Ã¢Å“â€šÃ¯Â¸Â AI Background Removal
                     </div>
 
                     <span className="rounded-full bg-black/[0.07] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-black/60">
@@ -1649,7 +1662,7 @@ export default function PassportPhotoMaker() {
 
               {removingBackground && (
                 <div className="mt-4 rounded-xl bg-white p-3 text-center text-xs font-bold text-black">
-                  ✂️ AI is removing the background...
+                  Ã¢Å“â€šÃ¯Â¸Â AI is removing the background...
                 </div>
               )}
 
@@ -1814,7 +1827,7 @@ export default function PassportPhotoMaker() {
                 >
 
                   <div className="text-sm font-bold">
-                    👤 Single Photo
+                    Ã°Å¸â€˜Â¤ Single Photo
                   </div>
 
                   <div
@@ -1848,7 +1861,7 @@ export default function PassportPhotoMaker() {
                 >
 
                   <div className="text-sm font-bold">
-                    ▦ A4 Photo Sheet
+                    Ã¢â€“Â¦ A4 Photo Sheet
                   </div>
 
                   <div
@@ -2017,9 +2030,9 @@ export default function PassportPhotoMaker() {
               >
 
                 {processingEnhance
-                  ? "✨ Enhancing..."
+                  ? "Ã¢Å“Â¨ Enhancing..."
                   : removingBackground
-                  ? "✂️ Removing Background..."
+                  ? "Ã¢Å“â€šÃ¯Â¸Â Removing Background..."
                   : loading
                   ? "Creating..."
                   : "Create Passport Photo"}
@@ -2165,7 +2178,7 @@ export default function PassportPhotoMaker() {
                   <div>
 
                     <div className="text-5xl">
-                      🪪
+                      Ã°Å¸ÂªÂª
                     </div>
 
                     <h3 className="mt-4 text-lg font-bold text-black">
@@ -2206,7 +2219,7 @@ export default function PassportPhotoMaker() {
                 >
 
                   <div className="text-sm font-bold">
-                    ↓ Download Single Photo
+                    Ã¢â€ â€œ Download Single Photo
                   </div>
 
                   <div className="mt-1 text-xs text-white/70">
@@ -2214,7 +2227,7 @@ export default function PassportPhotoMaker() {
                     "transparent"
                       ? "PNG"
                       : "JPG"}{" "}
-                    •{" "}
+                    Ã¢â‚¬Â¢{" "}
                     {
                       selectedSize.label
                     }
@@ -2236,7 +2249,7 @@ export default function PassportPhotoMaker() {
                 >
 
                   <div className="text-sm font-bold">
-                    ▦ Download A4 Sheet
+                    Ã¢â€“Â¦ Download A4 Sheet
                   </div>
 
                   <div className="mt-1 text-xs text-black/60">
@@ -2256,7 +2269,7 @@ export default function PassportPhotoMaker() {
               <div className="flex items-start gap-3">
 
                 <span className="text-xl">
-                  ⚙️
+                  Ã¢Å¡â„¢Ã¯Â¸Â
                 </span>
 
                 <div>
@@ -2270,7 +2283,7 @@ export default function PassportPhotoMaker() {
                     {enhance
                       ? "ON"
                       : "OFF"}
-                    {" • "}
+                    {" Ã¢â‚¬Â¢ "}
                     Background Removal:{" "}
                     {removeBg
                       ? "ON"
@@ -2287,25 +2300,25 @@ export default function PassportPhotoMaker() {
             <div className="mt-5 rounded-2xl bg-[#f7f7f5] p-4">
 
               <h3 className="text-sm font-bold text-black">
-                💡 Tips for best results
+                Ã°Å¸â€™Â¡ Tips for best results
               </h3>
 
               <ul className="mt-2 space-y-1 text-xs leading-5 text-black/65">
 
                 <li>
-                  • Use a clear, front-facing photo.
+                  Ã¢â‚¬Â¢ Use a clear, front-facing photo.
                 </li>
 
                 <li>
-                  • Make sure the face is well lit.
+                  Ã¢â‚¬Â¢ Make sure the face is well lit.
                 </li>
 
                 <li>
-                  • Avoid strong shadows and glare.
+                  Ã¢â‚¬Â¢ Avoid strong shadows and glare.
                 </li>
 
                 <li>
-                  • AI background removal works best when the subject is clearly visible.
+                  Ã¢â‚¬Â¢ AI background removal works best when the subject is clearly visible.
                 </li>
 
               </ul>

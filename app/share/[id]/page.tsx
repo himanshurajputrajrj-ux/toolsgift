@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { headers } from "next/headers";
 import ShareResultActions from "./ShareResultActions";
 
@@ -79,12 +80,8 @@ export default async function SharePage({
               available.
             </p>
 
-            <a
-              href="/"
-              className="mt-6 inline-flex rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-700"
-            >
-              Go to ToolsGift
-            </a>
+            <Link href="/" className="mt-6 inline-flex rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-700">
+              Go to ToolsGift</Link>
           </div>
         </div>
       </main>
@@ -97,12 +94,8 @@ export default async function SharePage({
     <main className="min-h-screen bg-gray-50 px-4 py-8 dark:bg-gray-950 sm:py-12">
       <div className="mx-auto max-w-3xl">
         <header className="mb-8 text-center">
-          <a
-            href="/"
-            className="inline-block text-3xl font-bold tracking-tight text-gray-900 dark:text-white"
-          >
-            ToolsGift
-          </a>
+          <Link href="/" className="inline-block text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+            ToolsGift</Link>
 
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
             Shared result
@@ -116,7 +109,7 @@ export default async function SharePage({
                 {share.tool === "case-converter"
                   ? "Case Converter"
                   : share.tool === "video-to-link"
-                    ? "Video → Link"
+                    ? "Video â†’ Link"
                     : "ToolsGift Result"}
               </p>
 
@@ -229,8 +222,7 @@ export default async function SharePage({
             }
             className="inline-flex rounded-xl border border-gray-300 bg-white px-5 py-3 font-semibold text-gray-700 transition hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
           >
-            Try ToolsGift
-          </a>
+            Try ToolsGift</a>
         </div>
 
         <p className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">

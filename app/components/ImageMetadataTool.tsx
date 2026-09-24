@@ -29,7 +29,7 @@ function formatBytes(bytes: number) {
 
 function formatValue(value: unknown): string {
   if (value === null || value === undefined) {
-    return "—";
+    return "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â";
   }
 
   if (value instanceof Date) {
@@ -55,7 +55,7 @@ function getAspectRatio(
   width: number,
   height: number
 ) {
-  if (!width || !height) return "—";
+  if (!width || !height) return "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â";
 
   const gcd = (a: number, b: number): number => {
     while (b) {
@@ -228,10 +228,6 @@ export default function ImageMetadataTool() {
       console.error("Clipboard API copy failed:", error);
     }
     return false;
-  }
-  function clearShareState() {
-    setShareUrl("");
-    setShareMessage("");
   }
   async function createShareLink() {
     const report = createReport();
@@ -593,10 +589,11 @@ export default function ImageMetadataTool() {
   }
 
   function handleFile(
-    event: ChangeEvent<HTMLInputElement>
+    event: ChangeEvent<HTMLInputElement> | File
   ) {
-    const selectedFile =
-      event.target.files?.[0];
+    const selectedFile = event instanceof File
+      ? event
+      : event.target.files?.[0];
 
     if (!selectedFile) return;
 
@@ -977,11 +974,23 @@ export default function ImageMetadataTool() {
               onClick={() =>
                 inputRef.current?.click()
               }
+              onDragOver={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+              }}
+              onDrop={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                const droppedFile = event.dataTransfer.files?.[0];
+                if (droppedFile) {
+                  handleFile(droppedFile);
+                }
+              }}
               className="mt-6 flex min-h-52 w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-black/15 bg-[#f7f7f5] px-5 text-center transition hover:border-black/30 hover:bg-white"
             >
 
               <span className="text-5xl">
-                🖼️
+                ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â
               </span>
 
               <span className="mt-4 text-sm font-bold">
@@ -1069,8 +1078,8 @@ export default function ImageMetadataTool() {
             >
 
               {cleaning
-                ? "🧹 Removing Metadata..."
-                : "🧹 Remove All Metadata"}
+                ? "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¹ Removing Metadata..."
+                : "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¹ Remove All Metadata"}
 
             </button>
 
@@ -1085,7 +1094,7 @@ export default function ImageMetadataTool() {
               }
               className="mt-3 w-full rounded-xl border border-black/10 bg-white px-5 py-4 text-sm font-bold text-black transition hover:bg-black/[0.03] disabled:cursor-not-allowed disabled:opacity-40"
             >
-              ↓ Download Clean Image
+              ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ Download Clean Image
             </button>
 
             {/* REPORT */}
@@ -1103,8 +1112,8 @@ export default function ImageMetadataTool() {
                 className="rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm font-bold text-black transition hover:bg-black/[0.03] disabled:cursor-not-allowed disabled:opacity-40"
               >
                 {copied
-                  ? "✓ Copied"
-                  : "📋 Copy Metadata"}
+                  ? "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ Copied"
+                  : "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¹ Copy Metadata"}
               </button>
 
               <button
@@ -1118,7 +1127,7 @@ export default function ImageMetadataTool() {
                 }
                 className="rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm font-bold text-black transition hover:bg-black/[0.03] disabled:cursor-not-allowed disabled:opacity-40"
               >
-                ↓ Metadata Report
+                ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ Metadata Report
               </button>
 
             </div>
@@ -1152,7 +1161,7 @@ export default function ImageMetadataTool() {
               <div className="flex items-start gap-3">
 
                 <span className="text-xl">
-                  🔒
+                  ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢
                 </span>
 
                 <div>
@@ -1276,7 +1285,7 @@ export default function ImageMetadataTool() {
                   <div className="flex items-start gap-3">
 
                     <span className="text-xl">
-                      🧹
+                      ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¹
                     </span>
 
                     <div>
@@ -1304,7 +1313,7 @@ export default function ImageMetadataTool() {
                 <div>
 
                   <div className="text-5xl">
-                    🔎
+                    ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â½
                   </div>
 
                   <h3 className="mt-4 text-lg font-bold">
@@ -1336,22 +1345,22 @@ export default function ImageMetadataTool() {
 
             {[
               [
-                "🔎",
+                "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â½",
                 "View Metadata",
                 "Inspect available image information.",
               ],
               [
-                "📷",
+                "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â·",
                 "Camera Data",
                 "View camera, lens and shooting information when available.",
               ],
               [
-                "📍",
+                "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â",
                 "GPS Information",
                 "Check whether location coordinates are embedded.",
               ],
               [
-                "🧹",
+                "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¹",
                 "Clean Image",
                 "Create a fresh copy without the original embedded metadata.",
               ],

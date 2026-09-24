@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { removeBackground } from "@imgly/background-removal";
@@ -404,10 +404,7 @@ export default function BackgroundRemover() {
       }
     }
   };
-  const clearShareState = () => {
-    setShareUrl("");
-    setShareMessage("");
-  };  /* =========================
+  /* =========================
      DOWNLOAD
   ========================= */
 
