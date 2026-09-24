@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/app/components/Header";
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     title: "ToolsGift | Fast & Simple Image & PDF Tools",
     description:
       "Fast and simple online image and PDF tools for converting, editing, compressing and managing files.",
-    url: "https://www.www.toolsgift.com",
+    url: "https://www.toolsgift.com",
     images: [
       {
         url: "/toolsgift-og.png",
@@ -117,4 +117,5 @@ export default function RootLayout({
     </html>
   );
 }
+
 
