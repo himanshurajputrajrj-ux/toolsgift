@@ -24,28 +24,28 @@ const SIZE_PRESETS: SizePreset[] = [
     name: "India Passport",
     width: 35,
     height: 45,
-    label: "35 Ãƒâ€” 45 mm",
+    label: "35 × 45 mm",
   },
   {
     id: "standard",
     name: "Standard Passport",
     width: 35,
     height: 45,
-    label: "35 Ãƒâ€” 45 mm",
+    label: "35 × 45 mm",
   },
   {
     id: "us",
     name: "US Passport",
     width: 51,
     height: 51,
-    label: "2 Ãƒâ€” 2 inch",
+    label: "2 × 2 inch",
   },
   {
     id: "uk",
     name: "UK Passport",
     width: 35,
     height: 45,
-    label: "35 Ãƒâ€” 45 mm",
+    label: "35 × 45 mm",
   },
 ];
 
@@ -650,7 +650,7 @@ export default function PassportPhotoMaker() {
   }
 
   /*
-   * Enhancement Ã¢â€ â€™ Background Removal
+    * Enhancement → Background Removal
    */
   async function prepareSubject() {
     if (!file) {
@@ -935,9 +935,9 @@ export default function PassportPhotoMaker() {
        * Processing order:
        *
        * Enhancement (if ON)
-       * Ã¢â€ â€œ
+        * →
        * Background Removal (if ON)
-       * Ã¢â€ â€œ
+        * →
        * Passport Size
        */
       const subjectUrl =
@@ -1490,7 +1490,7 @@ export default function PassportPhotoMaker() {
             >
 
               <span className="text-4xl">
-                Ã°Å¸â€œÂ·
+                 📷
               </span>
 
               <span className="mt-4 font-bold text-black">
@@ -1532,7 +1532,7 @@ export default function PassportPhotoMaker() {
                   <div className="flex items-center gap-2">
 
                     <div className="text-sm font-bold text-black">
-                      Ã¢Å“Â¨ Photo Enhancement
+                       ✨ Photo Enhancement
                     </div>
 
                     <span className="rounded-full bg-black/[0.07] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-black/60">
@@ -1581,7 +1581,7 @@ export default function PassportPhotoMaker() {
 
               {processingEnhance && (
                 <div className="mt-4 rounded-xl bg-white p-3 text-center text-xs font-bold text-black">
-                  Ã¢Å“Â¨ Enhancing photo...
+                   ✨ Enhancing photo...
                 </div>
               )}
 
@@ -1613,7 +1613,7 @@ export default function PassportPhotoMaker() {
                   <div className="flex items-center gap-2">
 
                     <div className="text-sm font-bold text-black">
-                      Ã¢Å“â€šÃ¯Â¸Â AI Background Removal
+                       ✨ AI Background Removal
                     </div>
 
                     <span className="rounded-full bg-black/[0.07] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-black/60">
@@ -1662,7 +1662,7 @@ export default function PassportPhotoMaker() {
 
               {removingBackground && (
                 <div className="mt-4 rounded-xl bg-white p-3 text-center text-xs font-bold text-black">
-                  Ã¢Å“â€šÃ¯Â¸Â AI is removing the background...
+                   ✨ AI is removing the background...
                 </div>
               )}
 
@@ -1827,7 +1827,7 @@ export default function PassportPhotoMaker() {
                 >
 
                   <div className="text-sm font-bold">
-                    Ã°Å¸â€˜Â¤ Single Photo
+                     👤 Single Photo
                   </div>
 
                   <div
@@ -1861,7 +1861,7 @@ export default function PassportPhotoMaker() {
                 >
 
                   <div className="text-sm font-bold">
-                    Ã¢â€“Â¦ A4 Photo Sheet
+                     ▦ A4 Photo Sheet
                   </div>
 
                   <div
@@ -2030,9 +2030,9 @@ export default function PassportPhotoMaker() {
               >
 
                 {processingEnhance
-                  ? "Ã¢Å“Â¨ Enhancing..."
+                   ? "✨ Enhancing..."
                   : removingBackground
-                  ? "Ã¢Å“â€šÃ¯Â¸Â Removing Background..."
+                   ? "✨ Removing Background..."
                   : loading
                   ? "Creating..."
                   : "Create Passport Photo"}
@@ -2178,7 +2178,7 @@ export default function PassportPhotoMaker() {
                   <div>
 
                     <div className="text-5xl">
-                      Ã°Å¸ÂªÂª
+                       🖼️
                     </div>
 
                     <h3 className="mt-4 text-lg font-bold text-black">
@@ -2219,7 +2219,7 @@ export default function PassportPhotoMaker() {
                 >
 
                   <div className="text-sm font-bold">
-                    Ã¢â€ â€œ Download Single Photo
+                     → Download Single Photo
                   </div>
 
                   <div className="mt-1 text-xs text-white/70">
@@ -2227,7 +2227,7 @@ export default function PassportPhotoMaker() {
                     "transparent"
                       ? "PNG"
                       : "JPG"}{" "}
-                    Ã¢â‚¬Â¢{" "}
+                     •{" "}
                     {
                       selectedSize.label
                     }
@@ -2249,7 +2249,7 @@ export default function PassportPhotoMaker() {
                 >
 
                   <div className="text-sm font-bold">
-                    Ã¢â€“Â¦ Download A4 Sheet
+                     ▦ Download A4 Sheet
                   </div>
 
                   <div className="mt-1 text-xs text-black/60">
@@ -2269,7 +2269,7 @@ export default function PassportPhotoMaker() {
               <div className="flex items-start gap-3">
 
                 <span className="text-xl">
-                  Ã¢Å¡â„¢Ã¯Â¸Â
+                   💡
                 </span>
 
                 <div>
@@ -2283,7 +2283,7 @@ export default function PassportPhotoMaker() {
                     {enhance
                       ? "ON"
                       : "OFF"}
-                    {" Ã¢â‚¬Â¢ "}
+                     {" • "}
                     Background Removal:{" "}
                     {removeBg
                       ? "ON"
@@ -2300,25 +2300,25 @@ export default function PassportPhotoMaker() {
             <div className="mt-5 rounded-2xl bg-[#f7f7f5] p-4">
 
               <h3 className="text-sm font-bold text-black">
-                Ã°Å¸â€™Â¡ Tips for best results
+                 💡 Tips for best results
               </h3>
 
               <ul className="mt-2 space-y-1 text-xs leading-5 text-black/65">
 
                 <li>
-                  Ã¢â‚¬Â¢ Use a clear, front-facing photo.
+                   • Use a clear, front-facing photo.
                 </li>
 
                 <li>
-                  Ã¢â‚¬Â¢ Make sure the face is well lit.
+                   • Make sure the face is well lit.
                 </li>
 
                 <li>
-                  Ã¢â‚¬Â¢ Avoid strong shadows and glare.
+                   • Avoid strong shadows and glare.
                 </li>
 
                 <li>
-                  Ã¢â‚¬Â¢ AI background removal works best when the subject is clearly visible.
+                   • AI background removal works best when the subject is clearly visible.
                 </li>
 
               </ul>
