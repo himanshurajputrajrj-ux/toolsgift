@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useRef, useState } from "react";
 import ShareResult from "./ShareResult";
 import { createWorker } from "tesseract.js";
@@ -120,7 +120,7 @@ export default function ImageToText() {
             disabled={processing}
             className="w-full rounded-xl border-2 border-dashed border-gray-300 px-6 py-12 text-center transition hover:border-blue-500 dark:border-gray-700 dark:hover:border-blue-500"
           >
-            <div className="text-4xl">ðŸ“„</div>
+            <div className="text-4xl">Image</div>
             <div className="mt-3 font-semibold text-gray-900 dark:text-white">
               {processing ? "Extracting text..." : "Upload an image"}
             </div>

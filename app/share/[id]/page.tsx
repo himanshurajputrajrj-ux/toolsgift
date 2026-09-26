@@ -109,7 +109,7 @@ export default async function SharePage({
                 {share.tool === "case-converter"
                   ? "Case Converter"
                   : share.tool === "video-to-link"
-                    ? "Video â†’ Link"
+                    ? "Video → Link"
                     : "ToolsGift Result"}
               </p>
 
