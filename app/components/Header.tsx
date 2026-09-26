@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
@@ -143,6 +143,30 @@ const imageTools: Tool[] = [
     link: "/tools/word-to-image",
     icon: "word",
     color: "blue",
+  },
+  {
+    title: "Image to Text",
+    link: "/tools/image-to-text",
+    icon: "ocr",
+    color: "blue",
+  },
+  {
+    title: "HEIC to JPG",
+    link: "/tools/heic-to-jpg",
+    icon: "converter",
+    color: "yellow",
+  },
+  {
+    title: "Compress Image to KB",
+    link: "/tools/compress-image-to-kb",
+    icon: "compress",
+    color: "green",
+  },
+  {
+    title: "Favicon Generator",
+    link: "/tools/favicon-generator",
+    icon: "image",
+    color: "purple",
   },
 ];
 
