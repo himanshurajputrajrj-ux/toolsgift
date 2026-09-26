@@ -96,6 +96,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2458517337983485" crossOrigin="anonymous"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{if(localStorage.getItem("toolsgift-theme")==="dark"){document.documentElement.classList.add("dark")}}catch(e){}})()`,
