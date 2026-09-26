@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -43,7 +43,7 @@ export default function ContactPage() {
                 </p>
 
                 <p className="mt-1 text-slate-600">
-                  Replace this with your actual support email address.
+                  support.toolsgift@gmail.com
                 </p>
               </div>
             </section>
