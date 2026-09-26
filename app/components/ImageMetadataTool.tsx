@@ -29,7 +29,7 @@ function formatBytes(bytes: number) {
 
 function formatValue(value: unknown): string {
   if (value === null || value === undefined) {
-    return "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â";
+    return "N/A";
   }
 
   if (value instanceof Date) {
@@ -55,7 +55,7 @@ function getAspectRatio(
   width: number,
   height: number
 ) {
-  if (!width || !height) return "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â";
+  if (!width || !height) return "Unknown";
 
   const gcd = (a: number, b: number): number => {
     while (b) {
@@ -990,7 +990,7 @@ export default function ImageMetadataTool() {
             >
 
               <span className="text-5xl">
-                🖼️
+                ðŸ”
               </span>
 
               <span className="mt-4 text-sm font-bold">
@@ -1078,8 +1078,8 @@ export default function ImageMetadataTool() {
             >
 
               {cleaning
-                ? "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¹ Removing Metadata..."
-                : "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¹ Remove All Metadata"}
+                ? "\uD83D\uDCF7 Choose Another Image"
+                : "\uD83D\uDCF7 Choose Image"}
 
             </button>
 
@@ -1094,7 +1094,7 @@ export default function ImageMetadataTool() {
               }
               className="mt-3 w-full rounded-xl border border-black/10 bg-white px-5 py-4 text-sm font-bold text-black transition hover:bg-black/[0.03] disabled:cursor-not-allowed disabled:opacity-40"
             >
-              ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ Download Clean Image
+                Search
             </button>
 
             {/* REPORT */}
@@ -1112,8 +1112,8 @@ export default function ImageMetadataTool() {
                 className="rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm font-bold text-black transition hover:bg-black/[0.03] disabled:cursor-not-allowed disabled:opacity-40"
               >
                 {copied
-                  ? "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ Copied"
-                  : "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¹ Copy Metadata"}
+                  ? "\uD83D\uDCC4"
+                  : "\uD83D\uDCC4"}
               </button>
 
               <button
@@ -1127,15 +1127,15 @@ export default function ImageMetadataTool() {
                 }
                 className="rounded-xl border border-black/10 bg-white px-4 py-3.5 text-sm font-bold text-black transition hover:bg-black/[0.03] disabled:cursor-not-allowed disabled:opacity-40"
               >
-                ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ Metadata Report
+                Clean
               </button>
 
             </div>
 
             {metadata.length > 0 && (
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                <button type="button" onClick={generateShareLink} disabled={shareLoading} className="rounded-xl bg-blue-600 px-4 py-3.5 text-sm font-bold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50">{shareLoading ? "Generating..." : "🔗 Generate Link"}</button>
-                <button type="button" onClick={shareMetadata} disabled={shareLoading} className="rounded-xl bg-black px-4 py-3.5 text-sm font-bold text-white transition hover:bg-black/80 disabled:cursor-not-allowed disabled:opacity-50">↗ Share</button>
+                <button type="button" onClick={generateShareLink} disabled={shareLoading} className="rounded-xl bg-blue-600 px-4 py-3.5 text-sm font-bold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50">{shareLoading ? "Generating..." : "Generate Link"}</button>
+                <button type="button" onClick={shareMetadata} disabled={shareLoading} className="rounded-xl bg-black px-4 py-3.5 text-sm font-bold text-white transition hover:bg-black/80 disabled:cursor-not-allowed disabled:opacity-50">Share</button>
               </div>
             )}
             {shareUrl && (
@@ -1161,7 +1161,7 @@ export default function ImageMetadataTool() {
               <div className="flex items-start gap-3">
 
                 <span className="text-xl">
-                  ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢
+                  Copy
                 </span>
 
                 <div>
@@ -1285,7 +1285,7 @@ export default function ImageMetadataTool() {
                   <div className="flex items-start gap-3">
 
                     <span className="text-xl">
-                      ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¹
+                      Report
                     </span>
 
                     <div>
@@ -1313,7 +1313,7 @@ export default function ImageMetadataTool() {
                 <div>
 
                   <div className="text-5xl">
-                    ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â½
+                    Image
                   </div>
 
                   <h3 className="mt-4 text-lg font-bold">
@@ -1345,22 +1345,22 @@ export default function ImageMetadataTool() {
 
             {[
               [
-                "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â½",
+                "\uD83D\uDD0D",
                 "View Metadata",
                 "Inspect available image information.",
               ],
               [
-                "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â·",
+                "\uD83D\uDCF7",
                 "Camera Data",
                 "View camera, lens and shooting information when available.",
               ],
               [
-                "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â",
+                "\uD83D\uDCCD",
                 "GPS Information",
                 "Check whether location coordinates are embedded.",
               ],
               [
-                "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¹",
+                "\uD83E\uDDF9",
                 "Clean Image",
                 "Create a fresh copy without the original embedded metadata.",
               ],
