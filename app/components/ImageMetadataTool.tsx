@@ -990,7 +990,7 @@ export default function ImageMetadataTool() {
             >
 
               <span className="text-5xl">
-                ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â°ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â
+                🖼️
               </span>
 
               <span className="mt-4 text-sm font-bold">
@@ -1134,8 +1134,8 @@ export default function ImageMetadataTool() {
 
             {metadata.length > 0 && (
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                <button type="button" onClick={generateShareLink} disabled={shareLoading} className="rounded-xl bg-blue-600 px-4 py-3.5 text-sm font-bold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50">{shareLoading ? "Generating..." : "?? Generate Link"}</button>
-                <button type="button" onClick={shareMetadata} disabled={shareLoading} className="rounded-xl bg-black px-4 py-3.5 text-sm font-bold text-white transition hover:bg-black/80 disabled:cursor-not-allowed disabled:opacity-50">? Share</button>
+                <button type="button" onClick={generateShareLink} disabled={shareLoading} className="rounded-xl bg-blue-600 px-4 py-3.5 text-sm font-bold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50">{shareLoading ? "Generating..." : "🔗 Generate Link"}</button>
+                <button type="button" onClick={shareMetadata} disabled={shareLoading} className="rounded-xl bg-black px-4 py-3.5 text-sm font-bold text-white transition hover:bg-black/80 disabled:cursor-not-allowed disabled:opacity-50">↗ Share</button>
               </div>
             )}
             {shareUrl && (
