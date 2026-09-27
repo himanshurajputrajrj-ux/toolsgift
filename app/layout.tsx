@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/app/components/Header";
@@ -97,11 +97,6 @@ export default function RootLayout({
     >
       <head>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2458517337983485" crossOrigin="anonymous"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{if(localStorage.getItem("toolsgift-theme")==="dark"){document.documentElement.classList.add("dark")}}catch(e){}})()`,
-          }}
-        />
       </head>
 
       <body className="min-h-full bg-[#f7f7f5] text-[#202124]">

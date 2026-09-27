@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   ChangeEvent,
@@ -230,25 +230,35 @@ export default function ImageMetadataTool() {
     return false;
   }
   async function createShareLink() {
-    const report = createReport();
-    if (!report || shareLoading) return "";
+    if (!cleanUrl || !file || shareLoading) return "";
     if (shareUrl) {
       return shareUrl;
     }
     setShareLoading(true);
     setShareMessage("");
     try {
+      const cleanResponse = await fetch(cleanUrl);
+      if (!cleanResponse.ok) {
+        throw new Error("Unable to read the cleaned image.");
+      }
+      const cleanBlob = await cleanResponse.blob();
+      const formData = new FormData();
+      const extension =
+        file.type === "image/png"
+          ? "png"
+          : file.type === "image/webp"
+            ? "webp"
+            : "jpg";
+      const baseName =
+        file.name.replace(/\.[^/.]+$/, "") || "image";
+      const filename = `${baseName}-clean.${extension}`;
+      formData.append("tool", "image-metadata");
+      formData.append("resultTitle", "Clean Image");
+      formData.append("filename", filename);
+      formData.append("image", cleanBlob, filename);
       const response = await fetch("/api/share", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          tool: "image-metadata",
-          resultTitle: "Image Metadata Report",
-          value: report,
-          filename: "image-metadata-report.txt",
-        }),
+        body: formData,
       });
       const data = await response.json();
       if (!response.ok || !data.shareUrl) {
@@ -268,6 +278,7 @@ export default function ImageMetadataTool() {
       setShareLoading(false);
     }
   }
+
   async function generateShareLink() {
     const url = await createShareLink();
     if (url) {
@@ -1382,3 +1393,4 @@ export default function ImageMetadataTool() {
     </section>
   );
 }
+
