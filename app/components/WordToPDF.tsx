@@ -479,7 +479,6 @@ export default function WordToPDF() {
               </p>
             </div>
           )}
-
           <button
             type="button"
             onClick={downloadPDF}
@@ -487,6 +486,7 @@ export default function WordToPDF() {
             className="mt-5 w-full rounded-xl border border-blue-200 bg-blue-50 px-5 py-3.5 font-semibold text-blue-700 transition hover:bg-blue-100 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400"
           >
             Download PDF
+          </button>
           {resultBlob && (
             <ShareFileResult
               tool="word-to-pdf"
@@ -494,7 +494,7 @@ export default function WordToPDF() {
               file={resultBlob}
               filename={`${file?.name.replace(/\.docx$/i, "") || "document"}.pdf`}
             />
-          )}          </button>
+          )}
 
           <p className="mt-3 text-center text-xs text-slate-400">
             Your document is processed locally in your browser.
