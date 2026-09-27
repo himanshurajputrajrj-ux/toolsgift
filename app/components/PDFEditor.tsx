@@ -1,5 +1,6 @@
 "use client";
 
+import ShareFileResult from "./ShareFileResult";
 import {
   ChangeEvent,
   MouseEvent,
@@ -874,6 +875,15 @@ export default function PDFEditor() {
               >
                 Download PDF
               </button>
+              {resultBlob && (
+                <ShareFileResult
+                  tool="pdf-editor"
+                  resultTitle="PDF Editor Result"
+                  file={resultBlob}
+                  filename="edited-document.pdf"
+                />
+              )}
+
             </div>
 
             <p className="mt-3 text-center text-xs text-slate-400">

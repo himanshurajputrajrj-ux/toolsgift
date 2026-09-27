@@ -1,5 +1,7 @@
 ﻿"use client";
 
+import ShareFileResult from "./ShareFileResult";
+
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
@@ -616,6 +618,15 @@ export default function ExcelToPDF() {
           >
             Download PDF
           </button>
+          {resultBlob && (
+            <ShareFileResult
+              tool="excel-to-pdf"
+              resultTitle="Excel to PDF Result"
+              file={resultBlob}
+              filename={`${file?.name.replace(/\.[^/.]+$/i, "") || "document"}.pdf`}
+            />
+          )}
+
 
           <p className="mt-3 text-center text-xs text-slate-400">
             Your spreadsheet is processed locally in your browser.

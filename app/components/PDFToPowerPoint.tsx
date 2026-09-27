@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import ShareFileResult from "./ShareFileResult";
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import pptxgen from "pptxgenjs";
 
@@ -395,6 +396,15 @@ export default function PDFToPowerPoint() {
           >
             Download PowerPoint
           </button>
+          {resultBlob && (
+            <ShareFileResult
+              tool="pdf-to-powerpoint"
+              resultTitle="PDF to PowerPoint Result"
+              file={resultBlob}
+              filename="converted.pptx"
+            />
+          )}
+
 
           <p className="mt-3 text-center text-xs text-slate-400">
             PDF pages are rendered locally in your browser.

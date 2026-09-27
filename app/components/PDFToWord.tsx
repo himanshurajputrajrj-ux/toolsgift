@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import ShareFileResult from "./ShareFileResult";
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import { Document, Packer, Paragraph, TextRun } from "docx";
 
@@ -459,6 +460,15 @@ export default function PDFToWord() {
           >
             Download Word Document
           </button>
+          {resultBlob && (
+            <ShareFileResult
+              tool="pdf-to-word"
+              resultTitle="PDF to Word Result"
+              file={resultBlob}
+              filename="converted.docx"
+            />
+          )}
+
         </div>
       </div>
     </section>

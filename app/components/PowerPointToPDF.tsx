@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import ShareFileResult from "./ShareFileResult";
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import JSZip from "jszip";
 import jsPDF from "jspdf";
@@ -472,6 +473,15 @@ export default function PowerPointToPDF() {
           >
             Download PDF
           </button>
+          {resultBlob && (
+            <ShareFileResult
+              tool="powerpoint-to-pdf"
+              resultTitle="PowerPoint to PDF Result"
+              file={resultBlob}
+              filename="converted.pdf"
+            />
+          )}
+
 
           <p className="mt-3 text-center text-xs text-slate-400">
             Your presentation is processed locally in your browser.

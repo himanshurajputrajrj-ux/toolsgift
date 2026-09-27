@@ -1,4 +1,5 @@
 ﻿"use client";
+import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import { PDFDocument } from "pdf-lib";
@@ -389,6 +390,14 @@ export default function PDFCompressor() {
           >
             Download Compressed PDF
           </button>
+          {resultBlob && (
+            <ShareFileResult
+              tool="pdf-compressor"
+              resultTitle="PDF Compressor Result"
+              file={resultBlob}
+              filename={`compressed-${file?.name || "document.pdf"}`}
+            />
+          )}
 
           <p className="mt-3 text-center text-xs text-slate-400">
             Your files are processed locally in your browser.

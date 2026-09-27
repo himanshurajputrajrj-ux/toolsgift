@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import ShareFileResult from "./ShareFileResult";
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import * as XLSX from "xlsx";
 
@@ -477,6 +478,15 @@ export default function PDFToExcel() {
           >
             Download Excel
           </button>
+          {resultBlob && (
+            <ShareFileResult
+              tool="pdf-to-excel"
+              resultTitle="PDF to Excel Result"
+              file={resultBlob}
+              filename="converted.xlsx"
+            />
+          )}
+
 
           <p className="mt-3 text-center text-xs text-slate-400">
             Your PDF is processed locally in your browser.
