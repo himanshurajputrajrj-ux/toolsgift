@@ -884,17 +884,12 @@ export default function ImageMetadataTool() {
       return;
     }
 
-    const extension =
-      "jpg";
+    let extension = "jpg";
 
-    if (
-      file.type ===
-      "image/png"
-    ) {
-    } else if (
-      file.type ===
-      "image/webp"
-    ) {
+    if (file.type === "image/png") {
+      extension = "png";
+    } else if (file.type === "image/webp") {
+      extension = "webp";
     }
 
     const baseName =
@@ -1072,10 +1067,10 @@ export default function ImageMetadataTool() {
               }
               className="mt-6 w-full rounded-xl bg-[#202124] px-5 py-4 text-sm font-bold text-white transition hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-40"
             >
-
               {cleaning
-                ? "\uD83D\uDCF7 Choose Another Image"
-                : "\uD83D\uDCF7 Choose Image"}
+                ? "Removing Metadata..."
+                : "Remove Metadata"}
+
 
             </button>
 
@@ -1387,9 +1382,3 @@ export default function ImageMetadataTool() {
     </section>
   );
 }
-
-
-
-
-
-
