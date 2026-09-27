@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+﻿import type { ReactNode } from "react";
 type ToolSEOContentProps = {
   toolKey: string;
 };
@@ -698,38 +698,43 @@ export default function ToolSEOContent({
         {tool.name} can be useful for {tool.useCase}. Its main benefit is{" "}
         {tool.benefit}.
       </p>
-      <h2 className="mt-7 text-2xl font-bold text-slate-900">
-        Frequently Asked Questions
-      </h2>
-      <div className="mt-4 space-y-5">
-        {faq.map(([question, answer]) => (
-          <div key={question}>
-            <h3 className="text-lg font-semibold text-slate-900">
-              {question}
-            </h3>
-            <p className="mt-2 leading-7 text-slate-600">{answer}</p>
-          </div>
-        ))}
-      </div>
-      {RELATED_TOOLS[toolKey] && (
-        <div className="mt-8 border-t border-slate-200 pt-6">
-          <h2 className="text-2xl font-bold text-slate-900">Related Tools</h2>
-          <p className="mt-2 text-sm text-slate-600">Explore more useful tools for working with your files.</p>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {RELATED_TOOLS[toolKey].map((relatedTool) => (
-              <a
-                key={relatedTool.href}
-                href={relatedTool.href}
-                className="rounded-xl border border-black/10 bg-slate-50 px-4 py-3 text-sm font-medium text-black transition hover:border-black/20 hover:bg-slate-100"
-              >
-                {relatedTool.name}
-              </a>
-            ))}
-          </div>
+    {RELATED_TOOLS[toolKey] && (
+      <div className="mt-8 border-t border-slate-200 pt-6">
+        <h2 className="text-2xl font-bold text-slate-900">Related Tools</h2>
+        <p className="mt-2 text-sm text-slate-600">
+          Explore more useful tools for working with your files.
+        </p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {RELATED_TOOLS[toolKey].map((relatedTool) => (
+            <a
+              key={relatedTool.href}
+              href={relatedTool.href}
+              className="rounded-xl border border-black/10 bg-slate-50 px-4 py-3 text-sm font-medium text-black transition hover:border-black/20 hover:bg-slate-100"
+            >
+              {relatedTool.name}
+            </a>
+          ))}
         </div>
-      )}    </section>
+      </div>
+    )}
+    <h2 className="mt-7 text-2xl font-bold text-slate-900">
+      Frequently Asked Questions
+    </h2>
+    <div className="mt-4 space-y-5">
+      {faq.map(([question, answer]) => (
+        <div key={question}>
+          <h3 className="text-lg font-semibold text-slate-900">
+            {question}
+          </h3>
+          <p className="mt-2 leading-7 text-slate-600">{answer}</p>
+        </div>
+      ))}
+    </div>
+  </section>
   );
 }
+
+
 
 
 

@@ -346,6 +346,29 @@ export default function WordCounter() {
       </section>
       <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+          Related Tools
+        </h2>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            ["Image to Text", "/tools/image-to-text"],
+            ["Image Converter", "/tools/converter"],
+            ["Image Resizer", "/tools/resizer"],
+            ["Image Compressor", "/tools/compressor"],
+            ["Compress Image to KB", "/tools/compress-image-to-kb"],
+            ["HEIC to JPG", "/tools/heic-to-jpg"],
+          ].map(([title, href]) => (
+            <a
+              key={href}
+              href={href}
+              className="rounded-xl border border-gray-200 bg-gray-50 p-4 font-semibold text-gray-900 transition hover:border-blue-500 hover:text-blue-600 dark:border-gray-800 dark:bg-gray-950 dark:text-white dark:hover:text-blue-400"
+            >
+              {title}
+            </a>
+          ))}
+        </div>
+      </section>
+      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white">
           Frequently Asked Questions
         </h2>
         <div className="mt-5 space-y-5">
@@ -396,29 +419,7 @@ export default function WordCounter() {
           </div>
         </div>
       </section>
-      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-          Related Tools
-        </h2>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            ["Image to Text", "/tools/image-to-text"],
-            ["Image Converter", "/tools/converter"],
-            ["Image Resizer", "/tools/resizer"],
-            ["Image Compressor", "/tools/compressor"],
-            ["Compress Image to KB", "/tools/compress-image-to-kb"],
-            ["HEIC to JPG", "/tools/heic-to-jpg"],
-          ].map(([title, href]) => (
-            <a
-              key={href}
-              href={href}
-              className="rounded-xl border border-gray-200 bg-gray-50 p-4 font-semibold text-gray-900 transition hover:border-blue-500 hover:text-blue-600 dark:border-gray-800 dark:bg-gray-950 dark:text-white dark:hover:text-blue-400"
-            >
-              {title}
-            </a>
-          ))}
-        </div>
-      </section>
     </div>
   );
 }
+

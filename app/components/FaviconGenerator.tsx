@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { ChangeEvent, DragEvent, useEffect, useRef, useState } from "react";
 import ShareResult from "./ShareResult";
 type FaviconSize = {
@@ -6,12 +6,12 @@ type FaviconSize = {
   size: number;
 };
 const FAVICON_SIZES: FaviconSize[] = [
-  { label: "16 × 16", size: 16 },
-  { label: "32 × 32", size: 32 },
-  { label: "48 × 48", size: 48 },
-  { label: "180 × 180", size: 180 },
-  { label: "192 × 192", size: 192 },
-  { label: "512 × 512", size: 512 },
+  { label: "16 Ã— 16", size: 16 },
+  { label: "32 Ã— 32", size: 32 },
+  { label: "48 Ã— 48", size: 48 },
+  { label: "180 Ã— 180", size: 180 },
+  { label: "192 Ã— 192", size: 192 },
+  { label: "512 Ã— 512", size: 512 },
 ];
 type GeneratedIcon = {
   label: string;
@@ -165,7 +165,7 @@ export default function FaviconGenerator() {
             className="hidden"
           />
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-2xl">
-            🖼️
+            ðŸ–¼ï¸
           </div>
           <h2 className="mt-4 text-xl font-bold text-slate-900">
             Upload an image
@@ -174,7 +174,7 @@ export default function FaviconGenerator() {
             Drag & drop an image here, or click to browse
           </p>
           <p className="mt-2 text-xs text-slate-500">
-            PNG, JPG, WebP or SVG • Maximum 10MB
+            PNG, JPG, WebP or SVG â€¢ Maximum 10MB
           </p>
         </div>
         {error && (
@@ -279,84 +279,13 @@ export default function FaviconGenerator() {
             sizes directly in your browser.
           </p>
           <p>
-            ToolsGift creates multiple PNG favicon sizes including 16×16,
-            32×32, 48×48, 180×180, 192×192 and 512×512.
+            ToolsGift creates multiple PNG favicon sizes including 16Ã—16,
+            32Ã—32, 48Ã—48, 180Ã—180, 192Ã—192 and 512Ã—512.
           </p>
           <p>
             Your image is processed locally in your browser, so you do not
             need to upload it to a server.
           </p>
-        </div>
-      </section>
-      <section className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
-        <h2 className="text-2xl font-bold text-slate-900">
-          Frequently Asked Questions
-        </h2>
-        <div className="mt-6 space-y-5">
-          <div>
-            <h3 className="font-bold text-slate-900">What is a favicon?</h3>
-            <p className="mt-2 text-sm leading-7 text-slate-600">
-              A favicon is a small icon used to identify a website in browser
-              tabs, bookmarks, search results and other places where a site
-              identity is displayed.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold text-slate-900">
-              How do I create a favicon from an image?
-            </h3>
-            <p className="mt-2 text-sm leading-7 text-slate-600">
-              Upload your PNG, JPG, WebP or SVG image to the Favicon Generator.
-              ToolsGift automatically creates multiple favicon sizes in your
-              browser.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold text-slate-900">
-              What image formats can I use?
-            </h3>
-            <p className="mt-2 text-sm leading-7 text-slate-600">
-              You can use PNG, JPG, WebP and SVG images. The generated favicon
-              files are provided as PNG images.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold text-slate-900">
-              What favicon sizes does ToolsGift generate?
-            </h3>
-            <p className="mt-2 text-sm leading-7 text-slate-600">
-              ToolsGift generates 16×16, 32×32, 48×48, 180×180, 192×192 and
-              512×512 PNG favicon sizes.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold text-slate-900">
-              Is this favicon generator free?
-            </h3>
-            <p className="mt-2 text-sm leading-7 text-slate-600">
-              Yes. You can use the ToolsGift Favicon Generator for free in your
-              browser.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold text-slate-900">
-              Is my image uploaded to a server?
-            </h3>
-            <p className="mt-2 text-sm leading-7 text-slate-600">
-              No. The image is processed directly in your browser, so the
-              favicon generation does not require uploading the image to a
-              server.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold text-slate-900">
-              Can I use the generated favicon on my website?
-            </h3>
-            <p className="mt-2 text-sm leading-7 text-slate-600">
-              Yes. The generated PNG favicon sizes can be used for website
-              icons, app icons and other web projects that support PNG images.
-            </p>
-          </div>
         </div>
       </section>
       <section className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
@@ -402,6 +331,78 @@ export default function FaviconGenerator() {
           </a>
         </div>
       </section>
+      <section className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
+        <h2 className="text-2xl font-bold text-slate-900">
+          Frequently Asked Questions
+        </h2>
+        <div className="mt-6 space-y-5">
+          <div>
+            <h3 className="font-bold text-slate-900">What is a favicon?</h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              A favicon is a small icon used to identify a website in browser
+              tabs, bookmarks, search results and other places where a site
+              identity is displayed.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold text-slate-900">
+              How do I create a favicon from an image?
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              Upload your PNG, JPG, WebP or SVG image to the Favicon Generator.
+              ToolsGift automatically creates multiple favicon sizes in your
+              browser.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold text-slate-900">
+              What image formats can I use?
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              You can use PNG, JPG, WebP and SVG images. The generated favicon
+              files are provided as PNG images.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold text-slate-900">
+              What favicon sizes does ToolsGift generate?
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              ToolsGift generates 16Ã—16, 32Ã—32, 48Ã—48, 180Ã—180, 192Ã—192 and
+              512Ã—512 PNG favicon sizes.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold text-slate-900">
+              Is this favicon generator free?
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              Yes. You can use the ToolsGift Favicon Generator for free in your
+              browser.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold text-slate-900">
+              Is my image uploaded to a server?
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              No. The image is processed directly in your browser, so the
+              favicon generation does not require uploading the image to a
+              server.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold text-slate-900">
+              Can I use the generated favicon on my website?
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              Yes. The generated PNG favicon sizes can be used for website
+              icons, app icons and other web projects that support PNG images.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
+
