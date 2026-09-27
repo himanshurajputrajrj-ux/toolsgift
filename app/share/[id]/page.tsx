@@ -5,7 +5,7 @@ import ShareResultActions from "./ShareResultActions";
 type SharePayload = {
   tool: string;
   resultTitle: string;
-  kind?: "text" | "image" | "batch" | "video";
+  kind?: "text" | "image" | "batch" | "video" | "file";
   value: string;
   filename: string;
   contentType?: string;
@@ -188,6 +188,14 @@ export default async function SharePage({
               className="mt-5 flex w-full items-center justify-center rounded-xl bg-emerald-600 px-5 py-3.5 font-semibold text-white transition hover:bg-emerald-700"
             >
               Download ZIP
+            </a>
+          ) : share.kind === "file" ? (
+            <a
+              href={assetUrl}
+              download={share.filename}
+              className="mt-5 flex w-full items-center justify-center rounded-xl bg-emerald-600 px-5 py-3.5 font-semibold text-white transition hover:bg-emerald-700"
+            >
+              Download File
             </a>
           ) : (
             <ShareResultActions

@@ -5,6 +5,7 @@ import JSZip from "jszip";
 const ONE_MONTH_MS = 30 * 24 * 60 * 60 * 1000;
 const MAX_IMAGE_SIZE = 4 * 1024 * 1024;
 const MAX_VIDEO_SIZE = 500 * 1024 * 1024;
+const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
 type VideoExpiry = "1h" | "6h" | "24h" | "3d" | "7d";
 
@@ -47,6 +48,16 @@ type SharePayload =
       contentType: string;
       createdAt: string;
       expiresAt: string;
+    }
+  | {
+      tool: string;
+      resultTitle: string;
+      kind: "file";
+      value: string;
+      filename: string;
+      contentType: string;
+      createdAt: string;
+      expiresAt: string;
     };
 
 function getVideoExpiryMs(expiry: VideoExpiry): number {
@@ -82,9 +93,47 @@ export async function POST(request: Request) {
       const resultTitle = formData.get("resultTitle");
       const filename = formData.get("filename");
       const video = formData.get("video");
+      const file = formData.get("file");
       const expiry = formData.get("expiry");
 
-      if (tool === "video-to-link") {
+      if (file instanceof File) {
+        if (
+          typeof tool !== "string" ||
+          typeof resultTitle !== "string" ||
+          typeof filename !== "string"
+        ) {
+          return Response.json(
+            { error: "Invalid file share data." },
+            { status: 400 }
+          );
+        }
+        if (file.size > MAX_FILE_SIZE) {
+          return Response.json(
+            {
+              error:
+                "File is too large. Maximum share file size is 50 MB.",
+            },
+            { status: 413 }
+          );
+        }
+        const safeFilename = (filename || file.name || "shared-file").replace(/[^a-zA-Z0-9._-]/g, "_");
+        const assetKey = `share-assets/${shareId}-${safeFilename}`;
+        await put(assetKey, file, {
+          access: "private",
+          contentType: file.type || "application/octet-stream",
+        });
+        const expiresAt = new Date(now + ONE_MONTH_MS);
+        payload = {
+          tool,
+          resultTitle,
+          kind: "file",
+          value: assetKey,
+          filename: safeFilename,
+          contentType: file.type || "application/octet-stream",
+          createdAt: new Date(now).toISOString(),
+          expiresAt: expiresAt.toISOString(),
+        };
+      } else if (tool === "video-to-link") {
         if (
           typeof tool !== "string" ||
           typeof resultTitle !== "string" ||

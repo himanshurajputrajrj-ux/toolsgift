@@ -1,9 +1,10 @@
-﻿"use client";
+"use client";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import mammoth from "mammoth";
 import jsPDF from "jspdf";
 import { toCanvas } from "html-to-image";
+import ShareFileResult from "./ShareFileResult";
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024;
 
@@ -316,7 +317,7 @@ export default function WordToPDF() {
             />
 
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-2xl">
-              📝
+              ??
             </div>
 
             <h3 className="mt-4 font-semibold text-slate-900">
@@ -390,7 +391,7 @@ export default function WordToPDF() {
               <div className="flex min-h-[320px] items-center justify-center text-center">
                 <div>
                   <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 text-3xl">
-                    📄
+                    ??
                   </div>
 
                   <p className="mt-4 font-medium text-slate-600">
@@ -486,7 +487,14 @@ export default function WordToPDF() {
             className="mt-5 w-full rounded-xl border border-blue-200 bg-blue-50 px-5 py-3.5 font-semibold text-blue-700 transition hover:bg-blue-100 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400"
           >
             Download PDF
-          </button>
+          {resultBlob && (
+            <ShareFileResult
+              tool="word-to-pdf"
+              resultTitle="Word to PDF Result"
+              file={resultBlob}
+              filename={`${file?.name.replace(/\.docx$/i, "") || "document"}.pdf`}
+            />
+          )}          </button>
 
           <p className="mt-3 text-center text-xs text-slate-400">
             Your document is processed locally in your browser.

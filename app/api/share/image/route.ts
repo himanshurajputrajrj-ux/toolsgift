@@ -21,7 +21,8 @@ export async function GET(request: Request) {
     if (
       payload.kind !== "image" &&
       payload.kind !== "batch" &&
-      payload.kind !== "video"
+      payload.kind !== "video" &&
+      payload.kind !== "file"
     ) {
       return new Response("This share does not contain a supported file.", {
         status: 400,
