@@ -1,4 +1,5 @@
 ﻿"use client";
+import ShareFileResult from "./ShareFileResult";
 
 import { DragEvent, useRef, useState } from "react";
 import { PDFDocument } from "pdf-lib";
@@ -451,8 +452,18 @@ export default function MergePDF() {
           className="mt-5 w-full rounded-xl bg-emerald-600 px-5 py-3.5 font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:bg-slate-300"
         >
           Download Merged PDF
-        </button>
+        </button>{(resultUrl) && (
+  <ShareFileResult
+    tool="merge-pdf"
+    resultTitle="Merge PDF Result"
+    file={(resultUrl)}
+    filename="merged.pdf"
+  />
+)}
       </div>
     </div>
   );
 }
+
+
+

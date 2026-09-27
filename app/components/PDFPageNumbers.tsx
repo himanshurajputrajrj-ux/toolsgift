@@ -1,4 +1,5 @@
 ﻿"use client";
+import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
@@ -458,7 +459,14 @@ export default function PDFPageNumbers() {
               className="mt-4 w-full rounded-xl bg-emerald-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-40"
             >
               Download Numbered PDF
-            </button>
+            </button>{(resultUrl) && (
+  <ShareFileResult
+    tool="pdf-page-numbers"
+    resultTitle="PDF Page Numbers Result"
+    file={(resultUrl)}
+    filename="numbered.pdf"
+  />
+)}
           </div>
 
           {/* Reset */}
@@ -474,5 +482,8 @@ export default function PDFPageNumbers() {
     </section>
   );
 }
+
+
+
 
 

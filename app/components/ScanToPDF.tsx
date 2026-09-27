@@ -1,4 +1,5 @@
 ﻿"use client";
+import ShareFileResult from "./ShareFileResult";
 
 import {
   ChangeEvent,
@@ -546,7 +547,14 @@ export default function ScanToPDF() {
               className="mt-4 w-full rounded-xl bg-emerald-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-40"
             >
               Download Scanned PDF
-            </button>
+            </button>{(resultUrl) && (
+  <ShareFileResult
+    tool="scan-to-pdf"
+    resultTitle="Scan to PDF Result"
+    file={(resultUrl)}
+    filename="scanned.pdf"
+  />
+)}
           </div>
 
           {/* Reset */}
@@ -562,4 +570,7 @@ export default function ScanToPDF() {
     </section>
   );
 }
+
+
+
 

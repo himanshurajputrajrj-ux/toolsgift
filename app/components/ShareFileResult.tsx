@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 type ShareFileResultProps = {
   tool: string;
   resultTitle: string;
-  file: Blob | File | null;
+  file: Blob | File | string | null;
   filename: string;
 };
 export default function ShareFileResult({
@@ -56,14 +56,25 @@ export default function ShareFileResult({
       formData.append("tool", tool);
       formData.append("resultTitle", resultTitle);
       formData.append("filename", filename);
-      formData.append(
-        "file",
-        file instanceof File
-          ? file
-          : new File([file], filename, {
-              type: file.type || "application/octet-stream",
-            })
-      );
+      let uploadFile: File;
+      if (typeof file === "string") {
+        const fileResponse = await fetch(file);
+        if (!fileResponse.ok) {
+          throw new Error("Failed to read the generated file.");
+        }
+        const fileBlob = await fileResponse.blob();
+        uploadFile = new File([fileBlob], filename, {
+          type: fileBlob.type || "application/octet-stream",
+        });
+      } else {
+        uploadFile =
+          file instanceof File
+            ? file
+            : new File([file], filename, {
+                type: file.type || "application/octet-stream",
+              });
+      }
+      formData.append("file", uploadFile);
       const response = await fetch("/api/share", {
         method: "POST",
         body: formData,

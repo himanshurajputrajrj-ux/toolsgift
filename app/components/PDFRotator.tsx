@@ -1,4 +1,5 @@
 ﻿"use client";
+import ShareFileResult from "./ShareFileResult";
 
 import {
   ChangeEvent,
@@ -471,10 +472,20 @@ export default function PDFRotator() {
           }`}
         >
           Download Rotated PDF
-        </a>
+        </a>{resultUrl && (
+  <ShareFileResult
+    tool="pdf-rotator"
+    resultTitle="PDF Rotator Result"
+    file={resultUrl}
+    filename="rotated.pdf"
+  />
+)}
       </div>
     </section>
   );
 }
+
+
+
 
 

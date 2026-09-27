@@ -1,4 +1,5 @@
 ﻿"use client";
+import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import { jsPDF } from "jspdf";
@@ -467,7 +468,14 @@ export default function HTMLToPDF() {
               className="mt-4 w-full rounded-xl bg-emerald-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-40"
             >
               Download PDF
-            </button>
+            </button>{(resultUrl) && (
+  <ShareFileResult
+    tool="html-to-pdf"
+    resultTitle="HTML to PDF Result"
+    file={(resultUrl)}
+    filename="converted.pdf"
+  />
+)}
           </div>
 
           {/* Remove / Reset */}
@@ -483,4 +491,7 @@ export default function HTMLToPDF() {
     </section>
   );
 }
+
+
+
 

@@ -1,4 +1,5 @@
 ﻿"use client";
+import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import { PDFDocument } from "pdf-lib";
@@ -349,7 +350,14 @@ export default function PDFToPDFA() {
               className="mt-4 w-full rounded-xl bg-emerald-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-40"
             >
               Download PDF/A
-            </button>
+            </button>{(resultUrl) && (
+  <ShareFileResult
+    tool="pdf-to-pdfa"
+    resultTitle="PDF/A Result"
+    file={(resultUrl)}
+    filename="converted-pdfa.pdf"
+  />
+)}
           </div>
 
           {/* Reset */}
@@ -365,6 +373,9 @@ export default function PDFToPDFA() {
     </section>
   );
 }
+
+
+
 
 
 

@@ -1,4 +1,5 @@
 ﻿"use client";
+import ShareFileResult from "./ShareFileResult";
 
 import { DragEvent, useRef, useState } from "react";
 
@@ -409,7 +410,14 @@ export default function ImageToWord() {
               className="mt-5 w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
               Download Word Document
-            </button>
+            </button>{(result) && (
+  <ShareFileResult
+    tool="image-to-word"
+    resultTitle="Image to Word Result"
+    file={(result)}
+    filename="converted.docx"
+  />
+)}
 
           </div>
         </div>
@@ -417,3 +425,6 @@ export default function ImageToWord() {
     </main>
   );
 }
+
+
+

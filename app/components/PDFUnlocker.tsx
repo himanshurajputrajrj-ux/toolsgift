@@ -1,4 +1,5 @@
 ﻿"use client";
+import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import { PDFDocument } from "pdf-lib";
@@ -325,7 +326,14 @@ export default function PDFUnlocker() {
               className="mt-4 w-full rounded-xl bg-emerald-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-40"
             >
               Download Unlocked PDF
-            </button>
+            </button>{(resultUrl) && (
+  <ShareFileResult
+    tool="pdf-unlocker"
+    resultTitle="PDF Unlocker Result"
+    file={(resultUrl)}
+    filename="unlocked.pdf"
+  />
+)}
           </div>
 
           {/* Reset */}
@@ -341,5 +349,8 @@ export default function PDFUnlocker() {
     </section>
   );
 }
+
+
+
 
 

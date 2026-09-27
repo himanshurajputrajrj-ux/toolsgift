@@ -1,4 +1,5 @@
 ﻿"use client";
+import ShareFileResult from "./ShareFileResult";
 
 import {
   ChangeEvent,
@@ -765,10 +766,20 @@ export default function PDFWatermark() {
           }`}
         >
           Download Watermarked PDF
-        </a>
+        </a>{resultUrl && (
+  <ShareFileResult
+    tool="pdf-watermark"
+    resultTitle="PDF Watermark Result"
+    file={resultUrl}
+    filename="watermarked.pdf"
+  />
+)}
       </div>
     </section>
   );
 }
+
+
+
 
 

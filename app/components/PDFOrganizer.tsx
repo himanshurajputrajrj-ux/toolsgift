@@ -1,4 +1,5 @@
 ﻿"use client";
+import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import { PDFDocument } from "pdf-lib";
@@ -466,7 +467,14 @@ export default function PDFOrganizer() {
               className="mt-4 w-full rounded-xl bg-emerald-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-40"
             >
               Download Organized PDF
-            </button>
+            </button>{(resultUrl) && (
+  <ShareFileResult
+    tool="pdf-organizer"
+    resultTitle="PDF Organizer Result"
+    file={(resultUrl)}
+    filename="organized.pdf"
+  />
+)}
           </div>
 
           {/* Reset */}
@@ -482,5 +490,8 @@ export default function PDFOrganizer() {
     </section>
   );
 }
+
+
+
 
 

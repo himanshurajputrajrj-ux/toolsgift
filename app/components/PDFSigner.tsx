@@ -1,4 +1,5 @@
 ﻿"use client";
+import ShareFileResult from "./ShareFileResult";
 
 import {
   ChangeEvent,
@@ -707,10 +708,20 @@ export default function PDFSigner() {
           }`}
         >
           Download Signed PDF
-        </a>
+        </a>{resultUrl && (
+  <ShareFileResult
+    tool="pdf-signer"
+    resultTitle="PDF Signer Result"
+    file={resultUrl}
+    filename="signed.pdf"
+  />
+)}
       </div>
     </section>
   );
 }
+
+
+
 
 

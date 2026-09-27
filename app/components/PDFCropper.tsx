@@ -1,4 +1,5 @@
 ﻿"use client";
+import ShareFileResult from "./ShareFileResult";
 
 import {
   ChangeEvent,
@@ -506,12 +507,22 @@ export default function PDFCropper() {
             className="mt-3 w-full rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
           >
             Clear & Reset
-          </button>
+          </button>{(resultUrl) && (
+  <ShareFileResult
+    tool="pdf-cropper"
+    resultTitle="PDF Cropper Result"
+    file={(resultUrl)}
+    filename="cropped.pdf"
+  />
+)}
         </div>
       </div>
     </section>
   );
 }
+
+
+
 
 
 

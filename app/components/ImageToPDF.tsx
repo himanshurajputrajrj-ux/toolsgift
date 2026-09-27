@@ -1,4 +1,5 @@
 ﻿"use client";
+import ShareFileResult from "./ShareFileResult";
 
 import { DragEvent, useRef, useState } from "react";
 
@@ -383,7 +384,14 @@ export default function ImageToPDF() {
               className="mt-5 w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
               Download PDF
-            </button>
+            </button>{(result) && (
+  <ShareFileResult
+    tool="image-to-pdf"
+    resultTitle="Image to PDF Result"
+    file={(result)}
+    filename="converted.pdf"
+  />
+)}
 
           </div>
         </div>
@@ -391,3 +399,6 @@ export default function ImageToPDF() {
     </main>
   );
 }
+
+
+
