@@ -2,6 +2,7 @@
 
 import { DragEvent, useRef, useState } from "react";
 import { PDFDocument } from "pdf-lib";
+import ShareFileResult from "./ShareFileResult";
 
 type SplitResult = {
   id: string;
@@ -612,6 +613,13 @@ export default function PDFSplitter() {
                     >
                       Download
                     </button>
+
+                    <ShareFileResult
+                      tool="pdf-splitter"
+                      resultTitle={`Split PDF ${index + 1}`}
+                      file={result.url}
+                      filename={result.name}
+                    />
                   </div>
                 </div>
               )
@@ -648,3 +656,6 @@ export default function PDFSplitter() {
     </div>
   );
 }
+
+
+
