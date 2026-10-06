@@ -449,7 +449,7 @@ const utilityTools: Tool[] = [
   },
 ];const otherTools: Tool[] = [
   {
-    title: "Video \u2192 Link",
+    title: "Video to Link",
     link: "/tools/video-to-link",
     icon: "video",
     color: "blue",
@@ -563,7 +563,7 @@ useIsomorphicLayoutEffect(() => {
             className="ml-0.5 -mt-3 text-sm font-bold text-[#c9a227] transition-transform duration-300 group-hover:rotate-12"
             aria-hidden="true"
           >
-            âœ¦
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C12 8 16 12 22 12C16 12 12 16 12 22C12 16 8 12 2 12C8 12 12 8 12 2Z" /></svg>
           </span>
         </Link>
 
@@ -593,7 +593,7 @@ useIsomorphicLayoutEffect(() => {
         {/* Desktop Language Selector */}
         <div className="relative hidden lg:block">
           <button type="button" onClick={() => { setLanguageOpen((v) => !v); setToolsOpen(false); }} className={`flex h-10 items-center justify-center gap-2 rounded-xl border px-3.5 text-sm font-bold shadow-sm transition ${darkMode ? "border-white/10 bg-[#1e293b] text-white hover:bg-[#334155]" : "border-black/10 bg-white/70 text-[#202124] hover:bg-white"}`} aria-expanded={languageOpen} aria-haspopup="menu" aria-controls="desktop-language-menu">
-            <span aria-hidden="true">ðŸŒ</span><span>{languageOptions.find((language) => language.code === locale)?.name ?? "Language"}</span>
+            <span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18" /><ellipse cx="12" cy="12" rx="4.2" ry="9" /></svg></span><span>{languageOptions.find((language) => language.code === locale)?.name ?? "Language"}</span>
           </button>
           {languageOpen && <div id="desktop-language-menu" role="menu" aria-label="Language" className={`absolute right-0 top-full mt-3 w-80 rounded-2xl border p-3 shadow-2xl ${darkMode ? "border-white/10 bg-[#151f32]" : "border-[#c9a227]/20 bg-[#fffdf8]"}`}>
             <div className="grid max-h-[65vh] grid-cols-2 gap-1 overflow-y-auto">
@@ -876,7 +876,7 @@ useIsomorphicLayoutEffect(() => {
 }`}
                 >
                   <span className="flex items-center gap-3">
-                    <span aria-hidden="true">ðŸŒ</span>
+                    <span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18" /><ellipse cx="12" cy="12" rx="4.2" ry="9" /></svg></span>
                     <span>{languageOptions.find((language) => language.code === locale)?.name ?? t.nav.language}</span>
                   </span>
 
@@ -1263,16 +1263,7 @@ function IconShape({
           <path d="M8 7h8" />
           <path d="M8 11h3" />
           <path d="M8 15h4" />
-          <text
-            x="13"
-            y="17"
-            fontSize="7"
-            fontWeight="700"
-            fill="currentColor"
-            stroke="none"
-          >
-            W
-          </text>
+          <path d="M10 13l2 4 2-4M14 13l-2 4-2-4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       );
 
@@ -1280,16 +1271,8 @@ function IconShape({
       return (
         <svg {...common}>
           <rect x="4" y="3" width="16" height="18" rx="2" />
-          <text
-            x="7"
-            y="16"
-            fontSize="9"
-            fontWeight="800"
-            fill="currentColor"
-            stroke="none"
-          >
-            P
-          </text>
+          <path d="M8 7h8M8 7v10M16 7v10" strokeWidth="1.5" />
+          <path d="M10 11h4M10 15h4" strokeWidth="1.5" />
         </svg>
       );
 
@@ -1298,16 +1281,7 @@ function IconShape({
         <svg {...common}>
           <rect x="4" y="3" width="16" height="18" rx="2" />
           <path d="M9 9l6 6M15 9l-6 6" />
-          <text
-            x="6"
-            y="8"
-            fontSize="6"
-            fontWeight="800"
-            fill="currentColor"
-            stroke="none"
-          >
-            X
-          </text>
+          <path d="M8 7h3M13 7h3M8 17h3M13 17h3" strokeWidth="1.5" />
         </svg>
       );
 
@@ -1392,16 +1366,7 @@ function IconShape({
       return (
         <svg {...common}>
           <rect x="4" y="3" width="16" height="18" rx="2" />
-          <text
-            x="7"
-            y="16"
-            fontSize="8"
-            fontWeight="800"
-            fill="currentColor"
-            stroke="none"
-          >
-            A
-          </text>
+          <path d="M7 16V8h4v8M7 12h4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       );
 
