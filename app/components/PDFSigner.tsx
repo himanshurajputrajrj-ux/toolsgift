@@ -9,7 +9,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { PDFDocument } from "pdf-lib";
 
 type Point = {
   x: number;
@@ -82,6 +81,9 @@ export default function PDFSigner() {
 
     try {
       const buffer = await selectedFile.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
+
       const pdf = await PDFDocument.load(buffer);
 
       setFile(selectedFile);
@@ -241,6 +243,8 @@ export default function PDFSigner() {
     setError("");
 
     try {
+      const { PDFDocument } = await import("pdf-lib");
+
       const pdfDoc = await PDFDocument.load(pdfData);
       const pages = pdfDoc.getPages();
       const page = pages[currentPage - 1];

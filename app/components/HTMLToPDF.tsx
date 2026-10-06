@@ -2,7 +2,6 @@
 import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
-import { jsPDF } from "jspdf";
 import { toCanvas } from "html-to-image";
 
 export default function HTMLToPDF() {
@@ -102,6 +101,8 @@ export default function HTMLToPDF() {
     setResultUrl("");
 
     try {
+      const { jsPDF } = await import("jspdf");
+
       const container = document.createElement("div");
 
       container.style.position = "fixed";

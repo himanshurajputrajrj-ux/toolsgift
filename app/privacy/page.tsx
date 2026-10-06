@@ -19,7 +19,7 @@ export default function PrivacyPage() {
           </h1>
 
           <p className="mt-3 text-sm text-slate-500">
-            Last updated: September 8, 2026
+            Last updated: October 6, 2026
           </p>
 
           <div className="mt-10 space-y-8 text-[16px] leading-8 text-slate-700">
@@ -57,18 +57,40 @@ export default function PrivacyPage() {
                 3. Uploaded Files
               </h2>
               <p className="mt-3">
-                ToolsGift provides tools for processing images and PDF
-                documents. Some tools process files directly in your browser.
-                Where browser-based processing is used, the file may remain on
-                your device and is not intentionally uploaded to our servers
-                for processing.
+                ToolsGift provides tools for processing images, PDF documents,
+                and other file types. Most tools process files directly in your
+                browser, so those files may remain on your device and are not
+                intentionally uploaded to our servers for processing.
               </p>
               <p className="mt-3">
-                However, certain features may use external services when
-                required to perform a specific function. Users should avoid
-                uploading confidential, highly sensitive, or legally protected
-                information unless they are comfortable with the processing
-                required by that particular tool.
+                The <strong>Share</strong> feature is different. When you share
+                a result or upload a file (image, document, batch archive, or
+                video), that data is temporarily stored with Vercel Blob, a
+                file storage service operated by Vercel, Inc., so that anyone
+                with the share link can view or download it. This is required
+                for sharing to work at all.
+              </p>
+              <p className="mt-3">
+                <strong>Retention.</strong> Shared text results, images,
+                documents, and batch archives are kept for up to 30 days. Shared
+                videos are kept for the expiry option you choose when creating
+                the link (1 hour to 7 days). After the expiry date the share
+                link stops working and the stored file is deleted automatically.
+              </p>
+              <p className="mt-3">
+                <strong>Deletion.</strong> Files are removed when their share
+                link is accessed after expiry, and a background sweep also
+                removes expired shares and abandoned uploads. There is currently
+                no self-service button to delete an individual share before it
+                expires; you can request deletion through the Contact Us page
+                and we will review it.
+              </p>
+              <p className="mt-3">
+                File types shown for shares are based on the content type
+                reported by your browser when the file was shared; we do not
+                inspect the contents of uploaded files. You should avoid sharing
+                confidential, highly sensitive, or legally protected information
+                unless you are comfortable with this processing.
               </p>
             </section>
 
@@ -123,10 +145,16 @@ export default function PrivacyPage() {
                 7. Third-Party Services
               </h2>
               <p className="mt-3">
-                Some ToolsGift tools may rely on third-party services to provide
-                specific functionality. When a tool sends information to an
-                external service, that processing may be governed by the
-                third party&apos;s own privacy policy and terms.
+                ToolsGift uses Vercel Blob to store files for the Share and
+                Video {"\u2192"} Link features, as described in section 3.
+                Vercel Blob is operated by Vercel, Inc. and stores the data on
+                servers outside your device.
+              </p>
+              <p className="mt-3">
+                Advertising is served by Google AdSense only after you consent
+                to advertising cookies. When a tool sends information to an
+                external service, that processing may be governed by the third
+                party&apos;s own privacy policy and terms.
               </p>
             </section>
 
@@ -175,7 +203,8 @@ export default function PrivacyPage() {
                 rights regarding access, correction, deletion, restriction,
                 objection, or other processing of your personal information.
                 You may contact us to request assistance with applicable
-                privacy requests.
+                privacy requests. Shared files are deleted automatically when
+                their share link expires, as described in section 3.
               </p>
             </section>
 

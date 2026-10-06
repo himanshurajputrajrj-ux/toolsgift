@@ -2,7 +2,6 @@
 import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
-import { PDFDocument } from "pdf-lib";
 
 export default function PDFUnlocker() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -48,6 +47,8 @@ export default function PDFUnlocker() {
     try {
       const bytes = await selectedFile.arrayBuffer();
 
+      const { PDFDocument } = await import("pdf-lib");
+
       const pdf = await PDFDocument.load(bytes, {
         ignoreEncryption: true,
       });
@@ -90,6 +91,8 @@ export default function PDFUnlocker() {
 
     try {
       const bytes = await file.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
 
       const pdf = await PDFDocument.load(bytes, {
         ignoreEncryption: true,

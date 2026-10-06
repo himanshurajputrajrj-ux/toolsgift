@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import ShareResult from "./ShareResult";
-import { createWorker } from "tesseract.js";
+import { getTesseractWorkerOptions } from "@/app/lib/tesseractAssets";
 type OCRResult = {
   name: string;
   text: string;
@@ -19,7 +19,9 @@ export default function ImageToText() {
     setError("");
     setResult(null);
     try {
+      const { createWorker } = await import("tesseract.js");
       const worker = await createWorker("eng", 1, {
+        ...getTesseractWorkerOptions(),
         logger: (message) => {
           if (message.status === "recognizing text") {
             setProgress(Math.round((message.progress || 0) * 100));

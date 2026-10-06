@@ -174,7 +174,7 @@ export default function FaviconGenerator() {
             Drag & drop an image here, or click to browse
           </p>
           <p className="mt-2 text-xs text-slate-500">
-            PNG, JPG, WebP or SVG â€¢ Maximum 10MB
+            PNG, JPG, WebP or SVG • Maximum 10MB
           </p>
         </div>
         {error && (

@@ -8,8 +8,6 @@ import {
 } from "react";
 import ShareResult from "./ShareResult";
 
-import { removeBackground } from "@imgly/background-removal";
-
 type SizePreset = {
   id: string;
   name: string;
@@ -611,6 +609,8 @@ export default function PassportPhotoMaker() {
     setRemovingBackground(true);
 
     try {
+      const { removeBackground } = await import("@imgly/background-removal");
+
       const blob =
         await removeBackground(
           source

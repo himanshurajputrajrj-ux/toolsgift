@@ -8,7 +8,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { PDFDocument, rgb, degrees } from "pdf-lib";
 
 export default function PDFWatermark() {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -78,6 +77,9 @@ export default function PDFWatermark() {
 
     try {
       const buffer = await selectedFile.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
+
       const pdf = await PDFDocument.load(buffer);
 
       setFile(selectedFile);
@@ -127,6 +129,9 @@ export default function PDFWatermark() {
     setError("");
 
     try {
+      const { PDFDocument, rgb, degrees } =
+        await import("pdf-lib");
+
       const pdfDoc = await PDFDocument.load(pdfData);
       const pages = pdfDoc.getPages();
 

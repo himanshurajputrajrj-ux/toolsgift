@@ -9,7 +9,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { PDFDocument, rgb } from "pdf-lib";
 
 type Redaction = {
   id: number;
@@ -73,6 +72,9 @@ export default function PDFRedactor() {
 
     try {
       const bytes = await selectedFile.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
+
       const pdf = await PDFDocument.load(bytes);
 
       setFile(selectedFile);
@@ -208,6 +210,8 @@ export default function PDFRedactor() {
     if (!pdfBytes || !canvasRef.current) return;
 
     try {
+      const { PDFDocument } = await import("pdf-lib");
+
       const pdf = await PDFDocument.load(pdfBytes);
       const page = pdf.getPage(currentPage - 1);
 
@@ -313,6 +317,8 @@ export default function PDFRedactor() {
     setError("");
 
     try {
+      const { PDFDocument, rgb } = await import("pdf-lib");
+
       const pdf = await PDFDocument.load(pdfBytes);
       const pages = pdf.getPages();
 

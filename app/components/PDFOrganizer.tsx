@@ -2,7 +2,6 @@
 import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
-import { PDFDocument } from "pdf-lib";
 
 type PageItem = {
   id: string;
@@ -54,6 +53,9 @@ export default function PDFOrganizer() {
 
     try {
       const bytes = await selectedFile.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
+
       const pdf = await PDFDocument.load(bytes);
 
       const pageItems: PageItem[] = pdf
@@ -173,6 +175,9 @@ export default function PDFOrganizer() {
 
     try {
       const bytes = await file.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
+
       const sourcePDF = await PDFDocument.load(bytes);
       const outputPDF = await PDFDocument.create();
 

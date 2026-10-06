@@ -1,5 +1,6 @@
 ﻿"use client";
 import { useEffect, useState } from "react";
+import { deleteShare } from "@/app/lib/shareDelete";
 type ShareFileResultProps = {
   tool: string;
   resultTitle: string;
@@ -13,12 +14,16 @@ export default function ShareFileResult({
   filename,
 }: ShareFileResultProps) {
   const [shareUrl, setShareUrl] = useState("");
+  const [shareId, setShareId] = useState("");
+  const [deleteCapability, setDeleteCapability] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   useEffect(() => {
 // eslint-disable-next-line react-hooks/set-state-in-effect
     setShareUrl("");
     setMessage("");
+    setShareId("");
+    setDeleteCapability("");
   }, [file, filename]);
   const copyText = async (text: string): Promise<boolean> => {
     try {
@@ -75,6 +80,10 @@ export default function ShareFileResult({
               });
       }
       formData.append("file", uploadFile);
+      if (uploadFile.size === 0) {
+        setMessage("There is no file to share.");
+        return null;
+      }
       const response = await fetch("/api/share", {
         method: "POST",
         body: formData,
@@ -84,6 +93,10 @@ export default function ShareFileResult({
         throw new Error(data.error || "Failed to create share link.");
       }
       setShareUrl(data.shareUrl);
+      setShareId(typeof data.shareId === "string" ? data.shareId : "");
+      setDeleteCapability(
+        typeof data.deleteCapability === "string" ? data.deleteCapability : ""
+      );
       return data.shareUrl;
     } catch {
       setMessage("Failed to create share link. Please try again.");
@@ -144,6 +157,23 @@ export default function ShareFileResult({
     const copied = await copyText(shareUrl);
     setMessage(copied ? "Link copied!" : "Copy failed. Please copy manually.");
   };
+  const handleDelete = async () => {
+    if (!shareId || !deleteCapability) {
+      return;
+    }
+    setLoading(true);
+    setMessage("");
+    const deleted = await deleteShare(shareId, deleteCapability);
+    setLoading(false);
+    if (!deleted) {
+      setMessage("Failed to delete the share link.");
+      return;
+    }
+    setShareUrl("");
+    setShareId("");
+    setDeleteCapability("");
+    setMessage("Share link deleted.");
+  };
   return (
     <div className="mt-4">
       <div className="flex flex-wrap gap-3">
@@ -181,6 +211,16 @@ export default function ShareFileResult({
             >
               Copy Link
             </button>
+            {shareId && deleteCapability && (
+              <button
+                type="button"
+                onClick={handleDelete}
+                disabled={loading}
+                className="rounded-xl border border-red-200 bg-white px-5 py-3 font-semibold text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-900 dark:bg-gray-900 dark:text-red-400 dark:hover:bg-red-950"
+              >
+                {loading ? "Deleting..." : "Delete Link"}
+              </button>
+            )}
           </div>
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
             This link expires in one month.

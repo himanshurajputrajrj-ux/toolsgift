@@ -45,3 +45,10 @@ next-env.d.ts
 
 # Local code backups
 /backup/
+/share-backup-*/
+*.theme-backup
+*-suspicious.txt
+theme-*.txt
+
+# Local tooling config
+opencode.json

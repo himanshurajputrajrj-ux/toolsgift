@@ -8,7 +8,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { PDFDocument, degrees } from "pdf-lib";
 
 export default function PDFRotator() {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -59,6 +58,9 @@ export default function PDFRotator() {
 
     try {
       const buffer = await selectedFile.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
+
       const pdf = await PDFDocument.load(buffer);
 
       setFile(selectedFile);
@@ -103,6 +105,8 @@ export default function PDFRotator() {
     setError("");
 
     try {
+      const { PDFDocument, degrees } = await import("pdf-lib");
+
       const pdfDoc = await PDFDocument.load(pdfData);
       const pages = pdfDoc.getPages();
 

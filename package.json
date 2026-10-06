@@ -19,7 +19,7 @@
     "jspdf": "^4.2.1",
     "jszip": "^3.10.2",
     "mammoth": "^1.12.3",
-    "next": "16.3.4",
+    "next": "16.3.8",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^6.3.289",
     "png-to-ico": "^3.0.2",
@@ -28,7 +28,7 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "tesseract.js": "^7.0.0",
-    "xlsx": "^0.18.5"
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -40,5 +40,11 @@
     "eslint-config-next": "16.3.4",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "pptxgenjs": {
+      "image-size": "^2.0.4"
+    },
+    "argparse": "^2.0.1"
   }
 }

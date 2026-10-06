@@ -1,13 +1,18 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   CONSENT_KEY,
+  clearCookieConsent,
+  saveCookieConsent,
   type CookieConsent,
 } from "@/app/lib/cookieConsent";
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 export default function CookiePreferences() {
   const [open, setOpen] = useState(false);
   const [analytics, setAnalytics] = useState(false);
   const [advertising, setAdvertising] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
   function loadPreferences() {
     const saved = localStorage.getItem(CONSENT_KEY);
     if (!saved) {
@@ -30,6 +35,12 @@ export default function CookiePreferences() {
       return;
     }
     document.body.style.overflow = "hidden";
+    const dialog = dialogRef.current;
+    const previous =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+    dialog?.focus();
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         setOpen(false);
@@ -39,22 +50,53 @@ export default function CookiePreferences() {
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
+      if (previous && previous !== dialog && document.contains(previous)) {
+        previous.focus();
+      }
     };
   }, [open]);
+  function handleDialogKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+    if (event.key !== "Tab") {
+      return;
+    }
+    const container = dialogRef.current;
+    if (!container) {
+      return;
+    }
+    const focusable = Array.from(
+      container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
+    );
+    if (focusable.length === 0) {
+      return;
+    }
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey) {
+      if (
+        document.activeElement === first ||
+        document.activeElement === container
+      ) {
+        event.preventDefault();
+        last.focus();
+      }
+    } else if (document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
   function openPreferences() {
     loadPreferences();
     setOpen(true);
   }
-  function savePreferences() {
-    localStorage.setItem(
-      CONSENT_KEY,
-      JSON.stringify({
-        necessary: true,
-        analytics,
-        advertising,
-      })
-    );
+function savePreferences() {
+    saveCookieConsent(analytics, advertising);
     window.dispatchEvent(new Event("toolsgift-consent-change"));
+    setOpen(false);
+  }
+  function resetPreferences() {
+    clearCookieConsent();
+    window.dispatchEvent(new Event("toolsgift-consent-change"));
+    window.dispatchEvent(new Event("toolsgift-consent-reset"));
     setOpen(false);
   }
   return (
@@ -77,10 +119,13 @@ export default function CookiePreferences() {
           }}
         >
           <div
-            className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl dark:bg-slate-900"
+            ref={dialogRef}
+            tabIndex={-1}
+            className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl outline-none dark:bg-slate-900"
             role="dialog"
             aria-modal="true"
             aria-labelledby="cookie-preferences-title"
+            onKeyDown={handleDialogKeyDown}
           >
             <h2
               id="cookie-preferences-title"
@@ -143,21 +188,30 @@ export default function CookiePreferences() {
                 />
               </label>
             </div>
-            <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+<div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:items-center sm:justify-between">
               <button
                 type="button"
-                onClick={() => setOpen(false)}
-                className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"
+                onClick={resetPreferences}
+                className="text-sm font-medium text-slate-500 underline hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
               >
-                Cancel
+                Reset consent choices
               </button>
-              <button
-                type="button"
-                onClick={savePreferences}
-                className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-200"
-              >
-                Save Preferences
-              </button>
+              <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+                <button
+                  type="button"
+                  onClick={() => setOpen(false)}
+                  className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={savePreferences}
+                  className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-200"
+                >
+                  Save Preferences
+                </button>
+              </div>
             </div>
           </div>
         </div>

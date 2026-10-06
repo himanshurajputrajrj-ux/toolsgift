@@ -1,9 +1,18 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { languageOptions } from "@/app/i18n/translations";
 import { useLanguage } from "@/app/providers/LanguageProvider";
+
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 type Tool = {
   title: string;
@@ -460,24 +469,20 @@ export default function Header() {
   const [languageOpen, setLanguageOpen] = useState(false);
   const [desktopDropdown, setDesktopDropdown] = useState<"all" | "images" | "pdf" | "convert" | null>(null);
   const [moreOpen, setMoreOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
-  const [themeReady, setThemeReady] = useState(false);
-    useEffect(() => {
-      const savedTheme = localStorage.getItem("toolsgift-theme");
-      if (savedTheme === "dark") {
-        // Theme is restored from localStorage after mount.
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setDarkMode(true);
-      }
-      setThemeReady(true);
-    }, []);
+const [darkMode, setDarkMode] = useState(false);
+useIsomorphicLayoutEffect(() => {
+  const savedTheme = localStorage.getItem("toolsgift-theme");
+  if (savedTheme === "dark" && !darkMode) {
+    setDarkMode(true);
+  }
+}, []);
 
-  const toolsRef = useRef<HTMLElement>(null);
+const toolsRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
-    localStorage.setItem("toolsgift-theme", darkMode ? "dark" : "light");
-  }, [darkMode]);
+useIsomorphicLayoutEffect(() => {
+  document.documentElement.classList.toggle("dark", darkMode);
+  localStorage.setItem("toolsgift-theme", darkMode ? "dark" : "light");
+}, [darkMode]);
 
   useEffect(() => {
     function handleOutsideClick(event: MouseEvent) {
@@ -531,8 +536,6 @@ export default function Header() {
     setDesktopDropdown(null);
     setMoreOpen(false);
   }
-    if (!themeReady) return null;
-
     return (
       <header
       ref={toolsRef}
@@ -560,25 +563,25 @@ export default function Header() {
             className="ml-0.5 -mt-3 text-sm font-bold text-[#c9a227] transition-transform duration-300 group-hover:rotate-12"
             aria-hidden="true"
           >
-            ✦
+            âœ¦
           </span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-1 lg:flex">
-          <DesktopDropdown label={t.nav.allTools} open={desktopDropdown === "all"} onClick={() => { setDesktopDropdown((v) => v === "all" ? null : "all"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
+          <DesktopDropdown label={t.nav.allTools} menuId="desktop-menu-all" open={desktopDropdown === "all"} onClick={() => { setDesktopDropdown((v) => v === "all" ? null : "all"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
             <DesktopAllToolsContent />
           </DesktopDropdown>
 
-          <DesktopDropdown label={t.nav.images} open={desktopDropdown === "images"} onClick={() => { setDesktopDropdown((v) => v === "images" ? null : "images"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
+          <DesktopDropdown label={t.nav.images} menuId="desktop-menu-images" open={desktopDropdown === "images"} onClick={() => { setDesktopDropdown((v) => v === "images" ? null : "images"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
             <DesktopToolList tools={imageTools} />
           </DesktopDropdown>
 
-          <DesktopDropdown label={t.nav.pdf} open={desktopDropdown === "pdf"} onClick={() => { setDesktopDropdown((v) => v === "pdf" ? null : "pdf"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
+          <DesktopDropdown label={t.nav.pdf} menuId="desktop-menu-pdf" open={desktopDropdown === "pdf"} onClick={() => { setDesktopDropdown((v) => v === "pdf" ? null : "pdf"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
             <DesktopPdfContent />
           </DesktopDropdown>
 
-          <DesktopDropdown label={t.nav.convert} open={desktopDropdown === "convert"} onClick={() => { setDesktopDropdown((v) => v === "convert" ? null : "convert"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
+          <DesktopDropdown label={t.nav.convert} menuId="desktop-menu-convert" open={desktopDropdown === "convert"} onClick={() => { setDesktopDropdown((v) => v === "convert" ? null : "convert"); setToolsOpen(false); setLanguageOpen(false); setMoreOpen(false); }}>
             <DesktopConvertContent />
           </DesktopDropdown>
 
@@ -589,12 +592,12 @@ export default function Header() {
 
         {/* Desktop Language Selector */}
         <div className="relative hidden lg:block">
-          <button type="button" onClick={() => { setLanguageOpen((v) => !v); setToolsOpen(false); }} className={`flex h-10 items-center justify-center gap-2 rounded-xl border px-3.5 text-sm font-bold shadow-sm transition ${darkMode ? "border-white/10 bg-[#1e293b] text-white hover:bg-[#334155]" : "border-black/10 bg-white/70 text-[#202124] hover:bg-white"}`} aria-expanded={languageOpen}>
-            <span aria-hidden="true">🌐</span><span>{languageOptions.find((language) => language.code === locale)?.name ?? "Language"}</span>
+          <button type="button" onClick={() => { setLanguageOpen((v) => !v); setToolsOpen(false); }} className={`flex h-10 items-center justify-center gap-2 rounded-xl border px-3.5 text-sm font-bold shadow-sm transition ${darkMode ? "border-white/10 bg-[#1e293b] text-white hover:bg-[#334155]" : "border-black/10 bg-white/70 text-[#202124] hover:bg-white"}`} aria-expanded={languageOpen} aria-haspopup="menu" aria-controls="desktop-language-menu">
+            <span aria-hidden="true">ðŸŒ</span><span>{languageOptions.find((language) => language.code === locale)?.name ?? "Language"}</span>
           </button>
-          {languageOpen && <div className={`absolute right-0 top-full mt-3 w-80 rounded-2xl border p-3 shadow-2xl ${darkMode ? "border-white/10 bg-[#151f32]" : "border-[#c9a227]/20 bg-[#fffdf8]"}`}>
+          {languageOpen && <div id="desktop-language-menu" role="menu" aria-label="Language" className={`absolute right-0 top-full mt-3 w-80 rounded-2xl border p-3 shadow-2xl ${darkMode ? "border-white/10 bg-[#151f32]" : "border-[#c9a227]/20 bg-[#fffdf8]"}`}>
             <div className="grid max-h-[65vh] grid-cols-2 gap-1 overflow-y-auto">
-              {languageOptions.map((language) => <button key={language.code} type="button" onClick={() => { setLocale(language.code); setLanguageOpen(false); }} className={`rounded-xl px-3 py-2.5 text-left text-sm font-semibold transition ${darkMode ? "text-slate-200 hover:bg-white/10" : "text-black/75 hover:bg-black/[0.05]"}`}>{language.name}</button>)}
+              {languageOptions.map((language) => <button key={language.code} type="button" role="menuitem" onClick={() => { setLocale(language.code); setLanguageOpen(false); }} className={`rounded-xl px-3 py-2.5 text-left text-sm font-semibold transition ${darkMode ? "text-slate-200 hover:bg-white/10" : "text-black/75 hover:bg-black/[0.05]"}`}>{language.name}</button>)}
             </div>
           </div>}
         </div>
@@ -649,13 +652,13 @@ export default function Header() {
 
         {/* Desktop Secondary Menu */}
         <div className="relative hidden lg:block">
-          <button type="button" onClick={() => { setToolsOpen(false); setLanguageOpen(false); setDesktopDropdown(null); setMoreOpen((v) => !v); }} className={`flex h-10 w-10 items-center justify-center rounded-xl border shadow-sm transition ${darkMode ? "border-white/10 bg-[#1e293b] text-white hover:bg-[#334155]" : "border-black/10 bg-white/70 text-[#202124] hover:bg-white"}`} aria-label={t.nav.more} title={t.nav.more}>
+          <button type="button" onClick={() => { setToolsOpen(false); setLanguageOpen(false); setDesktopDropdown(null); setMoreOpen((v) => !v); }} className={`flex h-10 w-10 items-center justify-center rounded-xl border shadow-sm transition ${darkMode ? "border-white/10 bg-[#1e293b] text-white hover:bg-[#334155]" : "border-black/10 bg-white/70 text-[#202124] hover:bg-white"}`} aria-label={t.nav.more} title={t.nav.more} aria-expanded={moreOpen} aria-haspopup="menu" aria-controls="desktop-more-menu">
             <span className="grid grid-cols-2 gap-1">{Array.from({length:4}).map((_,i)=><span key={i} className="h-1.5 w-1.5 rounded-full bg-current" />)}</span>
           </button>
         </div>
 
         {moreOpen && (
-          <div className={`absolute right-5 top-[66px] z-[130] hidden w-56 rounded-2xl border p-2 shadow-2xl lg:block ${darkMode ? "border-white/10 bg-[#151f32]" : "border-[#c9a227]/20 bg-[#fffdf8]"}`}>
+          <div id="desktop-more-menu" role="menu" aria-label={t.nav.more} className={`absolute right-5 top-[66px] z-[130] hidden w-56 rounded-2xl border p-2 shadow-2xl lg:block ${darkMode ? "border-white/10 bg-[#151f32]" : "border-[#c9a227]/20 bg-[#fffdf8]"}`}>
             {[
               [t.nav.features, "/#features"],
               [t.nav.howItWorks, "/#how-it-works"],
@@ -667,7 +670,7 @@ export default function Header() {
               [t.footer.cookies, "/cookies"],
               [t.footer.disclaimer, "/disclaimer"],
             ].map(([label, href]) => (
-              <Link key={href} href={href} onClick={() => setMoreOpen(false)} className={`block rounded-xl px-3 py-2.5 text-sm font-semibold ${darkMode ? "text-slate-200 hover:bg-white/10" : "text-black/75 hover:bg-black/[0.05]"}`}>
+              <Link key={href} href={href} role="menuitem" onClick={() => setMoreOpen(false)} className={`block rounded-xl px-3 py-2.5 text-sm font-semibold ${darkMode ? "text-slate-200 hover:bg-white/10" : "text-black/75 hover:bg-black/[0.05]"}`}>
                 {label}
               </Link>
             ))}
@@ -686,6 +689,9 @@ export default function Header() {
     : "border-[#c9a227]/20 bg-white/70 text-[#202124]"
 }`}
           aria-label="Open menu"
+          aria-expanded={mobileOpen}
+          aria-haspopup="menu"
+          aria-controls="mobile-menu"
         >
           {mobileOpen ? (
             <svg
@@ -726,7 +732,7 @@ export default function Header() {
       ===================================================== */}
 
       {mobileOpen && (
-        <div className={`absolute left-0 right-0 top-full border-b shadow-xl md:hidden ${
+        <div id="mobile-menu" className={`absolute left-0 right-0 top-full border-b shadow-xl md:hidden ${
   darkMode
     ? "border-[#c9a227]/20 bg-[#151f32]"
     : "border-[#c9a227]/20 bg-[#fffdf8]"
@@ -862,12 +868,15 @@ export default function Header() {
                 <button
                   type="button"
                   onClick={() => setLanguageOpen((value) => !value)}
+                  aria-expanded={languageOpen}
+                  aria-haspopup="menu"
+                  aria-controls="mobile-language-menu"
                   className={`flex w-full items-center justify-between py-4 text-base font-bold ${
   darkMode ? "text-slate-300" : "text-black/75"
 }`}
                 >
                   <span className="flex items-center gap-3">
-                    <span aria-hidden="true">🌐</span>
+                    <span aria-hidden="true">ðŸŒ</span>
                     <span>{languageOptions.find((language) => language.code === locale)?.name ?? t.nav.language}</span>
                   </span>
 
@@ -892,6 +901,9 @@ export default function Header() {
 
                 {languageOpen && (
                   <div
+                    id="mobile-language-menu"
+                    role="menu"
+                    aria-label={t.nav.language}
                     className={`mb-3 max-h-64 overflow-y-auto rounded-2xl border p-2 ${
   darkMode
     ? "border-white/10 bg-[#1e293b]"
@@ -902,6 +914,7 @@ export default function Header() {
                       <button
                         key={language.code}
                         type="button"
+                        role="menuitem"
                         onClick={() => {
                           setLocale(language.code);
                           setLanguageOpen(false);
@@ -962,14 +975,14 @@ export default function Header() {
 }
 
 
-function DesktopDropdown({ label, open, onClick, children }: { label: string; open: boolean; onClick: () => void; children: ReactNode }) {
+function DesktopDropdown({ label, open, onClick, children, menuId }: { label: string; open: boolean; onClick: () => void; children: ReactNode; menuId: string }) {
   return (
     <div className="relative">
-      <button type="button" onClick={onClick} className={`flex items-center gap-1.5 rounded-full px-3.5 py-2.5 text-sm font-semibold transition ${open ? "bg-[#202124] text-white" : "text-black/65 hover:bg-black/[0.045] hover:text-[#202124]"}`}>
+      <button type="button" onClick={onClick} aria-expanded={open} aria-haspopup="menu" aria-controls={menuId} className={`flex items-center gap-1.5 rounded-full px-3.5 py-2.5 text-sm font-semibold transition ${open ? "bg-[#202124] text-white" : "text-black/65 hover:bg-black/[0.045] hover:text-[#202124]"}`}>
         {label}
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>
       </button>
-      {open && <div className="absolute left-0 top-full z-[120] mt-3 w-[720px] overflow-hidden rounded-2xl border border-[#c9a227]/20 bg-[#fffdf8] p-5 shadow-[0_28px_80px_rgba(32,33,36,0.20)]">{children}</div>}
+      {open && <div id={menuId} role="menu" aria-label={label} className="absolute left-0 top-full z-[120] mt-3 w-[720px] overflow-hidden rounded-2xl border border-[#c9a227]/20 bg-[#fffdf8] p-5 shadow-[0_28px_80px_rgba(32,33,36,0.20)]">{children}</div>}
     </div>
   );
 }
@@ -1603,5 +1616,7 @@ function IconShape({
       );
   }
 }
+
+
 
 

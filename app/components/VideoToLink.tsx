@@ -1,6 +1,7 @@
 "use client";
 
 import { DragEvent, useEffect, useRef, useState } from "react";
+import { deleteShare } from "@/app/lib/shareDelete";
 
 type ExpiryOption = "1h" | "6h" | "24h" | "3d" | "7d";
 
@@ -23,6 +24,8 @@ export default function VideoToLink() {
   const [previewUrl, setPreviewUrl] = useState("");
   const [expiry, setExpiry] = useState<ExpiryOption>("7d");
   const [shareUrl, setShareUrl] = useState("");
+  const [shareId, setShareId] = useState("");
+  const [deleteCapability, setDeleteCapability] = useState("");
   const [expiresAt, setExpiresAt] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -64,11 +67,19 @@ export default function VideoToLink() {
 
     setMessage("");
     setShareUrl("");
+    setShareId("");
+    setDeleteCapability("");
     setExpiresAt("");
 
     if (!selectedFile.type.startsWith("video/")) {
       setFile(null);
       setMessage("Please select a video file.");
+      return;
+    }
+
+    if (selectedFile.size === 0) {
+      setFile(null);
+      setMessage("The selected video is empty.");
       return;
     }
 
@@ -125,6 +136,8 @@ export default function VideoToLink() {
 
     setFile(null);
     setShareUrl("");
+    setShareId("");
+    setDeleteCapability("");
     setExpiresAt("");
     setMessage("");
     setIsDragging(false);
@@ -154,7 +167,14 @@ export default function VideoToLink() {
     try {
       const { upload } = await import("@vercel/blob/client");
 
-      const pathname = `video-uploads/${getUploadId()}-${file.name}`;
+      const safeName =
+        file.name
+          .replace(/[/\\]+/g, "_")
+          .replace(/[\u0000-\u001f]/g, "")
+          .trim()
+          .slice(0, 150) || "video";
+
+      const pathname = `video-uploads/${getUploadId()}-${safeName}`;
 
       const blob = await upload(pathname, file, {
         access: "private",
@@ -184,6 +204,10 @@ export default function VideoToLink() {
       }
 
       setShareUrl(data.shareUrl);
+      setShareId(typeof data.shareId === "string" ? data.shareId : "");
+      setDeleteCapability(
+        typeof data.deleteCapability === "string" ? data.deleteCapability : ""
+      );
       setExpiresAt(data.expiresAt || "");
       setMessage("Share link generated successfully.");
     } catch (error) {
@@ -206,6 +230,28 @@ export default function VideoToLink() {
     } catch {
       setMessage("Unable to copy the link automatically.");
     }
+  };
+
+  const handleDeleteLink = async () => {
+    if (!shareId || !deleteCapability) return;
+
+    setLoading(true);
+    setMessage("");
+
+    const deleted = await deleteShare(shareId, deleteCapability);
+
+    setLoading(false);
+
+    if (!deleted) {
+      setMessage("Failed to delete the share link.");
+      return;
+    }
+
+    setShareUrl("");
+    setShareId("");
+    setDeleteCapability("");
+    setExpiresAt("");
+    setMessage("Share link deleted.");
   };
 
   const shareLink = async () => {
@@ -449,6 +495,17 @@ export default function VideoToLink() {
               Open Link
             </a>
           </div>
+
+          {shareId && deleteCapability && (
+            <button
+              type="button"
+              onClick={handleDeleteLink}
+              disabled={loading}
+              className="mt-3 w-full rounded-xl border border-red-200 bg-white px-5 py-3 font-semibold text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {loading ? "Deleting..." : "Delete Link"}
+            </button>
+          )}
 
           {expiresAt && (
             <p className="mt-4 text-center text-sm text-slate-500">

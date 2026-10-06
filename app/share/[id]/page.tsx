@@ -1,6 +1,22 @@
+import { get } from "@vercel/blob";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { headers } from "next/headers";
+import { after } from "next/server";
+import { eraseShare, maybeRunShareCleanup } from "@/app/lib/shareCleanup";
 import ShareResultActions from "./ShareResultActions";
+
+const SHARE_ID_PATTERN = /^[a-f0-9]{32}$/;
+
+export const metadata: Metadata = {
+  title: "Shared Result",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 type SharePayload = {
   tool: string;
@@ -22,34 +38,38 @@ type SharePageProps = {
 async function getShareData(
   id: string
 ): Promise<SharePayload | null> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("host");
-
-  if (!host) {
+  if (!SHARE_ID_PATTERN.test(id)) {
     return null;
   }
 
-  const protocol =
-    requestHeaders.get("x-forwarded-proto") ||
-    (process.env.NODE_ENV === "development"
-      ? "http"
-      : "https");
-
-  const baseUrl = `${protocol}://${host}`;
-
   try {
-    const response = await fetch(
-      `${baseUrl}/api/share?id=${encodeURIComponent(id)}`,
-      {
-        cache: "no-store",
-      }
-    );
+    const blob = await get(`shares/${id}.json`, {
+      access: "private",
+      useCache: false,
+    });
 
-    if (!response.ok) {
+    if (!blob || !("stream" in blob)) {
       return null;
     }
 
-    return (await response.json()) as SharePayload;
+    const payload = JSON.parse(
+      await new Response(blob.stream).text()
+    ) as SharePayload;
+
+    if (!payload || typeof payload !== "object") {
+      return null;
+    }
+
+    if (Date.now() >= new Date(payload.expiresAt).getTime()) {
+      // Erasure path: drop the expired share and its asset after responding.
+      after(() => eraseShare(id, payload));
+
+      return null;
+    }
+
+    after(() => maybeRunShareCleanup());
+
+    return payload;
   } catch (error) {
     console.error("Failed to load share data:", error);
     return null;

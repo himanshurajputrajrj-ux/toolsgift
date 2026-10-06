@@ -2,7 +2,6 @@
 import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
-import { PDFDocument } from "pdf-lib";
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
@@ -83,6 +82,8 @@ export default function PDFCompressor() {
 
     try {
       const sourceBytes = await file.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
 
       const sourcePdf = await PDFDocument.load(sourceBytes);
 

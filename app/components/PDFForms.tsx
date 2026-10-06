@@ -6,7 +6,6 @@ import {
   DragEvent,
   useState,
 } from "react";
-import { PDFDocument } from "pdf-lib";
 
 type FormField = {
   name: string;
@@ -61,6 +60,9 @@ export default function PDFForms() {
 
     try {
       const bytes = await selectedFile.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
+
       const pdf = await PDFDocument.load(bytes);
 
       const form = pdf.getForm();
@@ -191,6 +193,8 @@ export default function PDFForms() {
     setError("");
 
     try {
+      const { PDFDocument } = await import("pdf-lib");
+
       const pdf = await PDFDocument.load(pdfBytes);
       const form = pdf.getForm();
 

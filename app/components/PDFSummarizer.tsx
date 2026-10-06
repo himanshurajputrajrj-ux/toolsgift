@@ -6,8 +6,6 @@ import {
   useState,
 } from "react";
 import ShareResult from "./ShareResult";
-import * as pdfjsLib from "pdfjs-dist";
-import { PDFDocument } from "pdf-lib";
 
 type SummaryStats = {
   pages: number;
@@ -54,6 +52,7 @@ export default function PDFSummarizer() {
   const extractPDFText = async (
     bytes: ArrayBuffer
   ) => {
+    const pdfjsLib = await import("pdfjs-dist");
     const pdf = await pdfjsLib.getDocument({
       data: new Uint8Array(bytes),
     }).promise;
@@ -114,6 +113,8 @@ export default function PDFSummarizer() {
 
     try {
       const bytes = await selectedFile.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
 
       // Validate PDF.
       const pdf = await PDFDocument.load(bytes);

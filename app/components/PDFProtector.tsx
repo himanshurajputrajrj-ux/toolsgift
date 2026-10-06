@@ -2,7 +2,6 @@
 import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
-import { PDFDocument } from "pdf-lib";
 
 export default function PDFProtector() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -52,6 +51,8 @@ export default function PDFProtector() {
 
     try {
       const bytes = await selectedFile.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
 
       const pdf = await PDFDocument.load(bytes, {
         ignoreEncryption: true,
@@ -123,6 +124,8 @@ export default function PDFProtector() {
        */
 
       const bytes = await file.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
 
       const pdf = await PDFDocument.load(bytes, {
         ignoreEncryption: true,

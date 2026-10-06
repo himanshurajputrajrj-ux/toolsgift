@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import QRCode from "qrcode";
 
 type Mode = "quick" | "card";
 
@@ -191,6 +190,8 @@ export default function SocialQRCard() {
     }
 
     try {
+      const QRCode = (await import("qrcode")).default;
+
       const qr = await QRCode.toDataURL(value, {
         width: 1000,
         margin: 2,
@@ -312,6 +313,8 @@ export default function SocialQRCard() {
     };
 
     try {
+      const QRCode = (await import("qrcode")).default;
+
       const qr = await QRCode.toDataURL(
         JSON.stringify(payload),
         {

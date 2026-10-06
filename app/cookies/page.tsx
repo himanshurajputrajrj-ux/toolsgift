@@ -16,8 +16,8 @@ export default function CookiesPage() {
           <h1 className="text-4xl font-bold text-slate-900">
             Cookie Policy
           </h1>
-          <p className="mt-3 text-sm text-slate-500">
-            Last updated: September 8, 2026
+<p className="mt-3 text-sm text-slate-500">
+            Last updated: October 6, 2026
           </p>
           <div className="mt-6">
             <CookiePreferences />
@@ -34,7 +34,7 @@ export default function CookiesPage() {
                 and support advertising services.
               </p>
             </section>
-            <section>
+<section>
               <h2 className="text-2xl font-semibold text-slate-900">
                 2. How ToolsGift Uses Cookies
               </h2>
@@ -43,6 +43,18 @@ export default function CookiesPage() {
                 purposes, including essential website functionality, security,
                 preferences, analytics, performance measurement, and
                 advertising.
+              </p>
+              <p className="mt-3">
+                Optional analytics and advertising services are only loaded
+                after you give consent through our cookie banner. We do not run
+                any advertising or analytics script before you make a choice,
+                and if you reject optional cookies those scripts are not loaded
+                at all.
+              </p>
+              <p className="mt-3">
+                Your cookie consent choices are stored only in your browser
+                (in your device&apos;s local storage). They are not transmitted
+                to off-device storage by ToolsGift.
               </p>
             </section>
             <section>
@@ -111,7 +123,7 @@ export default function CookiesPage() {
                 availability of some website features.
               </p>
             </section>
-            <section>
+<section>
               <h2 className="text-2xl font-semibold text-slate-900">
                 8. Your Privacy Choices
               </h2>
@@ -120,6 +132,13 @@ export default function CookiesPage() {
                 choices regarding cookies, personalized advertising, and other
                 forms of data processing. Where required, ToolsGift may provide
                 appropriate consent or privacy controls.
+              </p>
+              <p className="mt-3">
+                You can review or change your choices at any time with the
+                &ldquo;Manage Cookie Preferences&rdquo; link in the website
+                footer, and you can clear your stored choices and be asked
+                again with the &ldquo;Reset Consent Choices&rdquo; control in
+                the footer or in the cookie preferences dialog.
               </p>
             </section>
             <section>

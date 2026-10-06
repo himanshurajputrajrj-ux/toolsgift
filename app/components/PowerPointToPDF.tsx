@@ -3,7 +3,6 @@
 import ShareFileResult from "./ShareFileResult";
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import JSZip from "jszip";
-import jsPDF from "jspdf";
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
@@ -165,6 +164,8 @@ export default function PowerPointToPDF() {
     clearResult();
 
     try {
+      const { jsPDF } = await import("jspdf");
+
       const pdf = new jsPDF({
         orientation: "landscape",
         unit: "mm",

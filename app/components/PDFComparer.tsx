@@ -7,8 +7,6 @@ import {
   useState,
 } from "react";
 import ShareResult from "./ShareResult";
-import { PDFDocument } from "pdf-lib";
-import * as pdfjsLib from "pdfjs-dist";
 
 type PDFInfo = {
   file: File;
@@ -47,6 +45,7 @@ export default function PDFComparer() {
   };
 
   const extractText = async (bytes: ArrayBuffer) => {
+    const pdfjsLib = await import("pdfjs-dist");
     const pdf = await pdfjsLib.getDocument({
       data: new Uint8Array(bytes),
     }).promise;
@@ -101,6 +100,8 @@ export default function PDFComparer() {
 
     try {
       const bytes = await selectedFile.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
 
       // Validate PDF with pdf-lib.
       await PDFDocument.load(bytes);

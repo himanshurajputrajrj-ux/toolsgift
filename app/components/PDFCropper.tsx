@@ -8,7 +8,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { PDFDocument } from "pdf-lib";
 
 export default function PDFCropper() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -65,6 +64,9 @@ export default function PDFCropper() {
 
     try {
       const bytes = await selectedFile.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
+
       const pdf = await PDFDocument.load(bytes);
 
       setFile(selectedFile);
@@ -108,6 +110,8 @@ export default function PDFCropper() {
     setError("");
 
     try {
+      const { PDFDocument } = await import("pdf-lib");
+
       const pdf = await PDFDocument.load(pdfBytes);
       const pages = pdf.getPages();
 

@@ -7,8 +7,7 @@ import {
   useState,
 } from "react";
 import ShareResult from "./ShareResult";
-import * as pdfjsLib from "pdfjs-dist";
-import { createWorker } from "tesseract.js";
+import { getTesseractWorkerOptions } from "@/app/lib/tesseractAssets";
 
 type OCRResult = {
   page: number;
@@ -70,6 +69,7 @@ export default function OCRPDF() {
     }
 
     try {
+      const pdfjsLib = await import("pdfjs-dist");
       const bytes = await selectedFile.arrayBuffer();
 
       const pdf = await pdfjsLib.getDocument({
@@ -118,17 +118,20 @@ export default function OCRPDF() {
     setResultSize(0);
     setProgress(0);
 
-    let worker: Awaited<ReturnType<typeof createWorker>> | null =
-      null;
+    let worker: Awaited<
+      ReturnType<(typeof import("tesseract.js"))["createWorker"]>
+    > | null = null;
 
     try {
+      const { createWorker } = await import("tesseract.js");
+      const pdfjsLib = await import("pdfjs-dist");
       const bytes = await file.arrayBuffer();
 
       const pdf = await pdfjsLib.getDocument({
         data: new Uint8Array(bytes),
       }).promise;
 
-      worker = await createWorker(language);
+      worker = await createWorker(language, undefined, getTesseractWorkerOptions());
 
       const extracted: OCRResult[] = [];
 

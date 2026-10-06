@@ -2,7 +2,7 @@
 
 import ShareFileResult from "./ShareFileResult";
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
-import pptxgen from "pptxgenjs";
+import { loadPdfWorkerSrc } from "@/app/lib/pdfWorker";
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
@@ -70,8 +70,7 @@ export default function PDFToPowerPoint() {
     try {
       const pdfjs = await import("pdfjs-dist");
 
-      pdfjs.GlobalWorkerOptions.workerSrc =
-        `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.mjs`;
+      pdfjs.GlobalWorkerOptions.workerSrc = await loadPdfWorkerSrc();
 
       const buffer = await selectedFile.arrayBuffer();
 
@@ -126,8 +125,7 @@ export default function PDFToPowerPoint() {
     try {
       const pdfjs = await import("pdfjs-dist");
 
-      pdfjs.GlobalWorkerOptions.workerSrc =
-        `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.mjs`;
+      pdfjs.GlobalWorkerOptions.workerSrc = await loadPdfWorkerSrc();
 
       const buffer = await file.arrayBuffer();
 
@@ -135,6 +133,7 @@ export default function PDFToPowerPoint() {
         data: buffer,
       }).promise;
 
+      const { default: pptxgen } = await import("pptxgenjs");
       const pptx = new pptxgen();
 
       pptx.layout = "LAYOUT_WIDE";

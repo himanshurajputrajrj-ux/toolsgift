@@ -2,7 +2,6 @@
 import ShareFileResult from "./ShareFileResult";
 
 import { DragEvent, useRef, useState } from "react";
-import { PDFDocument } from "pdf-lib";
 
 type PDFItem = {
   id: string;
@@ -158,6 +157,8 @@ export default function MergePDF() {
     setError("");
 
     try {
+      const { PDFDocument } = await import("pdf-lib");
+
       const mergedPdf = await PDFDocument.create();
 
       for (const item of files) {

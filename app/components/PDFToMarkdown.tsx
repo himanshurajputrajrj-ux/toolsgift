@@ -6,8 +6,6 @@ import {
   useState,
 } from "react";
 import ShareResult from "./ShareResult";
-import * as pdfjsLib from "pdfjs-dist";
-import { PDFDocument } from "pdf-lib";
 
 export default function PDFToMarkdown() {
   const [file, setFile] = useState<File | null>(null);
@@ -49,6 +47,7 @@ export default function PDFToMarkdown() {
   const extractPDFText = async (
     bytes: ArrayBuffer
   ) => {
+    const pdfjsLib = await import("pdfjs-dist");
     const pdf = await pdfjsLib.getDocument({
       data: new Uint8Array(bytes),
     }).promise;
@@ -162,6 +161,8 @@ export default function PDFToMarkdown() {
     try {
       const bytes =
         await selectedFile.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
 
       const pdf =
         await PDFDocument.load(bytes);

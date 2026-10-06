@@ -1,7 +1,6 @@
 ﻿"use client";
 
 import { DragEvent, useRef, useState } from "react";
-import { PDFDocument } from "pdf-lib";
 import ShareFileResult from "./ShareFileResult";
 
 type SplitResult = {
@@ -71,6 +70,8 @@ export default function PDFSplitter() {
 
     try {
       const bytes = await selectedFile.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
 
       const pdf = await PDFDocument.load(bytes);
 
@@ -205,6 +206,8 @@ export default function PDFSplitter() {
 
     try {
       const bytes = await file.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
 
       const sourcePdf =
         await PDFDocument.load(bytes);

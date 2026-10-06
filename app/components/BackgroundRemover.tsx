@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { removeBackground } from "@imgly/background-removal";
 
 type BackgroundType =
   | "transparent"
@@ -271,6 +270,8 @@ export default function BackgroundRemover() {
     setError("");
 
     try {
+      const { removeBackground } = await import("@imgly/background-removal");
+
       const blob =
         await removeBackground(
           file,

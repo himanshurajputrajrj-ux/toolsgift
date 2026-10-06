@@ -7,7 +7,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { jsPDF } from "jspdf";
 
 type ScanImage = {
   id: string;
@@ -180,6 +179,8 @@ export default function ScanToPDF() {
     setResultSize(0);
 
     try {
+      const { jsPDF } = await import("jspdf");
+
       const firstImage = new Image();
       firstImage.src = images[0].preview;
 

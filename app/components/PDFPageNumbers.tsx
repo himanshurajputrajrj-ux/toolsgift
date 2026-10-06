@@ -2,7 +2,6 @@
 import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
-import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 
 type Position =
   | "top-left"
@@ -69,6 +68,8 @@ export default function PDFPageNumbers() {
     try {
       const bytes = await selectedFile.arrayBuffer();
 
+      const { PDFDocument } = await import("pdf-lib");
+
       const pdf = await PDFDocument.load(bytes);
 
       setFile(selectedFile);
@@ -111,6 +112,9 @@ export default function PDFPageNumbers() {
 
     try {
       const bytes = await file.arrayBuffer();
+
+      const { PDFDocument, StandardFonts, rgb } =
+        await import("pdf-lib");
 
       const pdf = await PDFDocument.load(bytes);
       const font = await pdf.embedFont(StandardFonts.Helvetica);

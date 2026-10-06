@@ -83,13 +83,17 @@ export function LanguageProvider({
     };
   }, []);
 
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
+
   const value: LanguageContextType = {
     locale,
     setLocale: (nextLocale) => {
       setLocaleState(nextLocale);
       sessionStorage.setItem("toolsgift-language", nextLocale);
     },
-    t: translations[locale],
+    t: translations[locale] ?? translations.en,
   };
 
   return (

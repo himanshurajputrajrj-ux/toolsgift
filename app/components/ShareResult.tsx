@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { deleteShare } from "@/app/lib/shareDelete";
 
 type ShareImage = {
   url: string;
@@ -25,6 +26,8 @@ export default function ShareResult({
   images,
 }: ShareResultProps) {
   const [shareUrl, setShareUrl] = useState("");
+  const [shareId, setShareId] = useState("");
+  const [deleteCapability, setDeleteCapability] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const imagesKey = images?.map((image) => `${image.url}:${image.name}`).join("|") || "";
@@ -33,6 +36,8 @@ export default function ShareResult({
 // eslint-disable-next-line react-hooks/set-state-in-effect
     setShareUrl("");
     setMessage("");
+    setShareId("");
+    setDeleteCapability("");
   }, [imageUrl, imagesKey, value]);
 
   const copyText = async (text: string): Promise<boolean> => {
@@ -132,6 +137,10 @@ export default function ShareResult({
       }
 
       setShareUrl(data.shareUrl);
+      setShareId(typeof data.shareId === "string" ? data.shareId : "");
+      setDeleteCapability(
+        typeof data.deleteCapability === "string" ? data.deleteCapability : ""
+      );
 
       return data.shareUrl;
     } catch {
@@ -209,6 +218,29 @@ export default function ShareResult({
     setMessage(copied ? "Link copied!" : "Copy failed. Please copy manually.");
   };
 
+  const handleDelete = async () => {
+    if (!shareId || !deleteCapability) {
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+
+    const deleted = await deleteShare(shareId, deleteCapability);
+
+    setLoading(false);
+
+    if (!deleted) {
+      setMessage("Failed to delete the share link.");
+      return;
+    }
+
+    setShareUrl("");
+    setShareId("");
+    setDeleteCapability("");
+    setMessage("Share link deleted.");
+  };
+
   return (
     <div className="mt-4">
       <div className="flex flex-wrap gap-3">
@@ -249,6 +281,17 @@ export default function ShareResult({
             >
               Copy Link
             </button>
+
+            {shareId && deleteCapability && (
+              <button
+                type="button"
+                onClick={handleDelete}
+                disabled={loading}
+                className="rounded-xl border border-red-200 bg-white px-5 py-3 font-semibold text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-900 dark:bg-gray-900 dark:text-red-400 dark:hover:bg-red-950"
+              >
+                {loading ? "Deleting..." : "Delete Link"}
+              </button>
+            )}
           </div>
 
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">

@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 
 const baseUrl = "https://www.toolsgift.com";
 
+const lastModified = new Date("2026-10-06T00:00:00.000Z");
+
 const staticPages = [
   "",
   "about",
@@ -73,6 +75,7 @@ const tools = [
 
   // Other Tools
   "social-qr-card",
+  "video-to-link",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -82,12 +85,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency:
         page === "" ? ("weekly" as const) : ("monthly" as const),
       priority: page === "" ? 1 : 0.6,
+      lastModified,
     })),
 
     ...tools.map((tool) => ({
       url: `${baseUrl}/tools/${tool}`,
       changeFrequency: "monthly" as const,
       priority: 0.8,
+      lastModified,
     })),
   ];
 }

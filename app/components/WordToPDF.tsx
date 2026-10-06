@@ -1,8 +1,6 @@
 "use client";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
-import mammoth from "mammoth";
-import jsPDF from "jspdf";
 import { toCanvas } from "html-to-image";
 import ShareFileResult from "./ShareFileResult";
 
@@ -64,6 +62,8 @@ export default function WordToPDF() {
     setHtmlContent("");
 
     try {
+      const mammoth = await import("mammoth");
+
       const arrayBuffer = await selectedFile.arrayBuffer();
 
       const result = await mammoth.convertToHtml({
@@ -113,6 +113,8 @@ export default function WordToPDF() {
     clearResult();
 
     try {
+      const { jsPDF } = await import("jspdf");
+
       const canvas = await toCanvas(previewRef.current, {
         pixelRatio: 2,
         backgroundColor: "#ffffff",

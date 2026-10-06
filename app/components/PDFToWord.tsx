@@ -2,7 +2,7 @@
 
 import ShareFileResult from "./ShareFileResult";
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
-import { Document, Packer, Paragraph, TextRun } from "docx";
+import { loadPdfWorkerSrc } from "@/app/lib/pdfWorker";
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
@@ -66,7 +66,7 @@ export default function PDFToWord() {
     try {
       const pdfjs = await import("pdfjs-dist");
 
-      pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.mjs`;
+      pdfjs.GlobalWorkerOptions.workerSrc = await loadPdfWorkerSrc();
 
       const arrayBuffer = await selectedFile.arrayBuffer();
 
@@ -131,9 +131,11 @@ export default function PDFToWord() {
     clearResult();
 
     try {
+      const { Document, Packer, Paragraph, TextRun } = await import("docx");
+
       const pdfjs = await import("pdfjs-dist");
 
-      pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.mjs`;
+      pdfjs.GlobalWorkerOptions.workerSrc = await loadPdfWorkerSrc();
 
       const arrayBuffer = await file.arrayBuffer();
 
@@ -141,7 +143,7 @@ export default function PDFToWord() {
         data: arrayBuffer,
       }).promise;
 
-      const children: Paragraph[] = [];
+      const children: InstanceType<typeof Paragraph>[] = [];
 
       for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
         const page = await pdf.getPage(pageNumber);

@@ -20,7 +20,7 @@ export default function Breadcrumbs({ toolName }: BreadcrumbsProps) {
         "@type": "ListItem",
         position: 1,
         name: homeLabel,
-        item: "https://toolsgift.com/",
+        item: "https://www.toolsgift.com/",
       },
       {
         "@type": "ListItem",

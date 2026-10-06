@@ -1,7 +1,13 @@
 ﻿"use client";
 import Link from "next/link";
 import CookiePreferences from "@/app/components/CookiePreferences";
+import { clearCookieConsent } from "@/app/lib/cookieConsent";
 export default function Footer() {
+  function resetConsent() {
+    clearCookieConsent();
+    window.dispatchEvent(new Event("toolsgift-consent-change"));
+    window.dispatchEvent(new Event("toolsgift-consent-reset"));
+  }
   return (
     <footer className="bg-[#202124] px-5 py-14 text-white sm:px-8">
       <div className="mx-auto max-w-7xl">
@@ -45,13 +51,20 @@ export default function Footer() {
           >
             Disclaimer
           </Link>
-          <Link
+<Link
             href="/cookies"
             className="text-white/55 transition hover:text-white"
           >
             Cookie Policy
           </Link>
           <CookiePreferences />
+          <button
+            type="button"
+            onClick={resetConsent}
+            className="text-white/55 underline decoration-white/40 underline-offset-2 transition hover:text-white"
+          >
+            Reset Consent Choices
+          </button>
         </nav>
         <div className="mt-10 border-t border-white/10 pt-7 text-sm text-white/60">
           © 2026 ToolsGift. All rights reserved.

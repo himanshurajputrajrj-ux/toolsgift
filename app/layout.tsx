@@ -5,6 +5,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { LanguageProvider } from "@/app/providers/LanguageProvider";
 import CookieConsent from "@/app/components/CookieConsent";
+import ConsentGate from "@/app/components/ConsentGate";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,9 +64,9 @@ export const metadata: Metadata = {
     url: "https://www.toolsgift.com",
     images: [
       {
-        url: "/toolsgift-og.png",
+        url: "/toolsgift-og.jpg",
         width: 1200,
-        height: 630,
+        height: 628,
         alt: "ToolsGift | Fast & Simple Image & PDF Tools",
       },
     ],
@@ -76,7 +77,7 @@ export const metadata: Metadata = {
     title: "ToolsGift | Fast & Simple Image & PDF Tools",
     description:
       "Fast and simple online image and PDF tools for everyday file processing.",
-    images: ["/toolsgift-og.png"],
+    images: ["/toolsgift-og.jpg"],
   },
 
   alternates: {
@@ -95,11 +96,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <head>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2458517337983485" crossOrigin="anonymous"></script>
-      </head>
-
       <body className="min-h-full bg-[#f7f7f5] text-[#202124]">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{if(localStorage.getItem("toolsgift-theme")==="dark"){document.documentElement.classList.add("dark");}}catch(e){}})();`,
+          }}
+        />
         <LanguageProvider>
           <Header />
 
@@ -109,6 +111,13 @@ export default function RootLayout({
 
           <Footer />
           <CookieConsent />
+          <ConsentGate type="advertising">
+            <script
+              async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2458517337983485"
+              crossOrigin="anonymous"
+            ></script>
+          </ConsentGate>
         </LanguageProvider>
       </body>
     </html>

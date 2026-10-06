@@ -3,8 +3,6 @@
 import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
-import * as XLSX from "xlsx";
-import jsPDF from "jspdf";
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024;
 
@@ -47,6 +45,8 @@ export default function ExcelToPDF() {
   };
 
   const readWorkbook = async (selectedFile: File) => {
+    const XLSX = await import("xlsx");
+
     const buffer = await selectedFile.arrayBuffer();
 
     const workbook = XLSX.read(buffer, {
@@ -145,6 +145,8 @@ export default function ExcelToPDF() {
     setSelectedSheet(sheetName);
 
     try {
+      const XLSX = await import("xlsx");
+
       const buffer = await file.arrayBuffer();
 
       const workbook = XLSX.read(buffer, {
@@ -179,6 +181,9 @@ export default function ExcelToPDF() {
     clearResult();
 
     try {
+      const XLSX = await import("xlsx");
+      const { jsPDF } = await import("jspdf");
+
       const buffer = await file.arrayBuffer();
 
       const workbook = XLSX.read(buffer, {

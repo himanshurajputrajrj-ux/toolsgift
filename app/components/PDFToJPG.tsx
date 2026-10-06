@@ -8,6 +8,7 @@ import {
 } from "react";
 import ShareResult from "./ShareResult";
 import JSZip from "jszip";
+import { loadPdfWorkerSrc } from "@/app/lib/pdfWorker";
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
@@ -74,8 +75,7 @@ export default function PDFToJPG() {
     try {
       const pdfjs = await import("pdfjs-dist");
 
-      pdfjs.GlobalWorkerOptions.workerSrc =
-        `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.mjs`;
+      pdfjs.GlobalWorkerOptions.workerSrc = await loadPdfWorkerSrc();
 
       const buffer = await selectedFile.arrayBuffer();
 
@@ -128,8 +128,7 @@ export default function PDFToJPG() {
     try {
       const pdfjs = await import("pdfjs-dist");
 
-      pdfjs.GlobalWorkerOptions.workerSrc =
-        `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.mjs`;
+      pdfjs.GlobalWorkerOptions.workerSrc = await loadPdfWorkerSrc();
 
       const buffer = await file.arrayBuffer();
 

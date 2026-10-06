@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
+import type { PDFDocument } from "pdf-lib";
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
@@ -107,6 +107,9 @@ export default function PDFEditor() {
 
     try {
       const bytes = await selectedFile.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
+
       const document = await PDFDocument.load(bytes);
 
       const pages = document.getPages();
@@ -467,6 +470,9 @@ export default function PDFEditor() {
 
     try {
       const originalBytes = await file.arrayBuffer();
+
+      const { PDFDocument, rgb, StandardFonts } =
+        await import("pdf-lib");
 
       const document = await PDFDocument.load(
         originalBytes

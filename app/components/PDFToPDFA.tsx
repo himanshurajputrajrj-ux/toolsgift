@@ -2,7 +2,6 @@
 import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
-import { PDFDocument } from "pdf-lib";
 
 export default function PDFToPDFA() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -51,6 +50,8 @@ export default function PDFToPDFA() {
     try {
       const bytes = await selectedFile.arrayBuffer();
 
+      const { PDFDocument } = await import("pdf-lib");
+
       const pdf = await PDFDocument.load(bytes);
 
       setFile(selectedFile);
@@ -93,6 +94,8 @@ export default function PDFToPDFA() {
 
     try {
       const bytes = await file.arrayBuffer();
+
+      const { PDFDocument } = await import("pdf-lib");
 
       const sourcePDF = await PDFDocument.load(bytes);
 
