@@ -6,6 +6,8 @@ import {
   useState,
 } from "react";
 import ShareResult from "./ShareResult";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type Language = {
   code: string;
@@ -32,6 +34,9 @@ const languages: Language[] = [
 ];
 
 export default function PDFTranslator() {
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "pdf-translator");
+
   const [file, setFile] = useState<File | null>(null);
 
   const [pageCount, setPageCount] = useState(0);
@@ -120,12 +125,12 @@ export default function PDFTranslator() {
         .toLowerCase()
         .endsWith(".pdf")
     ) {
-      setError("Please select a valid PDF file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > MAX_SIZE) {
-      setError("PDF must be 50MB or less.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -155,9 +160,7 @@ export default function PDFTranslator() {
     } catch (err) {
       console.error(err);
 
-      setError(
-        "Unable to read this PDF. Please make sure it is a valid PDF."
-      );
+      setError(t.messages.somethingWentWrong);
     } finally {
       setExtracting(false);
     }
@@ -325,9 +328,7 @@ export default function PDFTranslator() {
     } catch (err) {
       console.error(err);
 
-      setError(
-        "Translation failed. Please try again or use a smaller PDF."
-      );
+      setError(t.messages.processingFailed);
     } finally {
       setTranslating(false);
     }
@@ -420,12 +421,11 @@ export default function PDFTranslator() {
           </div>
 
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            PDF Translator
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
-            Extract text from a PDF, translate it into another
-            language, and download the translated document.
+            {toolText.description}
           </p>
         </div>
 
@@ -468,11 +468,11 @@ export default function PDFTranslator() {
             <p className="font-semibold text-slate-800">
               {file
                 ? "Replace PDF"
-                : "Upload PDF"}
+                : `${t.common.upload} PDF`}
             </p>
 
             <p className="mt-1 text-xs text-slate-500">
-              Drag & drop or click to browse • Max 50MB
+              {t.common.dragDrop} • Max 50MB
             </p>
           </div>
 
@@ -496,7 +496,7 @@ export default function PDFTranslator() {
                   onClick={reset}
                   className="rounded-lg border border-red-200 bg-white px-3 py-2 text-xs font-semibold text-red-600 hover:bg-red-50"
                 >
-                  Remove PDF
+                  {t.common.remove} PDF
                 </button>
               </div>
             </div>
@@ -701,7 +701,7 @@ export default function PDFTranslator() {
                 : "cursor-not-allowed bg-slate-200 text-slate-400"
             }`}
           >
-            Download Translation
+            {t.common.download} Translation
           </button>
 
           {translatedText && <ShareResult key={translatedText} tool="pdf-translator" resultTitle="PDF Translation" value={translatedText} filename="pdf-translation.txt" />}
@@ -712,7 +712,7 @@ export default function PDFTranslator() {
             onClick={reset}
             className="mt-3 w-full rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
           >
-            Clear & Reset
+            {t.common.clear} & {t.common.reset}
           </button>
         </div>
       </div>

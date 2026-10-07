@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 export default function SocialQRCardPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="QR Code Generator" />
+      <Breadcrumbs toolSlug="social-qr-card" />
       <SocialQRCard />
       <ToolSEOContent toolKey="social-qr-card" />
     </main>

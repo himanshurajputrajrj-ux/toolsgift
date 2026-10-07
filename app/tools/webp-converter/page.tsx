@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 export default function WebPConverterPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="WebP Converter" />
+      <Breadcrumbs toolSlug="webp-converter" />
       <WebPConverter />
       <ToolSEOContent toolKey="webp-converter" />
     </main>

@@ -1,8 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 export default function NotFound() {
+  const { t } = useLanguage();
+
   return (
     <main className="min-h-screen bg-[#F8F5ED] text-[#202124]">
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-5">
@@ -25,12 +28,11 @@ export default function NotFound() {
           <div className="mx-auto mt-6 h-1 w-16 rounded-full bg-[#C9A227]" />
 
           <h1 className="mt-8 text-3xl font-bold tracking-tight sm:text-4xl">
-            Page not found.
+            {t.notFound.title}
           </h1>
 
           <p className="mx-auto mt-4 max-w-lg text-base leading-7 text-black/60 sm:text-lg">
-            The page you’re looking for doesn’t exist, may have been moved,
-            or the link may be incorrect.
+            {t.notFound.description}
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -38,14 +40,14 @@ export default function NotFound() {
               href="/"
               className="inline-flex min-w-[170px] items-center justify-center rounded-xl bg-[#202124] px-6 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#C9A227] hover:text-[#202124] hover:shadow-lg"
             >
-              ← Back to Home
+              ← {t.notFound.backHome}
             </Link>
 
             <Link
               href="/#tools"
               className="inline-flex min-w-[170px] items-center justify-center rounded-xl border border-black/10 bg-white px-6 py-3.5 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-[#C9A227]/50 hover:bg-[#F3E7B3] hover:shadow-md"
             >
-              Explore Tools →
+              {t.notFound.exploreTools} →
             </Link>
           </div>
 

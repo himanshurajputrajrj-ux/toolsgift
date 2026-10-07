@@ -1,6 +1,7 @@
 ﻿"use client";
 import { useEffect, useState } from "react";
 import { deleteShare } from "@/app/lib/shareDelete";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 type ShareFileResultProps = {
   tool: string;
   resultTitle: string;
@@ -13,6 +14,7 @@ export default function ShareFileResult({
   file,
   filename,
 }: ShareFileResultProps) {
+  const { t } = useLanguage();
   const [shareUrl, setShareUrl] = useState("");
   const [shareId, setShareId] = useState("");
   const [deleteCapability, setDeleteCapability] = useState("");
@@ -50,8 +52,8 @@ export default function ShareFileResult({
     if (shareUrl) {
       return shareUrl;
     }
-    if (!file) {
-      setMessage("There is no file to share.");
+if (!file) {
+      setMessage(t.messages.noFileSelected);
       return null;
     }
     setLoading(true);
@@ -81,7 +83,7 @@ export default function ShareFileResult({
       }
       formData.append("file", uploadFile);
       if (uploadFile.size === 0) {
-        setMessage("There is no file to share.");
+        setMessage(t.messages.noFileSelected);
         return null;
       }
       const response = await fetch("/api/share", {
@@ -99,7 +101,7 @@ export default function ShareFileResult({
       );
       return data.shareUrl;
     } catch {
-      setMessage("Failed to create share link. Please try again.");
+setMessage(t.messages.processingFailed);
       return null;
     } finally {
       setLoading(false);
@@ -112,9 +114,9 @@ export default function ShareFileResult({
     }
     const copied = await copyText(url);
     setMessage(
-      copied
-        ? "Link generated and copied."
-        : "Link generated. Copy it from the box below."
+copied
+        ? `${t.common.copy} ${t.common.copied}`
+        : `${t.common.copy} ${t.common.copied}`
     );
   };
   const handleShare = async () => {

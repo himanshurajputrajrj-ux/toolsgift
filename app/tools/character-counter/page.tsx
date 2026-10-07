@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
+import { ToolDescription, ToolTitle } from "@/app/components/ToolText";
 import CharacterCounter from "@/app/components/CharacterCounter";
 export const metadata: Metadata = {
   title: "Character Counter Online - Count Characters & Spaces",
@@ -116,22 +117,14 @@ export default function CharacterCounterPage() {
             ToolsGift
           </Link>
           <span className="mx-2 text-gray-400">/</span>
-          <span className="text-gray-700 dark:text-gray-300">
-            Character Counter
-          </span>
+          <span className="text-gray-700 dark:text-gray-300"><ToolTitle slug="character-counter" /></span>
         </nav>
         <header className="mb-8 text-center">
           <div className="mb-3 text-sm font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">
             TEXT TOOL
           </div>
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-            Character Counter Online
-          </h1>
-          <p className="mx-auto mt-4 max-w-3xl text-lg text-gray-600 dark:text-gray-400">
-            Count characters, characters without spaces, words, sentences and
-            paragraphs instantly with a fast and simple online character
-            counter.
-          </p>
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl"><ToolTitle slug="character-counter" /></h1>
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-gray-600 dark:text-gray-400"><ToolDescription slug="character-counter" /></p>
         </header>
         <CharacterCounter />
       </main>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type Mode = "quick" | "card";
 
@@ -148,6 +150,9 @@ function downloadDataUrl(dataUrl: string, filename: string) {
 }
 
 export default function SocialQRCard() {
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "social-qr-card");
+
   const [mode, setMode] = useState<Mode>("quick");
 
   const [quickValue, setQuickValue] = useState("");
@@ -664,15 +669,15 @@ export default function SocialQRCard() {
       <div className="mx-auto max-w-3xl text-center">
 
         <div className="mb-4 inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-[#202124] shadow-sm">
-          QR Code Studio
+          {t.categories.imageTools}
         </div>
 
         <h1 className="text-3xl font-bold tracking-tight text-[#202124] sm:text-5xl">
-          QR Code Generator
+          {toolText.title}
         </h1>
 
         <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
-          Create a simple QR code or a premium digital visiting card.
+          {toolText.description}
         </p>
 
       </div>
@@ -787,7 +792,7 @@ export default function SocialQRCard() {
                     onClick={() => copyShareLink(quickQR, "toolsgift-social-qr.png", "Social QR Card - Quick QR", quickShareUrl, setQuickShareUrl)}
                     className="rounded-xl border border-gray-300 bg-white px-5 py-3 font-bold text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800"
                   >
-                    Copy Link
+                    {t.common.copy} Link
                   </button>
                 </div>
               )}
@@ -801,7 +806,7 @@ export default function SocialQRCard() {
                 onClick={clearQuick}
                 className="mt-3 w-full rounded-xl border border-slate-300 px-5 py-3.5 font-bold text-[#202124] hover:bg-slate-50 sm:w-auto"
               >
-                Clear
+                {t.common.clear}
               </button>
 
             </div>
@@ -838,7 +843,7 @@ export default function SocialQRCard() {
                 disabled={!quickQR}
                 className="mt-6 w-full rounded-xl bg-[#202124] px-5 py-3.5 font-bold text-white hover:bg-black disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
               >
-                Download QR Code
+                {t.common.download} QR Code
               </button>
 
             </div>
@@ -1072,7 +1077,7 @@ export default function SocialQRCard() {
                 disabled={!cardCreated || !cardQR}
                 className="mt-3 w-full rounded-xl border border-slate-300 bg-white px-5 py-4 font-bold text-[#202124] transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                Download Premium Card
+                {t.common.download} Premium Card
               </button>                <div className="mt-4 flex flex-col gap-3 sm:flex-row">
                   <button
                     type="button"
@@ -1127,7 +1132,7 @@ export default function SocialQRCard() {
                       onClick={() => navigator.clipboard.writeText(premiumShareUrl)}
                       className="rounded-xl border border-gray-300 bg-white px-5 py-3 font-bold text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800"
                     >
-                      Copy Link
+                      {t.common.copy} Link
                     </button>
                   </div>
                 )}
@@ -1142,7 +1147,7 @@ export default function SocialQRCard() {
                 onClick={clearCard}
                 className="mt-3 w-full rounded-xl border border-slate-300 px-5 py-3.5 font-semibold text-slate-600 hover:bg-slate-50"
               >
-                Clear
+                {t.common.clear}
               </button>
 
             </div>

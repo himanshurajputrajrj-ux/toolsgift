@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFSplitterPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Split PDF" />
+      <Breadcrumbs toolSlug="pdf-splitter" />
       <PDFSplitter />
       <ToolSEOContent toolKey="pdf-splitter" />
     </main>

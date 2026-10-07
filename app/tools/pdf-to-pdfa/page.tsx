@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFToPDFAPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="PDF to PDF/A" />
+      <Breadcrumbs toolSlug="pdf-to-pdfa" />
       <PDFToPDFA />
       <ToolSEOContent toolKey="pdf-to-pdfa" />
     </main>

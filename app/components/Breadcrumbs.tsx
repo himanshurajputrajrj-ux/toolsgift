@@ -1,16 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import { getToolText } from "@/app/i18n/translations";
 import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type BreadcrumbsProps = {
-  toolName: string;
+  toolName?: string;
+  toolSlug?: string;
 };
 
-export default function Breadcrumbs({ toolName }: BreadcrumbsProps) {
-  const { t } = useLanguage();
+export default function Breadcrumbs({ toolName, toolSlug }: BreadcrumbsProps) {
+  const { locale, t } = useLanguage();
 
   const homeLabel = t.nav.home;
+  const localized = toolSlug ? getToolText(locale, toolSlug) : null;
+  const currentLabel =
+    localized && localized.title !== toolSlug
+      ? localized.title
+      : (toolName ?? "");
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -25,7 +32,7 @@ export default function Breadcrumbs({ toolName }: BreadcrumbsProps) {
       {
         "@type": "ListItem",
         position: 2,
-        name: toolName,
+        name: currentLabel,
       },
     ],
   };
@@ -57,7 +64,7 @@ export default function Breadcrumbs({ toolName }: BreadcrumbsProps) {
             aria-current="page"
             className="font-medium text-blue-600 dark:text-blue-400"
           >
-            {toolName}
+            {currentLabel}
           </li>
         </ol>
       </nav>

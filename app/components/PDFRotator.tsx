@@ -8,9 +8,13 @@ import {
   useRef,
   useState,
 } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 export default function PDFRotator() {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "pdf-rotator");
 
   const [file, setFile] = useState<File | null>(null);
   const [pdfData, setPdfData] = useState<ArrayBuffer | null>(null);
@@ -47,12 +51,12 @@ export default function PDFRotator() {
     setResultSize(0);
 
     if (selectedFile.type !== "application/pdf") {
-      setError("Please select a valid PDF file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > MAX_FILE_SIZE) {
-      setError("PDF size must be 50MB or less.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -69,7 +73,7 @@ export default function PDFRotator() {
       setSelectedPage(1);
     } catch (err) {
       console.error(err);
-      setError("Unable to read this PDF file.");
+      setError(t.messages.somethingWentWrong);
     }
   };
 
@@ -97,7 +101,7 @@ export default function PDFRotator() {
 
   const rotatePDF = async () => {
     if (!pdfData) {
-      setError("Please upload a PDF first.");
+      setError(t.messages.noFileSelected);
       return;
     }
 
@@ -147,9 +151,7 @@ export default function PDFRotator() {
       setResultSize(blob.size);
     } catch (err) {
       console.error(err);
-      setError(
-        "Unable to rotate this PDF. Please try another PDF."
-      );
+      setError(t.messages.processingFailed);
     } finally {
       setProcessing(false);
     }
@@ -195,12 +197,11 @@ export default function PDFRotator() {
         </div>
 
         <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          Rotate PDF
+          {toolText.title}
         </h1>
 
         <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-          Rotate PDF pages by 90°, 180°, or 270° and
-          download the rotated document.
+          {toolText.description}
         </p>
       </div>
 
@@ -218,11 +219,11 @@ export default function PDFRotator() {
           </div>
 
           <h2 className="text-lg font-semibold text-slate-900">
-            Upload your PDF
+            {t.common.upload}
           </h2>
 
           <p className="mt-2 text-sm text-slate-500">
-            Drag & drop your PDF here or click to browse
+            {t.common.dragDrop}
           </p>
 
           <p className="mt-3 text-xs text-slate-400">
@@ -264,7 +265,7 @@ export default function PDFRotator() {
               onClick={removePDF}
               className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100"
             >
-              Remove PDF
+              {t.common.remove} PDF
             </button>
           </div>
 
@@ -475,7 +476,7 @@ export default function PDFRotator() {
               : "cursor-not-allowed bg-slate-200 text-slate-400"
           }`}
         >
-          Download Rotated PDF
+          {t.common.download} Rotated PDF
         </a>{resultUrl && (
   <ShareFileResult
     tool="pdf-rotator"

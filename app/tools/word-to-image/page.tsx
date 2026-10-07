@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function WordToImagePage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Word to Image" />
+      <Breadcrumbs toolSlug="word-to-image" />
       <WordToImage />
       <ToolSEOContent toolKey="word-to-image" />
     </main>

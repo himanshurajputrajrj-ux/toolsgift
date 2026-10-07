@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function WordToPDFPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Word to PDF" />
+      <Breadcrumbs toolSlug="word-to-pdf" />
       <WordToPDF />
       <ToolSEOContent toolKey="word-to-pdf" />
     </main>

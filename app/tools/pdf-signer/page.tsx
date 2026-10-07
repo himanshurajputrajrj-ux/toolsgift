@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFSignerPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Sign PDF" />
+      <Breadcrumbs toolSlug="pdf-signer" />
       <PDFSigner />
       <ToolSEOContent toolKey="pdf-signer" />
     </main>

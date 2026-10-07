@@ -1,11 +1,15 @@
 ﻿"use client";
 
 import { useRef, useState } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type OutputFormat = "image/jpeg" | "image/png" | "image/webp";
 
 export default function ImageCompressor() {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "compressor");
 
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
@@ -35,12 +39,12 @@ export default function ImageCompressor() {
     setError("");
 
     if (!selectedFile.type.startsWith("image/")) {
-      setError("Please select a valid image file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > 25 * 1024 * 1024) {
-      setError("Maximum file size is 25 MB.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -88,7 +92,7 @@ export default function ImageCompressor() {
 
   const compressImage = async () => {
     if (!file || !preview) {
-      setError("Please upload an image first.");
+      setError(t.messages.noFileSelected);
       return;
     }
 
@@ -167,9 +171,7 @@ export default function ImageCompressor() {
       setShareMessage("");
     } catch (err) {
       console.error(err);
-      setError(
-        "Something went wrong while compressing the image."
-      );
+      setError(t.messages.somethingWentWrong);
     } finally {
       setLoading(false);
     }
@@ -213,7 +215,7 @@ export default function ImageCompressor() {
     try {
       const blob = await fetch(result).then((response) => response.blob());
       if (blob.size > 4 * 1024 * 1024) {
-        throw new Error("Image is too large to share. Maximum size is 4 MB.");
+        throw new Error(t.messages.fileTooLarge);
       }
 
       const extension = format === "image/png" ? "png" : format === "image/webp" ? "webp" : "jpg";
@@ -226,14 +228,14 @@ export default function ImageCompressor() {
       const response = await fetch("/api/share", { method: "POST", body: formData });
       const data = await response.json();
       if (!response.ok || typeof data.shareUrl !== "string") {
-        throw new Error(data.error || "Failed to create share link.");
+        throw new Error(data.error || t.messages.processingFailed);
       }
 
       setShareUrl(data.shareUrl);
       setShareMessage("Share link generated.");
       return data.shareUrl;
     } catch (error) {
-      setShareMessage(error instanceof Error ? error.message : "Failed to create share link.");
+      setShareMessage(error instanceof Error ? error.message : t.messages.processingFailed);
       throw error;
     } finally {
       setShareLoading(false);
@@ -307,12 +309,11 @@ export default function ImageCompressor() {
           </p>
 
           <h1 className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
-            Compress Image
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 md:text-lg">
-            Reduce image file size while maintaining excellent
-            visual quality.
+            {toolText.description}
           </p>
         </section>
 
@@ -335,7 +336,7 @@ export default function ImageCompressor() {
             </div>
 
             <h2 className="text-2xl font-semibold text-slate-900">
-              {file ? "Image Selected" : "Upload an image"}
+              {file ? "Image Selected" : t.common.upload}
             </h2>
 
             <p className="mt-2 text-sm text-slate-500">
@@ -354,11 +355,11 @@ export default function ImageCompressor() {
               }}
               className="mt-6 rounded-xl bg-blue-600 px-8 py-3 font-semibold text-white transition hover:bg-blue-700"
             >
-              {file ? "Choose Another Image" : "Choose File"}
+              {file ? "Choose Another Image" : t.common.chooseFile}
             </button>
 
             <p className="mt-4 text-sm text-slate-400">
-              or drag and drop your image here
+              {t.common.or} {t.common.dragDrop}
             </p>
 
             <input
@@ -400,7 +401,7 @@ export default function ImageCompressor() {
                 onClick={removeImage}
                 className="shrink-0 rounded-xl border border-red-200 bg-red-50 px-4 py-2 text-sm font-semibold text-red-600 hover:bg-red-100"
               >
-                Remove
+                {t.common.remove}
               </button>
 
             </div>
@@ -535,7 +536,7 @@ export default function ImageCompressor() {
             {loading ? (
               <>
                 <span className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                Compressing...
+                {t.common.processing}
               </>
             ) : (
               <>
@@ -652,7 +653,7 @@ export default function ImageCompressor() {
             className="mt-6 flex w-full items-center justify-center gap-3 rounded-xl bg-green-600 px-6 py-4 font-bold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500"
           >
             <span>⬇</span>
-            Download Compressed Image
+            {t.common.download} Compressed Image
           </button>
 
           {result && (
@@ -668,7 +669,7 @@ export default function ImageCompressor() {
               {shareUrl && (
                 <div className="mt-4 flex flex-col gap-3 sm:flex-row">
                   <input type="text" value={shareUrl} readOnly aria-label="Share link" className="min-w-0 flex-1 rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-700 outline-none" />
-                  <button type="button" onClick={copyShareLink} disabled={shareLoading} className="rounded-xl border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-700 transition hover:bg-slate-100 disabled:opacity-60">Copy Link</button>
+                  <button type="button" onClick={copyShareLink} disabled={shareLoading} className="rounded-xl border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-700 transition hover:bg-slate-100 disabled:opacity-60">{t.common.copy} Link</button>
                 </div>
               )}
               {shareMessage && <p className="mt-3 text-sm text-slate-600">{shareMessage}</p>}

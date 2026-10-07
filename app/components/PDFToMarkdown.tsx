@@ -6,8 +6,13 @@ import {
   useState,
 } from "react";
 import ShareResult from "./ShareResult";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 export default function PDFToMarkdown() {
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "pdf-to-markdown");
+
   const [file, setFile] = useState<File | null>(null);
 
   const [pageCount, setPageCount] = useState(0);
@@ -147,12 +152,12 @@ export default function PDFToMarkdown() {
         .toLowerCase()
         .endsWith(".pdf")
     ) {
-      setError("Please select a valid PDF file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > MAX_SIZE) {
-      setError("PDF must be 50MB or less.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -183,7 +188,7 @@ export default function PDFToMarkdown() {
       console.error(err);
 
       setError(
-        "Unable to read this PDF. Please make sure it is valid and readable."
+        t.messages.somethingWentWrong
       );
     } finally {
       setExtracting(false);
@@ -390,7 +395,7 @@ export default function PDFToMarkdown() {
     } catch (err) {
       console.error(err);
       setError(
-        "Failed to convert the PDF to Markdown."
+        t.messages.processingFailed
       );
     } finally {
       setConverting(false);
@@ -456,12 +461,11 @@ export default function PDFToMarkdown() {
           </div>
 
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            PDF to Markdown
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
-            Convert selectable PDF text into a clean,
-            structured Markdown document.
+            {toolText.description}
           </p>
         </div>
 
@@ -502,13 +506,11 @@ export default function PDFToMarkdown() {
             </div>
 
             <p className="font-semibold text-slate-800">
-              {file
-                ? "Replace PDF"
-                : "Upload PDF"}
+              {file ? "Replace PDF" : `${t.common.upload} PDF`}
             </p>
 
             <p className="mt-1 text-xs text-slate-500">
-              Drag & drop or click to browse • Max 50MB
+              {t.common.dragDrop} • Max 50MB
             </p>
           </div>
 
@@ -532,7 +534,7 @@ export default function PDFToMarkdown() {
                   onClick={reset}
                   className="rounded-lg border border-red-200 bg-white px-3 py-2 text-xs font-semibold text-red-600 hover:bg-red-50"
                 >
-                  Remove PDF
+                  {t.common.remove} PDF
                 </button>
               </div>
             </div>
@@ -623,8 +625,8 @@ export default function PDFToMarkdown() {
             className="mt-6 w-full rounded-xl bg-blue-600 px-5 py-3.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {converting
-              ? "Converting to Markdown..."
-              : "Convert to Markdown"}
+              ? t.common.processing
+              : `${t.common.convert} → Markdown`}
           </button>
 
           {/* Error */}
@@ -673,8 +675,8 @@ export default function PDFToMarkdown() {
                 ? "bg-emerald-600 text-white hover:bg-emerald-700"
                 : "cursor-not-allowed bg-slate-200 text-slate-400"
             }`}
-          >
-            Download Markdown (.md)
+>
+            {t.common.download} Markdown (.md)
           </button>
 
           {markdown && <ShareResult key={markdown} tool="pdf-to-markdown" resultTitle="PDF Markdown" value={markdown} filename="pdf-markdown.md" />}
@@ -685,7 +687,7 @@ export default function PDFToMarkdown() {
             onClick={reset}
             className="mt-3 w-full rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
           >
-            Clear & Reset
+            {t.common.clear} & {t.common.reset}
           </button>
         </div>
       </div>

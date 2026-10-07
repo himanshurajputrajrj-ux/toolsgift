@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 export default function ImageToPDFPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Image to PDF" />
+      <Breadcrumbs toolSlug="image-to-pdf" />
       <ImageToPDF />
       <ToolSEOContent toolKey="image-to-pdf" />
     </main>

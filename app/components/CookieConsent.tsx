@@ -4,9 +4,11 @@ import {
   CONSENT_KEY,
   saveCookieConsent,
 } from "@/app/lib/cookieConsent";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 export default function CookieConsent() {
+  const { t } = useLanguage();
   const [visible, setVisible] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -105,20 +107,18 @@ export default function CookieConsent() {
               id="cookie-consent-title"
               className="text-lg font-semibold text-slate-900 dark:text-white"
             >
-              We use cookies
+              {t.consent.title}
             </h2>
             <p
               id="cookie-consent-description"
               className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300"
             >
-              ToolsGift uses necessary cookies to keep the website working.
-              Optional cookies may be used for analytics and advertising.
-              You can choose whether to allow optional cookies.
+              {t.consent.description}
               <a
                 href="/cookies"
                 className="ml-1 font-medium underline hover:no-underline"
               >
-                Read our Cookie Policy
+                {t.consent.policyLink}
               </a>
             </p>
           </div>
@@ -128,14 +128,14 @@ export default function CookieConsent() {
               onClick={rejectOptional}
               className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"
             >
-              Reject Optional
+              {t.consent.rejectOptional}
             </button>
             <button
               type="button"
               onClick={acceptAll}
               className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-200"
             >
-              Accept All
+              {t.consent.acceptAll}
             </button>
           </div>
         </div>

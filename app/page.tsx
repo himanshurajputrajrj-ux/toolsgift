@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from "react";
 import SiteStructuredData from "./components/SiteStructuredData";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type IconType =
   | "compress"
@@ -501,91 +503,129 @@ const tools: Array<{
   },
 ];
 
+type CategoryKey = "all" | "images" | "pdf" | "convert" | "compress";
+
+type BadgeKey =
+  | "image"
+  | "pdf"
+  | "other"
+  | "generator"
+  | "utility"
+  | "calculator"
+  | "text";
+
+const categoryBadgeKey: Record<string, BadgeKey> = {
+  Image: "image",
+  PDF: "pdf",
+  Other: "other",
+  Generator: "generator",
+  Utility: "utility",
+  Calculator: "calculator",
+  Text: "text",
+};
+
 export default function Home() {
+  const { locale, t } = useLanguage();
   const [search, setSearch] = useState("");
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] =
+    useState<CategoryKey>("all");
+
+  const localizedTools = useMemo(
+    () =>
+      tools.map((tool) => {
+        const slug = tool.link.replace(/^\/tools\//, "");
+        const text = getToolText(locale, slug);
+        return {
+          ...tool,
+          slug,
+          title: text.title,
+          description: text.description,
+        };
+      }),
+    [locale]
+  );
 
   const filteredTools = useMemo(() => {
     const query = search.trim().toLowerCase();
 
-    return tools.filter((tool) => {
+    return localizedTools.filter((tool) => {
       const matchesSearch =
         !query ||
         tool.title.toLowerCase().includes(query) ||
         tool.description.toLowerCase().includes(query) ||
-        tool.category.toLowerCase().includes(query);
+        tool.category.toLowerCase().includes(query) ||
+        tool.slug.includes(query);
 
       let matchesCategory = true;
 
-      if (activeCategory === "Images") {
+      if (activeCategory === "images") {
         matchesCategory =
           tool.category === "Image" ||
-          tool.title.toLowerCase().includes("image") ||
-          tool.title.toLowerCase().includes("jpg") ||
-          tool.title.toLowerCase().includes("webp") ||
-          tool.title.toLowerCase().includes("heic");
+          tool.slug.includes("image") ||
+          tool.slug.includes("jpg") ||
+          tool.slug.includes("webp") ||
+          tool.slug.includes("heic");
       }
 
-      if (activeCategory === "PDF") {
+      if (activeCategory === "pdf") {
         matchesCategory =
-          tool.category === "PDF" ||
-          tool.title.toLowerCase().includes("pdf");
+          tool.category === "PDF" || tool.slug.includes("pdf");
       }
 
-      if (activeCategory === "Convert") {
-        const title = tool.title.toLowerCase();
+      if (activeCategory === "convert") {
         matchesCategory =
-          title.includes("convert") ||
-          title.includes(" to ") ||
-          title.includes("converter") ||
-          title.includes("heic to") ||
-          title.includes("image to") ||
-          title.includes("word to") ||
-          title.includes("pdf to") ||
-          title.includes("html to");
+          tool.slug.includes("convert") ||
+          tool.slug.includes("-to-") ||
+          tool.slug.includes("to-");
       }
 
-      if (activeCategory === "Compress") {
-        matchesCategory = tool.title.toLowerCase().includes("compress");
+      if (activeCategory === "compress") {
+        matchesCategory = tool.slug.includes("compress");
       }
 
       return matchesSearch && matchesCategory;
     });
-  }, [search, activeCategory]);
+  }, [search, activeCategory, localizedTools]);
 
   const clearFilters = () => {
     setSearch("");
-    setActiveCategory("All");
+    setActiveCategory("all");
   };
 
+  const categoryOptions: { key: CategoryKey; label: string }[] = [
+    { key: "all", label: t.home.all },
+    { key: "images", label: t.home.images },
+    { key: "pdf", label: t.home.pdf },
+    { key: "convert", label: t.home.convert },
+    { key: "compress", label: t.home.compress },
+  ];
+
   return (
-    <main className="min-h-screen bg-[#F8F5ED] text-[#202124]">
+    <main className="min-h-screen bg-[#F8F5ED] dark:bg-[#182235] text-[#202124] dark:text-white">
       <SiteStructuredData />
 
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-black/[0.06] bg-[#F8F5ED]">
+      <section className="relative overflow-hidden border-b border-black/[0.06] dark:border-white/10 bg-[#F8F5ED] dark:bg-[#182235]">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.13),transparent_48%)]" />
         <div className="pointer-events-none absolute -left-32 top-20 h-80 w-80 rounded-full bg-yellow-200/30 blur-3xl" />
         <div className="pointer-events-none absolute -right-32 top-10 h-96 w-96 rounded-full bg-amber-100/40 blur-3xl" />
 
         <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-20 text-center sm:px-8 md:pb-20 md:pt-28">
-          <h1 className="mx-auto max-w-4xl text-5xl font-extrabold leading-[1.02] tracking-[-0.04em] sm:text-6xl md:text-7xl">
-            Everything you need to
-            <span className="block font-normal">work with your files.</span>
+          <h1 className="mx-auto max-w-4xl text-5xl font-extrabold leading-[1.02] tracking-[-0.04em] sm:text-6xl md:text-7xl text-[#202124] dark:text-white">
+            {t.home.heroTitle}
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-black/60 sm:text-lg">
-            Convert, compress, resize, edit and manage images, PDFs and
-            everyday files with simple online tools.
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-black/60 dark:text-slate-300 sm:text-lg">
+            {t.home.heroDescription}
           </p>
 
           <div className="mx-auto mt-9 max-w-2xl">
             <label className="sr-only" htmlFor="tool-search">
-              Search tools
+              {t.nav.search}
             </label>
 
-            <div className="flex items-center rounded-2xl border border-black/10 bg-white px-5 py-4 shadow-[0_12px_40px_rgba(32,33,36,0.08)] transition focus-within:border-[#C9A227]/60 focus-within:shadow-[0_16px_45px_rgba(32,33,36,0.12)]">
-              <span className="mr-3 text-xl text-black/35" aria-hidden="true">
+            <div className="flex items-center rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#1e293b] px-5 py-4 shadow-[0_12px_40px_rgba(32,33,36,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.3)] transition focus-within:border-[#C9A227]/60 focus-within:shadow-[0_16px_45px_rgba(32,33,36,0.12)]">
+              <span className="mr-3 text-xl text-black/35 dark:text-slate-400" aria-hidden="true">
                 ⌕
               </span>
 
@@ -594,17 +634,17 @@ export default function Home() {
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search tools, PDF, image, compress, convert..."
-                className="w-full bg-transparent text-base outline-none placeholder:text-black/40"
-                aria-label="Search tools"
+                placeholder={t.home.searchPlaceholder}
+                className="w-full bg-transparent text-base outline-none placeholder:text-black/40 dark:placeholder:text-slate-400 text-[#202124] dark:text-white"
+                aria-label={t.nav.search}
               />
 
               {search && (
                 <button
                   type="button"
                   onClick={() => setSearch("")}
-                  className="ml-3 rounded-full px-2 text-lg text-black/35 transition hover:bg-black/5 hover:text-black"
-                  aria-label="Clear search"
+                  className="ml-3 rounded-full px-2 text-lg text-black/35 transition hover:bg-black/5 hover:text-black dark:text-slate-400 dark:hover:bg-white/10 dark:hover:text-white"
+                  aria-label={t.home.clearSearch}
                 >
                   ×
                 </button>
@@ -615,42 +655,41 @@ export default function Home() {
       </section>
 
       {/* Tools */}
-      <section id="tools" className="bg-white px-5 py-16 sm:px-8 md:py-20">
+      <section id="tools" className="bg-white dark:bg-[#151f32] px-5 py-16 sm:px-8 md:py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col gap-5 border-b border-black/[0.08] pb-7 md:flex-row md:items-end md:justify-between">
+          <div className="flex flex-col gap-5 border-b border-black/[0.08] dark:border-white/10 pb-7 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-black/45">
-                Tools
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-black/45 dark:text-slate-400">
+                {t.home.toolsLabel}
               </p>
-              <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-                Find the tool you need.
+              <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl text-[#202124] dark:text-white">
+                {t.home.toolsTitle}
               </h2>
-              <p className="mt-2 max-w-xl text-sm leading-6 text-black/55 sm:text-base">
-                Browse the collection or search by what you want to do.
+              <p className="mt-2 max-w-xl text-sm leading-6 text-black/55 sm:text-base dark:text-slate-300">
+                {t.home.toolsDescription}
               </p>
             </div>
 
-            <p className="text-sm font-medium text-black/45">
+            <p className="text-sm font-medium text-black/45 dark:text-slate-400">
               {filteredTools.length}{" "}
-              {filteredTools.length === 1 ? "tool" : "tools"}
+              {filteredTools.length === 1 ? t.home.tool : t.home.tools}
             </p>
           </div>
 
           {/* Categories */}
           <div className="mt-7 flex gap-2 overflow-x-auto pb-1">
-            {["All", "Images", "PDF", "Convert", "Compress"].map(
-              (category) => (
+            {categoryOptions.map((category) => (
                 <button
-                  key={category}
+                  key={category.key}
                   type="button"
-                  onClick={() => setActiveCategory(category)}
+                  onClick={() => setActiveCategory(category.key)}
                   className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition ${
-                    activeCategory === category
+                    activeCategory === category.key
                       ? "border-[#202124] bg-[#202124] text-white"
-                      : "border-black/10 bg-white text-black/60 hover:border-black/20 hover:text-black"
+                      : "border-black/10 bg-white text-black/60 hover:border-black/20 hover:text-black dark:border-white/10 dark:bg-transparent dark:text-slate-300 dark:hover:border-white/30 dark:hover:text-white"
                   }`}
                 >
-                  {category}
+                  {category.label}
                 </button>
               )
             )}
@@ -661,9 +700,9 @@ export default function Home() {
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {filteredTools.map((tool) => (
                   <a
-                    key={tool.title}
+                    key={tool.slug}
                     href={tool.link}
-                    className="group relative flex min-h-[215px] flex-col overflow-hidden rounded-2xl border border-black/[0.09] bg-white p-6 text-left transition duration-200 hover:-translate-y-0.5 hover:border-[#C9A227]/50 hover:shadow-[0_16px_40px_rgba(32,33,36,0.10)]"
+                    className="group relative flex min-h-[215px] flex-col overflow-hidden rounded-2xl border border-black/[0.09] dark:border-white/10 bg-white dark:bg-[#1e293b] p-6 text-left transition duration-200 hover:-translate-y-0.5 hover:border-[#C9A227]/50 hover:shadow-[0_16px_40px_rgba(32,33,36,0.10)] dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.3)]"
                   >
                     <div className="flex items-start justify-between gap-4">
                       <ToolIcon
@@ -671,35 +710,35 @@ export default function Home() {
                         color={getIconColor(tool)}
                       />
 
-                      <span className="rounded-full bg-[#F8F5ED] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-black/45">
-                        {tool.category}
+                      <span className="rounded-full bg-[#F8F5ED] dark:bg-[#1e293b] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-black/45 dark:text-slate-100">
+                        {t.badges[categoryBadgeKey[tool.category] ?? "other"]}
                       </span>
                     </div>
 
-                    <h3 className="mt-7 text-lg font-bold tracking-tight">
+                    <h3 className="mt-7 text-lg font-bold tracking-tight text-[#202124] dark:text-white">
                       {tool.title}
                     </h3>
 
-                    <p className="mt-2 text-sm leading-6 text-black/55">
+                    <p className="mt-2 text-sm leading-6 text-black/55 dark:text-slate-100">
                       {tool.description}
                     </p>
 
-                    <div className="mt-auto pt-5 text-sm font-semibold text-black/70 transition group-hover:translate-x-1 group-hover:text-black">
-                      Open tool <span aria-hidden="true">→</span>
+                    <div className="mt-auto pt-5 text-sm font-semibold text-black/70 dark:text-slate-100 transition group-hover:translate-x-1 group-hover:text-black dark:group-hover:text-white">
+                      {t.home.openTool} <span aria-hidden="true">→</span>
                     </div>
                   </a>
                 ))}
               </div>
             ) : (
-              <div className="rounded-2xl border border-black/[0.08] bg-[#F8F5ED] px-6 py-16 text-center">
-                <div className="text-3xl text-black/35" aria-hidden="true">
+              <div className="rounded-2xl border border-black/[0.08] dark:border-white/10 bg-[#F8F5ED] dark:bg-[#1e293b] px-6 py-16 text-center">
+                <div className="text-3xl text-black/35 dark:text-slate-400" aria-hidden="true">
                   ⌕
                 </div>
 
-                <h3 className="mt-3 text-xl font-bold">No tools found</h3>
+                <h3 className="mt-3 text-xl font-bold text-[#202124] dark:text-white">{t.home.noToolsFound}</h3>
 
-                <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-black/55">
-                  Try a different search term or choose another category.
+                <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-black/55 dark:text-slate-300">
+                  {t.home.noToolsDescription}
                 </p>
 
                 <button
@@ -707,7 +746,7 @@ export default function Home() {
                   onClick={clearFilters}
                   className="mt-6 rounded-xl bg-[#202124] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#C9A227] hover:text-[#202124]"
                 >
-                  Clear search
+                  {t.home.clearSearch}
                 </button>
               </div>
             )}
@@ -716,20 +755,18 @@ export default function Home() {
       </section>
 
       {/* Trust / Product statement */}
-      <section className="border-t border-black/[0.06] bg-[#F8F5ED] px-5 py-16 sm:px-8 md:py-20">
+      <section className="border-t border-black/[0.06] dark:border-white/10 bg-[#F8F5ED] dark:bg-[#182235] px-5 py-16 sm:px-8 md:py-20">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-black/45">
-            ToolsGift
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-black/45 dark:text-slate-400">
+            {t.home.productLabel}
           </p>
 
-          <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl">
-            Useful tools without the unnecessary complexity.
+          <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl text-[#202124] dark:text-white">
+            {t.home.productTitle}
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-black/55 sm:text-base">
-            ToolsGift brings everyday file, document and utility tools
-            together in one clean place, so you can get the task done without
-            jumping between different websites.
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-black/55 sm:text-base dark:text-slate-300">
+            {t.home.productDescription}
           </p>
         </div>
       </section>

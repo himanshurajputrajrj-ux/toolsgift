@@ -9,6 +9,8 @@ import {
   useRef,
   useState,
 } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type Redaction = {
   id: number;
@@ -21,6 +23,8 @@ type Redaction = {
 export default function PDFRedactor() {
   const inputRef = useRef<HTMLInputElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "pdf-redactor");
 
   const [file, setFile] = useState<File | null>(null);
   const [pdfBytes, setPdfBytes] = useState<ArrayBuffer | null>(null);
@@ -61,12 +65,12 @@ export default function PDFRedactor() {
       selectedFile.type !== "application/pdf" &&
       !selectedFile.name.toLowerCase().endsWith(".pdf")
     ) {
-      setError("Please select a valid PDF file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > MAX_SIZE) {
-      setError("PDF must be 50MB or less.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -82,7 +86,7 @@ export default function PDFRedactor() {
       setPageCount(pdf.getPageCount());
     } catch (err) {
       console.error(err);
-      setError("Unable to read this PDF.");
+      setError(t.messages.somethingWentWrong);
     }
   };
 
@@ -304,7 +308,7 @@ export default function PDFRedactor() {
 
   const applyRedactions = async () => {
     if (!pdfBytes) {
-      setError("Please upload a PDF first.");
+      setError(t.messages.noFileSelected);
       return;
     }
 
@@ -370,7 +374,7 @@ export default function PDFRedactor() {
       setResultUrl(url);
     } catch (err) {
       console.error(err);
-      setError("Failed to create the redacted PDF.");
+      setError(t.messages.processingFailed);
     } finally {
       setProcessing(false);
     }
@@ -405,12 +409,11 @@ export default function PDFRedactor() {
           </div>
 
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Redact PDF
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
-            Permanently cover sensitive areas of a PDF with
-            black redaction boxes.
+            {toolText.description}
           </p>
         </div>
 
@@ -443,11 +446,11 @@ export default function PDFRedactor() {
             </div>
 
             <p className="font-semibold text-slate-800">
-              {file ? "Replace PDF" : "Upload PDF"}
+              {file ? "Replace PDF" : `${t.common.upload} PDF`}
             </p>
 
             <p className="mt-1 text-xs text-slate-500">
-              Drag & drop or click to browse • Max 50MB
+              {t.common.dragDrop} • Max 50MB
             </p>
           </div>
 
@@ -470,7 +473,7 @@ export default function PDFRedactor() {
                   onClick={reset}
                   className="rounded-lg border border-red-200 bg-white px-3 py-2 text-xs font-semibold text-red-600 hover:bg-red-50"
                 >
-                  Remove PDF
+                  {t.common.remove} PDF
                 </button>
               </div>
             </div>
@@ -502,7 +505,7 @@ export default function PDFRedactor() {
                 }
                 className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                ← Previous
+                ← {t.common.previous}
               </button>
 
               <span className="rounded-lg bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">
@@ -519,7 +522,7 @@ export default function PDFRedactor() {
                 }
                 className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                Next →
+                {t.common.next} →
               </button>
             </div>
           )}
@@ -576,7 +579,7 @@ export default function PDFRedactor() {
                 disabled={redactions.length === 0}
                 className="rounded-lg border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-600 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                Clear Areas
+                {t.common.clear} Areas
               </button>
             </div>
 
@@ -611,7 +614,7 @@ export default function PDFRedactor() {
                       }
                       className="rounded-lg border border-red-200 px-3 py-2 text-xs font-semibold text-red-600 hover:bg-red-50"
                     >
-                      Remove
+                      {t.common.remove}
                     </button>
                   </div>
                 ))}
@@ -689,7 +692,7 @@ export default function PDFRedactor() {
                 : "cursor-not-allowed bg-slate-200 text-slate-400"
             }`}
           >
-            Download Redacted PDF
+            {t.common.download} Redacted PDF
           </a>
 
           {/* Reset */}
@@ -698,7 +701,7 @@ export default function PDFRedactor() {
             onClick={reset}
             className="mt-3 w-full rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
           >
-            Clear & Reset
+            {t.common.clear} & {t.common.reset}
           </button>{(resultUrl) && (
   <ShareFileResult
     tool="pdf-redactor"

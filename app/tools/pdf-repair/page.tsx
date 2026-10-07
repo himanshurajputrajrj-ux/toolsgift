@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFRepairPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Repair PDF" />
+      <Breadcrumbs toolSlug="pdf-repair" />
       <PDFRepair />
       <ToolSEOContent toolKey="pdf-repair" />
     </main>

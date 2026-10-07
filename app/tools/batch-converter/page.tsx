@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 export default function BatchConverterPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Batch Image Converter" />
+      <Breadcrumbs toolSlug="batch-converter" />
       <BatchConverter />
       <ToolSEOContent toolKey="batch-converter" />
     

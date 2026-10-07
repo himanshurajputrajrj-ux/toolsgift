@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFPageNumbersPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Add PDF Page Numbers" />
+      <Breadcrumbs toolSlug="pdf-page-numbers" />
       <PDFPageNumbers />
       <ToolSEOContent toolKey="pdf-page-numbers" />
     </main>

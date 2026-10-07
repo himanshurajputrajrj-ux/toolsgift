@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFTranslatorPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="PDF Translator" />
+      <Breadcrumbs toolSlug="pdf-translator" />
       <PDFTranslator />
       <ToolSEOContent toolKey="pdf-translator" />
     </main>

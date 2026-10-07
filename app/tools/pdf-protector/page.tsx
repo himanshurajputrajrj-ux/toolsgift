@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFProtectorPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Protect PDF" />
+      <Breadcrumbs toolSlug="pdf-protector" />
       <PDFProtector />
       <ToolSEOContent toolKey="pdf-protector" />
     </main>

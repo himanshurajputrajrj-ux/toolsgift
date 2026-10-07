@@ -2,6 +2,8 @@
 
 import { DragEvent, useRef, useState } from "react";
 import ShareFileResult from "./ShareFileResult";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type SplitResult = {
   id: string;
@@ -16,6 +18,8 @@ type SplitMode = "all" | "range";
 
 export default function PDFSplitter() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "pdf-splitter");
 
   const [file, setFile] = useState<File | null>(null);
   const [totalPages, setTotalPages] = useState(0);
@@ -59,12 +63,12 @@ export default function PDFSplitter() {
         .endsWith(".pdf");
 
     if (!isPDF) {
-      setError("Please select a PDF file only.");
+      setError(t.messages.unsupportedFormat);
       return;
     }
 
     if (selectedFile.size > MAX_FILE_SIZE) {
-      setError("Maximum file size is 50 MB.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -85,9 +89,7 @@ export default function PDFSplitter() {
       setFile(null);
       setTotalPages(0);
 
-      setError(
-        "Unable to open this PDF. The file may be damaged or encrypted."
-      );
+      setError(t.messages.somethingWentWrong);
     }
   };
 
@@ -196,7 +198,7 @@ export default function PDFSplitter() {
 
   const splitPDF = async () => {
     if (!file || totalPages === 0) {
-      setError("Please upload a PDF first.");
+      setError(t.messages.noFileSelected);
       return;
     }
 
@@ -299,7 +301,7 @@ export default function PDFSplitter() {
       setError(
         err instanceof Error
           ? err.message
-          : "Unable to split the PDF."
+          : t.messages.processingFailed
       );
     } finally {
       setIsSplitting(false);
@@ -364,9 +366,7 @@ export default function PDFSplitter() {
     } catch (err) {
       console.error(err);
 
-      setError(
-        "Unable to create the ZIP download."
-      );
+      setError(t.messages.processingFailed);
     }
   };
 
@@ -379,12 +379,11 @@ export default function PDFSplitter() {
         </div>
 
         <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          Split PDF
+          {toolText.title}
         </h1>
 
         <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-          Split a PDF into separate documents or extract
-          specific pages quickly and easily.
+          {toolText.description}
         </p>
       </div>
 
@@ -412,11 +411,11 @@ export default function PDFSplitter() {
         <h3 className="text-lg font-semibold text-slate-900">
           {file
             ? "PDF selected"
-            : "Upload PDF File"}
+            : `${t.common.upload} PDF File`}
         </h3>
 
         <p className="mt-2 text-sm text-slate-500">
-          Drag & drop your PDF here or click to browse
+          {t.common.dragDrop}
         </p>
 
         <p className="mt-2 text-xs text-slate-400">
@@ -454,7 +453,7 @@ export default function PDFSplitter() {
               onClick={resetTool}
               className="rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
             >
-              Remove
+              {t.common.remove}
             </button>
           </div>
         </div>
@@ -571,7 +570,7 @@ export default function PDFSplitter() {
             disabled={results.length === 0}
             className="rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:bg-slate-300"
           >
-            Download All ZIP
+            {t.common.download} {t.home.all} ZIP
           </button>
         </div>
 
@@ -614,7 +613,7 @@ export default function PDFSplitter() {
                       }
                       className="rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
                     >
-                      Download
+                      {t.common.download}
                     </button>
 
                     <ShareFileResult
@@ -653,7 +652,7 @@ export default function PDFSplitter() {
           disabled={results.length === 0}
           className="mt-5 w-full rounded-xl bg-emerald-600 px-5 py-3.5 font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:bg-slate-300"
         >
-          Download All Split PDFs
+          {t.common.download} {t.home.all} Split PDFs
         </button>
       </div>
     </div>

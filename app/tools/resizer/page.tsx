@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function ResizerPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Image Resizer Online" />
+      <Breadcrumbs toolSlug="resizer" />
       <ImageResizer />
       <ToolSEOContent toolKey="resizer" />
           <RelatedTools tools={[

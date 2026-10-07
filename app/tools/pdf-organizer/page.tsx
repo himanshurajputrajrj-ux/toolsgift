@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFOrganizerPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Organize PDF" />
+      <Breadcrumbs toolSlug="pdf-organizer" />
       <PDFOrganizer />
       <ToolSEOContent toolKey="pdf-organizer" />
     </main>

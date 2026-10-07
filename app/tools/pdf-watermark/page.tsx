@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFWatermarkPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="PDF Watermark" />
+      <Breadcrumbs toolSlug="pdf-watermark" />
       <PDFWatermark />
       <ToolSEOContent toolKey="pdf-watermark" />
     </main>

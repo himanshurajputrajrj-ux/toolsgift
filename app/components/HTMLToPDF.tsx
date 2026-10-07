@@ -3,10 +3,14 @@ import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import { toCanvas } from "html-to-image";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 export default function HTMLToPDF() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "html-to-pdf");
 
   const [html, setHtml] = useState("");
   const [fileName, setFileName] = useState("");
@@ -44,12 +48,12 @@ export default function HTMLToPDF() {
 
     if (!file.name.toLowerCase().endsWith(".html") &&
         !file.name.toLowerCase().endsWith(".htm")) {
-      setError("Please select an HTML file (.html or .htm).");
+      setError(t.messages.unsupportedFormat);
       return;
     }
 
     if (file.size > maxFileSize) {
-      setError("File size must be 10MB or less.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -59,7 +63,7 @@ export default function HTMLToPDF() {
       setHtml(text);
       setFileName(file.name.replace(/\.(html?|HTML?)$/, "") || "document");
     } catch {
-      setError("Unable to read the HTML file.");
+      setError(t.messages.somethingWentWrong);
     }
   };
 
@@ -92,7 +96,7 @@ export default function HTMLToPDF() {
 
   const convertToPDF = async () => {
     if (!html.trim()) {
-      setError("Please enter HTML or upload an HTML file first.");
+      setError(t.messages.noFileSelected);
       return;
     }
 
@@ -188,7 +192,7 @@ export default function HTMLToPDF() {
       }
     } catch (err) {
       console.error(err);
-      setError("Failed to convert HTML to PDF. Please check your HTML.");
+      setError(t.messages.processingFailed);
     } finally {
       setProcessing(false);
     }
@@ -241,12 +245,11 @@ export default function HTMLToPDF() {
           </div>
 
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            HTML to PDF
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
-            Convert HTML files or HTML code into a downloadable PDF directly
-            in your browser.
+            {toolText.description}
           </p>
         </div>
 
@@ -333,11 +336,11 @@ export default function HTMLToPDF() {
             </div>
 
             <h2 className="text-base font-semibold text-slate-800">
-              Upload HTML File
+              {t.common.upload}
             </h2>
 
             <p className="mt-1 text-sm text-slate-500">
-              Drag & drop your HTML file here or click to browse
+              {t.common.dragDrop}
             </p>
 
             <p className="mt-2 text-xs text-slate-400">
@@ -419,7 +422,7 @@ export default function HTMLToPDF() {
             disabled={!html.trim() || processing}
             className="mt-6 w-full rounded-xl bg-blue-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {processing ? "Converting HTML to PDF..." : "Convert to PDF"}
+            {processing ? t.common.processing : `${t.common.convert} → PDF`}
           </button>
 
           {/* Result */}
@@ -468,7 +471,7 @@ export default function HTMLToPDF() {
               disabled={!resultUrl}
               className="mt-4 w-full rounded-xl bg-emerald-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-40"
             >
-              Download PDF
+              {t.common.download} PDF
             </button>{(resultUrl) && (
   <ShareFileResult
     tool="html-to-pdf"
@@ -485,7 +488,7 @@ export default function HTMLToPDF() {
             onClick={removeHTML}
             className="mt-4 w-full rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
           >
-            Clear & Reset
+            {t.common.clear} & {t.common.reset}
           </button>
         </div>
       </div>

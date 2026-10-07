@@ -9,6 +9,8 @@ import {
   useState,
 } from "react";
 import type { PDFDocument } from "pdf-lib";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
@@ -32,6 +34,8 @@ type Annotation = {
 export default function PDFEditor() {
   const inputRef = useRef<HTMLInputElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "pdf-editor");
 
   const [file, setFile] = useState<File | null>(null);
   const [pdfDoc, setPdfDoc] = useState<PDFDocument | null>(null);
@@ -94,12 +98,12 @@ export default function PDFEditor() {
     setError("");
 
     if (selectedFile.type !== "application/pdf") {
-      setError("Please select a valid PDF file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > MAX_FILE_SIZE) {
-      setError("PDF file must be smaller than 50 MB.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -137,9 +141,7 @@ export default function PDFEditor() {
       setFile(null);
       setPdfDoc(null);
 
-      setError(
-        "Unable to open this PDF. It may be encrypted or corrupted."
-      );
+      setError(t.messages.somethingWentWrong);
     }
   };
 
@@ -601,9 +603,7 @@ export default function PDFEditor() {
     } catch (err) {
       console.error(err);
 
-      setError(
-        "Unable to save the edited PDF."
-      );
+      setError(t.messages.processingFailed);
     } finally {
       setProcessing(false);
     }
@@ -632,12 +632,11 @@ export default function PDFEditor() {
         </p>
 
         <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          PDF Editor
+          {toolText.title}
         </h1>
 
         <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-          Add text, draw, highlight and cover areas of a PDF directly in
-          your browser.
+          {toolText.description}
         </p>
       </div>
 
@@ -792,11 +791,11 @@ export default function PDFEditor() {
               <h3 className="mt-4 font-semibold text-slate-900">
                 {file
                   ? "PDF Selected"
-                  : "Upload your PDF"}
+                  : t.common.upload}
               </h3>
 
               <p className="mt-2 text-sm text-slate-500">
-                Drag & drop or click to browse
+                {t.common.dragDrop}
               </p>
 
               <p className="mt-2 text-xs text-slate-400">
@@ -821,7 +820,7 @@ export default function PDFEditor() {
                   onClick={reset}
                   className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
                 >
-                  Remove
+                  {t.common.remove}
                 </button>
               </div>
             )}
@@ -879,7 +878,7 @@ export default function PDFEditor() {
                 disabled={!resultUrl || !resultBlob}
                 className="flex-1 rounded-xl border border-blue-200 bg-blue-50 px-5 py-3.5 font-semibold text-blue-700 hover:bg-blue-100 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400"
               >
-                Download PDF
+                {t.common.download} PDF
               </button>
               {resultBlob && (
                 <ShareFileResult

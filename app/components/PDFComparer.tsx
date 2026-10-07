@@ -7,6 +7,8 @@ import {
   useState,
 } from "react";
 import ShareResult from "./ShareResult";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type PDFInfo = {
   file: File;
@@ -17,6 +19,8 @@ type PDFInfo = {
 export default function PDFComparer() {
   const firstInputRef = useRef<HTMLInputElement>(null);
   const secondInputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "pdf-comparer");
 
   const [firstPDF, setFirstPDF] = useState<PDFInfo | null>(null);
   const [secondPDF, setSecondPDF] = useState<PDFInfo | null>(null);
@@ -89,12 +93,12 @@ export default function PDFComparer() {
       selectedFile.type !== "application/pdf" &&
       !selectedFile.name.toLowerCase().endsWith(".pdf")
     ) {
-      setError("Please select a valid PDF file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > MAX_SIZE) {
-      setError("Each PDF must be 50MB or less.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -122,9 +126,7 @@ export default function PDFComparer() {
       }
     } catch (err) {
       console.error(err);
-      setError(
-        "Unable to read this PDF. Please make sure it is a valid, readable PDF."
-      );
+      setError(t.messages.somethingWentWrong);
     }
   };
 
@@ -258,7 +260,7 @@ export default function PDFComparer() {
 
   const comparePDFs = async () => {
     if (!firstPDF || !secondPDF) {
-      setError("Please upload both PDF files first.");
+      setError(t.messages.noFileSelected);
       return;
     }
 
@@ -274,7 +276,7 @@ export default function PDFComparer() {
       setCompared(true);
     } catch (err) {
       console.error(err);
-      setError("Failed to compare the PDF files.");
+      setError(t.messages.processingFailed);
     } finally {
       setProcessing(false);
     }
@@ -303,12 +305,11 @@ export default function PDFComparer() {
           </div>
 
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Compare PDF
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
-            Compare two PDF documents and identify page count and
-            selectable-text differences.
+            {toolText.description}
           </p>
         </div>
 
@@ -354,11 +355,11 @@ export default function PDFComparer() {
                 <p className="font-semibold text-slate-800">
                   {firstPDF
                     ? "Replace PDF 1"
-                    : "Upload PDF 1"}
+                    : `${t.common.upload} PDF 1`}
                 </p>
 
                 <p className="mt-1 text-xs text-slate-500">
-                  Drag & drop or click to browse
+                  {t.common.dragDrop}
                 </p>
               </div>
 
@@ -385,7 +386,7 @@ export default function PDFComparer() {
                     }
                     className="mt-3 rounded-lg border border-red-200 bg-white px-3 py-2 text-xs font-semibold text-red-600 hover:bg-red-50"
                   >
-                    Remove PDF 1
+                    {t.common.remove} PDF 1
                   </button>
                 </div>
               )}
@@ -430,11 +431,11 @@ export default function PDFComparer() {
                 <p className="font-semibold text-slate-800">
                   {secondPDF
                     ? "Replace PDF 2"
-                    : "Upload PDF 2"}
+                    : `${t.common.upload} PDF 2`}
                 </p>
 
                 <p className="mt-1 text-xs text-slate-500">
-                  Drag & drop or click to browse
+                  {t.common.dragDrop}
                 </p>
               </div>
 
@@ -461,7 +462,7 @@ export default function PDFComparer() {
                     }
                     className="mt-3 rounded-lg border border-red-200 bg-white px-3 py-2 text-xs font-semibold text-red-600 hover:bg-red-50"
                   >
-                    Remove PDF 2
+                    {t.common.remove} PDF 2
                   </button>
                 </div>
               )}
@@ -673,7 +674,7 @@ export default function PDFComparer() {
             }}
             className="mt-5 w-full rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
           >
-            Clear & Reset
+            {t.common.clear} & {t.common.reset}
           </button>
         </div>
       </div>

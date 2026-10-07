@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 export default function BackgroundRemoverPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Background Remover Online" />
+      <Breadcrumbs toolSlug="background-remover" />
       <BackgroundRemover />
       <ToolSEOContent toolKey="background-remover" />
     </main>

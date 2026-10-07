@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function ImageMetadataPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Image Metadata Tool" />
+      <Breadcrumbs toolSlug="image-metadata" />
       <ImageMetadataTool />
       <ToolSEOContent toolKey="image-metadata" />
       <RelatedTools tools={[

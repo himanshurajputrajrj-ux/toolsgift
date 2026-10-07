@@ -7,8 +7,9 @@ import {
   useState,
 } from "react";
 import ShareResult from "./ShareResult";
-import JSZip from "jszip";
 import { loadPdfWorkerSrc } from "@/app/lib/pdfWorker";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
@@ -20,6 +21,8 @@ type PageResult = {
 
 export default function PDFToJPG() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "pdf-to-jpg");
 
   const [file, setFile] = useState<File | null>(null);
   const [pageCount, setPageCount] = useState(0);
@@ -58,12 +61,12 @@ export default function PDFToJPG() {
       selectedFile.type !== "application/pdf" &&
       !selectedFile.name.toLowerCase().endsWith(".pdf")
     ) {
-      setError("Please select a valid PDF file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > MAX_FILE_SIZE) {
-      setError("PDF file must be smaller than 50 MB.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -91,7 +94,7 @@ export default function PDFToJPG() {
       setPageCount(0);
 
       setError(
-        "Unable to read this PDF. It may be encrypted or corrupted."
+        t.messages.somethingWentWrong
       );
     }
   };
@@ -209,7 +212,7 @@ export default function PDFToJPG() {
       console.error(err);
 
       setError(
-        "Unable to convert the PDF pages to JPG."
+        t.messages.processingFailed
       );
     } finally {
       setProcessing(false);
@@ -235,6 +238,7 @@ export default function PDFToJPG() {
     if (results.length === 0) return;
 
     try {
+      const { default: JSZip } = await import("jszip");
       const zip = new JSZip();
 
       const baseName =
@@ -272,7 +276,7 @@ export default function PDFToJPG() {
       console.error(err);
 
       setError(
-        "Unable to create the ZIP download."
+        t.messages.processingFailed
       );
     }
   };
@@ -297,12 +301,11 @@ export default function PDFToJPG() {
         </p>
 
         <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          PDF to JPG
+          {toolText.title}
         </h1>
 
         <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-          Convert PDF pages into high-quality JPG images directly in
-          your browser.
+          {toolText.description}
         </p>
       </div>
 
@@ -389,11 +392,11 @@ export default function PDFToJPG() {
             <h3 className="mt-4 font-semibold text-slate-900">
               {file
                 ? "PDF Selected"
-                : "Upload your PDF"}
+                : t.common.upload}
             </h3>
 
             <p className="mt-2 text-sm text-slate-500">
-              Drag & drop your PDF here or click to browse
+              {t.common.dragDrop}
             </p>
 
             <p className="mt-2 text-xs text-slate-400">
@@ -424,7 +427,7 @@ export default function PDFToJPG() {
                   }}
                   className="shrink-0 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
                 >
-                  Remove
+                  {t.common.remove}
                 </button>
               </div>
             </div>
@@ -443,8 +446,8 @@ export default function PDFToJPG() {
             className="mt-6 w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
           >
             {processing
-              ? "Converting PDF to JPG..."
-              : "Convert to JPG"}
+              ? t.common.processing
+              : `${t.common.convert} → JPG`}
           </button>
         </div>
 
@@ -516,7 +519,7 @@ export default function PDFToJPG() {
                         }
                         className="mt-3 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100"
                       >
-                        Download JPG
+                        {t.common.download} JPG
                       </button>
                     </div>
                   </div>
@@ -530,8 +533,8 @@ export default function PDFToJPG() {
             onClick={downloadAll}
             disabled={results.length === 0}
             className="mt-5 w-full rounded-xl border border-blue-200 bg-blue-50 px-5 py-3.5 font-semibold text-blue-700 transition hover:bg-blue-100 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400"
-          >
-            Download All JPGs (ZIP)
+>
+            {t.common.download} {t.home.all} JPGs (ZIP)
           </button>
 
           {results.length > 0 && <ShareResult key={results.map((result) => result.url).join("|")} tool="pdf-to-jpg" resultTitle="PDF Pages as JPG Images" filename="toolsgift-pdf-pages.zip" images={results.map((result) => ({ url: result.url, name: `page-${result.page}.jpg` }))} />}

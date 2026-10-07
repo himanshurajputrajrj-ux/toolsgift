@@ -1,12 +1,16 @@
 ﻿"use client";
 
 import { DragEvent, useRef, useState } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type OutputFormat = "png" | "jpeg";
 
 export default function WordToImage() {
   const inputRef = useRef<HTMLInputElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "word-to-image");
 
   const [file, setFile] = useState<File | null>(null);
   const [html, setHtml] = useState("");
@@ -47,12 +51,12 @@ export default function WordToImage() {
       .pop();
 
     if (extension !== "docx") {
-      setError("Please select a .docx Word document.");
+      setError(t.messages.unsupportedFormat);
       return;
     }
 
     if (selectedFile.size > MAX_FILE_SIZE) {
-      setError("Maximum file size is 25 MB.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -69,7 +73,7 @@ export default function WordToImage() {
       setHtml(result.value);
     } catch (err) {
       console.error(err);
-      setError("Unable to read this Word document.");
+      setError(t.messages.somethingWentWrong);
     }
   };
 
@@ -164,9 +168,7 @@ export default function WordToImage() {
     } catch (err) {
       console.error(err);
 
-      setError(
-        "Conversion failed. Please try another .docx document."
-      );
+      setError(t.messages.processingFailed);
     } finally {
       setIsConverting(false);
     }
@@ -280,26 +282,25 @@ export default function WordToImage() {
         </div>
 
         <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          Word to Image
+          {toolText.title}
         </h1>
 
         <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-          Convert Word documents into high-quality images
-          directly in your browser.
+          {toolText.description}
         </p>
       </div>
 
       {/* Settings */}
       <div className="mb-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="mb-5 text-lg font-semibold text-slate-900">
-          Conversion Settings
+          {t.common.convert} Settings
         </h2>
 
         <div className="grid gap-5 sm:grid-cols-2">
           {/* Image Format */}
           <div>
             <label className="mb-2 block text-sm font-medium text-slate-700">
-              Image Format
+              {t.categories.imageTools} Format
             </label>
 
             <select
@@ -375,11 +376,11 @@ export default function WordToImage() {
         <h3 className="text-lg font-semibold text-slate-900">
           {file
             ? "Word document selected"
-            : "Upload Word Document"}
+            : `${t.common.upload} Word Document`}
         </h3>
 
         <p className="mt-2 text-sm text-slate-500">
-          Drag & drop your .docx file here or click to browse
+          {t.common.dragDrop}
         </p>
 
         <p className="mt-2 text-xs text-slate-400">
@@ -565,9 +566,9 @@ export default function WordToImage() {
           }
           className="w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
         >
-          {isConverting
-            ? "Converting..."
-            : "Convert to Image"}
+            {isConverting
+              ? t.common.processing
+              : `${t.common.convert} → Image`}
         </button>
       </div>
 

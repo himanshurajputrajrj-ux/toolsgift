@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFComparerPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Compare PDF" />
+      <Breadcrumbs toolSlug="pdf-comparer" />
       <PDFComparer />
       <ToolSEOContent toolKey="pdf-comparer" />
     </main>

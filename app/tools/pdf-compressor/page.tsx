@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function CompressPDFPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Compress PDF Online" />
+      <Breadcrumbs toolSlug="pdf-compressor" />
       <PDFCompressor />
       <ToolSEOContent toolKey="pdf-compressor" />
     </main>

@@ -47,7 +47,7 @@ const structuredData = {
 export default function CompressImageToKBPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Compress Image to KB Online" />
+      <Breadcrumbs toolSlug="compress-image-to-kb" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

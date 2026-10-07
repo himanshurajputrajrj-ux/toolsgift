@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { deleteShare } from "@/app/lib/shareDelete";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type ShareImage = {
   url: string;
@@ -25,6 +26,7 @@ export default function ShareResult({
   imageUrl,
   images,
 }: ShareResultProps) {
+  const { t } = useLanguage();
   const [shareUrl, setShareUrl] = useState("");
   const [shareId, setShareId] = useState("");
   const [deleteCapability, setDeleteCapability] = useState("");
@@ -74,7 +76,7 @@ export default function ShareResult({
     }
 
     if (!value.trim() && !imageUrl && !images?.length) {
-      setMessage("There is no result to share.");
+      setMessage(t.messages.noFileSelected);
       return null;
     }
 
@@ -144,7 +146,7 @@ export default function ShareResult({
 
       return data.shareUrl;
     } catch {
-      setMessage("Failed to create share link. Please try again.");
+      setMessage(t.messages.processingFailed);
       return null;
     } finally {
       setLoading(false);
@@ -162,8 +164,8 @@ export default function ShareResult({
 
     setMessage(
       copied
-        ? "Link generated and copied."
-        : "Link generated. Copy it from the box below."
+        ? `${t.common.copy} ${t.common.copied}`
+        : `${t.common.copy} ${t.common.copied}`
     );
   };
 
@@ -190,8 +192,8 @@ export default function ShareResult({
 
       setMessage(
         copied
-          ? "Sharing is not supported here, so the link was copied."
-          : "Sharing is not supported. Copy the link manually."
+          ? t.common.copied
+          : `${t.common.copy} ${t.common.copied}`
       );
     } catch (error) {
       if (error instanceof DOMException && error.name === "AbortError") {
@@ -202,8 +204,8 @@ export default function ShareResult({
 
       setMessage(
         copied
-          ? "Share cancelled. Link copied instead."
-          : "Share cancelled."
+          ? t.common.copied
+          : `${t.common.copy} ${t.common.copied}`
       );
     }
   };
@@ -250,7 +252,7 @@ export default function ShareResult({
           disabled={loading}
           className="rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {loading ? "Generating..." : "Generate Link"}
+          {loading ? t.common.processing : `${t.common.save} Link`}
         </button>
 
         <button
@@ -279,7 +281,7 @@ export default function ShareResult({
               onClick={handleCopyLink}
               className="rounded-xl border border-gray-300 bg-white px-5 py-3 font-semibold text-gray-700 transition hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
             >
-              Copy Link
+              {t.common.copy} Link
             </button>
 
             {shareId && deleteCapability && (
@@ -289,7 +291,7 @@ export default function ShareResult({
                 disabled={loading}
                 className="rounded-xl border border-red-200 bg-white px-5 py-3 font-semibold text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-900 dark:bg-gray-900 dark:text-red-400 dark:hover:bg-red-950"
               >
-                {loading ? "Deleting..." : "Delete Link"}
+                {loading ? t.common.processing : `${t.common.remove} Link`}
               </button>
             )}
           </div>

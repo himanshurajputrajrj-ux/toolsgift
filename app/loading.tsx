@@ -1,4 +1,10 @@
+"use client";
+
+import { useLanguage } from "@/app/providers/LanguageProvider";
+
 export default function Loading() {
+  const { t } = useLanguage();
+
   return (
     <div className="flex min-h-[calc(100vh-80px)] items-center justify-center bg-gray-50 py-12 dark:bg-gray-950">
       <div className="flex flex-col items-center gap-4" role="status">
@@ -7,9 +13,9 @@ export default function Loading() {
           aria-hidden="true"
         />
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          Loading&hellip;
+          {t.common.loading}
         </p>
-        <span className="sr-only">Loading</span>
+        <span className="sr-only">{t.common.loading}</span>
       </div>
     </div>
   );

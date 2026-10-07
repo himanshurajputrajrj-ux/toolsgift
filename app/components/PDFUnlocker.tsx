@@ -2,9 +2,13 @@
 import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 export default function PDFUnlocker() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "pdf-unlocker");
 
   const [file, setFile] = useState<File | null>(null);
   const [resultUrl, setResultUrl] = useState("");
@@ -35,12 +39,12 @@ export default function PDFUnlocker() {
     setPageCount(0);
 
     if (selectedFile.type !== "application/pdf") {
-      setError("Please select a valid PDF file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > MAX_SIZE) {
-      setError("PDF size must be 50MB or less.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -57,9 +61,7 @@ export default function PDFUnlocker() {
       setPageCount(pdf.getPageCount());
     } catch (err) {
       console.error(err);
-      setError(
-        "This PDF could not be opened. If it has a strong password or unsupported encryption, it cannot be unlocked in the browser."
-      );
+      setError(t.messages.somethingWentWrong);
     }
   };
 
@@ -125,9 +127,7 @@ export default function PDFUnlocker() {
     } catch (err) {
       console.error(err);
 
-      setError(
-        "Unable to unlock this PDF. Password-protected or unsupported encrypted PDFs may require the original password or a desktop PDF application."
-      );
+      setError(t.messages.processingFailed);
     } finally {
       setProcessing(false);
     }
@@ -171,12 +171,11 @@ export default function PDFUnlocker() {
           </div>
 
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Unlock PDF
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
-            Remove PDF security restrictions from supported files and create
-            a new downloadable PDF.
+            {toolText.description}
           </p>
         </div>
 
@@ -209,11 +208,11 @@ export default function PDFUnlocker() {
             </div>
 
             <h2 className="text-lg font-semibold text-slate-800">
-              Upload PDF
+              {t.common.upload} PDF
             </h2>
 
             <p className="mt-2 text-sm text-slate-500">
-              Drag & drop your PDF here or click to browse
+              {t.common.dragDrop}
             </p>
 
             <p className="mt-2 text-xs text-slate-400">
@@ -241,7 +240,7 @@ export default function PDFUnlocker() {
                   onClick={removeFile}
                   className="rounded-xl border border-red-200 bg-white px-4 py-2 text-sm font-semibold text-red-600 hover:bg-red-50"
                 >
-                  Remove
+                  {t.common.remove}
                 </button>
               </div>
             </div>
@@ -328,7 +327,7 @@ export default function PDFUnlocker() {
               disabled={!resultUrl}
               className="mt-4 w-full rounded-xl bg-emerald-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-40"
             >
-              Download Unlocked PDF
+              {t.common.download} Unlocked PDF
             </button>{(resultUrl) && (
   <ShareFileResult
     tool="pdf-unlocker"
@@ -345,7 +344,7 @@ export default function PDFUnlocker() {
             onClick={removeFile}
             className="mt-4 w-full rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
           >
-            Clear & Reset
+            {t.common.clear} & {t.common.reset}
           </button>
         </div>
       </div>

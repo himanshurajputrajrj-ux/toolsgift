@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function ExcelToPDFPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Excel to PDF" />
+      <Breadcrumbs toolSlug="excel-to-pdf" />
       <ExcelToPDF />
       <ToolSEOContent toolKey="excel-to-pdf" />
     </main>

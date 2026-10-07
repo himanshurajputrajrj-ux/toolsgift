@@ -1,7 +1,8 @@
 ﻿"use client";
-import JSZip from "jszip";
 
 import { DragEvent, useRef, useState } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type OutputFormat = "image/jpeg" | "image/png" | "image/webp";
 
@@ -14,6 +15,8 @@ type ConvertedFile = {
 
 export default function BatchConverter() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "batch-converter");
 
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
@@ -46,7 +49,7 @@ export default function BatchConverter() {
     );
 
     if (imageFiles.length === 0) {
-      setError("Please select valid image files.");
+      setError(t.messages.invalidFile);
       return;
     }
 
@@ -55,7 +58,7 @@ export default function BatchConverter() {
     );
 
     if (oversized) {
-      setError("Each image must be less than 25 MB.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -202,7 +205,7 @@ export default function BatchConverter() {
       setError(
         conversionError instanceof Error
           ? conversionError.message
-          : "Batch conversion failed."
+          : t.messages.processingFailed
       );
     } finally {
       setLoading(false);
@@ -228,13 +231,13 @@ export default function BatchConverter() {
         const response = await fetch(result.url);
         const blob = await response.blob();
         if (blob.size > 4 * 1024 * 1024) {
-          throw new Error(`${result.name} is too large to share. Maximum size is 4 MB per image.`);
+          throw new Error(t.messages.fileTooLarge);
         }
         shareFiles.push(new File([blob], result.name, { type: blob.type }));
       }
       const totalSize = shareFiles.reduce((total, file) => total + file.size, 0);
       if (totalSize > 20 * 1024 * 1024) {
-        throw new Error("Batch is too large to share. Maximum total share size is 20 MB.");
+        throw new Error(t.messages.fileTooLarge);
       }
       for (const shareFile of shareFiles) {
         formData.append("images", shareFile, shareFile.name);
@@ -245,7 +248,7 @@ export default function BatchConverter() {
       });
       const data = await shareResponse.json();
       if (!shareResponse.ok || typeof data.shareUrl !== "string") {
-        throw new Error(data.error || "Failed to create share link.");
+        throw new Error(data.error || t.messages.processingFailed);
       }
       setShareUrl(data.shareUrl);
       setShareMessage("Share link generated.");
@@ -254,7 +257,7 @@ export default function BatchConverter() {
       const message =
         error instanceof Error
           ? error.message
-          : "Failed to create share link.";
+          : t.messages.processingFailed;
       setShareMessage(message);
       throw error;
     } finally {
@@ -310,6 +313,7 @@ export default function BatchConverter() {
   const downloadAll = async () => {
     if (results.length === 0) return;
 
+    const { default: JSZip } = await import("jszip");
     const zip = new JSZip();
 
     for (const result of results) {
@@ -336,15 +340,15 @@ export default function BatchConverter() {
         {/* Heading */}
         <div className="mb-8 text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-blue-600">
-            Image Tools
+            {t.categories.imageTools}
           </p>
 
           <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">
-            Batch Image Converter
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-            Convert multiple images to JPG, PNG, or WebP in one go.
+            {toolText.description}
           </p>
         </div>
 
@@ -370,11 +374,11 @@ export default function BatchConverter() {
             </div>
 
             <h2 className="text-xl font-semibold text-slate-900">
-              Upload Multiple Images
+              {t.common.upload}
             </h2>
 
             <p className="mt-2 text-sm text-slate-500">
-              Drag & drop multiple images here or choose files
+              {t.common.dragDrop}
             </p>
 
             <button
@@ -430,7 +434,7 @@ export default function BatchConverter() {
                   onClick={clearAll}
                   className="rounded-lg px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
                 >
-                  Clear All
+                  {t.common.clear} {t.home.all}
                 </button>
               )}
             </div>
@@ -572,8 +576,8 @@ export default function BatchConverter() {
             className="mt-6 w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading
-              ? "Converting Images..."
-              : `Convert ${files.length > 0 ? files.length : ""} Images to ${formatName(format)}`}
+              ? t.common.processing
+              : `${t.common.convert} ${files.length > 0 ? files.length : ""} Images → ${formatName(format)}`}
           </button>
 
           {/* Result - ALWAYS VISIBLE */}
@@ -601,7 +605,7 @@ export default function BatchConverter() {
                 disabled={results.length === 0}
                 className="rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Download All
+                {t.common.download} {t.home.all}
               </button>
 
             </div>
@@ -654,7 +658,7 @@ export default function BatchConverter() {
                       onClick={() => downloadSingle(item)}
                       className="mt-3 w-full rounded-lg border border-blue-200 px-4 py-2.5 text-sm font-semibold text-blue-600 transition hover:bg-blue-50"
                     >
-                      Download
+                      {t.common.download}
                     </button>
                   </div>
                 ))}
@@ -673,7 +677,7 @@ export default function BatchConverter() {
               disabled={results.length === 0}
               className="mt-5 w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              Download All Images
+              {t.common.download} {t.home.all} Images
             </button>
 
             <button
@@ -682,7 +686,7 @@ export default function BatchConverter() {
               disabled={results.length === 0}
               className="mt-3 w-full rounded-xl bg-slate-900 px-5 py-3.5 font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              Download ZIP
+              {t.common.download} ZIP
             </button>
 
 
@@ -725,7 +729,7 @@ export default function BatchConverter() {
                       disabled={shareLoading}
                       className="rounded-lg border border-blue-200 bg-white px-4 py-2.5 text-sm font-semibold text-blue-600 transition hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
                     >
-                      Copy Link
+                      {t.common.copy} Link
                     </button>
                   </div>
                 </div>

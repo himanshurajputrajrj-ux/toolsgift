@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function OCRPDFPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="OCR PDF" />
+      <Breadcrumbs toolSlug="ocr-pdf" />
       <OCRPDF />
       <ToolSEOContent toolKey="ocr-pdf" />
     </main>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolDescription, ToolTitle } from "@/app/components/ToolText";
 import Link from "next/link";
 import FaviconGenerator from "@/app/components/FaviconGenerator";
 export const metadata: Metadata = {
@@ -113,19 +114,14 @@ const faqStructuredData = {
             ToolsGift
           </Link>
           <span className="mx-2">/</span>
-          <span>Favicon Generator</span>
+          <span><ToolTitle slug="favicon-generator" /></span>
         </nav>
         <section className="mb-10 text-center">
           <p className="mb-3 text-sm font-bold uppercase tracking-wider text-blue-600">
             IMAGE TOOL
           </p>
-          <h1 className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
-            Favicon Generator
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600 md:text-lg">
-            Create favicon images in multiple sizes from PNG, JPG, WebP or SVG
-            files. Fast, free and processed directly in your browser.
-          </p>
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl"><ToolTitle slug="favicon-generator" /></h1>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600 md:text-lg"><ToolDescription slug="favicon-generator" /></p>
         </section>
         <FaviconGenerator />
         <script

@@ -8,7 +8,10 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { languageOptions } from "@/app/i18n/translations";
+import {
+  getToolText,
+  languageOptions,
+} from "@/app/i18n/translations";
 import { useLanguage } from "@/app/providers/LanguageProvider";
 
 const useIsomorphicLayoutEffect =
@@ -593,9 +596,9 @@ useIsomorphicLayoutEffect(() => {
         {/* Desktop Language Selector */}
         <div className="relative hidden lg:block">
           <button type="button" onClick={() => { setLanguageOpen((v) => !v); setToolsOpen(false); }} className={`flex h-10 items-center justify-center gap-2 rounded-xl border px-3.5 text-sm font-bold shadow-sm transition ${darkMode ? "border-white/10 bg-[#1e293b] text-white hover:bg-[#334155]" : "border-black/10 bg-white/70 text-[#202124] hover:bg-white"}`} aria-expanded={languageOpen} aria-haspopup="menu" aria-controls="desktop-language-menu">
-            <span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18" /><ellipse cx="12" cy="12" rx="4.2" ry="9" /></svg></span><span>{languageOptions.find((language) => language.code === locale)?.name ?? "Language"}</span>
+            <span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18" /><ellipse cx="12" cy="12" rx="4.2" ry="9" /></svg></span><span>{languageOptions.find((language) => language.code === locale)?.name ?? t.nav.language}</span>
           </button>
-          {languageOpen && <div id="desktop-language-menu" role="menu" aria-label="Language" className={`absolute right-0 top-full mt-3 w-80 rounded-2xl border p-3 shadow-2xl ${darkMode ? "border-white/10 bg-[#151f32]" : "border-[#c9a227]/20 bg-[#fffdf8]"}`}>
+          {languageOpen && <div id="desktop-language-menu" role="menu" aria-label={t.nav.language} className={`absolute right-0 top-full mt-3 w-80 rounded-2xl border p-3 shadow-2xl ${darkMode ? "border-white/10 bg-[#151f32]" : "border-[#c9a227]/20 bg-[#fffdf8]"}`}>
             <div className="grid max-h-[65vh] grid-cols-2 gap-1 overflow-y-auto">
               {languageOptions.map((language) => <button key={language.code} type="button" role="menuitem" onClick={() => { setLocale(language.code); setLanguageOpen(false); }} className={`rounded-xl px-3 py-2.5 text-left text-sm font-semibold transition ${darkMode ? "text-slate-200 hover:bg-white/10" : "text-black/75 hover:bg-black/[0.05]"}`}>{language.name}</button>)}
             </div>
@@ -688,7 +691,7 @@ useIsomorphicLayoutEffect(() => {
     ? "border-[#c9a227]/30 bg-[#1e293b] text-[#f4d77b]"
     : "border-[#c9a227]/20 bg-white/70 text-[#202124]"
 }`}
-          aria-label="Open menu"
+          aria-label={t.nav.menu}
           aria-expanded={mobileOpen}
           aria-haspopup="menu"
           aria-controls="mobile-menu"
@@ -828,7 +831,7 @@ useIsomorphicLayoutEffect(() => {
                 />
 
                 <MobileCategory
-                  title="Other Tools"
+                  title={t.categories.utilityOther}
                   tools={otherTools}
                 />
 
@@ -1023,10 +1026,11 @@ function SectionTitle({
 }: {
   title: string;
 }) {
+  const { t } = useLanguage();
   return (
     <div className="mb-5 flex items-center gap-3">
 
-      {title === "Image Tools" ? (
+      {title === t.categories.imageTools ? (
         <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#202124] text-[#f4d77b] shadow-sm ring-1 ring-black/10">
           <svg
             width="15"
@@ -1123,10 +1127,15 @@ function ToolLink({
   tool: Tool;
     compact?: boolean;
 }) {
+  const { locale } = useLanguage();
+  const slug = tool.link.replace(/^\/tools\//, "");
+  const text = getToolText(locale, slug);
+  const label = text.title === slug ? tool.title : text.title;
+
   return (
     <Link href={tool.link}
       onClick={(event) => { event.preventDefault(); window.location.assign(tool.link); }}
-      title={tool.title}
+      title={label}
       className={`group flex items-center gap-2 rounded-lg border border-transparent transition hover:border-[#c9a227]/25 hover:bg-[#fff9e8] hover:shadow-sm ${
         compact
           ? "px-1.5 py-1.5"
@@ -1146,7 +1155,7 @@ function ToolLink({
             : "text-[12px]"
         }`}
       >
-        {tool.title}
+        {label}
       </span>
 
     </Link>
@@ -1165,6 +1174,8 @@ function MobileCategory({
   title: string;
   tools: Tool[];
   }) {
+  const { locale } = useLanguage();
+
   return (
     <section className="mb-5 last:mb-0">
 
@@ -1174,7 +1185,11 @@ function MobileCategory({
 
       <div className="overflow-hidden rounded-xl bg-white">
 
-        {tools.map((tool) => (
+        {tools.map((tool) => {
+          const slug = tool.link.replace(/^\/tools\//, "");
+          const text = getToolText(locale, slug);
+          const label = text.title === slug ? tool.title : text.title;
+          return (
           <Link
             key={tool.title}
             href={tool.link}
@@ -1188,7 +1203,7 @@ function MobileCategory({
             />
 
             <span className="truncate text-[13px] font-bold text-[#202124]">
-              {tool.title}
+              {label}
             </span>
 
             <span className="ml-auto text-black/25">
@@ -1196,7 +1211,8 @@ function MobileCategory({
             </span>
 
           </Link>
-        ))}
+        );
+        })}
 
       </div>
 

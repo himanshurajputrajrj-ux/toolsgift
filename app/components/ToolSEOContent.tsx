@@ -1,4 +1,8 @@
-﻿import type { ReactNode } from "react";
+﻿"use client";
+
+import type { ReactNode } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 type ToolSEOContentProps = {
   toolKey: string;
 };
@@ -641,8 +645,14 @@ const RELATED_TOOLS: Record<string, RelatedTool[]> = {
 export default function ToolSEOContent({
   toolKey,
 }: ToolSEOContentProps): ReactNode {
+  const { locale, t } = useLanguage();
   const tool = TOOLS[toolKey];
   if (!tool) return null;
+
+  const localized = getToolText(locale, toolKey);
+  const name = localized.title === toolKey ? tool.name : localized.title;
+  const description = localized.description || tool.description;
+
   const faq = [
     [
       `What does ${tool.name} do?`,
@@ -680,11 +690,11 @@ export default function ToolSEOContent({
   return (
     <section className="mx-auto mt-10 max-w-4xl rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
       <h2 className="text-2xl font-bold text-slate-900">
-        About {tool.name}
+        About {name}
       </h2>
-      <p className="mt-3 leading-7 text-slate-600">{tool.description}</p>
+      <p className="mt-3 leading-7 text-slate-600">{description}</p>
       <h2 className="mt-7 text-2xl font-bold text-slate-900">
-        How to Use {tool.name}
+        How to Use {name}
       </h2>
       <p className="mt-3 leading-7 text-slate-600">
         Start by providing {tool.input}. Then use the available controls to
@@ -692,7 +702,7 @@ export default function ToolSEOContent({
         complete.
       </p>
       <h2 className="mt-7 text-2xl font-bold text-slate-900">
-        Common Uses of {tool.name}
+        Common Uses of {name}
       </h2>
       <p className="mt-3 leading-7 text-slate-600">
         {tool.name} can be useful for {tool.useCase}. Its main benefit is{" "}
@@ -700,20 +710,28 @@ export default function ToolSEOContent({
       </p>
     {RELATED_TOOLS[toolKey] && (
       <div className="mt-8 border-t border-slate-200 pt-6">
-        <h2 className="text-2xl font-bold text-slate-900">Related Tools</h2>
-        <p className="mt-2 text-sm text-slate-600">
-          Explore more useful tools for working with your files.
-        </p>
+        <h2 className="text-2xl font-bold text-slate-900">
+          {t.related.title}
+        </h2>
+        <p className="mt-2 text-sm text-slate-600">{t.related.description}</p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {RELATED_TOOLS[toolKey].map((relatedTool) => (
-            <a
-              key={relatedTool.href}
-              href={relatedTool.href}
-              className="rounded-xl border border-black/10 bg-slate-50 px-4 py-3 text-sm font-medium text-black transition hover:border-black/20 hover:bg-slate-100"
-            >
-              {relatedTool.name}
-            </a>
-          ))}
+          {RELATED_TOOLS[toolKey].map((relatedTool) => {
+            const relatedSlug = relatedTool.href.replace(/^\/tools\//, "");
+            const relatedText = getToolText(locale, relatedSlug);
+            const relatedLabel =
+              relatedText.title === relatedSlug
+                ? relatedTool.name
+                : relatedText.title;
+            return (
+              <a
+                key={relatedTool.href}
+                href={relatedTool.href}
+                className="rounded-xl border border-black/10 bg-slate-50 px-4 py-3 text-sm font-medium text-black transition hover:border-black/20 hover:bg-slate-100"
+              >
+                {relatedLabel}
+              </a>
+            );
+          })}
         </div>
       </div>
     )}

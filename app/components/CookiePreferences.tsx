@@ -6,9 +6,11 @@ import {
   saveCookieConsent,
   type CookieConsent,
 } from "@/app/lib/cookieConsent";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 export default function CookiePreferences() {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const [analytics, setAnalytics] = useState(false);
   const [advertising, setAdvertising] = useState(false);
@@ -106,7 +108,7 @@ function savePreferences() {
         onClick={openPreferences}
         className="text-sm font-medium underline hover:no-underline"
       >
-        Manage Cookie Preferences
+{t.consent.managePreferences}
       </button>
       {open && (
         <div
@@ -131,36 +133,34 @@ function savePreferences() {
               id="cookie-preferences-title"
               className="text-xl font-semibold text-slate-900 dark:text-white"
             >
-              Cookie Preferences
+{t.consent.preferencesTitle}
             </h2>
             <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
-              Choose which optional cookies you want to allow. Necessary
-              cookies are always enabled because they support basic website
-              functionality.
+              {t.consent.preferencesDescription}
             </p>
             <div className="mt-5 space-y-4">
               <div className="rounded-xl border border-slate-200 p-4 dark:border-slate-700">
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <h3 className="font-medium text-slate-900 dark:text-white">
-                      Necessary Cookies
+{t.consent.necessaryTitle}
                     </h3>
                     <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                      Required for basic website functionality.
+                      {t.consent.necessaryDescription}
                     </p>
                   </div>
                   <span className="shrink-0 text-sm font-medium text-slate-500">
-                    Always On
+                    {t.consent.alwaysOn}
                   </span>
                 </div>
               </div>
               <label className="flex cursor-pointer items-center justify-between gap-4 rounded-xl border border-slate-200 p-4 dark:border-slate-700">
                 <div>
                   <h3 className="font-medium text-slate-900 dark:text-white">
-                    Analytics Cookies
+{t.consent.analyticsTitle}
                   </h3>
                   <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                    Help us understand website usage and performance.
+                    {t.consent.analyticsDescription}
                   </p>
                 </div>
                 <input
@@ -173,11 +173,10 @@ function savePreferences() {
               <label className="flex cursor-pointer items-center justify-between gap-4 rounded-xl border border-slate-200 p-4 dark:border-slate-700">
                 <div>
                   <h3 className="font-medium text-slate-900 dark:text-white">
-                    Advertising Cookies
+{t.consent.advertisingTitle}
                   </h3>
                   <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                    May be used to support personalized or measured
-                    advertising.
+                    {t.consent.advertisingDescription}
                   </p>
                 </div>
                 <input
@@ -194,7 +193,7 @@ function savePreferences() {
                 onClick={resetPreferences}
                 className="text-sm font-medium text-slate-500 underline hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
               >
-                Reset consent choices
+                {t.consent.resetChoices}
               </button>
               <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
                 <button
@@ -202,14 +201,14 @@ function savePreferences() {
                   onClick={() => setOpen(false)}
                   className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
-                  Cancel
+                  {t.consent.cancel}
                 </button>
                 <button
                   type="button"
                   onClick={savePreferences}
                   className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-200"
                 >
-                  Save Preferences
+                  {t.consent.savePreferences}
                 </button>
               </div>
             </div>

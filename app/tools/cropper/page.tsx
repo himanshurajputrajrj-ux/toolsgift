@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function CropperPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Image Cropper Online" />
+      <Breadcrumbs toolSlug="cropper" />
       <ImageCropper />
       <ToolSEOContent toolKey="cropper" />
           <RelatedTools tools={[

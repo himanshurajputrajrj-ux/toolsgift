@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 export default function ImageEnhancerPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Image Enhancer Online" />
+      <Breadcrumbs toolSlug="enhancer" />
       <ImageEnhancer />
       <ToolSEOContent toolKey="enhancer" />
           <RelatedTools tools={[

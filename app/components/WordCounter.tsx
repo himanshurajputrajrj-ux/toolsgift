@@ -1,5 +1,6 @@
 ﻿"use client";
 import { useState } from "react";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 type ShareState = {
   shareUrl: string;
   expiresAt: string;
@@ -63,8 +64,9 @@ export default function WordCounter() {
   const [text, setText] = useState("");
   const [shareState, setShareState] = useState<ShareState | null>(null);
   const [shareLoading, setShareLoading] = useState(false);
-  const [copyMessage, setCopyMessage] = useState("");
+const [copyMessage, setCopyMessage] = useState("");
   const [shareMessage, setShareMessage] = useState("");
+  const { t } = useLanguage();
   const words = countWords(text);
   const characters = text.length;
   const charactersWithoutSpaces = text.replace(/\s/g, "").length;
@@ -75,10 +77,10 @@ export default function WordCounter() {
   const copyResult = async () => {
     if (!text) return;
     const copied = await copyText(text);
-    setCopyMessage(
+setCopyMessage(
       copied
-        ? "Text copied successfully."
-        : "Copy failed. Please copy the text manually."
+        ? t.common.copied
+        : t.messages.somethingWentWrong
     );
     if (copied) {
       setTimeout(() => setCopyMessage(""), 2000);
@@ -119,8 +121,8 @@ export default function WordCounter() {
         }),
       });
       const data = await response.json();
-      if (!response.ok || !data.shareUrl) {
-        throw new Error(data.error || "Failed to create share link.");
+if (!response.ok || !data.shareUrl) {
+        throw new Error(data.error || t.messages.processingFailed);
       }
       const newShareState: ShareState = {
         shareUrl: data.shareUrl,
@@ -128,9 +130,9 @@ export default function WordCounter() {
       };
       setShareState(newShareState);
       return newShareState;
-    } catch (error) {
+} catch (error) {
       console.error("Share link creation failed:", error);
-      setShareMessage("Failed to generate share link. Please try again.");
+      setShareMessage(t.messages.processingFailed);
       return null;
     } finally {
       setShareLoading(false);
@@ -249,39 +251,39 @@ export default function WordCounter() {
           ))}
         </div>
         <div className="mt-6 flex flex-wrap gap-3">
-          <button
+<button
             type="button"
             onClick={copyResult}
             disabled={!text}
             className="rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Copy Text
+            {t.common.copy} Text
           </button>
-          <button
+<button
             type="button"
             onClick={downloadText}
             disabled={!text}
             className="rounded-xl bg-green-600 px-5 py-3 font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Download Text
+            {t.common.download} Text
           </button>
-          <button
+<button
             type="button"
             onClick={clearText}
             disabled={!text}
             className="rounded-xl border border-gray-300 bg-white px-5 py-3 font-semibold text-gray-700 transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
           >
-            Clear
+            {t.common.clear}
           </button>
         </div>
         <div className="mt-3 flex flex-wrap gap-3">
-          <button
+<button
             type="button"
             onClick={generateLink}
             disabled={!text || shareLoading}
             className="rounded-xl border border-blue-600 bg-white px-5 py-3 font-semibold text-blue-600 transition hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-gray-900 dark:text-blue-400 dark:hover:bg-gray-800"
           >
-            {shareLoading ? "Generating..." : "Generate Link"}
+            {shareLoading ? t.common.processing : "Generate Link"}
           </button>
           <button
             type="button"
@@ -305,12 +307,12 @@ export default function WordCounter() {
                 className="min-w-0 flex-1 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-700 outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
                 aria-label="Generated share link"
               />
-              <button
+<button
                 type="button"
                 onClick={copyShareLink}
                 className="rounded-xl bg-gray-800 px-5 py-3 font-semibold text-white transition hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600"
               >
-                Copy Link
+                {t.common.copy} Link
               </button>
             </div>
             <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
@@ -344,9 +346,9 @@ export default function WordCounter() {
           line counts along with an estimated reading time.
         </p>
       </section>
-      <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+<section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-          Related Tools
+          {t.related.title}
         </h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[

@@ -1,4 +1,9 @@
 import type { Metadata } from "next";
+import {
+  LocalizedText,
+  ToolDescription,
+  ToolTitle,
+} from "@/app/components/ToolText";
 import Link from "next/link";
 import UnitConverter from "@/app/components/UnitConverter";
 export const metadata: Metadata = {
@@ -103,46 +108,37 @@ export default function UnitConverterPage() {
             </Link>
           </li>
           <li aria-hidden="true">/</li>
-          <li className="font-medium text-slate-900 dark:text-white">
-            Unit Converter
-          </li>
+          <li className="font-medium text-slate-900 dark:text-white"><ToolTitle slug="unit-converter" /></li>
         </ol>
       </nav>
       <div className="mb-8">
         <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">
           Utility Tool
         </p>
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-          Unit Converter
-        </h1>
-        <p className="mt-3 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-300">
-          Convert length, weight and temperature units quickly and accurately
-          with this free online unit converter.
-        </p>
+        <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl"><ToolTitle slug="unit-converter" /></h1>
+        <p className="mt-3 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-300"><ToolDescription slug="unit-converter" /></p>
       </div>
       <UnitConverter />
       <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900">
-        <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
-          Related Tools
-        </h2>
+        <h2 className="text-xl font-semibold text-slate-900 dark:text-white"><LocalizedText k="related.title" /></h2>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <Link
             href="/tools/percentage-calculator"
             className="rounded-xl border border-slate-200 p-4 text-sm font-medium text-blue-600 transition hover:bg-slate-50 dark:border-slate-700 dark:text-blue-400 dark:hover:bg-slate-800"
           >
-            Percentage Calculator
+            <ToolTitle slug="percentage-calculator" />
           </Link>
           <Link
             href="/tools/word-counter"
             className="rounded-xl border border-slate-200 p-4 text-sm font-medium text-blue-600 transition hover:bg-slate-50 dark:border-slate-700 dark:text-blue-400 dark:hover:bg-slate-800"
           >
-            Word Counter
+            <ToolTitle slug="word-counter" />
           </Link>
           <Link
             href="/tools/character-counter"
             className="rounded-xl border border-slate-200 p-4 text-sm font-medium text-blue-600 transition hover:bg-slate-50 dark:border-slate-700 dark:text-blue-400 dark:hover:bg-slate-800"
           >
-            Character Counter
+            <ToolTitle slug="character-counter" />
           </Link>
         </div>
       </section>

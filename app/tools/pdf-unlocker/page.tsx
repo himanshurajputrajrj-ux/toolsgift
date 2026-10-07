@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFUnlockerPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Unlock PDF" />
+      <Breadcrumbs toolSlug="pdf-unlocker" />
       <PDFUnlocker />
       <ToolSEOContent toolKey="pdf-unlocker" />
     </main>

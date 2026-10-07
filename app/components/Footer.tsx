@@ -2,7 +2,9 @@
 import Link from "next/link";
 import CookiePreferences from "@/app/components/CookiePreferences";
 import { clearCookieConsent } from "@/app/lib/cookieConsent";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 export default function Footer() {
+  const { t } = useLanguage();
   function resetConsent() {
     clearCookieConsent();
     window.dispatchEvent(new Event("toolsgift-consent-change"));
@@ -15,47 +17,47 @@ export default function Footer() {
           Tools<span className="font-normal">Gift</span>
         </div>
         <p className="mt-3 text-sm text-white/60 darkmode:text-white/60">
-          Fast & Simple Image Tools.
+          {t.footerLinks.tagline}
         </p>
         <nav
-          aria-label="Footer navigation"
+          aria-label={t.footerLinks.navigation}
           className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm"
         >
           <Link
             href="/about"
             className="text-white/55 darkmode:text-white/55 transition hover:text-white darkmode:hover:text-white"
           >
-            About Us
+            {t.footerLinks.aboutUs}
           </Link>
           <Link
             href="/contact"
             className="text-white/55 darkmode:text-white/55 transition hover:text-white darkmode:hover:text-white"
           >
-            Contact Us
+            {t.footerLinks.contactUs}
           </Link>
           <Link
             href="/privacy"
             className="text-white/55 darkmode:text-white/55 transition hover:text-white darkmode:hover:text-white"
           >
-            Privacy Policy
+            {t.footerLinks.privacyPolicy}
           </Link>
           <Link
             href="/terms"
             className="text-white/55 darkmode:text-white/55 transition hover:text-white darkmode:hover:text-white"
           >
-            Terms of Service
+            {t.footerLinks.termsOfService}
           </Link>
           <Link
             href="/disclaimer"
             className="text-white/55 darkmode:text-white/55 transition hover:text-white darkmode:hover:text-white"
           >
-            Disclaimer
+            {t.footer.disclaimer}
           </Link>
           <Link
             href="/cookies"
             className="text-white/55 darkmode:text-white/55 transition hover:text-white darkmode:hover:text-white"
           >
-            Cookie Policy
+            {t.footerLinks.cookiePolicy}
           </Link>
           <CookiePreferences />
           <button
@@ -63,11 +65,11 @@ export default function Footer() {
             onClick={resetConsent}
             className="text-white/55 darkmode:text-white/55 underline decoration-white/40 darkmode:decoration-white/40 underline-offset-2 transition hover:text-white darkmode:hover:text-white"
           >
-            Reset Consent Choices
+            {t.footerLinks.resetConsent}
           </button>
         </nav>
         <div className="mt-10 border-t border-white/10 darkmode:border-white/10 pt-7 text-sm text-white/60 darkmode:text-white/60">
-          © 2026 ToolsGift. All rights reserved.
+          {t.footer.copyright}
         </div>
       </div>
     </footer>

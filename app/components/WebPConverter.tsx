@@ -2,9 +2,13 @@
 
 import { DragEvent, useRef, useState } from "react";
 import ShareResult from "./ShareResult";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 export default function WebPConverter() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "webp-converter");
 
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
@@ -24,12 +28,12 @@ export default function WebPConverter() {
     setResultSize(null);
 
     if (!selectedFile.type.startsWith("image/")) {
-      setError("Please select a valid image file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > maxFileSize) {
-      setError("File size must be less than 25 MB.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -75,7 +79,7 @@ export default function WebPConverter() {
       const ctx = canvas.getContext("2d");
 
       if (!ctx) {
-        setError("Could not process the image.");
+        setError(t.messages.processingFailed);
         setLoading(false);
         return;
       }
@@ -88,7 +92,7 @@ export default function WebPConverter() {
       canvas.toBlob(
         (blob) => {
           if (!blob) {
-            setError("WebP conversion failed.");
+            setError(t.messages.processingFailed);
             setLoading(false);
             return;
           }
@@ -105,7 +109,7 @@ export default function WebPConverter() {
     };
 
     image.onerror = () => {
-      setError("Could not load the image.");
+      setError(t.messages.somethingWentWrong);
       setLoading(false);
     };
 
@@ -144,16 +148,15 @@ export default function WebPConverter() {
         {/* Heading */}
         <div className="mb-8 text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-blue-600">
-            Image Tools
+            {t.categories.imageTools}
           </p>
 
           <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">
-            WebP Converter
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-            Convert your images to WebP format with excellent quality
-            and smaller file sizes.
+            {toolText.description}
           </p>
         </div>
 
@@ -181,11 +184,11 @@ export default function WebPConverter() {
                 </div>
 
                 <h2 className="text-xl font-semibold text-slate-900">
-                  Upload an Image
+                  {t.common.upload}
                 </h2>
 
                 <p className="mt-2 text-sm text-slate-500">
-                  Drag & drop your image here or choose a file
+                  {t.common.dragDrop}
                 </p>
 
                 <button
@@ -193,7 +196,7 @@ export default function WebPConverter() {
                   onClick={() => inputRef.current?.click()}
                   className="mt-6 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
                 >
-                  Choose File
+                  {t.common.chooseFile}
                 </button>
 
                 <p className="mt-4 text-xs text-slate-400">
@@ -227,7 +230,7 @@ export default function WebPConverter() {
                   onClick={removeFile}
                   className="rounded-xl border border-slate-300 px-5 py-2.5 font-medium text-slate-700 transition hover:bg-slate-100"
                 >
-                  Remove Image
+                  {t.common.remove} Image
                 </button>
               </div>
             )}
@@ -315,7 +318,7 @@ export default function WebPConverter() {
             disabled={!file || loading}
             className="mt-6 w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {loading ? "Converting to WebP..." : "Convert to WebP"}
+            {loading ? t.common.processing : `${t.common.convert} → WebP`}
           </button>
 
           {/* Result - ALWAYS VISIBLE */}
@@ -387,7 +390,7 @@ export default function WebPConverter() {
               disabled={!result}
               className="mt-5 w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              Download WebP Image
+              {t.common.download} WebP Image
             </button>
 
             {result && <ShareResult key={result} tool="webp-converter" resultTitle="Converted WebP Image" imageUrl={result} filename="converted-image.webp" />}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolDescription, ToolTitle } from "@/app/components/ToolText";
 import ImageToText from "@/app/components/ImageToText";
 export const metadata: Metadata = {
   title: "Image to Text Converter - Extract Text from Images",
@@ -52,19 +53,13 @@ export default function ImageToTextPage() {
         }}
       />
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-          Image to Text Converter
-        </h1>
-        <p className="mt-2 text-gray-600 dark:text-gray-400">
-          Extract text from images online with free browser-based OCR.
-        </p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white"><ToolTitle slug="image-to-text" /></h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-400"><ToolDescription slug="image-to-text" /></p>
       </div>
       <ImageToText />
       <section className="mt-12 space-y-6 text-gray-700 dark:text-gray-300">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-            Image to Text Converter
-          </h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white"><ToolTitle slug="image-to-text" /></h2>
           <p className="mt-2">
             ToolsGift Image to Text Converter uses OCR technology to extract
             readable text from images. Upload an image, let the browser

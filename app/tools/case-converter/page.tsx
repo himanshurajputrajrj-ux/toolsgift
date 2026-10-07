@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
+import { ToolDescription, ToolTitle } from "@/app/components/ToolText";
 import CaseConverter from "@/app/components/CaseConverter";
 export const metadata: Metadata = {
   title: "Case Converter Online - Uppercase, Lowercase & Title Case",
@@ -116,21 +117,14 @@ export default function CaseConverterPage() {
             ToolsGift
           </Link>
           <span className="mx-2 text-gray-400">/</span>
-          <span className="text-gray-700 dark:text-gray-300">
-            Case Converter
-          </span>
+          <span className="text-gray-700 dark:text-gray-300"><ToolTitle slug="case-converter" /></span>
         </nav>
         <header className="mb-8 text-center">
           <div className="mb-3 text-sm font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">
             TEXT TOOL
           </div>
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-            Case Converter Online
-          </h1>
-          <p className="mx-auto mt-4 max-w-3xl text-lg text-gray-600 dark:text-gray-400">
-            Convert text to uppercase, lowercase, title case or sentence case
-            instantly with a fast and simple online case converter.
-          </p>
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl"><ToolTitle slug="case-converter" /></h1>
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-gray-600 dark:text-gray-400"><ToolDescription slug="case-converter" /></p>
         </header>
         <CaseConverter />
       </main>

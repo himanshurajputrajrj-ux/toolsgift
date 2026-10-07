@@ -1,5 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 type OutputFormat = "image/jpeg" | "image/webp";
 type CompressionResult = {
   blob: Blob;
@@ -9,6 +11,8 @@ type CompressionResult = {
 };
 export default function CompressImageToKB() {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "compress-image-to-kb");
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
   const [targetKB, setTargetKB] = useState(100);
@@ -37,11 +41,11 @@ export default function CompressImageToKB() {
   const selectImage = (selectedFile: File) => {
     setError("");
     if (!selectedFile.type.startsWith("image/")) {
-      setError("Please select a valid image file.");
+      setError(t.messages.invalidFile);
       return;
     }
     if (selectedFile.size > 25 * 1024 * 1024) {
-      setError("Maximum file size is 25 MB.");
+      setError(t.messages.fileTooLarge);
       return;
     }
     if (preview) URL.revokeObjectURL(preview);
@@ -191,7 +195,7 @@ export default function CompressImageToKB() {
   };
   const compressImage = async () => {
     if (!file) {
-      setError("Please upload an image first.");
+      setError(t.messages.noFileSelected);
       return;
     }
     const targetBytes = getTargetBytes();
@@ -231,7 +235,7 @@ export default function CompressImageToKB() {
     } catch (err) {
       console.error(err);
       setError(
-        "Something went wrong while compressing the image."
+        t.messages.somethingWentWrong
       );
     } finally {
       setLoading(false);
@@ -250,7 +254,7 @@ export default function CompressImageToKB() {
       const response = await fetch(result);
       const blob = await response.blob();
       if (blob.size > 4 * 1024 * 1024) {
-        throw new Error("Compressed image is too large to share. Maximum size is 4 MB.");
+        throw new Error(t.messages.fileTooLarge);
       }
       const extension = format === "image/webp" ? "webp" : "jpg";
       const formData = new FormData();
@@ -272,7 +276,7 @@ export default function CompressImageToKB() {
       });
       const data = await shareResponse.json();
       if (!shareResponse.ok || typeof data.shareUrl !== "string") {
-        throw new Error(data.error || "Failed to create share link.");
+        throw new Error(data.error || t.messages.processingFailed);
       }
       setShareUrl(data.shareUrl);
       setShareMessage("Share link generated.");
@@ -281,7 +285,7 @@ export default function CompressImageToKB() {
       const message =
         error instanceof Error
           ? error.message
-          : "Failed to create share link.";
+          : t.messages.processingFailed;
       setShareMessage(message);
       throw error;
     } finally {
@@ -365,11 +369,10 @@ export default function CompressImageToKB() {
             IMAGE SIZE TOOL
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
-            Compress Image to KB
+            {toolText.title}
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 md:text-lg">
-            Compress JPG, PNG and WebP images to a target file
-            size such as 20 KB, 50 KB, 100 KB or 200 KB.
+            {toolText.description}
           </p>
         </section>
         <section className="rounded-3xl bg-white p-5 shadow-sm md:p-8">
@@ -387,7 +390,7 @@ export default function CompressImageToKB() {
               <svg viewBox="0 0 24 24" className="h-10 w-10 text-blue-500" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m5 17 4.5-4.5 3 3 2-2L19 17"/></svg>
             </div>
             <h2 className="text-2xl font-semibold text-slate-900">
-              {file ? "Image Selected" : "Upload an image"}
+              {file ? "Image Selected" : t.common.upload}
             </h2>
             <p className="mt-2 text-sm text-slate-500">
               JPG, PNG, WebP, GIF, BMP
@@ -403,10 +406,10 @@ export default function CompressImageToKB() {
               }}
               className="mt-6 rounded-xl bg-blue-600 px-8 py-3 font-semibold text-white transition hover:bg-blue-700"
             >
-              {file ? "Choose Another Image" : "Choose File"}
+              {file ? "Choose Another Image" : t.common.chooseFile}
             </button>
             <p className="mt-4 text-sm text-slate-400">
-              or drag and drop your image here
+              {t.common.dragDrop}
             </p>
             <input
               ref={fileInputRef}
@@ -438,7 +441,7 @@ export default function CompressImageToKB() {
                 onClick={removeImage}
                 className="shrink-0 rounded-xl border border-red-200 bg-red-50 px-4 py-2 text-sm font-semibold text-red-600 hover:bg-red-100"
               >
-                Remove
+                {t.common.remove}
               </button>
             </div>
             <div className="flex min-h-[280px] items-center justify-center overflow-hidden rounded-2xl bg-slate-100 p-4">
@@ -547,12 +550,12 @@ export default function CompressImageToKB() {
             {loading ? (
               <>
                 <span className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                Compressing...
+                {t.common.processing}
               </>
             ) : (
               <>
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
-                Compress to {targetKB === 0 ? customKB || "Custom" : targetKB} KB
+                {t.common.compress} → {targetKB === 0 ? customKB || "Custom" : targetKB} KB
               </>
             )}
           </button>
@@ -632,7 +635,7 @@ export default function CompressImageToKB() {
                 className="mt-6 flex w-full items-center justify-center gap-3 rounded-xl bg-green-600 px-6 py-4 font-bold text-white transition hover:bg-green-700"
               >
                 <span>â¬‡</span>
-                Download Compressed Image
+                {t.common.download} Compressed Image
               </button>
               <div className="mt-3 flex flex-wrap gap-2">
                 <button

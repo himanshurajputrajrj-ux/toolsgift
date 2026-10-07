@@ -2,9 +2,13 @@
 import ShareFileResult from "./ShareFileResult";
 
 import { DragEvent, useRef, useState } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 export default function ImageToPDF() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "image-to-pdf");
 
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
@@ -24,7 +28,7 @@ export default function ImageToPDF() {
     );
 
     if (imageFiles.length === 0) {
-      setError("Please select at least one valid image.");
+      setError(t.messages.invalidFile);
       return;
     }
 
@@ -33,7 +37,7 @@ export default function ImageToPDF() {
     );
 
     if (oversized) {
-      setError("Each image must be less than 25 MB.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -190,16 +194,15 @@ export default function ImageToPDF() {
         {/* Heading */}
         <div className="mb-8 text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-blue-600">
-            PDF Tools
+            {t.categories.imageTools}
           </p>
 
           <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">
-            Image to PDF
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-            Convert one or multiple images into a PDF document quickly
-            and easily.
+            {toolText.description}
           </p>
         </div>
 
@@ -225,11 +228,11 @@ export default function ImageToPDF() {
             </div>
 
             <h2 className="text-xl font-semibold text-slate-900">
-              Upload Images
+              {t.common.upload} Images
             </h2>
 
             <p className="mt-2 text-sm text-slate-500">
-              Drag & drop images here or choose files
+              {t.common.dragDrop}
             </p>
 
             <button
@@ -237,7 +240,7 @@ export default function ImageToPDF() {
               onClick={() => inputRef.current?.click()}
               className="mt-6 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
             >
-              Choose Images
+              {t.common.chooseFiles}
             </button>
 
             <p className="mt-4 text-xs text-slate-400">
@@ -285,7 +288,7 @@ export default function ImageToPDF() {
                   onClick={clearAll}
                   className="rounded-lg px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
                 >
-                  Clear All
+                  {t.common.clear} {t.home.all}
                 </button>
               )}
             </div>

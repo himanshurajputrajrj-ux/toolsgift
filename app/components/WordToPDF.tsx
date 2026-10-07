@@ -3,12 +3,16 @@
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import { toCanvas } from "html-to-image";
 import ShareFileResult from "./ShareFileResult";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024;
 
 export default function WordToPDF() {
   const inputRef = useRef<HTMLInputElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "word-to-pdf");
 
   const [file, setFile] = useState<File | null>(null);
   const [htmlContent, setHtmlContent] = useState("");
@@ -48,12 +52,12 @@ export default function WordToPDF() {
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
 
     if (!isWord) {
-      setError("Please select a valid DOCX Word document.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > MAX_FILE_SIZE) {
-      setError("Word file must be smaller than 25 MB.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -81,9 +85,7 @@ export default function WordToPDF() {
       setFile(null);
       setHtmlContent("");
 
-      setError(
-        "Unable to read this Word document. The file may be corrupted or unsupported."
-      );
+      setError(t.messages.somethingWentWrong);
     }
   };
 
@@ -279,17 +281,16 @@ export default function WordToPDF() {
   return (
     <section className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-8 text-center">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-blue-600">
-          Document Tools
-        </p>
+        <div className="mb-3 inline-flex rounded-full bg-blue-100 px-4 py-1.5 text-sm font-semibold text-blue-700">
+          Document Tool
+        </div>
 
         <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          Word to PDF
+          {toolText.title}
         </h1>
 
         <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-          Convert Word documents to PDF online while preserving the
-          document layout as closely as possible.
+          {toolText.description}
         </p>
       </div>
 
@@ -327,7 +328,7 @@ export default function WordToPDF() {
             </h3>
 
             <p className="mt-2 text-sm text-slate-500">
-              Drag & drop your DOCX here or click to browse
+              {t.common.dragDrop}
             </p>
 
             <p className="mt-2 text-xs text-slate-400">
@@ -374,7 +375,7 @@ export default function WordToPDF() {
             disabled={!file || !htmlContent || processing}
             className="mt-6 w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
           >
-            {processing ? "Converting to PDF..." : "Convert to PDF"}
+            {processing ? t.common.processing : `${t.common.convert} → PDF`}
           </button>
         </div>
 

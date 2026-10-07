@@ -50,7 +50,7 @@ const structuredData = {
 export default function CompressorPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Image Compressor Online" />
+      <Breadcrumbs toolSlug="compressor" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

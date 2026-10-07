@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PowerPointToPDFPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="PowerPoint to PDF" />
+      <Breadcrumbs toolSlug="powerpoint-to-pdf" />
       <PowerPointToPDF />
       <ToolSEOContent toolKey="powerpoint-to-pdf" />
     </main>

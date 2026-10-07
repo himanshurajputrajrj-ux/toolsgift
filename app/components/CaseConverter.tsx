@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 const toTitleCase = (text: string) =>
   text.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
@@ -33,6 +34,8 @@ export default function CaseConverter() {
   const [shareMessage, setShareMessage] = useState<
     Record<string, string | undefined>
   >({});
+
+  const { t } = useLanguage();
 
   const uppercase = text.toUpperCase();
   const lowercase = text.toLowerCase();
@@ -174,7 +177,7 @@ export default function CaseConverter() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to create share link.");
+        throw new Error(data.error || t.messages.processingFailed);
       }
 
       const newShare: ShareState = {
@@ -196,7 +199,7 @@ export default function CaseConverter() {
         [result.title]:
           error instanceof Error
             ? error.message
-            : "Failed to create share link.",
+            : t.messages.processingFailed,
       }));
 
       return null;
@@ -377,7 +380,7 @@ export default function CaseConverter() {
             disabled={!text}
             className="rounded-xl border border-gray-300 bg-white px-5 py-3 font-semibold text-gray-700 transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
           >
-            Clear
+            {t.common.clear}
           </button>
         </div>
       </section>
@@ -411,7 +414,7 @@ export default function CaseConverter() {
                   disabled={!result.value}
                   className="rounded-xl bg-blue-600 px-4 py-2.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  Copy
+                  {t.common.copy}
                 </button>
 
                 <button
@@ -422,7 +425,7 @@ export default function CaseConverter() {
                   disabled={!result.value}
                   className="rounded-xl bg-green-600 px-4 py-2.5 font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  Download
+                  {t.common.download}
                 </button>
               </div>
 
@@ -468,7 +471,7 @@ export default function CaseConverter() {
                       }
                       className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
                     >
-                      Copy Link
+                      {t.common.copy} Link
                     </button>
                   </div>
 
@@ -508,7 +511,7 @@ export default function CaseConverter() {
 
       <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-          Related Tools
+          {t.related.title}
         </h2>
 
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

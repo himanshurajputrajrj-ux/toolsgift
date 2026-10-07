@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 export default function ImageRotatorPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Image Rotator Online" />
+      <Breadcrumbs toolSlug="rotator" />
       <ImageRotator />
       <ToolSEOContent toolKey="rotator" />
           <RelatedTools tools={[

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFCropperPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Crop PDF" />
+      <Breadcrumbs toolSlug="pdf-cropper" />
       <PDFCropper />
       <ToolSEOContent toolKey="pdf-cropper" />
     </main>

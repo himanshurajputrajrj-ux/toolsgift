@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
+import { ToolDescription, ToolTitle } from "@/app/components/ToolText";
 import QRCodeGenerator from "@/app/components/QRCodeGenerator";
 export const metadata: Metadata = {
   title: "QR Code Generator Online - Create QR Codes",
@@ -115,21 +116,14 @@ export default function QRCodeGeneratorPage() {
             ToolsGift
           </Link>
           <span className="mx-2 text-gray-400">/</span>
-          <span className="text-gray-700 dark:text-gray-300">
-            QR Code Generator
-          </span>
+          <span className="text-gray-700 dark:text-gray-300"><ToolTitle slug="qr-code-generator" /></span>
         </nav>
         <header className="mb-8 text-center">
           <div className="mb-3 text-sm font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">
             GENERATOR TOOL
           </div>
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-            QR Code Generator Online
-          </h1>
-          <p className="mx-auto mt-4 max-w-3xl text-lg text-gray-600 dark:text-gray-400">
-            Create a QR code from any URL or text and download it as a PNG
-            image.
-          </p>
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl"><ToolTitle slug="qr-code-generator" /></h1>
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-gray-600 dark:text-gray-400"><ToolDescription slug="qr-code-generator" /></p>
         </header>
         <QRCodeGenerator />
       </main>

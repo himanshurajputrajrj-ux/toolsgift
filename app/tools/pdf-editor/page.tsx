@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFEditorPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="PDF Editor" />
+      <Breadcrumbs toolSlug="pdf-editor" />
       <PDFEditor />
       <ToolSEOContent toolKey="pdf-editor" />
     </main>

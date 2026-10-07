@@ -3,6 +3,8 @@
 import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024;
 
@@ -10,6 +12,8 @@ type CellValue = string | number | boolean | null;
 
 export default function ExcelToPDF() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "excel-to-pdf");
 
   const [file, setFile] = useState<File | null>(null);
   const [sheetNames, setSheetNames] = useState<string[]>([]);
@@ -85,12 +89,12 @@ export default function ExcelToPDF() {
       lowerName.endsWith(".csv");
 
     if (!validExtension) {
-      setError("Please select an Excel or CSV file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > MAX_FILE_SIZE) {
-      setError("Excel file must be smaller than 25 MB.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -418,12 +422,11 @@ export default function ExcelToPDF() {
         </p>
 
         <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          Excel to PDF
+          {toolText.title}
         </h1>
 
         <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-          Convert Excel spreadsheets into clean, printable PDF
-          documents.
+          {toolText.description}
         </p>
       </div>
 
@@ -463,7 +466,7 @@ export default function ExcelToPDF() {
             </h3>
 
             <p className="mt-2 text-sm text-slate-500">
-              Drag & drop here or click to browse
+              {t.common.dragDrop}
             </p>
 
             <p className="mt-2 text-xs text-slate-400">
@@ -535,8 +538,8 @@ export default function ExcelToPDF() {
             className="mt-6 w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
           >
             {processing
-              ? "Converting to PDF..."
-              : "Convert to PDF"}
+              ? t.common.processing
+              : `${t.common.convert} → PDF`}
           </button>
         </div>
 

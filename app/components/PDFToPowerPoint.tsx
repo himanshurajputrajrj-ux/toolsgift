@@ -3,11 +3,15 @@
 import ShareFileResult from "./ShareFileResult";
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
 import { loadPdfWorkerSrc } from "@/app/lib/pdfWorker";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
 export default function PDFToPowerPoint() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "pdf-to-powerpoint");
 
   const [file, setFile] = useState<File | null>(null);
   const [pageCount, setPageCount] = useState(0);
@@ -48,12 +52,12 @@ export default function PDFToPowerPoint() {
     setError("");
 
     if (selectedFile.type !== "application/pdf") {
-      setError("Please select a valid PDF file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > MAX_FILE_SIZE) {
-      setError("PDF file must be smaller than 50 MB.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -92,7 +96,7 @@ export default function PDFToPowerPoint() {
       setPreviewUrl("");
 
       setError(
-        "Unable to read this PDF. It may be encrypted or corrupted."
+        t.messages.somethingWentWrong
       );
     }
   };
@@ -196,7 +200,7 @@ export default function PDFToPowerPoint() {
       console.error(err);
 
       setError(
-        "Unable to convert this PDF to PowerPoint. The PDF may be encrypted, corrupted, or too complex."
+        t.messages.processingFailed
       );
     } finally {
       setProcessing(false);
@@ -235,12 +239,11 @@ export default function PDFToPowerPoint() {
         </p>
 
         <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          PDF to PowerPoint
+          {toolText.title}
         </h1>
 
         <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-          Convert PDF pages into a PowerPoint presentation with one slide
-          for each page.
+          {toolText.description}
         </p>
       </div>
 
@@ -248,7 +251,7 @@ export default function PDFToPowerPoint() {
         {/* LEFT */}
         <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
           <h2 className="text-lg font-semibold text-slate-900">
-            Upload PDF
+            {t.common.upload} PDF
           </h2>
 
           <p className="mt-1 text-sm text-slate-500">
@@ -274,11 +277,11 @@ export default function PDFToPowerPoint() {
             </div>
 
             <h3 className="mt-4 font-semibold text-slate-900">
-              {file ? "PDF Selected" : "Upload your PDF"}
+              {file ? "PDF Selected" : t.common.upload}
             </h3>
 
             <p className="mt-2 text-sm text-slate-500">
-              Drag & drop your PDF here or click to browse
+              {t.common.dragDrop}
             </p>
 
             <p className="mt-2 text-xs text-slate-400">
@@ -308,7 +311,7 @@ export default function PDFToPowerPoint() {
                   }}
                   className="shrink-0 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
                 >
-                  Remove
+                  {t.common.remove}
                 </button>
               </div>
             </div>
@@ -327,8 +330,8 @@ export default function PDFToPowerPoint() {
             className="mt-6 w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
           >
             {processing
-              ? "Converting to PowerPoint..."
-              : "Convert to PowerPoint"}
+              ? t.common.processing
+              : `${t.common.convert} → PowerPoint`}
           </button>
         </div>
 
@@ -364,7 +367,7 @@ export default function PDFToPowerPoint() {
                 </div>
 
                 <h3 className="mt-4 text-lg font-semibold text-slate-900">
-                  {pageCount || "Loading"}{" "}
+                  {pageCount || t.common.loading}{" "}
                   {pageCount === 1 ? "slide" : "slides"} will be created
                 </h3>
 
@@ -393,7 +396,7 @@ export default function PDFToPowerPoint() {
             disabled={!resultUrl || !resultBlob}
             className="mt-5 w-full rounded-xl border border-blue-200 bg-blue-50 px-5 py-3.5 font-semibold text-blue-700 transition hover:bg-blue-100 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400"
           >
-            Download PowerPoint
+            {t.common.download} PowerPoint
           </button>
           {resultBlob && (
             <ShareFileResult

@@ -2,6 +2,8 @@
 import ShareFileResult from "./ShareFileResult";
 
 import { DragEvent, useRef, useState } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type PDFItem = {
   id: string;
@@ -10,6 +12,8 @@ type PDFItem = {
 
 export default function MergePDF() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "pdf-merger");
 
   const [files, setFiles] = useState<PDFItem[]>([]);
   const [isMerging, setIsMerging] = useState(false);
@@ -41,7 +45,7 @@ export default function MergePDF() {
     );
 
     if (invalid) {
-      setError("Please select PDF files only.");
+      setError(t.messages.unsupportedFormat);
       return;
     }
 
@@ -50,9 +54,7 @@ export default function MergePDF() {
     );
 
     if (oversized) {
-      setError(
-        `"${oversized.name}" is larger than the 50 MB limit.`
-      );
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -149,7 +151,7 @@ export default function MergePDF() {
 
   const mergePDFs = async () => {
     if (files.length < 2) {
-      setError("Please add at least 2 PDF files.");
+      setError(t.messages.multipleFilesRequired);
       return;
     }
 
@@ -195,9 +197,7 @@ export default function MergePDF() {
     } catch (err) {
       console.error(err);
 
-      setError(
-        "Unable to merge the PDFs. One or more files may be damaged, encrypted, or unsupported."
-      );
+      setError(t.messages.processingFailed);
     } finally {
       setIsMerging(false);
     }
@@ -227,12 +227,11 @@ export default function MergePDF() {
         </div>
 
         <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          Merge PDF
+          {toolText.title}
         </h1>
 
         <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-          Combine multiple PDF files into one PDF document
-          quickly and easily.
+          {toolText.description}
         </p>
       </div>
 
@@ -257,11 +256,11 @@ export default function MergePDF() {
         </div>
 
         <h3 className="text-lg font-semibold text-slate-900">
-          Upload PDF Files
+          {t.common.upload} PDF Files
         </h3>
 
         <p className="mt-2 text-sm text-slate-500">
-          Drag & drop PDF files here or click to browse
+          {t.common.dragDrop}
         </p>
 
         <p className="mt-2 text-xs text-slate-400">
@@ -296,7 +295,7 @@ export default function MergePDF() {
             disabled={files.length === 0}
             className="rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Clear All
+            {t.common.clear} {t.home.all}
           </button>
         </div>
 
@@ -357,7 +356,7 @@ export default function MergePDF() {
                       }
                       className="rounded-lg border border-red-200 bg-white px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
                     >
-                      Remove
+                      {t.common.remove}
                     </button>
                   </div>
                 </div>
@@ -452,7 +451,7 @@ export default function MergePDF() {
           disabled={!resultUrl}
           className="mt-5 w-full rounded-xl bg-emerald-600 px-5 py-3.5 font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:bg-slate-300"
         >
-          Download Merged PDF
+          {t.common.download} Merged PDF
         </button>{(resultUrl) && (
   <ShareFileResult
     tool="merge-pdf"

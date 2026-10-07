@@ -2,9 +2,13 @@
 
 import { useRef, useState } from "react";
 import ShareResult from "./ShareResult";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 export default function ImageRotator() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "rotator");
 
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
@@ -15,7 +19,7 @@ export default function ImageRotator() {
 
   const handleFile = (selectedFile: File | null) => {
     if (!selectedFile || !selectedFile.type.startsWith("image/")) {
-      setMessage("Please select a valid image.");
+      setMessage(t.messages.invalidFile);
       return;
     }
 
@@ -39,7 +43,7 @@ export default function ImageRotator() {
 
       if (!ctx) {
         setIsRotating(false);
-        setMessage("Could not process this image.");
+        setMessage(t.messages.processingFailed);
         return;
       }
 
@@ -66,7 +70,7 @@ export default function ImageRotator() {
         (blob) => {
           if (!blob) {
             setIsRotating(false);
-            setMessage("Could not create the rotated image.");
+            setMessage(t.messages.processingFailed);
             return;
           }
 
@@ -87,7 +91,7 @@ export default function ImageRotator() {
 
     image.onerror = () => {
       setIsRotating(false);
-      setMessage("Could not read this image.");
+      setMessage(t.messages.somethingWentWrong);
     };
 
     image.src = URL.createObjectURL(file);
@@ -132,11 +136,11 @@ export default function ImageRotator() {
             <div className="text-5xl mb-4">🔄</div>
 
             <h2 className="text-xl font-semibold text-gray-900">
-              Upload Image
+              {t.common.upload}
             </h2>
 
             <p className="text-gray-500 mt-2">
-              Rotate your image quickly and easily
+              {toolText.description}
             </p>
 
             <button
@@ -264,7 +268,7 @@ export default function ImageRotator() {
 
             {downloadUrl && (
               <>
-                <a href={downloadUrl} download="ToolsGift-rotated-image.jpg" className="block w-full mt-6 text-center px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition">Download Rotated Image</a>
+                <a href={downloadUrl} download="ToolsGift-rotated-image.jpg" className="block w-full mt-6 text-center px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 transition">{t.common.download} Rotated Image</a>
                 <ShareResult key={downloadUrl} tool="rotator" resultTitle="Rotated Image" imageUrl={downloadUrl} filename="ToolsGift-rotated-image.jpg" />
               </>
             )}

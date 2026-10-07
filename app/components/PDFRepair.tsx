@@ -2,9 +2,13 @@
 import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 export default function PDFRepair() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "pdf-repair");
 
   const [file, setFile] = useState<File | null>(null);
   const [pageCount, setPageCount] = useState(0);
@@ -40,12 +44,12 @@ export default function PDFRepair() {
       selectedFile.type !== "application/pdf" &&
       !selectedFile.name.toLowerCase().endsWith(".pdf")
     ) {
-      setError("Please select a valid PDF file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > MAX_SIZE) {
-      setError("PDF size must be 50MB or less.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -64,9 +68,7 @@ export default function PDFRepair() {
     } catch (err) {
       console.error(err);
 
-      setError(
-        "This PDF could not be parsed. The file may be severely corrupted, encrypted, or unsupported."
-      );
+      setError(t.messages.somethingWentWrong);
     }
   };
 
@@ -91,7 +93,7 @@ export default function PDFRepair() {
 
   const repairPDF = async () => {
     if (!file) {
-      setError("Please upload a PDF first.");
+      setError(t.messages.noFileSelected);
       return;
     }
 
@@ -155,9 +157,7 @@ export default function PDFRepair() {
     } catch (err) {
       console.error(err);
 
-      setError(
-        "The PDF could not be repaired. If the file is severely corrupted, a desktop PDF repair application may be required."
-      );
+      setError(t.messages.processingFailed);
     } finally {
       setProcessing(false);
     }
@@ -205,12 +205,11 @@ export default function PDFRepair() {
           </div>
 
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Repair PDF
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
-            Rebuild a readable PDF into a fresh document structure to help
-            recover from minor PDF structural problems.
+            {toolText.description}
           </p>
         </div>
 
@@ -243,11 +242,11 @@ export default function PDFRepair() {
             </div>
 
             <h2 className="text-lg font-semibold text-slate-800">
-              Upload PDF
+              {t.common.upload} PDF
             </h2>
 
             <p className="mt-2 text-sm text-slate-500">
-              Drag & drop your PDF here or click to browse
+              {t.common.dragDrop}
             </p>
 
             <p className="mt-2 text-xs text-slate-400">
@@ -275,7 +274,7 @@ export default function PDFRepair() {
                   onClick={removeFile}
                   className="rounded-xl border border-red-200 bg-white px-4 py-2 text-sm font-semibold text-red-600 hover:bg-red-50"
                 >
-                  Remove
+                  {t.common.remove}
                 </button>
               </div>
             </div>
@@ -370,7 +369,7 @@ export default function PDFRepair() {
               disabled={!resultUrl}
               className="mt-4 w-full rounded-xl bg-emerald-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-40"
             >
-              Download Repaired PDF
+              {t.common.download} Repaired PDF
             </button>{(resultUrl) && (
   <ShareFileResult
     tool="pdf-repair"
@@ -387,7 +386,7 @@ export default function PDFRepair() {
             onClick={removeFile}
             className="mt-4 w-full rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
           >
-            Clear & Reset
+            {t.common.clear} & {t.common.reset}
           </button>
         </div>
       </div>

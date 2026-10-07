@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function MergePDFPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Merge PDF" />
+      <Breadcrumbs toolSlug="pdf-merger" />
       <MergePDF />
       <ToolSEOContent toolKey="pdf-merger" />
     </main>

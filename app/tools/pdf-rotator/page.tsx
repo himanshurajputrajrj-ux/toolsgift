@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFRotatorPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="Rotate PDF" />
+      <Breadcrumbs toolSlug="pdf-rotator" />
       <PDFRotator />
       <ToolSEOContent toolKey="pdf-rotator" />
     </main>

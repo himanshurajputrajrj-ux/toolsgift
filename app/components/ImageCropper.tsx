@@ -2,9 +2,13 @@
 
 import { DragEvent, useRef, useState } from "react";
 import ShareResult from "./ShareResult";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 export default function ImageCropper() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "cropper");
 
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
@@ -31,12 +35,12 @@ export default function ImageCropper() {
     setResultSize(null);
 
     if (!selectedFile.type.startsWith("image/")) {
-      setError("Please select a valid image file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > maxFileSize) {
-      setError("File size must be less than 25 MB.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -59,7 +63,7 @@ export default function ImageCropper() {
 
     image.onerror = () => {
       URL.revokeObjectURL(url);
-      setError("Could not load the image.");
+      setError(t.messages.somethingWentWrong);
     };
 
     image.src = url;
@@ -121,7 +125,7 @@ export default function ImageCropper() {
       const ctx = canvas.getContext("2d");
 
       if (!ctx) {
-        setError("Could not process the image.");
+        setError(t.messages.processingFailed);
         setLoading(false);
         return;
       }
@@ -151,7 +155,7 @@ export default function ImageCropper() {
       canvas.toBlob(
         (blob) => {
           if (!blob) {
-            setError("Image cropping failed.");
+            setError(t.messages.processingFailed);
             setLoading(false);
             return;
           }
@@ -168,7 +172,7 @@ export default function ImageCropper() {
     };
 
     image.onerror = () => {
-      setError("Could not load the image.");
+      setError(t.messages.somethingWentWrong);
       setLoading(false);
     };
 
@@ -223,16 +227,15 @@ export default function ImageCropper() {
         {/* Heading */}
         <div className="mb-8 text-center">
           <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-blue-600">
-            Image Tools
+            {t.categories.imageTools}
           </p>
 
           <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">
-            Image Cropper
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-            Crop your images to a custom area with precise width, height,
-            and position controls.
+            {toolText.description}
           </p>
         </div>
 
@@ -260,11 +263,11 @@ export default function ImageCropper() {
                 </div>
 
                 <h2 className="text-xl font-semibold text-slate-900">
-                  Upload an Image
+                  {t.common.upload}
                 </h2>
 
                 <p className="mt-2 text-sm text-slate-500">
-                  Drag & drop your image here or choose a file
+                  {t.common.dragDrop}
                 </p>
 
                 <button
@@ -272,7 +275,7 @@ export default function ImageCropper() {
                   onClick={() => inputRef.current?.click()}
                   className="mt-6 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
                 >
-                  Choose File
+                  {t.common.chooseFile}
                 </button>
 
                 <p className="mt-4 text-xs text-slate-400">
@@ -307,7 +310,7 @@ export default function ImageCropper() {
                   onClick={removeFile}
                   className="rounded-xl border border-slate-300 px-5 py-2.5 font-medium text-slate-700 transition hover:bg-slate-100"
                 >
-                  Remove Image
+                  {t.common.remove} Image
                 </button>
               </div>
             )}
@@ -522,7 +525,7 @@ export default function ImageCropper() {
               disabled={!result}
               className="mt-5 w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              Download Cropped Image
+              {t.common.download} Cropped Image
             </button>
 
             {result && <ShareResult key={result} tool="cropper" resultTitle="Cropped Image" imageUrl={result} filename="cropped-image.jpg" />}

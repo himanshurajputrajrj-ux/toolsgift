@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
+import { ToolDescription, ToolTitle } from "@/app/components/ToolText";
 import PercentageCalculator from "@/app/components/PercentageCalculator";
 export const metadata: Metadata = {
   title: "Percentage Calculator Online - Calculate Percentages",
@@ -114,21 +115,14 @@ export default function PercentageCalculatorPage() {
             ToolsGift
           </Link>
           <span className="mx-2 text-gray-400">/</span>
-          <span className="text-gray-700 dark:text-gray-300">
-            Percentage Calculator
-          </span>
+          <span className="text-gray-700 dark:text-gray-300"><ToolTitle slug="percentage-calculator" /></span>
         </nav>
         <header className="mb-8 text-center">
           <div className="mb-3 text-sm font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">
             CALCULATOR TOOL
           </div>
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-            Percentage Calculator Online
-          </h1>
-          <p className="mx-auto mt-4 max-w-3xl text-lg text-gray-600 dark:text-gray-400">
-            Calculate a percentage of any number quickly and easily with this
-            free online percentage calculator.
-          </p>
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl"><ToolTitle slug="percentage-calculator" /></h1>
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-gray-600 dark:text-gray-400"><ToolDescription slug="percentage-calculator" /></p>
         </header>
         <PercentageCalculator />
       </main>

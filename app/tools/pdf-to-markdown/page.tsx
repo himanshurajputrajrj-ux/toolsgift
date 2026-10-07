@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFToMarkdownPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="PDF to Markdown" />
+      <Breadcrumbs toolSlug="pdf-to-markdown" />
       <PDFToMarkdown />
       <ToolSEOContent toolKey="pdf-to-markdown" />
     </main>

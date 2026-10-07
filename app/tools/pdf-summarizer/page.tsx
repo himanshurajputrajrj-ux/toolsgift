@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFSummarizerPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="PDF Summarizer" />
+      <Breadcrumbs toolSlug="pdf-summarizer" />
       <PDFSummarizer />
       <ToolSEOContent toolKey="pdf-summarizer" />
     </main>

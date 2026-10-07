@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function PDFFormsPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="PDF Forms" />
+      <Breadcrumbs toolSlug="pdf-forms" />
       <PDFForms />
       <ToolSEOContent toolKey="pdf-forms" />
     </main>

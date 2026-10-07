@@ -7,6 +7,8 @@ import {
   useState,
 } from "react";
 import ShareResult from "./ShareResult";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type SizePreset = {
   id: string;
@@ -74,6 +76,9 @@ const BACKGROUNDS = [
 ];
 
 export default function PassportPhotoMaker() {
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "passport-photo");
+
   const inputRef = useRef<HTMLInputElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -245,7 +250,7 @@ export default function PassportPhotoMaker() {
       )
     ) {
       setMessage(
-        "Please select a JPG, PNG or WebP image."
+        t.messages.invalidFile
       );
 
       return;
@@ -344,7 +349,7 @@ export default function PassportPhotoMaker() {
         image.onerror = () => {
           reject(
             new Error(
-              "Unable to load this image. Please try JPG, PNG or WebP."
+              t.messages.somethingWentWrong
             )
           );
         };
@@ -921,7 +926,7 @@ export default function PassportPhotoMaker() {
   async function createPassportPhoto() {
     if (!imageUrl || !file) {
       setMessage(
-        "Please upload a photo first."
+        t.messages.noFileSelected
       );
 
       return;
@@ -945,7 +950,7 @@ export default function PassportPhotoMaker() {
 
       if (!subjectUrl) {
         throw new Error(
-          "Unable to prepare the photo."
+          t.messages.somethingWentWrong
         );
       }
 
@@ -1194,7 +1199,7 @@ export default function PassportPhotoMaker() {
       setMessage(
         error instanceof Error
           ? error.message
-          : "Something went wrong while creating the photo."
+          : t.messages.somethingWentWrong
       );
     } finally {
       setLoading(false);
@@ -1433,16 +1438,15 @@ export default function PassportPhotoMaker() {
         <div className="text-center">
 
           <p className="text-xs font-bold tracking-[0.28em] text-black/60">
-            IMAGE TOOL
+            {t.categories.imageTools}
           </p>
 
           <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-black sm:text-5xl">
-            Passport Size Photo Maker
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-black/70 sm:text-base">
-            Create passport-size photos with optional enhancement,
-            AI background removal, custom backgrounds and printable A4 sheets.
+            {toolText.description}
           </p>
 
         </div>
@@ -1496,11 +1500,15 @@ export default function PassportPhotoMaker() {
               <span className="mt-4 font-bold text-black">
                 {file
                   ? "Change Photo"
-                  : "Choose Photo"}
+                  : t.common.chooseFile}
               </span>
 
               <span className="mt-1 text-xs text-black/65">
                 JPG, PNG or WebP
+              </span>
+
+              <span className="mt-1 text-xs text-black/65">
+                {t.common.dragDrop}
               </span>
 
             </button>
@@ -2034,7 +2042,7 @@ export default function PassportPhotoMaker() {
                   : removingBackground
                    ? "✨ Removing Background..."
                   : loading
-                  ? "Creating..."
+                  ? t.common.processing
                   : "Create Passport Photo"}
 
               </button>
@@ -2044,7 +2052,7 @@ export default function PassportPhotoMaker() {
                 onClick={clearAll}
                 className="rounded-xl border border-black/10 bg-white px-5 py-3.5 text-sm font-bold text-black transition hover:bg-black/[0.03]"
               >
-                Clear All
+                {t.common.clear} & {t.common.reset}
               </button>
 
             </div>
@@ -2205,7 +2213,7 @@ export default function PassportPhotoMaker() {
 
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
 
-                <button
+<button
                   type="button"
                   onClick={
                     downloadSinglePhoto
@@ -2219,7 +2227,7 @@ export default function PassportPhotoMaker() {
                 >
 
                   <div className="text-sm font-bold">
-                     → Download Single Photo
+                     {t.common.download} Single Photo
                   </div>
 
                   <div className="mt-1 text-xs text-white/70">
@@ -2227,7 +2235,7 @@ export default function PassportPhotoMaker() {
                     "transparent"
                       ? "PNG"
                       : "JPG"}{" "}
-                     •{" "}
+                    •{" "}
                     {
                       selectedSize.label
                     }
@@ -2249,7 +2257,7 @@ export default function PassportPhotoMaker() {
                 >
 
                   <div className="text-sm font-bold">
-                     ▦ Download A4 Sheet
+                     {t.common.download} A4 Sheet
                   </div>
 
                   <div className="mt-1 text-xs text-black/60">

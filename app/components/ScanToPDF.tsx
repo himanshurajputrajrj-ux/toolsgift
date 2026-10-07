@@ -7,6 +7,8 @@ import {
   useRef,
   useState,
 } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type ScanImage = {
   id: string;
@@ -17,6 +19,8 @@ type ScanImage = {
 export default function ScanToPDF() {
   const inputRef = useRef<HTMLInputElement>(null);
   const cameraRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "scan-to-pdf");
 
   const [images, setImages] = useState<ScanImage[]>([]);
   const [processing, setProcessing] = useState(false);
@@ -63,9 +67,7 @@ export default function ScanToPDF() {
     );
 
     if (invalid) {
-      setError(
-        `"${invalid.name}" is not a valid image or is larger than 25MB.`
-      );
+      setError(t.messages.invalidFile);
       return;
     }
 
@@ -169,7 +171,7 @@ export default function ScanToPDF() {
 
   const scanToPDF = async () => {
     if (!images.length) {
-      setError("Please scan or upload at least one page.");
+      setError(t.messages.noFileSelected);
       return;
     }
 
@@ -264,7 +266,7 @@ export default function ScanToPDF() {
       setResultSize(blob.size);
     } catch (err) {
       console.error(err);
-      setError("Failed to create the scanned PDF.");
+      setError(t.messages.processingFailed);
     } finally {
       setProcessing(false);
     }
@@ -292,12 +294,11 @@ export default function ScanToPDF() {
           </div>
 
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Scan to PDF
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
-            Scan documents with your camera or upload images and
-            combine them into one PDF.
+            {toolText.description}
           </p>
         </div>
 
@@ -344,7 +345,7 @@ export default function ScanToPDF() {
               </div>
 
               <h2 className="font-semibold text-slate-800">
-                Upload Images
+                {t.common.upload} Images
               </h2>
 
               <p className="mt-1 text-xs text-slate-500">
@@ -368,7 +369,7 @@ export default function ScanToPDF() {
             }`}
           >
             <p className="text-sm font-medium text-slate-700">
-              Or drag & drop scanned images here
+              {t.common.dragDrop}
             </p>
 
             <p className="mt-1 text-xs text-slate-400">
@@ -394,7 +395,7 @@ export default function ScanToPDF() {
                 onClick={clearAll}
                 className="rounded-xl border border-red-200 bg-white px-4 py-2 text-sm font-semibold text-red-600 hover:bg-red-50"
               >
-                Clear All
+                {t.common.clear} {t.home.all}
               </button>
             )}
           </div>
@@ -547,7 +548,7 @@ export default function ScanToPDF() {
               disabled={!resultUrl}
               className="mt-4 w-full rounded-xl bg-emerald-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-40"
             >
-              Download Scanned PDF
+              {t.common.download} Scanned PDF
             </button>{(resultUrl) && (
   <ShareFileResult
     tool="scan-to-pdf"
@@ -564,7 +565,7 @@ export default function ScanToPDF() {
             onClick={clearAll}
             className="mt-4 w-full rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
           >
-            Clear & Reset
+            {t.common.clear} & {t.common.reset}
           </button>
         </div>
       </div>

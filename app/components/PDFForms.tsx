@@ -6,6 +6,8 @@ import {
   DragEvent,
   useState,
 } from "react";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 type FormField = {
   name: string;
@@ -14,6 +16,9 @@ type FormField = {
 };
 
 export default function PDFForms() {
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "pdf-forms");
+
   const [file, setFile] = useState<File | null>(null);
   const [pdfBytes, setPdfBytes] = useState<ArrayBuffer | null>(null);
   const [fields, setFields] = useState<FormField[]>([]);
@@ -49,12 +54,12 @@ export default function PDFForms() {
       selectedFile.type !== "application/pdf" &&
       !selectedFile.name.toLowerCase().endsWith(".pdf")
     ) {
-      setError("Please select a valid PDF file.");
+      setError(t.messages.invalidFile);
       return;
     }
 
     if (selectedFile.size > MAX_SIZE) {
-      setError("PDF must be 50MB or less.");
+      setError(t.messages.fileTooLarge);
       return;
     }
 
@@ -129,9 +134,7 @@ export default function PDFForms() {
       setFields(detectedFields);
     } catch (err) {
       console.error(err);
-      setError(
-        "Unable to read this PDF form. The PDF may be corrupted or unsupported."
-      );
+      setError(t.messages.somethingWentWrong);
     }
   };
 
@@ -180,7 +183,7 @@ export default function PDFForms() {
 
   const fillPDF = async () => {
     if (!pdfBytes) {
-      setError("Please upload a PDF form first.");
+      setError(t.messages.noFileSelected);
       return;
     }
 
@@ -272,7 +275,7 @@ export default function PDFForms() {
       setResultUrl(url);
     } catch (err) {
       console.error(err);
-      setError("Failed to create the filled PDF.");
+      setError(t.messages.processingFailed);
     } finally {
       setProcessing(false);
     }
@@ -301,12 +304,11 @@ export default function PDFForms() {
           </div>
 
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            PDF Forms
+            {toolText.title}
           </h1>
 
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
-            Fill existing interactive PDF form fields and
-            download the completed document.
+            {toolText.description}
           </p>
         </div>
 
@@ -347,11 +349,11 @@ export default function PDFForms() {
             <p className="font-semibold text-slate-800">
               {file
                 ? "Replace PDF Form"
-                : "Upload PDF Form"}
+                : `${t.common.upload} PDF Form`}
             </p>
 
             <p className="mt-1 text-xs text-slate-500">
-              Drag & drop or click to browse • Max 50MB
+              {t.common.dragDrop} • Max 50MB
             </p>
           </div>
 
@@ -376,7 +378,7 @@ export default function PDFForms() {
                   onClick={reset}
                   className="rounded-lg border border-red-200 bg-white px-3 py-2 text-xs font-semibold text-red-600 hover:bg-red-50"
                 >
-                  Remove PDF
+                  {t.common.remove} PDF
                 </button>
               </div>
             </div>
@@ -548,7 +550,7 @@ export default function PDFForms() {
                 : "cursor-not-allowed bg-slate-200 text-slate-400"
             }`}
           >
-            Download Filled PDF
+            {t.common.download} Filled PDF
           </a>
 
           {/* Reset */}
@@ -557,7 +559,7 @@ export default function PDFForms() {
             onClick={reset}
             className="mt-3 w-full rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
           >
-            Clear & Reset
+            {t.common.clear} & {t.common.reset}
           </button>{(resultUrl) && (
   <ShareFileResult
     tool="pdf-forms"

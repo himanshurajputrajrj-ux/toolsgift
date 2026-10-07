@@ -1,6 +1,8 @@
 ﻿"use client";
 import { ChangeEvent, DragEvent, useEffect, useRef, useState } from "react";
 import ShareResult from "./ShareResult";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 type FaviconSize = {
   label: string;
   size: number;
@@ -20,6 +22,7 @@ type GeneratedIcon = {
 };
 export default function FaviconGenerator() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
   const [sourceUrl, setSourceUrl] = useState("");
   const [sourceName, setSourceName] = useState("");
   const [icons, setIcons] = useState<GeneratedIcon[]>([]);
@@ -53,7 +56,7 @@ export default function FaviconGenerator() {
       return;
     }
     if (file.size > 10 * 1024 * 1024) {
-      setError("Image size must be 10MB or smaller.");
+      setError(t.messages.fileTooLarge);
       return;
     }
     setError("");
@@ -104,13 +107,13 @@ export default function FaviconGenerator() {
         setLoading(false);
       };
       image.onerror = () => {
-        setError("The selected image could not be processed.");
+        setError(t.messages.processingFailed);
         setLoading(false);
       };
       image.src = reader.result as string;
     };
     reader.onerror = () => {
-      setError("The selected image could not be read.");
+      setError(t.messages.somethingWentWrong);
       setLoading(false);
     };
     reader.readAsDataURL(file);
@@ -168,10 +171,10 @@ export default function FaviconGenerator() {
             ðŸ–¼ï¸
           </div>
           <h2 className="mt-4 text-xl font-bold text-slate-900">
-            Upload an image
+            {t.common.upload}
           </h2>
           <p className="mt-2 text-sm text-slate-600">
-            Drag & drop an image here, or click to browse
+            {t.common.dragDrop}
           </p>
           <p className="mt-2 text-xs text-slate-500">
             PNG, JPG, WebP or SVG • Maximum 10MB
@@ -228,7 +231,7 @@ export default function FaviconGenerator() {
               onClick={downloadAll}
               className="rounded-xl bg-blue-600 px-5 py-3 font-bold text-white transition hover:bg-blue-700"
             >
-              Download All
+              {t.common.download} {t.home.all}
             </button>
           </div>
           <ShareResult key={icons.map((icon) => icon.url).join("|")} tool="favicon-generator" resultTitle="Generated Favicons" filename="toolsgift-favicons.zip" images={icons.map((icon) => ({ url: icon.url, name: `favicon-${icon.size}x${icon.size}.png` }))} />
@@ -254,7 +257,7 @@ export default function FaviconGenerator() {
                     onClick={() => downloadIcon(icon)}
                     className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-bold text-slate-700 transition hover:bg-slate-100"
                   >
-                    Download
+                    {t.common.download}
                   </button>
                 </div>
               </div>
@@ -265,7 +268,7 @@ export default function FaviconGenerator() {
             onClick={clearIcons}
             className="mt-6 w-full rounded-xl border border-slate-300 bg-white px-5 py-3 font-bold text-slate-700 transition hover:bg-slate-100"
           >
-            Clear & Reset
+            {t.common.clear} & {t.common.reset}
           </button>
         </section>
       )}
@@ -289,42 +292,42 @@ export default function FaviconGenerator() {
         </div>
       </section>
       <section className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
-        <h2 className="text-2xl font-bold text-slate-900">Related Tools</h2>
+        <h2 className="text-2xl font-bold text-slate-900">{t.related.title}</h2>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <a href="/tools/converter" className="rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/40">
-            <h3 className="font-bold text-slate-900">Image Converter</h3>
+            <h3 className="font-bold text-slate-900">{getToolText(locale, "converter").title}</h3>
             <p className="mt-2 text-sm leading-6 text-slate-600">
               Convert images between popular formats quickly in your browser.
             </p>
           </a>
           <a href="/tools/resizer" className="rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/40">
-            <h3 className="font-bold text-slate-900">Image Resizer</h3>
+            <h3 className="font-bold text-slate-900">{getToolText(locale, "resizer").title}</h3>
             <p className="mt-2 text-sm leading-6 text-slate-600">
               Resize images to the dimensions you need for websites and apps.
             </p>
           </a>
           <a href="/tools/compressor" className="rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/40">
-            <h3 className="font-bold text-slate-900">Image Compressor</h3>
+            <h3 className="font-bold text-slate-900">{getToolText(locale, "compressor").title}</h3>
             <p className="mt-2 text-sm leading-6 text-slate-600">
               Reduce image file size while keeping your images useful for web
               and everyday use.
             </p>
           </a>
           <a href="/tools/image-to-text" className="rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/40">
-            <h3 className="font-bold text-slate-900">Image to Text</h3>
+            <h3 className="font-bold text-slate-900">{getToolText(locale, "image-to-text").title}</h3>
             <p className="mt-2 text-sm leading-6 text-slate-600">
               Extract readable text from images with browser-based OCR.
             </p>
           </a>
           <a href="/tools/compress-image-to-kb" className="rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/40">
-            <h3 className="font-bold text-slate-900">Compress Image to KB</h3>
+            <h3 className="font-bold text-slate-900">{getToolText(locale, "compress-image-to-kb").title}</h3>
             <p className="mt-2 text-sm leading-6 text-slate-600">
               Compress images to a target file size such as 20KB, 50KB or
               100KB.
             </p>
           </a>
           <a href="/tools/heic-to-jpg" className="rounded-2xl border border-slate-200 p-5 transition hover:border-blue-300 hover:bg-blue-50/40">
-            <h3 className="font-bold text-slate-900">HEIC to JPG</h3>
+            <h3 className="font-bold text-slate-900">{getToolText(locale, "heic-to-jpg").title}</h3>
             <p className="mt-2 text-sm leading-6 text-slate-600">
               Convert HEIC and HEIF images to JPG directly in your browser.
             </p>

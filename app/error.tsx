@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect } from "react";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 export default function ErrorPage({
   error,
@@ -9,6 +10,8 @@ export default function ErrorPage({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const { t } = useLanguage();
+
   useEffect(() => {
     console.error("ToolsGift page error:", error);
   }, [error]);
@@ -21,11 +24,10 @@ export default function ErrorPage({
             !
           </div>
           <h1 className="mt-5 text-2xl font-bold text-gray-900 dark:text-white">
-            Something went wrong
+            {t.common.error}
           </h1>
           <p className="mt-3 leading-7 text-gray-600 dark:text-gray-400">
-            An unexpected error occurred while loading this page. Please try
-            again.
+            {t.messages.somethingWentWrong}
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <button
@@ -33,13 +35,13 @@ export default function ErrorPage({
               onClick={reset}
               className="inline-flex rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-700"
             >
-              Try Again
+              {t.common.tryAgain}
             </button>
             <Link
               href="/"
               className="inline-flex rounded-xl border border-gray-300 bg-white px-5 py-3 font-semibold text-gray-700 transition hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
             >
-              Go to Home
+              {t.nav.home}
             </Link>
           </div>
         </div>

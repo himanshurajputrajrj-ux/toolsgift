@@ -1,6 +1,8 @@
 "use client";
 import { useRef, useState } from "react";
 import ShareResult from "./ShareResult";
+import { getToolText } from "@/app/i18n/translations";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 type ConvertedFile = {
   blob: Blob;
   name: string;
@@ -8,6 +10,8 @@ type ConvertedFile = {
 };
 export default function HeicToJpg() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { locale, t } = useLanguage();
+  const toolText = getToolText(locale, "heic-to-jpg");
   const [file, setFile] = useState<File | null>(null);
   const [result, setResult] = useState<ConvertedFile | null>(null);
   const [loading, setLoading] = useState(false);
@@ -25,11 +29,11 @@ export default function HeicToJpg() {
       selectedFile.type === "image/heif" ||
       /\.(heic|heif)$/i.test(selectedFile.name);
     if (!isHeic) {
-      setError("Please select a HEIC or HEIF image.");
+      setError(t.messages.unsupportedFormat);
       return;
     }
     if (selectedFile.size > 25 * 1024 * 1024) {
-      setError("Maximum file size is 25 MB.");
+      setError(t.messages.fileTooLarge);
       return;
     }
     setFile(selectedFile);
@@ -52,7 +56,7 @@ export default function HeicToJpg() {
   };
   const convertToJpg = async () => {
     if (!file) {
-      setError("Please upload a HEIC image first.");
+      setError(t.messages.noFileSelected);
       return;
     }
     setError("");
@@ -88,7 +92,7 @@ export default function HeicToJpg() {
     } catch (conversionError) {
       console.error(conversionError);
       setError(
-        "HEIC conversion failed. Please try another HEIC image."
+        t.messages.processingFailed
       );
     } finally {
       setLoading(false);
@@ -127,11 +131,10 @@ export default function HeicToJpg() {
             IMAGE CONVERTER
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
-            HEIC to JPG Converter
+            {toolText.title}
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 md:text-lg">
-            Convert HEIC and HEIF photos to JPG online with
-            fast browser-based processing.
+            {toolText.description}
           </p>
         </section>
         <section className="rounded-3xl bg-white p-5 shadow-sm md:p-8">
@@ -149,7 +152,7 @@ export default function HeicToJpg() {
               📷
             </div>
             <h2 className="text-2xl font-semibold text-slate-900">
-              {file ? "HEIC Image Selected" : "Upload a HEIC image"}
+              {file ? "HEIC Image Selected" : t.common.upload}
             </h2>
             <p className="mt-2 text-sm text-slate-500">
               HEIC or HEIF format
@@ -168,7 +171,7 @@ export default function HeicToJpg() {
               {file ? "Choose Another Image" : "Choose HEIC File"}
             </button>
             <p className="mt-4 text-sm text-slate-400">
-              or drag and drop your HEIC image here
+              {t.common.dragDrop}
             </p>
             <input
               ref={inputRef}
@@ -203,7 +206,7 @@ export default function HeicToJpg() {
                 onClick={removeFile}
                 className="shrink-0 rounded-xl border border-red-200 bg-red-50 px-4 py-2 text-sm font-semibold text-red-600 hover:bg-red-100"
               >
-                Remove
+                {t.common.remove}
               </button>
             </div>
             <button
@@ -215,12 +218,12 @@ export default function HeicToJpg() {
               {loading ? (
                 <>
                   <span className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                  Converting...
+                  {t.common.processing}
                 </>
               ) : (
                 <>
                   <span>⚡</span>
-                  Convert to JPG
+                  {t.common.convert} → JPG
                 </>
               )}
             </button>
@@ -277,7 +280,7 @@ export default function HeicToJpg() {
                 className="flex w-full items-center justify-center gap-3 rounded-xl bg-green-600 px-6 py-4 font-bold text-white transition hover:bg-green-700"
               >
                 <span>⬇</span>
-                Download JPG
+                {t.common.download} JPG
               </button>
 
               <ShareResult key={result.preview} tool="heic-to-jpg" resultTitle="Converted JPG Image" imageUrl={result.preview} filename={result.name} />
@@ -287,7 +290,7 @@ export default function HeicToJpg() {
                 onClick={removeFile}
                 className="flex w-full items-center justify-center gap-3 rounded-xl border border-gray-300 bg-white px-6 py-4 font-bold text-gray-700 transition hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
               >
-                Clear & Reset
+                {t.common.clear} & {t.common.reset}
               </button>
             </div>
           </section>

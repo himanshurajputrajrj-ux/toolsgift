@@ -1,5 +1,6 @@
 ﻿"use client";
 import { useState } from "react";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 type ShareState = {
   shareUrl: string;
   expiresAt: string;
@@ -61,6 +62,7 @@ export default function CharacterCounter() {
   const [shareLoading, setShareLoading] = useState(false);
   const [copyMessage, setCopyMessage] = useState("");
   const [shareMessage, setShareMessage] = useState("");
+  const { t } = useLanguage();
   const characters = text.length;
   const charactersWithoutSpaces = text.replace(/\s/g, "").length;
   const words = countWords(text);
@@ -69,11 +71,11 @@ export default function CharacterCounter() {
   const copyResult = async () => {
     if (!text) return;
     const copied = await copyText(text);
-    setCopyMessage(
-      copied
-        ? "Text copied successfully."
-        : "Copy failed. Please copy the text manually."
-    );
+setCopyMessage(
+            copied
+              ? t.common.copied
+              : t.messages.somethingWentWrong
+          );
     if (copied) {
       setTimeout(() => setCopyMessage(""), 2000);
     }
@@ -114,7 +116,7 @@ export default function CharacterCounter() {
       });
       const data = await response.json();
       if (!response.ok || !data.shareUrl) {
-        throw new Error(data.error || "Failed to create share link.");
+        throw new Error(data.error || t.messages.processingFailed);
       }
       const newShareState: ShareState = {
         shareUrl: data.shareUrl,
@@ -124,7 +126,7 @@ export default function CharacterCounter() {
       return newShareState;
     } catch (error) {
       console.error("Share link creation failed:", error);
-      setShareMessage("Failed to generate share link. Please try again.");
+      setShareMessage(t.messages.processingFailed);
       return null;
     } finally {
       setShareLoading(false);
@@ -133,7 +135,7 @@ export default function CharacterCounter() {
   const generateLink = async () => {
     if (!text) return;
     const share = await createShareLink();
-    if (share) {
+if (share) {
       setShareMessage("Share link generated successfully.");
       setTimeout(() => setShareMessage(""), 2500);
     }
@@ -238,41 +240,41 @@ export default function CharacterCounter() {
           ))}
         </div>
         <div className="mt-6 flex flex-wrap gap-3">
-          <button
+<button
             type="button"
             onClick={copyResult}
             disabled={!text}
             className="rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Copy Text
+            {t.common.copy} Text
           </button>
-          <button
+<button
             type="button"
             onClick={downloadText}
             disabled={!text}
             className="rounded-xl bg-green-600 px-5 py-3 font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Download Text
+            {t.common.download} Text
           </button>
-          <button
+<button
             type="button"
             onClick={clearText}
             disabled={!text}
             className="rounded-xl border border-gray-300 bg-white px-5 py-3 font-semibold text-gray-700 transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
           >
-            Clear
+            {t.common.clear}
           </button>
         </div>
         <div className="mt-3 flex flex-wrap gap-3">
-          <button
+<button
             type="button"
             onClick={generateLink}
             disabled={!text || shareLoading}
             className="rounded-xl border border-blue-600 bg-white px-5 py-3 font-semibold text-blue-600 transition hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-gray-900 dark:text-blue-400 dark:hover:bg-gray-800"
           >
-            {shareLoading ? "Generating..." : "Generate Link"}
+            {shareLoading ? t.common.processing : "Generate Link"}
           </button>
-          <button
+<button
             type="button"
             onClick={shareResult}
             disabled={!text || shareLoading}
@@ -297,10 +299,10 @@ export default function CharacterCounter() {
               <button
                 type="button"
                 onClick={copyShareLink}
-                className="rounded-xl bg-gray-800 px-5 py-3 font-semibold text-white transition hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600"
-              >
-                Copy Link
-              </button>
+className="rounded-xl bg-gray-800 px-5 py-3 font-semibold text-white transition hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600"
+                    >
+                      {t.common.copy} Link
+                    </button>
             </div>
             <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
               This link expires one month after it is generated.

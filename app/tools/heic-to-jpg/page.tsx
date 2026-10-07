@@ -47,7 +47,7 @@ const structuredData = {
 export default function HeicToJpgPage() {
   return (
     <main className="min-h-screen bg-slate-50">
-      <Breadcrumbs toolName="HEIC to JPG Converter" />
+      <Breadcrumbs toolSlug="heic-to-jpg" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
