@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant darkmode (&:where(.dark, .dark *));
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -53,6 +54,25 @@ html.dark .bg-gray-300 {
 }
 /* DARK MODE - TEXT */
 html.dark .text-black,
+html.dark .text-black\/5,
+html.dark .text-black\/10,
+html.dark .text-black\/15,
+html.dark .text-black\/20,
+html.dark .text-black\/25,
+html.dark .text-black\/30,
+html.dark .text-black\/35,
+html.dark .text-black\/40,
+html.dark .text-black\/45,
+html.dark .text-black\/50,
+html.dark .text-black\/55,
+html.dark .text-black\/60,
+html.dark .text-black\/65,
+html.dark .text-black\/70,
+html.dark .text-black\/75,
+html.dark .text-black\/80,
+html.dark .text-black\/85,
+html.dark .text-black\/90,
+html.dark .text-black\/95,
 html.dark .text-slate-900,
 html.dark .text-slate-800,
 html.dark .text-gray-900,
@@ -71,6 +91,12 @@ html.dark .text-gray-500,
 html.dark .text-slate-400,
 html.dark .text-gray-400 {
   color: #94a3b8 !important;
+}
+html.dark .text-slate-100,
+html.dark .text-gray-100,
+html.dark .text-slate-200,
+html.dark .text-gray-200 {
+  color: #e2e8f0 !important;
 }
 /* DARK MODE - CUSTOM LIGHT SURFACES */
 html.dark .bg-\[\#f7f7f5\],
