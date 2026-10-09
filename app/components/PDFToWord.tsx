@@ -127,159 +127,43 @@ export default function PDFToWord() {
 
   const convertToWord = async () => {
     if (!file) return;
-
     setProcessing(true);
     setError("");
     clearResult();
-
     try {
-      const { Document, Packer, Paragraph, TextRun } = await import("docx");
-
-      const pdfjs = await import("pdfjs-dist");
-
-      pdfjs.GlobalWorkerOptions.workerSrc = await loadPdfWorkerSrc();
-
-      const arrayBuffer = await file.arrayBuffer();
-
-      const pdf = await pdfjs.getDocument({
-        data: arrayBuffer,
-      }).promise;
-
-      const children: InstanceType<typeof Paragraph>[] = [];
-
-      for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
-        const page = await pdf.getPage(pageNumber);
-
-        const textContent = await page.getTextContent();
-
-        const items = textContent.items
-          .map((item) => {
-            const textItem = item as PDFTextItem;
-
-            return {
-              text: textItem.str || "",
-            };
-          })
-          .filter((item) => item.text.trim());
-
-        let currentLine = "";
-        let lastY: number | null = null;
-
-        for (const item of items) {
-          const text = item.text;
-
-          currentLine += currentLine ? ` ${text}` : text;
-
-          const maybeItem = textContent.items.find(
-            (originalItem) =>
-              "str" in originalItem && originalItem.str === text
-          );
-
-          if (
-            maybeItem &&
-            "transform" in maybeItem &&
-            Array.isArray(maybeItem.transform)
-          ) {
-            const y = maybeItem.transform[5];
-
-            if (lastY !== null && Math.abs(y - lastY) > 8) {
-              children.push(
-                new Paragraph({
-                  children: [
-                    new TextRun({
-                      text: currentLine.trim(),
-                      size: 22,
-                    }),
-                  ],
-                  spacing: {
-                    after: 120,
-                  },
-                })
-              );
-
-              currentLine = text;
-            }
-
-            lastY = y;
-          }
-        }
-
-        if (currentLine.trim()) {
-          children.push(
-            new Paragraph({
-              children: [
-                new TextRun({
-                  text: currentLine.trim(),
-                  size: 22,
-                }),
-              ],
-              spacing: {
-                after: 120,
-              },
-            })
-          );
-        }
-
-        if (pageNumber < pdf.numPages) {
-          children.push(
-            new Paragraph({
-              children: [
-                new TextRun({
-                  text: "",
-                }),
-              ],
-              pageBreakBefore: true,
-            })
-          );
-        }
-      }
-
-      if (children.length === 0) {
-        children.push(
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: "No selectable text was found in this PDF.",
-                size: 22,
-              }),
-            ],
-          })
-        );
-      }
-
-      const doc = new Document({
-        sections: [
-          {
-            properties: {},
-            children,
-          },
-        ],
+      const formData = new FormData();
+      formData.append("file", file);
+      const response = await fetch("/api/pdf-to-word-convert", {
+        method: "POST",
+        body: formData,
       });
-
-      const blob = await Packer.toBlob(doc);
-
+      if (!response.ok) {
+        const details = await response.json().catch(() => null);
+        throw new Error(details?.error || t.messages.processingFailed);
+      }
+      const blob = await response.blob();
+      if (!blob.size) throw new Error(t.messages.processingFailed);
       setResultBlob(blob);
       setResultUrl(URL.createObjectURL(blob));
     } catch (err) {
       console.error(err);
-
-      setError(t.messages.processingFailed);
+      setError(
+        err instanceof Error ? err.message : t.messages.processingFailed
+      );
     } finally {
       setProcessing(false);
     }
   };
-
   const downloadWord = () => {
-    if (!resultBlob || !resultUrl) return;
-
+    if (!resultBlob) return;
+    const downloadUrl = URL.createObjectURL(resultBlob);
     const link = document.createElement("a");
-
-    link.href = resultUrl;
+    link.href = downloadUrl;
     link.download = `${file?.name.replace(/\.pdf$/i, "") || "document"}.docx`;
-
     document.body.appendChild(link);
     link.click();
     link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
   };
 
   const formatSize = (bytes: number) => {
@@ -336,7 +220,7 @@ export default function PDFToWord() {
             />
 
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-2xl">
-              📄
+              ðŸ“„
             </div>
 
             <h3 className="mt-4 font-semibold text-slate-900">
@@ -362,7 +246,7 @@ export default function PDFToWord() {
 
                   <p className="mt-1 text-sm text-slate-500">
                     {formatSize(file.size)}
-                    {pageCount > 0 && ` • ${pageCount} pages`}
+                    {pageCount > 0 && ` â€¢ ${pageCount} pages`}
                   </p>
                 </div>
 
@@ -392,7 +276,7 @@ export default function PDFToWord() {
             disabled={!file || processing}
             className="mt-6 w-full rounded-xl bg-blue-600 px-5 py-3.5 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
           >
-            {processing ? t.common.processing : `${t.common.convert} → Word`}
+            {processing ? t.common.processing : `${t.common.convert} â†’ Word`}
           </button>
         </div>
 
@@ -411,7 +295,7 @@ export default function PDFToWord() {
               <div className="flex min-h-[240px] items-center justify-center text-center">
                 <div>
                   <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 text-3xl">
-                    📝
+                    ðŸ“
                   </div>
 
                   <p className="mt-4 font-medium text-slate-600">
@@ -476,3 +360,4 @@ export default function PDFToWord() {
     </section>
   );
 }
+

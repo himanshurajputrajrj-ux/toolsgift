@@ -1,0 +1,8 @@
+﻿{
+  "functions": {
+    "api/pdf-to-word-convert.py": {
+      "includeFiles": "scripts/pdf_to_word.py",
+      "maxDuration": 60
+    }
+  }
+}
