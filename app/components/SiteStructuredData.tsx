@@ -6,23 +6,37 @@ export default function SiteStructuredData(): ReactNode {
     "@graph": [
       {
         "@type": "Organization",
-        name: "ToolsGift",
-        url: "https://www.toolsgift.com",
-      },
-      {
-        "@type": "WebSite",
+        "@id": "https://www.toolsgift.com/#organization",
         name: "ToolsGift",
         alternateName: "Tools Gift",
         url: "https://www.toolsgift.com",
+        description:
+          "ToolsGift is a free collection of online tools for images, PDFs, text and everyday files that run in the browser.",
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.toolsgift.com/#website",
+        name: "ToolsGift",
+        alternateName: "Tools Gift",
+        url: "https://www.toolsgift.com",
+        inLanguage: "en",
+        publisher: {
+          "@id": "https://www.toolsgift.com/#organization",
+        },
       },
       {
         "@type": "WebPage",
-        name: "ToolsGift | Fast & Simple Image & PDF Tools",
+        "@id": "https://www.toolsgift.com/#webpage",
+        name: "ToolsGift | Free Online Tools for Images, PDFs & Files",
         url: "https://www.toolsgift.com",
+        description:
+          "ToolsGift is a free collection of online tools for images, PDFs, text and everyday files — compress, convert, resize, merge, split and edit files in your browser.",
+        inLanguage: "en",
         isPartOf: {
-          "@type": "WebSite",
-          name: "ToolsGift",
-          url: "https://www.toolsgift.com",
+          "@id": "https://www.toolsgift.com/#website",
+        },
+        about: {
+          "@id": "https://www.toolsgift.com/#organization",
         },
       },
     ],

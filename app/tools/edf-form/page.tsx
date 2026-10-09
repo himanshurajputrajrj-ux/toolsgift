@@ -1,0 +1,1 @@
+            `-dPDFSETTINGS=${preset}`, "-dDetectDuplicateImages=true",

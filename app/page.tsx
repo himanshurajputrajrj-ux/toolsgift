@@ -42,7 +42,11 @@ type IconType =
   | "passport"
   | "batch"
   | "qr"
-  | "video";
+  | "video"
+  | "sms"
+  | "email"
+  | "audio"
+  | "shipping";
 
 const tools: Array<{
   icon: IconType;
@@ -81,6 +85,31 @@ const tools: Array<{
     description:
       "Convert length, weight and temperature units instantly with an easy online converter.",
     link: "/tools/unit-converter",
+    category: "Utility",
+  },
+  // Hidden from public UI: Bulk SMS / Bulk Email (kept for later re-enabling)
+  // {
+  //   icon: "sms",
+  //   title: "Bulk SMS",
+  //   description:
+  //     "Personalize one SMS message for every contact, validate phone numbers and export the list.",
+  //   link: "/tools/bulk-sms",
+  //   category: "Utility",
+  // },
+  // {
+  //   icon: "email",
+  //   title: "Bulk Email",
+  //   description:
+  //     "Personalize one email for every contact, validate email addresses and export the list.",
+  //   link: "/tools/bulk-email",
+  //   category: "Utility",
+  // },
+  {
+    icon: "audio",
+    title: "Audio to Text",
+    description:
+      "Turn audio recordings into editable text with private, in-browser transcription.",
+    link: "/tools/audio-to-text",
     category: "Utility",
   },
   {
@@ -452,6 +481,14 @@ const tools: Array<{
     category: "PDF",
   },
   {
+    icon: "shipping",
+    title: "Shipping Label & Invoice PDF",
+    description:
+      "Fit shipping labels and invoices onto exact 4x6, 100x150 mm or custom print pages.",
+    link: "/tools/shipping-label-pdf",
+    category: "PDF",
+  },
+  {
     icon: "forms",
     title: "PDF Forms",
     description:
@@ -611,13 +648,29 @@ export default function Home() {
         <div className="pointer-events-none absolute -right-32 top-10 h-96 w-96 rounded-full bg-amber-100/40 blur-3xl" />
 
         <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-20 text-center sm:px-8 md:pb-20 md:pt-28">
-          <h1 className="mx-auto max-w-4xl text-5xl font-extrabold leading-[1.02] tracking-[-0.04em] sm:text-6xl md:text-7xl text-[#202124] dark:text-white">
-            {t.home.heroTitle}
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-black/45 dark:text-slate-400">
+            {t.home.heroTagline}
+          </p>
+
+          <h1 className="mx-auto mt-3 max-w-4xl text-5xl font-extrabold leading-[1.02] tracking-[-0.04em] sm:text-6xl md:text-7xl text-[#202124] dark:text-white">
+            {t.home.heroH1}
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-black/60 dark:text-slate-300 sm:text-lg">
-            {t.home.heroDescription}
+            {t.home.heroSubtext}
           </p>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm">
+            <a href="#tools" className="rounded-full bg-[#202124] px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-[#c9a227] hover:text-[#202124]">
+              {t.home.browseAllTools}
+            </a>
+            <a href="/image-tools" className="rounded-full border border-black/10 bg-white px-5 py-2 font-semibold text-[#202124] transition hover:border-[#c9a227]/50 hover:bg-[#fff8e7] dark:border-white/10 dark:bg-[#1e293b] dark:text-white dark:hover:bg-[#334155]">
+              {t.home.imageToolsBtn}
+            </a>
+            <a href="/pdf-tools" className="rounded-full border border-black/10 bg-white px-5 py-2 font-semibold text-[#202124] transition hover:border-[#c9a227]/50 hover:bg-[#fff8e7] dark:border-white/10 dark:bg-[#1e293b] dark:text-white dark:hover:bg-[#334155]">
+              {t.home.pdfToolsBtn}
+            </a>
+          </div>
 
           <div className="mx-auto mt-9 max-w-2xl">
             <label className="sr-only" htmlFor="tool-search">
@@ -660,13 +713,13 @@ export default function Home() {
           <div className="flex flex-col gap-5 border-b border-black/[0.08] dark:border-white/10 pb-7 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.22em] text-black/45 dark:text-slate-400">
-                {t.home.toolsLabel}
+                {t.home.sectionTagline}
               </p>
               <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl text-[#202124] dark:text-white">
-                {t.home.toolsTitle}
+                {t.home.sectionTitle}
               </h2>
               <p className="mt-2 max-w-xl text-sm leading-6 text-black/55 sm:text-base dark:text-slate-300">
-                {t.home.toolsDescription}
+                {t.home.sectionDescription}
               </p>
             </div>
 
@@ -762,7 +815,7 @@ export default function Home() {
           </p>
 
           <h2 className="mx-auto mt-3 max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl text-[#202124] dark:text-white">
-            {t.home.productTitle}
+            {t.home.productStatementH2}
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-black/55 sm:text-base dark:text-slate-300">
@@ -780,6 +833,18 @@ function getIconColor(tool: {
   category: string;
 }): IconColor {
   const title = tool.title.toLowerCase();
+
+  if (title.includes("sms")) {
+    return "orange";
+  }
+
+  if (title.includes("email")) {
+    return "blue";
+  }
+
+  if (title.includes("audio") || title.includes("transcri")) {
+    return "purple";
+  }
 
   if (
     title.includes("compress") ||
@@ -1192,6 +1257,39 @@ function IconShape({ type }: { type: IconType }) {
           <rect x="14" y="4" width="6" height="6" />
           <rect x="4" y="14" width="6" height="6" />
           <path d="M14 14h2v2h-2zM18 14h2M18 18h2M14 18v2" />
+        </svg>
+      );
+
+    case "sms":
+      return (
+        <svg {...common}>
+          <path d="M4 5h16v11H9l-5 4V5z" />
+          <path d="M8 9h8M8 12.5h5" />
+        </svg>
+      );
+
+    case "email":
+      return (
+        <svg {...common}>
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="m3.5 7 8.5 6 8.5-6" />
+        </svg>
+      );
+
+    case "audio":
+      return (
+        <svg {...common}>
+          <rect x="9" y="3" width="6" height="11" rx="3" />
+          <path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6" />
+        </svg>
+      );
+
+    case "shipping":
+      return (
+        <svg {...common}>
+          <rect x="4" y="3" width="16" height="18" rx="2" />
+          <rect x="7" y="6" width="6" height="4" rx="1" />
+          <path d="M7 13h10M7 16h7M16 6.5v3" />
         </svg>
       );
 

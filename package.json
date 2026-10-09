@@ -9,8 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@huggingface/transformers": "^4.3.1",
     "@imgly/background-removal": "^1.7.0",
     "@vercel/blob": "^2.8.0",
+    "@wasm-zoo/ghostscript": "^0.7.2",
     "docx": "^9.7.2",
     "docx-preview": "^0.4.1",
     "exifr": "^7.1.3",

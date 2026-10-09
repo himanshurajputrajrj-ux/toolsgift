@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { LanguageProvider } from "@/app/providers/LanguageProvider";
+import { AuthProvider } from "@/app/providers/AuthProvider";
 import CookieConsent from "@/app/components/CookieConsent";
 import ConsentGate from "@/app/components/ConsentGate";
 
@@ -20,17 +21,25 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.toolsgift.com"),
 
+  applicationName: "ToolsGift",
+
   title: {
-    default: "ToolsGift | Fast & Simple Image & PDF Tools",
+    default: "ToolsGift | Free Online Tools for Images, PDFs & Files",
     template: "%s | ToolsGift",
   },
 
   description:
-    "Fast and simple online image and PDF tools to compress, convert, resize, edit, merge, split and manage your files.",
+    "ToolsGift is a free collection of online tools for images, PDFs, text and everyday files — compress, convert, resize, merge, split and edit files in your browser.",
 
   keywords: [
-    "image tools",
-    "PDF tools",
+    "ToolsGift",
+    "free online tools",
+    "online tools",
+    "useful online tools",
+    "image tools online",
+    "PDF tools online",
+    "file converter online",
+    "document tools online",
     "image compressor",
     "image converter",
     "image resizer",
@@ -58,25 +67,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "ToolsGift",
-    title: "ToolsGift | Fast & Simple Image & PDF Tools",
+    title: "ToolsGift | Free Online Tools for Images, PDFs & Files",
     description:
-      "Fast and simple online image and PDF tools for converting, editing, compressing and managing files.",
+      "A free collection of online image, PDF and file tools for compressing, converting, resizing, merging and editing files in your browser.",
     url: "https://www.toolsgift.com",
     images: [
       {
         url: "/toolsgift-og.jpg",
         width: 1200,
         height: 628,
-        alt: "ToolsGift | Fast & Simple Image & PDF Tools",
+        alt: "ToolsGift | Free Online Tools for Images, PDFs & Files",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "ToolsGift | Fast & Simple Image & PDF Tools",
+    title: "ToolsGift | Free Online Tools for Images, PDFs & Files",
     description:
-      "Fast and simple online image and PDF tools for everyday file processing.",
+      "A free collection of online image, PDF and file tools for everyday file processing.",
     images: ["/toolsgift-og.jpg"],
   },
 
@@ -103,21 +112,23 @@ export default function RootLayout({
           }}
         />
         <LanguageProvider>
-          <Header />
+          <AuthProvider>
+            <Header />
 
-          <main className="min-h-[calc(100vh-80px)]">
-            {children}
-          </main>
+            <main className="min-h-[calc(100vh-80px)]">
+              {children}
+            </main>
 
-          <Footer />
-          <CookieConsent />
-          <ConsentGate type="advertising">
-            <script
-              async
-              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2458517337983485"
-              crossOrigin="anonymous"
-            ></script>
-          </ConsentGate>
+            <Footer />
+            <CookieConsent />
+            <ConsentGate type="advertising">
+              <script
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2458517337983485"
+                crossOrigin="anonymous"
+              ></script>
+            </ConsentGate>
+          </AuthProvider>
         </LanguageProvider>
       </body>
     </html>

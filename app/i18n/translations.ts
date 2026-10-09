@@ -2,6 +2,95 @@ const rawTranslations = {
   en: {
     languageName: "English",
 
+    auth: {
+      signIn: "Sign in",
+      signUp: "Create account",
+      signOut: "Sign out",
+      profile: "Profile",
+      account: "Account",
+      planFree: "Free plan",
+      planPremium: "Premium plan",
+
+      pleaseWait: "Please wait...",
+      showPassword: "Show",
+      hidePassword: "Hide",
+
+      name: "Name",
+      namePlaceholder: "Your name",
+      email: "Email",
+      password: "Password",
+      confirmPassword: "Confirm password",
+      currentPassword: "Current password",
+      newPassword: "New password",
+      passwordHint: "At least 8 characters, including a letter and a number.",
+
+      loginTitle: "Welcome back",
+      loginSubtitle: "Sign in to your ToolsGift account.",
+      loginCta: "Sign in",
+      forgotPassword: "Forgot your password?",
+      noAccount: "Don't have an account?",
+      createAccountCta: "Create one",
+
+      signupTitle: "Create your account",
+      signupSubtitle: "Create a free account to manage your profile and settings.",
+      signupCta: "Create account",
+      haveAccount: "Already have an account?",
+      signInCta: "Sign in",
+
+      forgotTitle: "Reset your password",
+      forgotSubtitle: "Enter your email address and we will send you a secure reset link.",
+      sendResetLink: "Send reset link",
+      sentTitle: "Check your inbox",
+      sentSubtitle: "If an account exists for that address, a password reset link is on its way. The link expires in 15 minutes.",
+      backToLogin: "Back to sign in",
+
+      resetTitle: "Choose a new password",
+      resetSubtitle: "Enter a new password for your account.",
+      resetCta: "Update password",
+      updatedTitle: "Password updated",
+      updatedSubtitle: "Your password has been changed. Every other session was signed out.",
+      goToSignIn: "Continue to sign in",
+      invalidLinkTitle: "This link is no longer valid",
+      invalidLinkSubtitle: "Reset links expire after 15 minutes. Request a new one and try again.",
+
+      memberSince: "Member since",
+      personalInfo: "Personal information",
+      personalInfoDesc: "Your name is shown across your ToolsGift account.",
+      security: "Security",
+      securityDesc: "Change your password. Changing it signs you out everywhere else.",
+      saveChanges: "Save changes",
+      changesSaved: "Changes saved",
+      changePasswordCta: "Change password",
+      passwordChanged: "Password changed",
+      sessions: "Sessions",
+      sessionsDesc: "You are signed in on this device. Signing out everywhere ends every session, including this one.",
+      signOutEverywhere: "Sign out everywhere",
+
+      continueWithGoogle: "Continue with Google",
+      googleDivider: "or",
+      errGoogleCancelled: "Google sign-in was cancelled. Please try again.",
+      errGoogleFailed: "Something went wrong signing in with Google. Please try again.",
+      errGoogleEmailTaken: "That Google account isn't linked to your ToolsGift account yet. Sign in with your password first, then link it from your profile.",
+      errGoogleNotConfigured: "Google sign-in is not available right now. Please try again later.",
+      connectedAccounts: "Connected accounts",
+      connectedAccountsDesc: "Link your Google account so you can sign in with Google next time.",
+      googleLinked: "Connected",
+      linkGoogle: "Link Google account",
+      errRequired: "This field is required.",
+      errInvalidEmail: "Enter a valid email address.",
+      errName: "Name must be between 2 and 80 characters.",
+      errWeakPassword: "Use at least 8 characters with a letter and a number.",
+      errPasswordMismatch: "Passwords do not match.",
+      errEmailTaken: "An account already exists with this email address.",
+      errInvalidCredentials: "Incorrect email or password.",
+      errWrongPassword: "Your current password is incorrect.",
+      errRateLimited: "Too many attempts. Wait a few minutes and try again.",
+      errInvalidToken: "This reset link is invalid or has expired.",
+      errNotAuthenticated: "Please sign in to continue.",
+      errNetwork: "Could not reach the server. Check your connection and try again.",
+      errServer: "Something went wrong. Please try again.",
+    },
+
     nav: {
       home: "Home",
       allTools: "All Tools",
@@ -87,6 +176,16 @@ const rawTranslations = {
         "Useful tools without the unnecessary complexity.",
       productDescription:
         "ToolsGift brings everyday file, document and utility tools together in one clean place, so you can get the task done without jumping between different websites.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -125,6 +224,95 @@ const rawTranslations = {
 
   hi: {
     languageName: "हिन्दी",
+
+    auth: {
+      signIn: "साइन इन करें",
+      signUp: "खाता बनाएं",
+      signOut: "साइन आउट करें",
+      profile: "प्रोफ़ाइल",
+      account: "खाता",
+      planFree: "मुफ़्त प्लान",
+      planPremium: "प्रीमियम प्लान",
+
+      pleaseWait: "कृपया प्रतीक्षा करें...",
+      showPassword: "दिखाएं",
+      hidePassword: "छिपाएं",
+
+      name: "नाम",
+      namePlaceholder: "आपका नाम",
+      email: "ईमेल",
+      password: "पासवर्ड",
+      confirmPassword: "पासवर्ड की पुष्टि करें",
+      currentPassword: "वर्तमान पासवर्ड",
+      newPassword: "नया पासवर्ड",
+      passwordHint: "कम से कम 8 अक्षर, जिसमें एक अक्षर और एक अंक हो।",
+
+      loginTitle: "वापसी पर स्वागत है",
+      loginSubtitle: "अपने ToolsGift खाते में साइन इन करें।",
+      loginCta: "साइन इन करें",
+      forgotPassword: "पासवर्ड भूल गए?",
+      noAccount: "खाता नहीं है?",
+      createAccountCta: "एक बनाएं",
+
+      signupTitle: "अपना खाता बनाएं",
+      signupSubtitle: "प्रोफ़ाइल और सेटिंग्स प्रबंधित करने के लिए एक मुफ़्त खाता बनाएं।",
+      signupCta: "खाता बनाएं",
+      haveAccount: "पहले से खाता है?",
+      signInCta: "साइन इन करें",
+
+      forgotTitle: "पासवर्ड रीसेट करें",
+      forgotSubtitle: "अपना ईमेल पता दर्ज करें, हम आपको एक सुरक्षित रीसेट लिंक भेजेंगे।",
+      sendResetLink: "रीसेट लिंक भेजें",
+      sentTitle: "अपना इनबॉक्स जांचें",
+      sentSubtitle: "यदि इस पते का खाता मौजूद है, तो पासवर्ड रीसेट लिंक भेज दिया गया है। लिंक 15 मिनट में समाप्त होता है।",
+      backToLogin: "साइन इन पर वापस जाएं",
+
+      resetTitle: "नया पासवर्ड चुनें",
+      resetSubtitle: "अपने खाते के लिए नया पासवर्ड दर्ज करें।",
+      resetCta: "पासवर्ड अपडेट करें",
+      updatedTitle: "पासवर्ड अपडेट हो गया",
+      updatedSubtitle: "आपका पासवर्ड बदल दिया गया है। बाकी सभी सत्र साइन आउट कर दिए गए हैं।",
+      goToSignIn: "साइन इन जारी रखें",
+      invalidLinkTitle: "यह लिंक अब मान्य नहीं है",
+      invalidLinkSubtitle: "रीसेट लिंक 15 मिनट बाद समाप्त हो जाते हैं। नया लिंक मांगें और फिर से प्रयास करें।",
+
+      memberSince: "सदस्यता तिथि",
+      personalInfo: "व्यक्तिगत जानकारी",
+      personalInfoDesc: "आपका नाम आपके ToolsGift खाते में दिखाई देता है।",
+      security: "सुरक्षा",
+      securityDesc: "अपना पासवर्ड बदलें। बदलने पर आप हर जगह से साइन आउट हो जाएंगे।",
+      saveChanges: "परिवर्तन सहेजें",
+      changesSaved: "परिवर्तन सहेजे गए",
+      changePasswordCta: "पासवर्ड बदलें",
+      passwordChanged: "पासवर्ड बदल दिया गया",
+      sessions: "सत्र",
+      sessionsDesc: "आप इस डिवाइस पर साइन इन हैं। हर जगह से साइन आउट करने पर यह सत्र भी समाप्त हो जाएगा।",
+      signOutEverywhere: "हर जगह से साइन आउट करें",
+
+      continueWithGoogle: "Google से जारी रखें",
+      googleDivider: "या",
+      errGoogleCancelled: "Google साइन-इन रद्द कर दिया गया। कृपया पुनः प्रयास करें।",
+      errGoogleFailed: "Google से साइन इन करते समय कुछ गलत हो गया। कृपया पुनः प्रयास करें।",
+      errGoogleEmailTaken: "यह Google खाता अभी आपके ToolsGift खाते से लिंक नहीं है। पहले अपने पासवर्ड से साइन इन करें, फिर प्रोफ़ाइल से इसे लिंक करें।",
+      errGoogleNotConfigured: "अभी Google साइन-इन उपलब्ध नहीं है। कृपया बाद में पुनः प्रयास करें।",
+      connectedAccounts: "लिंक किए गए खाते",
+      connectedAccountsDesc: "अगली बार Google से साइन इन करने के लिए अपना Google खाता लिंक करें।",
+      googleLinked: "लिंक्ड",
+      linkGoogle: "Google खाता लिंक करें",
+      errRequired: "यह फ़ील्ड आवश्यक है।",
+      errInvalidEmail: "एक वैध ईमेल पता दर्ज करें।",
+      errName: "नाम 2 से 80 अक्षरों के बीच होना चाहिए।",
+      errWeakPassword: "कम से कम 8 अक्षरों का उपयोग करें, जिसमें एक अक्षर और एक अंक हो।",
+      errPasswordMismatch: "पासवर्ड मेल नहीं खाते।",
+      errEmailTaken: "इस ईमेल पते से पहले से एक खाता मौजूद है।",
+      errInvalidCredentials: "ईमेल या पासवर्ड गलत है।",
+      errWrongPassword: "आपका वर्तमान पासवर्ड गलत है।",
+      errRateLimited: "बहुत अधिक प्रयास। कुछ मिनट प्रतीक्षा करें और फिर से प्रयास करें।",
+      errInvalidToken: "यह रीसेट लिंक अमान्य है या समाप्त हो गया है।",
+      errNotAuthenticated: "जारी रखने के लिए कृपया साइन इन करें।",
+      errNetwork: "सर्वर तक नहीं पहुंच सका। अपना कनेक्शन जांचें और फिर से प्रयास करें।",
+      errServer: "कुछ गलत हो गया। कृपया फिर से प्रयास करें।",
+    },
 
     nav: {
       home: "होम",
@@ -211,6 +399,16 @@ const rawTranslations = {
         "बिना अनावश्यक जटिलता के उपयोगी टूल्स।",
       productDescription:
         "ToolsGift रोज़मर्रा की फ़ाइल, डॉक्यूमेंट और यूटिलिटी टूल्स को एक साफ़ और आसान जगह पर लाता है, ताकि आपको अलग-अलग वेबसाइटों पर जाने की ज़रूरत न पड़े।",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -249,6 +447,95 @@ const rawTranslations = {
 
   es: {
     languageName: "Español",
+
+    auth: {
+      signIn: "Iniciar sesión",
+      signUp: "Crear cuenta",
+      signOut: "Cerrar sesión",
+      profile: "Perfil",
+      account: "Cuenta",
+      planFree: "Plan gratuito",
+      planPremium: "Plan premium",
+
+      pleaseWait: "Espera un momento...",
+      showPassword: "Mostrar",
+      hidePassword: "Ocultar",
+
+      name: "Nombre",
+      namePlaceholder: "Tu nombre",
+      email: "Correo electrónico",
+      password: "Contraseña",
+      confirmPassword: "Confirmar contraseña",
+      currentPassword: "Contraseña actual",
+      newPassword: "Nueva contraseña",
+      passwordHint: "Al menos 8 caracteres, con una letra y un número.",
+
+      loginTitle: "Bienvenido de nuevo",
+      loginSubtitle: "Inicia sesión en tu cuenta de ToolsGift.",
+      loginCta: "Iniciar sesión",
+      forgotPassword: "¿Olvidaste tu contraseña?",
+      noAccount: "¿No tienes una cuenta?",
+      createAccountCta: "Crea una",
+
+      signupTitle: "Crea tu cuenta",
+      signupSubtitle: "Crea una cuenta gratuita para gestionar tu perfil y tus ajustes.",
+      signupCta: "Crear cuenta",
+      haveAccount: "¿Ya tienes una cuenta?",
+      signInCta: "Iniciar sesión",
+
+      forgotTitle: "Restablecer tu contraseña",
+      forgotSubtitle: "Escribe tu correo electrónico y te enviaremos un enlace seguro para restablecerla.",
+      sendResetLink: "Enviar enlace",
+      sentTitle: "Revisa tu bandeja de entrada",
+      sentSubtitle: "Si existe una cuenta con ese correo, el enlace ya va en camino. Caduca en 15 minutos.",
+      backToLogin: "Volver a iniciar sesión",
+
+      resetTitle: "Elige una contraseña nueva",
+      resetSubtitle: "Escribe una contraseña nueva para tu cuenta.",
+      resetCta: "Actualizar contraseña",
+      updatedTitle: "Contraseña actualizada",
+      updatedSubtitle: "Tu contraseña se ha cambiado. El resto de sesiones se cerró.",
+      goToSignIn: "Continuar al inicio de sesión",
+      invalidLinkTitle: "Este enlace ya no es válido",
+      invalidLinkSubtitle: "Los enlaces caducan a los 15 minutos. Solicita uno nuevo e inténtalo de nuevo.",
+
+      memberSince: "Miembro desde",
+      personalInfo: "Información personal",
+      personalInfoDesc: "Tu nombre se muestra en toda tu cuenta de ToolsGift.",
+      security: "Seguridad",
+      securityDesc: "Cambia tu contraseña. Al hacerlo, se cierra la sesión en todos los demás dispositivos.",
+      saveChanges: "Guardar cambios",
+      changesSaved: "Cambios guardados",
+      changePasswordCta: "Cambiar contraseña",
+      passwordChanged: "Contraseña cambiada",
+      sessions: "Sesiones",
+      sessionsDesc: "Tienes sesión iniciada en este dispositivo. Cerrar la sesión en todas partes termina todas las sesiones, incluida esta.",
+      signOutEverywhere: "Cerrar sesión en todas partes",
+
+      continueWithGoogle: "Continuar con Google",
+      googleDivider: "o",
+      errGoogleCancelled: "Se canceló el inicio de sesión con Google. Inténtalo de nuevo.",
+      errGoogleFailed: "Algo salió mal al iniciar sesión con Google. Inténtalo de nuevo.",
+      errGoogleEmailTaken: "Esa cuenta de Google aún no está vinculada a tu cuenta de ToolsGift. Inicia sesión con tu contraseña y luego vincúlala desde tu perfil.",
+      errGoogleNotConfigured: "El inicio de sesión con Google no está disponible en este momento. Inténtalo más tarde.",
+      connectedAccounts: "Cuentas vinculadas",
+      connectedAccountsDesc: "Vincula tu cuenta de Google para iniciar sesión con Google la próxima vez.",
+      googleLinked: "Vinculada",
+      linkGoogle: "Vincular cuenta de Google",
+      errRequired: "Este campo es obligatorio.",
+      errInvalidEmail: "Introduce un correo electrónico válido.",
+      errName: "El nombre debe tener entre 2 y 80 caracteres.",
+      errWeakPassword: "Usa al menos 8 caracteres con una letra y un número.",
+      errPasswordMismatch: "Las contraseñas no coinciden.",
+      errEmailTaken: "Ya existe una cuenta con este correo electrónico.",
+      errInvalidCredentials: "Correo o contraseña incorrectos.",
+      errWrongPassword: "Tu contraseña actual es incorrecta.",
+      errRateLimited: "Demasiados intentos. Espera unos minutos e inténtalo de nuevo.",
+      errInvalidToken: "Este enlace no es válido o ha caducado.",
+      errNotAuthenticated: "Inicia sesión para continuar.",
+      errNetwork: "No se pudo conectar con el servidor. Comprueba tu conexión e inténtalo de nuevo.",
+      errServer: "Algo ha fallado. Inténtalo de nuevo.",
+    },
 
     nav: {
       home: "Inicio",
@@ -335,6 +622,16 @@ const rawTranslations = {
         "Herramientas útiles sin complicaciones innecesarias.",
       productDescription:
         "ToolsGift reúne herramientas cotidianas para archivos, documentos y utilidades en un solo lugar.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -375,6 +672,95 @@ const rawTranslations = {
 
   fr: {
     languageName: "Français",
+
+    auth: {
+      signIn: "Se connecter",
+      signUp: "Créer un compte",
+      signOut: "Se déconnecter",
+      profile: "Profil",
+      account: "Compte",
+      planFree: "Offre gratuite",
+      planPremium: "Offre premium",
+
+      pleaseWait: "Veuillez patienter...",
+      showPassword: "Afficher",
+      hidePassword: "Masquer",
+
+      name: "Nom",
+      namePlaceholder: "Votre nom",
+      email: "E-mail",
+      password: "Mot de passe",
+      confirmPassword: "Confirmer le mot de passe",
+      currentPassword: "Mot de passe actuel",
+      newPassword: "Nouveau mot de passe",
+      passwordHint: "Au moins 8 caractères, avec une lettre et un chiffre.",
+
+      loginTitle: "Bon retour",
+      loginSubtitle: "Connectez-vous à votre compte ToolsGift.",
+      loginCta: "Se connecter",
+      forgotPassword: "Mot de passe oublié ?",
+      noAccount: "Vous n'avez pas de compte ?",
+      createAccountCta: "Créez-en un",
+
+      signupTitle: "Créez votre compte",
+      signupSubtitle: "Créez un compte gratuit pour gérer votre profil et vos réglages.",
+      signupCta: "Créer un compte",
+      haveAccount: "Vous avez déjà un compte ?",
+      signInCta: "Se connecter",
+
+      forgotTitle: "Réinitialiser votre mot de passe",
+      forgotSubtitle: "Saisissez votre adresse e-mail et nous vous enverrons un lien de réinitialisation sécurisé.",
+      sendResetLink: "Envoyer le lien",
+      sentTitle: "Vérifiez votre boîte de réception",
+      sentSubtitle: "Si un compte existe pour cette adresse, le lien est en chemin. Il expire dans 15 minutes.",
+      backToLogin: "Retour à la connexion",
+
+      resetTitle: "Choisissez un nouveau mot de passe",
+      resetSubtitle: "Saisissez un nouveau mot de passe pour votre compte.",
+      resetCta: "Mettre à jour le mot de passe",
+      updatedTitle: "Mot de passe mis à jour",
+      updatedSubtitle: "Votre mot de passe a été modifié. Toutes les autres sessions ont été déconnectées.",
+      goToSignIn: "Continuer vers la connexion",
+      invalidLinkTitle: "Ce lien n'est plus valide",
+      invalidLinkSubtitle: "Les liens expirent après 15 minutes. Demandez-en un nouveau et réessayez.",
+
+      memberSince: "Membre depuis",
+      personalInfo: "Informations personnelles",
+      personalInfoDesc: "Votre nom est affiché dans l'ensemble de votre compte ToolsGift.",
+      security: "Sécurité",
+      securityDesc: "Changez votre mot de passe. Cette action vous déconnectera partout ailleurs.",
+      saveChanges: "Enregistrer les modifications",
+      changesSaved: "Modifications enregistrées",
+      changePasswordCta: "Changer le mot de passe",
+      passwordChanged: "Mot de passe modifié",
+      sessions: "Sessions",
+      sessionsDesc: "Vous êtes connecté sur cet appareil. Se déconnecter partout met fin à toutes les sessions, y compris celle-ci.",
+      signOutEverywhere: "Se déconnecter partout",
+
+      continueWithGoogle: "Continuer avec Google",
+      googleDivider: "ou",
+      errGoogleCancelled: "La connexion Google a été annulée. Veuillez réessayer.",
+      errGoogleFailed: "Une erreur s'est produite lors de la connexion avec Google. Veuillez réessayer.",
+      errGoogleEmailTaken: "Ce compte Google n'est pas encore lié à votre compte ToolsGift. Connectez-vous d'abord avec votre mot de passe, puis liez-le depuis votre profil.",
+      errGoogleNotConfigured: "La connexion Google n'est pas disponible pour le moment. Veuillez réessayer plus tard.",
+      connectedAccounts: "Comptes liés",
+      connectedAccountsDesc: "Liez votre compte Google pour vous connecter avec Google la prochaine fois.",
+      googleLinked: "Lié",
+      linkGoogle: "Lier le compte Google",
+      errRequired: "Ce champ est obligatoire.",
+      errInvalidEmail: "Saisissez une adresse e-mail valide.",
+      errName: "Le nom doit contenir entre 2 et 80 caractères.",
+      errWeakPassword: "Utilisez au moins 8 caractères avec une lettre et un chiffre.",
+      errPasswordMismatch: "Les mots de passe ne correspondent pas.",
+      errEmailTaken: "Un compte existe déjà avec cette adresse e-mail.",
+      errInvalidCredentials: "E-mail ou mot de passe incorrect.",
+      errWrongPassword: "Votre mot de passe actuel est incorrect.",
+      errRateLimited: "Trop de tentatives. Patientez quelques minutes et réessayez.",
+      errInvalidToken: "Ce lien est invalide ou a expiré.",
+      errNotAuthenticated: "Connectez-vous pour continuer.",
+      errNetwork: "Impossible de joindre le serveur. Vérifiez votre connexion et réessayez.",
+      errServer: "Une erreur est survenue. Veuillez réessayer.",
+    },
 
     nav: {
       home: "Accueil",
@@ -462,6 +848,16 @@ const rawTranslations = {
         "Des outils utiles sans complexité inutile.",
       productDescription:
         "ToolsGift réunit les outils quotidiens pour les fichiers, documents et utilitaires dans un seul endroit.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -502,6 +898,95 @@ const rawTranslations = {
 
   de: {
     languageName: "Deutsch",
+
+    auth: {
+      signIn: "Anmelden",
+      signUp: "Konto erstellen",
+      signOut: "Abmelden",
+      profile: "Profil",
+      account: "Konto",
+      planFree: "Kostenloser Tarif",
+      planPremium: "Premium-Tarif",
+
+      pleaseWait: "Bitte warten...",
+      showPassword: "Anzeigen",
+      hidePassword: "Ausblenden",
+
+      name: "Name",
+      namePlaceholder: "Ihr Name",
+      email: "E-Mail",
+      password: "Passwort",
+      confirmPassword: "Passwort bestätigen",
+      currentPassword: "Aktuelles Passwort",
+      newPassword: "Neues Passwort",
+      passwordHint: "Mindestens 8 Zeichen, mit einem Buchstaben und einer Ziffer.",
+
+      loginTitle: "Willkommen zurück",
+      loginSubtitle: "Melden Sie sich bei Ihrem ToolsGift-Konto an.",
+      loginCta: "Anmelden",
+      forgotPassword: "Passwort vergessen?",
+      noAccount: "Noch kein Konto?",
+      createAccountCta: "Jetzt erstellen",
+
+      signupTitle: "Konto erstellen",
+      signupSubtitle: "Erstellen Sie ein kostenloses Konto, um Profil und Einstellungen zu verwalten.",
+      signupCta: "Konto erstellen",
+      haveAccount: "Sie haben bereits ein Konto?",
+      signInCta: "Anmelden",
+
+      forgotTitle: "Passwort zurücksetzen",
+      forgotSubtitle: "Geben Sie Ihre E-Mail-Adresse ein, wir senden Ihnen einen sicheren Link.",
+      sendResetLink: "Link senden",
+      sentTitle: "Postfach prüfen",
+      sentSubtitle: "Falls für diese Adresse ein Konto existiert, ist der Link unterwegs. Er läuft in 15 Minuten ab.",
+      backToLogin: "Zurück zur Anmeldung",
+
+      resetTitle: "Neues Passwort wählen",
+      resetSubtitle: "Geben Sie ein neues Passwort für Ihr Konto ein.",
+      resetCta: "Passwort aktualisieren",
+      updatedTitle: "Passwort aktualisiert",
+      updatedSubtitle: "Ihr Passwort wurde geändert. Alle anderen Sitzungen wurden abgemeldet.",
+      goToSignIn: "Weiter zur Anmeldung",
+      invalidLinkTitle: "Dieser Link ist nicht mehr gültig",
+      invalidLinkSubtitle: "Links laufen nach 15 Minuten ab. Fordern Sie einen neuen an und versuchen Sie es erneut.",
+
+      memberSince: "Mitglied seit",
+      personalInfo: "Persönliche Daten",
+      personalInfoDesc: "Ihr Name wird in Ihrem gesamten ToolsGift-Konto angezeigt.",
+      security: "Sicherheit",
+      securityDesc: "Ändern Sie Ihr Passwort. Dabei werden Sie überall anders abgemeldet.",
+      saveChanges: "Änderungen speichern",
+      changesSaved: "Änderungen gespeichert",
+      changePasswordCta: "Passwort ändern",
+      passwordChanged: "Passwort geändert",
+      sessions: "Sitzungen",
+      sessionsDesc: "Sie sind auf diesem Gerät angemeldet. Eine Abmeldung überall beendet alle Sitzungen, auch diese.",
+      signOutEverywhere: "Überall abmelden",
+
+      continueWithGoogle: "Mit Google fortfahren",
+      googleDivider: "oder",
+      errGoogleCancelled: "Die Google-Anmeldung wurde abgebrochen. Bitte versuchen Sie es erneut.",
+      errGoogleFailed: "Bei der Anmeldung mit Google ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+      errGoogleEmailTaken: "Dieses Google-Konto ist noch nicht mit Ihrem ToolsGift-Konto verknüpft. Melden Sie sich zuerst mit Ihrem Passwort an und verknüpfen Sie es dann in Ihrem Profil.",
+      errGoogleNotConfigured: "Die Google-Anmeldung ist derzeit nicht verfügbar. Bitte versuchen Sie es später erneut.",
+      connectedAccounts: "Verknüpfte Konten",
+      connectedAccountsDesc: "Verknüpfen Sie Ihr Google-Konto, um sich beim nächsten Mal mit Google anzumelden.",
+      googleLinked: "Verknüpft",
+      linkGoogle: "Google-Konto verknüpfen",
+      errRequired: "Dieses Feld ist erforderlich.",
+      errInvalidEmail: "Geben Sie eine gültige E-Mail-Adresse ein.",
+      errName: "Der Name muss zwischen 2 und 80 Zeichen lang sein.",
+      errWeakPassword: "Verwenden Sie mindestens 8 Zeichen mit einem Buchstaben und einer Ziffer.",
+      errPasswordMismatch: "Die Passwörter stimmen nicht überein.",
+      errEmailTaken: "Für diese E-Mail-Adresse existiert bereits ein Konto.",
+      errInvalidCredentials: "E-Mail oder Passwort falsch.",
+      errWrongPassword: "Ihr aktuelles Passwort ist falsch.",
+      errRateLimited: "Zu viele Versuche. Warten Sie einige Minuten und versuchen Sie es erneut.",
+      errInvalidToken: "Dieser Link ist ungültig oder abgelaufen.",
+      errNotAuthenticated: "Melden Sie sich an, um fortzufahren.",
+      errNetwork: "Server nicht erreichbar. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+      errServer: "Etwas ist schiefgelaufen. Versuchen Sie es erneut.",
+    },
 
     nav: {
       home: "Startseite",
@@ -589,6 +1074,16 @@ const rawTranslations = {
         "Nützliche Tools ohne unnötige Komplexität.",
       productDescription:
         "ToolsGift vereint alltägliche Datei-, Dokument- und Utility-Tools an einem Ort.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -630,6 +1125,95 @@ const rawTranslations = {
 
   it: {
     languageName: "Italiano",
+
+    auth: {
+      signIn: "Accedi",
+      signUp: "Crea account",
+      signOut: "Esci",
+      profile: "Profilo",
+      account: "Account",
+      planFree: "Piano gratuito",
+      planPremium: "Piano premium",
+
+      pleaseWait: "Attendi...",
+      showPassword: "Mostra",
+      hidePassword: "Nascondi",
+
+      name: "Nome",
+      namePlaceholder: "Il tuo nome",
+      email: "Email",
+      password: "Password",
+      confirmPassword: "Conferma password",
+      currentPassword: "Password attuale",
+      newPassword: "Nuova password",
+      passwordHint: "Almeno 8 caratteri, con una lettera e un numero.",
+
+      loginTitle: "Bentornato",
+      loginSubtitle: "Accedi al tuo account ToolsGift.",
+      loginCta: "Accedi",
+      forgotPassword: "Hai dimenticato la password?",
+      noAccount: "Non hai un account?",
+      createAccountCta: "Creane uno",
+
+      signupTitle: "Crea il tuo account",
+      signupSubtitle: "Crea un account gratuito per gestire profilo e impostazioni.",
+      signupCta: "Crea account",
+      haveAccount: "Hai già un account?",
+      signInCta: "Accedi",
+
+      forgotTitle: "Reimposta la password",
+      forgotSubtitle: "Inserisci il tuo indirizzo email e ti invieremo un link sicuro per il ripristino.",
+      sendResetLink: "Invia link",
+      sentTitle: "Controlla la posta",
+      sentSubtitle: "Se esiste un account per quell'indirizzo, il link è in arrivo. Scade tra 15 minuti.",
+      backToLogin: "Torna all'accesso",
+
+      resetTitle: "Scegli una nuova password",
+      resetSubtitle: "Inserisci una nuova password per il tuo account.",
+      resetCta: "Aggiorna password",
+      updatedTitle: "Password aggiornata",
+      updatedSubtitle: "La password è stata modificata. Tutte le altre sessioni sono state disconnesse.",
+      goToSignIn: "Continua all'accesso",
+      invalidLinkTitle: "Questo link non è più valido",
+      invalidLinkSubtitle: "I link scadono dopo 15 minuti. Richiedine uno nuovo e riprova.",
+
+      memberSince: "Membro dal",
+      personalInfo: "Informazioni personali",
+      personalInfoDesc: "Il tuo nome viene mostrato in tutto l'account ToolsGift.",
+      security: "Sicurezza",
+      securityDesc: "Cambia la password. In questo modo verrai disconnesso ovunque altrove.",
+      saveChanges: "Salva modifiche",
+      changesSaved: "Modifiche salvate",
+      changePasswordCta: "Cambia password",
+      passwordChanged: "Password cambiata",
+      sessions: "Sessioni",
+      sessionsDesc: "Sei connesso su questo dispositivo. Uscire ovunque termina tutte le sessioni, inclusa questa.",
+      signOutEverywhere: "Esci da ovunque",
+
+      continueWithGoogle: "Continua con Google",
+      googleDivider: "oppure",
+      errGoogleCancelled: "L'accesso con Google è stato annullato. Riprova.",
+      errGoogleFailed: "Qualcosa è andato storto durante l'accesso con Google. Riprova.",
+      errGoogleEmailTaken: "Questo account Google non è ancora collegato al tuo account ToolsGift. Accedi prima con la tua password, poi collegalo dal tuo profilo.",
+      errGoogleNotConfigured: "L'accesso con Google non è al momento disponibile. Riprova più tardi.",
+      connectedAccounts: "Account collegati",
+      connectedAccountsDesc: "Collega il tuo account Google per accedere con Google la prossima volta.",
+      googleLinked: "Collegato",
+      linkGoogle: "Collega account Google",
+      errRequired: "Questo campo è obbligatorio.",
+      errInvalidEmail: "Inserisci un indirizzo email valido.",
+      errName: "Il nome deve contenere da 2 a 80 caratteri.",
+      errWeakPassword: "Usa almeno 8 caratteri con una lettera e un numero.",
+      errPasswordMismatch: "Le password non coincidono.",
+      errEmailTaken: "Esiste già un account con questo indirizzo email.",
+      errInvalidCredentials: "Email o password errati.",
+      errWrongPassword: "La password attuale non è corretta.",
+      errRateLimited: "Troppi tentativi. Attendi qualche minuto e riprova.",
+      errInvalidToken: "Questo link non è valido o è scaduto.",
+      errNotAuthenticated: "Accedi per continuare.",
+      errNetwork: "Impossibile contattare il server. Controlla la connessione e riprova.",
+      errServer: "Qualcosa è andato storto. Riprova.",
+    },
 
     nav: {
       home: "Home",
@@ -717,6 +1301,16 @@ const rawTranslations = {
         "Strumenti utili senza complessità inutile.",
       productDescription:
         "ToolsGift riunisce strumenti quotidiani per file, documenti e utilità in un unico posto.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -757,6 +1351,95 @@ const rawTranslations = {
 
   pt: {
     languageName: "Português",
+
+    auth: {
+      signIn: "Entrar",
+      signUp: "Criar conta",
+      signOut: "Sair",
+      profile: "Perfil",
+      account: "Conta",
+      planFree: "Plano gratuito",
+      planPremium: "Plano premium",
+
+      pleaseWait: "Aguarde...",
+      showPassword: "Mostrar",
+      hidePassword: "Ocultar",
+
+      name: "Nome",
+      namePlaceholder: "Seu nome",
+      email: "E-mail",
+      password: "Senha",
+      confirmPassword: "Confirmar senha",
+      currentPassword: "Senha atual",
+      newPassword: "Nova senha",
+      passwordHint: "Pelo menos 8 caracteres, com uma letra e um número.",
+
+      loginTitle: "Bem-vindo de volta",
+      loginSubtitle: "Entre na sua conta ToolsGift.",
+      loginCta: "Entrar",
+      forgotPassword: "Esqueceu sua senha?",
+      noAccount: "Não tem uma conta?",
+      createAccountCta: "Crie uma",
+
+      signupTitle: "Crie sua conta",
+      signupSubtitle: "Crie uma conta gratuita para gerenciar seu perfil e suas configurações.",
+      signupCta: "Criar conta",
+      haveAccount: "Já tem uma conta?",
+      signInCta: "Entrar",
+
+      forgotTitle: "Redefinir sua senha",
+      forgotSubtitle: "Digite seu e-mail e enviaremos um link seguro de redefinição.",
+      sendResetLink: "Enviar link",
+      sentTitle: "Verifique sua caixa de entrada",
+      sentSubtitle: "Se existir uma conta para esse endereço, o link está a caminho. Ele expira em 15 minutos.",
+      backToLogin: "Voltar ao login",
+
+      resetTitle: "Escolha uma nova senha",
+      resetSubtitle: "Digite uma nova senha para a sua conta.",
+      resetCta: "Atualizar senha",
+      updatedTitle: "Senha atualizada",
+      updatedSubtitle: "Sua senha foi alterada. Todas as outras sessões foram encerradas.",
+      goToSignIn: "Continuar para o login",
+      invalidLinkTitle: "Este link não é mais válido",
+      invalidLinkSubtitle: "Links de redefinição expiram em 15 minutos. Solicite um novo e tente novamente.",
+
+      memberSince: "Membro desde",
+      personalInfo: "Informações pessoais",
+      personalInfoDesc: "Seu nome é exibido em toda a sua conta ToolsGift.",
+      security: "Segurança",
+      securityDesc: "Altere sua senha. Ao alterá-la, você é desconectado em todos os outros dispositivos.",
+      saveChanges: "Salvar alterações",
+      changesSaved: "Alterações salvas",
+      changePasswordCta: "Alterar senha",
+      passwordChanged: "Senha alterada",
+      sessions: "Sessões",
+      sessionsDesc: "Você está conectado neste dispositivo. Sair de todos encerra todas as sessões, incluindo esta.",
+      signOutEverywhere: "Sair em todos os dispositivos",
+
+      continueWithGoogle: "Continuar com Google",
+      googleDivider: "ou",
+      errGoogleCancelled: "O login com Google foi cancelado. Tente novamente.",
+      errGoogleFailed: "Algo deu errado ao entrar com Google. Tente novamente.",
+      errGoogleEmailTaken: "Esta conta do Google ainda não está vinculada à sua conta do ToolsGift. Entre primeiro com sua senha e depois vincule-a no seu perfil.",
+      errGoogleNotConfigured: "O login com Google não está disponível no momento. Tente novamente mais tarde.",
+      connectedAccounts: "Contas vinculadas",
+      connectedAccountsDesc: "Vincule sua conta do Google para entrar com Google da próxima vez.",
+      googleLinked: "Vinculada",
+      linkGoogle: "Vincular conta do Google",
+      errRequired: "Este campo é obrigatório.",
+      errInvalidEmail: "Digite um e-mail válido.",
+      errName: "O nome deve ter entre 2 e 80 caracteres.",
+      errWeakPassword: "Use pelo menos 8 caracteres com uma letra e um número.",
+      errPasswordMismatch: "As senhas não coincidem.",
+      errEmailTaken: "Já existe uma conta com este e-mail.",
+      errInvalidCredentials: "E-mail ou senha incorretos.",
+      errWrongPassword: "Sua senha atual está incorreta.",
+      errRateLimited: "Muitas tentativas. Aguarde alguns minutos e tente novamente.",
+      errInvalidToken: "Este link é inválido ou expirou.",
+      errNotAuthenticated: "Entre para continuar.",
+      errNetwork: "Não foi possível acessar o servidor. Verifique sua conexão e tente novamente.",
+      errServer: "Algo deu errado. Tente novamente.",
+    },
 
     nav: {
       home: "Início",
@@ -844,6 +1527,16 @@ const rawTranslations = {
         "Ferramentas úteis sem complexidade desnecessária.",
       productDescription:
         "ToolsGift reúne ferramentas para arquivos, documentos e utilidades em um único lugar.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -885,6 +1578,95 @@ const rawTranslations = {
 
   ja: {
     languageName: "日本語",
+
+    auth: {
+      signIn: "ログイン",
+      signUp: "アカウント作成",
+      signOut: "ログアウト",
+      profile: "プロフィール",
+      account: "アカウント",
+      planFree: "無料プラン",
+      planPremium: "プレミアムプラン",
+
+      pleaseWait: "お待ちください...",
+      showPassword: "表示",
+      hidePassword: "非表示",
+
+      name: "名前",
+      namePlaceholder: "お名前",
+      email: "メールアドレス",
+      password: "パスワード",
+      confirmPassword: "パスワード（確認）",
+      currentPassword: "現在のパスワード",
+      newPassword: "新しいパスワード",
+      passwordHint: "8文字以上で、英字と数字を含めてください。",
+
+      loginTitle: "おかえりなさい",
+      loginSubtitle: "ToolsGiftアカウントにログインします。",
+      loginCta: "ログイン",
+      forgotPassword: "パスワードをお忘れですか？",
+      noAccount: "アカウントをお持ちでないですか？",
+      createAccountCta: "作成する",
+
+      signupTitle: "アカウントを作成",
+      signupSubtitle: "プロフィールと設定を管理するための無料アカウントを作成します。",
+      signupCta: "アカウントを作成",
+      haveAccount: "すでにアカウントをお持ちですか？",
+      signInCta: "ログイン",
+
+      forgotTitle: "パスワードのリセット",
+      forgotSubtitle: "メールアドレスを入力すると、安全なリセット用リンクを送信します。",
+      sendResetLink: "リンクを送信",
+      sentTitle: "受信トレイをご確認ください",
+      sentSubtitle: "そのアドレスのアカウントが存在する場合、リセット用リンクを送信しました。リンクの有効期限は15分です。",
+      backToLogin: "ログインに戻る",
+
+      resetTitle: "新しいパスワードを設定",
+      resetSubtitle: "アカウントの新しいパスワードを入力してください。",
+      resetCta: "パスワードを更新",
+      updatedTitle: "パスワードを更新しました",
+      updatedSubtitle: "パスワードを変更しました。他のすべてのセッションはログアウトされました。",
+      goToSignIn: "ログインへ進む",
+      invalidLinkTitle: "このリンクは無効です",
+      invalidLinkSubtitle: "リセット用リンクの有効期限は15分です。新しいリンクをリクエストして再試行してください。",
+
+      memberSince: "登録日",
+      personalInfo: "個人情報",
+      personalInfoDesc: "お名前はToolsGiftアカウント全体に表示されます。",
+      security: "セキュリティ",
+      securityDesc: "パスワードを変更します。変更すると、他のすべての端末からログアウトされます。",
+      saveChanges: "変更を保存",
+      changesSaved: "変更を保存しました",
+      changePasswordCta: "パスワードを変更",
+      passwordChanged: "パスワードを変更しました",
+      sessions: "セッション",
+      sessionsDesc: "この端末でログイン中です。すべての端末でログアウトすると、このセッションを含むすべてのセッションが終了します。",
+      signOutEverywhere: "すべてログアウト",
+
+      continueWithGoogle: "Google で続行",
+      googleDivider: "または",
+      errGoogleCancelled: "Google ログインがキャンセルされました。もう一度お試しください。",
+      errGoogleFailed: "Google でサインイン中に問題が発生しました。もう一度お試しください。",
+      errGoogleEmailTaken: "この Google アカウントはまだ ToolsGift アカウントと連携されていません。まずパスワードでサインインし、その後プロフィールから連携してください。",
+      errGoogleNotConfigured: "現在 Google サインインはご利用いただけません。後でもう一度お試しください。",
+      connectedAccounts: "連携しているアカウント",
+      connectedAccountsDesc: "次回から Google でサインインできるように、Google アカウントを連携します。",
+      googleLinked: "連携済み",
+      linkGoogle: "Google アカウントを連携",
+      errRequired: "この項目は必須です。",
+      errInvalidEmail: "有効なメールアドレスを入力してください。",
+      errName: "名前は2〜80文字で入力してください。",
+      errWeakPassword: "英字と数字を含む8文字以上を使用してください。",
+      errPasswordMismatch: "パスワードが一致しません。",
+      errEmailTaken: "このメールアドレスのアカウントは既に存在します。",
+      errInvalidCredentials: "メールアドレスまたはパスワードが正しくありません。",
+      errWrongPassword: "現在のパスワードが正しくありません。",
+      errRateLimited: "試行回数が多すぎます。数分待ってから再試行してください。",
+      errInvalidToken: "このリンクは無効か、期限が切れています。",
+      errNotAuthenticated: "続行するにはログインしてください。",
+      errNetwork: "サーバーに接続できませんでした。接続を確認して再試行してください。",
+      errServer: "問題が発生しました。もう一度お試しください。",
+    },
 
     nav: {
       home: "ホーム",
@@ -970,6 +1752,16 @@ const rawTranslations = {
       productTitle: "不要な複雑さのない便利なツール。",
       productDescription:
         "ToolsGiftは、ファイル、ドキュメント、日常の作業に役立つツールを一つの場所にまとめています。",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -1010,6 +1802,95 @@ const rawTranslations = {
 
   ru: {
     languageName: "Русский",
+
+    auth: {
+      signIn: "Войти",
+      signUp: "Создать аккаунт",
+      signOut: "Выйти",
+      profile: "Профиль",
+      account: "Аккаунт",
+      planFree: "Бесплатный тариф",
+      planPremium: "Премиум-тариф",
+
+      pleaseWait: "Подождите...",
+      showPassword: "Показать",
+      hidePassword: "Скрыть",
+
+      name: "Имя",
+      namePlaceholder: "Ваше имя",
+      email: "Эл. почта",
+      password: "Пароль",
+      confirmPassword: "Подтвердите пароль",
+      currentPassword: "Текущий пароль",
+      newPassword: "Новый пароль",
+      passwordHint: "Не менее 8 символов, включая букву и цифру.",
+
+      loginTitle: "С возвращением",
+      loginSubtitle: "Войдите в свой аккаунт ToolsGift.",
+      loginCta: "Войти",
+      forgotPassword: "Забыли пароль?",
+      noAccount: "Нет аккаунта?",
+      createAccountCta: "Создайте его",
+
+      signupTitle: "Создайте аккаунт",
+      signupSubtitle: "Создайте бесплатный аккаунт, чтобы управлять профилем и настройками.",
+      signupCta: "Создать аккаунт",
+      haveAccount: "Уже есть аккаунт?",
+      signInCta: "Войти",
+
+      forgotTitle: "Сброс пароля",
+      forgotSubtitle: "Введите адрес эл. почты, и мы отправим вам безопасную ссылку для сброса.",
+      sendResetLink: "Отправить ссылку",
+      sentTitle: "Проверьте почту",
+      sentSubtitle: "Если для этого адреса есть аккаунт, ссылка уже в пути. Она истекает через 15 минут.",
+      backToLogin: "Вернуться ко входу",
+
+      resetTitle: "Выберите новый пароль",
+      resetSubtitle: "Введите новый пароль для аккаунта.",
+      resetCta: "Обновить пароль",
+      updatedTitle: "Пароль обновлён",
+      updatedSubtitle: "Пароль изменён. Все остальные сеансы завершены.",
+      goToSignIn: "Перейти ко входу",
+      invalidLinkTitle: "Эта ссылка больше не действительна",
+      invalidLinkSubtitle: "Ссылки для сброса истекают через 15 минут. Запросите новую и попробуйте снова.",
+
+      memberSince: "Участник с",
+      personalInfo: "Личные данные",
+      personalInfoDesc: "Ваше имя отображается во всём аккаунте ToolsGift.",
+      security: "Безопасность",
+      securityDesc: "Измените пароль. После изменения вы будете завершены на всех других устройствах.",
+      saveChanges: "Сохранить изменения",
+      changesSaved: "Изменения сохранены",
+      changePasswordCta: "Изменить пароль",
+      passwordChanged: "Пароль изменён",
+      sessions: "Сеансы",
+      sessionsDesc: "Вы вошли на этом устройстве. Выход везде завершает все сеансы, включая этот.",
+      signOutEverywhere: "Выйти везде",
+
+      continueWithGoogle: "Продолжить с Google",
+      googleDivider: "или",
+      errGoogleCancelled: "Вход через Google отменён. Попробуйте ещё раз.",
+      errGoogleFailed: "Не удалось войти через Google. Попробуйте ещё раз.",
+      errGoogleEmailTaken: "Этот аккаунт Google ещё не привязан к вашему аккаунту ToolsGift. Сначала войдите с паролем, затем привяжите его в профиле.",
+      errGoogleNotConfigured: "Вход через Google сейчас недоступен. Попробуйте позже.",
+      connectedAccounts: "Привязанные аккаунты",
+      connectedAccountsDesc: "Привяжите аккаунт Google, чтобы входить через Google в следующий раз.",
+      googleLinked: "Привязан",
+      linkGoogle: "Привязать аккаунт Google",
+      errRequired: "Обязательное поле.",
+      errInvalidEmail: "Введите действительный адрес эл. почты.",
+      errName: "Имя должно содержать от 2 до 80 символов.",
+      errWeakPassword: "Используйте не менее 8 символов, включая букву и цифру.",
+      errPasswordMismatch: "Пароли не совпадают.",
+      errEmailTaken: "Аккаунт с этим адресом уже существует.",
+      errInvalidCredentials: "Неверная эл. почта или пароль.",
+      errWrongPassword: "Текущий пароль неверен.",
+      errRateLimited: "Слишком много попыток. Подождите несколько минут и попробуйте снова.",
+      errInvalidToken: "Эта ссылка недействительна или истекла.",
+      errNotAuthenticated: "Войдите, чтобы продолжить.",
+      errNetwork: "Не удалось связаться с сервером. Проверьте подключение и попробуйте снова.",
+      errServer: "Что-то пошло не так. Попробуйте снова.",
+    },
 
     nav: {
       home: "Главная",
@@ -1097,6 +1978,16 @@ const rawTranslations = {
         "Полезные инструменты без лишней сложности.",
       productDescription:
         "ToolsGift объединяет инструменты для файлов, документов и повседневных задач в одном месте.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -1138,6 +2029,95 @@ const rawTranslations = {
 
   ko: {
     languageName: "한국어",
+
+    auth: {
+      signIn: "로그인",
+      signUp: "계정 만들기",
+      signOut: "로그아웃",
+      profile: "프로필",
+      account: "계정",
+      planFree: "무료 플랜",
+      planPremium: "프리미엄 플랜",
+
+      pleaseWait: "잠시 기다려주세요...",
+      showPassword: "표시",
+      hidePassword: "숨기기",
+
+      name: "이름",
+      namePlaceholder: "이름",
+      email: "이메일",
+      password: "비밀번호",
+      confirmPassword: "비밀번호 확인",
+      currentPassword: "현재 비밀번호",
+      newPassword: "새 비밀번호",
+      passwordHint: "영문과 숫자를 포함한 8자 이상입니다.",
+
+      loginTitle: "다시 오신 것을 환영합니다",
+      loginSubtitle: "ToolsGift 계정에 로그인하세요.",
+      loginCta: "로그인",
+      forgotPassword: "비밀번호를 잊으셨나요?",
+      noAccount: "계정이 없으신가요?",
+      createAccountCta: "만들기",
+
+      signupTitle: "계정 만들기",
+      signupSubtitle: "프로필과 설정을 관리할 무료 계정을 만드세요.",
+      signupCta: "계정 만들기",
+      haveAccount: "이미 계정이 있으신가요?",
+      signInCta: "로그인",
+
+      forgotTitle: "비밀번호 재설정",
+      forgotSubtitle: "이메일 주소를 입력하시면 보안 재설정 링크를 보내드립니다.",
+      sendResetLink: "링크 보내기",
+      sentTitle: "받은 편지함을 확인하세요",
+      sentSubtitle: "해당 주소로 계정이 있으면 재설정 링크를 보냈습니다. 링크는 15분 후 만료됩니다.",
+      backToLogin: "로그인으로 돌아가기",
+
+      resetTitle: "새 비밀번호 선택",
+      resetSubtitle: "계정의 새 비밀번호를 입력하세요.",
+      resetCta: "비밀번호 업데이트",
+      updatedTitle: "비밀번호가 업데이트되었습니다",
+      updatedSubtitle: "비밀번호가 변경되었습니다. 다른 모든 세션이 로그아웃되었습니다.",
+      goToSignIn: "로그인으로 이동",
+      invalidLinkTitle: "이 링크는 더 이상 유효하지 않습니다",
+      invalidLinkSubtitle: "재설정 링크는 15분 후 만료됩니다. 새 링크를 요청한 후 다시 시도하세요.",
+
+      memberSince: "가입일",
+      personalInfo: "개인 정보",
+      personalInfoDesc: "이름은 ToolsGift 계정 전체에 표시됩니다.",
+      security: "보안",
+      securityDesc: "비밀번호를 변경합니다. 변경하면 다른 모든 기기에서 로그아웃됩니다.",
+      saveChanges: "변경 사항 저장",
+      changesSaved: "변경 사항이 저장되었습니다",
+      changePasswordCta: "비밀번호 변경",
+      passwordChanged: "비밀번호가 변경되었습니다",
+      sessions: "세션",
+      sessionsDesc: "이 기기에서 로그인되어 있습니다. 모두 로그아웃하면 이 세션을 포함한 모든 세션이 종료됩니다.",
+      signOutEverywhere: "모두 로그아웃",
+
+      continueWithGoogle: "Google로 계속",
+      googleDivider: "또는",
+      errGoogleCancelled: "Google 로그인이 취소되었습니다. 다시 시도해 주세요.",
+      errGoogleFailed: "Google로 로그인하는 중 문제가 발생했습니다. 다시 시도해 주세요.",
+      errGoogleEmailTaken: "이 Google 계정은 아직 ToolsGift 계정과 연결되어 있지 않습니다. 먼저 비밀번호로 로그인한 다음 프로필에서 연결하세요.",
+      errGoogleNotConfigured: "현재 Google 로그인을 사용할 수 없습니다. 잠시 후 다시 시도해 주세요.",
+      connectedAccounts: "연결된 계정",
+      connectedAccountsDesc: "다음에 Google로 로그인할 수 있도록 Google 계정을 연결하세요.",
+      googleLinked: "연결됨",
+      linkGoogle: "Google 계정 연결",
+      errRequired: "필수 항목입니다.",
+      errInvalidEmail: "올바른 이메일 주소를 입력하세요.",
+      errName: "이름은 2자에서 80자 사이여야 합니다.",
+      errWeakPassword: "영문과 숫자를 포함한 8자 이상을 사용하세요.",
+      errPasswordMismatch: "비밀번호가 일치하지 않습니다.",
+      errEmailTaken: "이미 이 이메일의 계정이 있습니다.",
+      errInvalidCredentials: "이메일 또는 비밀번호가 올바르지 않습니다.",
+      errWrongPassword: "현재 비밀번호가 올바르지 않습니다.",
+      errRateLimited: "시도 횟수가 너무 많습니다. 몇 분 후 다시 시도하세요.",
+      errInvalidToken: "이 링크가 유효하지 않거나 만료되었습니다.",
+      errNotAuthenticated: "계속하려면 로그인하세요.",
+      errNetwork: "서버에 연결할 수 없습니다. 연결을 확인한 후 다시 시도하세요.",
+      errServer: "문제가 발생했습니다. 다시 시도해 주세요.",
+    },
 
     nav: {
       home: "홈",
@@ -1223,6 +2203,16 @@ const rawTranslations = {
       productTitle: "불필요한 복잡함 없는 유용한 도구.",
       productDescription:
         "ToolsGift는 파일, 문서 및 일상적인 작업을 위한 도구를 한곳에 모았습니다.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -1263,6 +2253,95 @@ const rawTranslations = {
 
   "zh-cn": {
     languageName: "中文 (简体)",
+
+    auth: {
+      signIn: "登录",
+      signUp: "创建账户",
+      signOut: "退出登录",
+      profile: "个人资料",
+      account: "账户",
+      planFree: "免费计划",
+      planPremium: "高级计划",
+
+      pleaseWait: "请稍候...",
+      showPassword: "显示",
+      hidePassword: "隐藏",
+
+      name: "姓名",
+      namePlaceholder: "您的姓名",
+      email: "邮箱",
+      password: "密码",
+      confirmPassword: "确认密码",
+      currentPassword: "当前密码",
+      newPassword: "新密码",
+      passwordHint: "至少8个字符，包含字母和数字。",
+
+      loginTitle: "欢迎回来",
+      loginSubtitle: "登录您的 ToolsGift 账户。",
+      loginCta: "登录",
+      forgotPassword: "忘记密码？",
+      noAccount: "还没有账户？",
+      createAccountCta: "立即创建",
+
+      signupTitle: "创建您的账户",
+      signupSubtitle: "创建免费账户，管理您的资料和设置。",
+      signupCta: "创建账户",
+      haveAccount: "已有账户？",
+      signInCta: "登录",
+
+      forgotTitle: "重置密码",
+      forgotSubtitle: "输入您的邮箱地址，我们将发送安全的重置链接。",
+      sendResetLink: "发送重置链接",
+      sentTitle: "请查收邮件",
+      sentSubtitle: "如果该地址存在账户，重置链接已发送。链接15分钟后失效。",
+      backToLogin: "返回登录",
+
+      resetTitle: "选择新密码",
+      resetSubtitle: "为您的账户输入新密码。",
+      resetCta: "更新密码",
+      updatedTitle: "密码已更新",
+      updatedSubtitle: "您的密码已更改，其他所有会话均已退出。",
+      goToSignIn: "继续登录",
+      invalidLinkTitle: "此链接已失效",
+      invalidLinkSubtitle: "重置链接15分钟后过期，请重新申请后再试。",
+
+      memberSince: "注册于",
+      personalInfo: "个人信息",
+      personalInfoDesc: "您的姓名将显示在整个 ToolsGift 账户中。",
+      security: "安全",
+      securityDesc: "更改密码。更改后，您将在其他所有设备上退出登录。",
+      saveChanges: "保存更改",
+      changesSaved: "更改已保存",
+      changePasswordCta: "更改密码",
+      passwordChanged: "密码已更改",
+      sessions: "会话",
+      sessionsDesc: "您已在本设备登录。在所有设备退出将结束所有会话，包括当前会话。",
+      signOutEverywhere: "退出所有设备",
+
+      continueWithGoogle: "使用 Google 继续",
+      googleDivider: "或",
+      errGoogleCancelled: "Google 登录已取消。请重试。",
+      errGoogleFailed: "使用 Google 登录时出现问题。请重试。",
+      errGoogleEmailTaken: "该 Google 账号尚未关联到您的 ToolsGift 账号。请先使用密码登录，然后在个人资料中关联。",
+      errGoogleNotConfigured: "目前无法使用 Google 登录。请稍后重试。",
+      connectedAccounts: "已关联的账号",
+      connectedAccountsDesc: "关联 Google 账号，下次即可使用 Google 登录。",
+      googleLinked: "已关联",
+      linkGoogle: "关联 Google 账号",
+      errRequired: "此字段为必填项。",
+      errInvalidEmail: "请输入有效的邮箱地址。",
+      errName: "姓名长度需在2到80个字符之间。",
+      errWeakPassword: "请使用至少8个字符，包含字母和数字。",
+      errPasswordMismatch: "两次输入的密码不一致。",
+      errEmailTaken: "该邮箱已被注册。",
+      errInvalidCredentials: "邮箱或密码不正确。",
+      errWrongPassword: "当前密码不正确。",
+      errRateLimited: "尝试次数过多，请稍候几分钟再试。",
+      errInvalidToken: "此重置链接无效或已过期。",
+      errNotAuthenticated: "请登录后继续。",
+      errNetwork: "无法连接服务器，请检查网络后重试。",
+      errServer: "出了点问题，请重试。",
+    },
 
     nav: {
       home: "首页",
@@ -1346,6 +2425,16 @@ const rawTranslations = {
       productTitle: "实用工具，无需不必要的复杂操作。",
       productDescription:
         "ToolsGift 将文件、文档和日常实用工具集中在一个地方。",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -1384,6 +2473,95 @@ const rawTranslations = {
 
   "zh-tw": {
     languageName: "中文 (繁體)",
+
+    auth: {
+      signIn: "登入",
+      signUp: "建立帳戶",
+      signOut: "登出",
+      profile: "個人資料",
+      account: "帳戶",
+      planFree: "免費方案",
+      planPremium: "進階方案",
+
+      pleaseWait: "請稍候...",
+      showPassword: "顯示",
+      hidePassword: "隱藏",
+
+      name: "姓名",
+      namePlaceholder: "您的姓名",
+      email: "電子郵件",
+      password: "密碼",
+      confirmPassword: "確認密碼",
+      currentPassword: "目前密碼",
+      newPassword: "新密碼",
+      passwordHint: "至少8個字元，包含字母和數字。",
+
+      loginTitle: "歡迎回來",
+      loginSubtitle: "登入您的 ToolsGift 帳戶。",
+      loginCta: "登入",
+      forgotPassword: "忘記密碼？",
+      noAccount: "還沒有帳戶？",
+      createAccountCta: "立即建立",
+
+      signupTitle: "建立您的帳戶",
+      signupSubtitle: "建立免費帳戶，管理您的資料與設定。",
+      signupCta: "建立帳戶",
+      haveAccount: "已有帳戶？",
+      signInCta: "登入",
+
+      forgotTitle: "重設密碼",
+      forgotSubtitle: "輸入您的電子郵件地址，我們會傳送安全的重設連結。",
+      sendResetLink: "傳送重設連結",
+      sentTitle: "請查看收件匣",
+      sentSubtitle: "若該地址存在帳戶，重設連結已傳送。連結將在15分鐘後失效。",
+      backToLogin: "返回登入",
+
+      resetTitle: "選擇新密碼",
+      resetSubtitle: "為您的帳戶輸入新密碼。",
+      resetCta: "更新密碼",
+      updatedTitle: "密碼已更新",
+      updatedSubtitle: "您的密碼已變更，其他所有工作階段皆已登出。",
+      goToSignIn: "繼續登入",
+      invalidLinkTitle: "此連結已失效",
+      invalidLinkSubtitle: "重設連結會在15分鐘後過期，請重新申請後再試。",
+
+      memberSince: "加入於",
+      personalInfo: "個人資訊",
+      personalInfoDesc: "您的姓名會顯示在整個 ToolsGift 帳戶中。",
+      security: "安全性",
+      securityDesc: "變更密碼。變更後，您會在所有其他裝置上登出。",
+      saveChanges: "儲存變更",
+      changesSaved: "變更已儲存",
+      changePasswordCta: "變更密碼",
+      passwordChanged: "密碼已變更",
+      sessions: "工作階段",
+      sessionsDesc: "您已在此裝置登入。在所有裝置登出會結束所有工作階段，包括這一個。",
+      signOutEverywhere: "在所有裝置登出",
+
+      continueWithGoogle: "使用 Google 繼續",
+      googleDivider: "或",
+      errGoogleCancelled: "Google 登入已取消。請再試一次。",
+      errGoogleFailed: "使用 Google 登入時發生問題。請再試一次。",
+      errGoogleEmailTaken: "這個 Google 帳號尚未連結至您的 ToolsGift 帳號。請先以密碼登入，再從個人檔案連結。",
+      errGoogleNotConfigured: "目前無法使用 Google 登入。請稍後再試一次。",
+      connectedAccounts: "已連結的帳號",
+      connectedAccountsDesc: "連結 Google 帳號，下次即可使用 Google 登入。",
+      googleLinked: "已連結",
+      linkGoogle: "連結 Google 帳號",
+      errRequired: "此欄位為必填。",
+      errInvalidEmail: "請輸入有效的電子郵件地址。",
+      errName: "姓名長度需介於2到80個字元。",
+      errWeakPassword: "請使用至少8個字元，包含字母和數字。",
+      errPasswordMismatch: "兩次輸入的密碼不一致。",
+      errEmailTaken: "此電子郵件已被註冊。",
+      errInvalidCredentials: "電子郵件或密碼不正確。",
+      errWrongPassword: "目前密碼不正確。",
+      errRateLimited: "嘗試次數過多，請稍候幾分鐘再試。",
+      errInvalidToken: "此重設連結無效或已過期。",
+      errNotAuthenticated: "請登入後繼續。",
+      errNetwork: "無法連線至伺服器，請檢查連線後重試。",
+      errServer: "發生問題，請再試一次。",
+    },
 
     nav: {
       home: "首頁",
@@ -1467,6 +2645,16 @@ const rawTranslations = {
       productTitle: "實用工具，沒有不必要的複雜操作。",
       productDescription:
         "ToolsGift 將檔案、文件和日常實用工具集中在一個地方。",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -1505,6 +2693,95 @@ const rawTranslations = {
 
   ar: {
     languageName: "العربية",
+
+    auth: {
+      signIn: "تسجيل الدخول",
+      signUp: "إنشاء حساب",
+      signOut: "تسجيل الخروج",
+      profile: "الملف الشخصي",
+      account: "الحساب",
+      planFree: "الخطة المجانية",
+      planPremium: "الخطة المميزة",
+
+      pleaseWait: "يرجى الانتظار...",
+      showPassword: "إظهار",
+      hidePassword: "إخفاء",
+
+      name: "الاسم",
+      namePlaceholder: "اسمك",
+      email: "البريد الإلكتروني",
+      password: "كلمة المرور",
+      confirmPassword: "تأكيد كلمة المرور",
+      currentPassword: "كلمة المرور الحالية",
+      newPassword: "كلمة المرور الجديدة",
+      passwordHint: "8 أحرف على الأقل، تتضمن حرفاً ورقماً.",
+
+      loginTitle: "مرحباً بعودتك",
+      loginSubtitle: "سجّل الدخول إلى حسابك في ToolsGift.",
+      loginCta: "تسجيل الدخول",
+      forgotPassword: "نسيت كلمة المرور؟",
+      noAccount: "ليس لديك حساب؟",
+      createAccountCta: "أنشئ واحداً",
+
+      signupTitle: "أنشئ حسابك",
+      signupSubtitle: "أنشئ حساباً مجانياً لإدارة ملفك الشخصي وإعداداتك.",
+      signupCta: "إنشاء حساب",
+      haveAccount: "لديك حساب بالفعل؟",
+      signInCta: "تسجيل الدخول",
+
+      forgotTitle: "إعادة تعيين كلمة المرور",
+      forgotSubtitle: "أدخل بريدك الإلكتروني وسنرسل لك رابطاً آمناً لإعادة التعيين.",
+      sendResetLink: "إرسال الرابط",
+      sentTitle: "تحقق من بريدك الوارد",
+      sentSubtitle: "إذا كان هناك حساب بهذا العنوان، فإن الرابط في الطريق إليه. تنتهي صلاحيته بعد 15 دقيقة.",
+      backToLogin: "العودة لتسجيل الدخول",
+
+      resetTitle: "اختر كلمة مرور جديدة",
+      resetSubtitle: "أدخل كلمة مرور جديدة لحسابك.",
+      resetCta: "تحديث كلمة المرور",
+      updatedTitle: "تم تحديث كلمة المرور",
+      updatedSubtitle: "تم تغيير كلمة مرورك، وتم تسجيل الخروج من كل الجلسات الأخرى.",
+      goToSignIn: "المتابعة لتسجيل الدخول",
+      invalidLinkTitle: "لم يعد هذا الرابط صالحاً",
+      invalidLinkSubtitle: "تنتهي صلاحية روابط إعادة التعيين بعد 15 دقيقة. اطلب رابطاً جديداً وحاول مجدداً.",
+
+      memberSince: "عضو منذ",
+      personalInfo: "المعلومات الشخصية",
+      personalInfoDesc: "يظهر اسمك في جميع أنحاء حسابك في ToolsGift.",
+      security: "الأمان",
+      securityDesc: "غيّر كلمة مرورك. عند تغييرها، سيتم تسجيل خروجك من كل الأجهزة الأخرى.",
+      saveChanges: "حفظ التغييرات",
+      changesSaved: "تم حفظ التغييرات",
+      changePasswordCta: "تغيير كلمة المرور",
+      passwordChanged: "تم تغيير كلمة المرور",
+      sessions: "الجلسات",
+      sessionsDesc: "أنت مسجّل الدخول على هذا الجهاز. تسجيل الخروج من كل مكان ينهي جميع الجلسات، بما في ذلك هذه الجلسة.",
+      signOutEverywhere: "تسجيل الخروج من كل مكان",
+
+      continueWithGoogle: "المتابعة عبر Google",
+      googleDivider: "أو",
+      errGoogleCancelled: "تم إلغاء تسجيل الدخول عبر Google. يرجى المحاولة مرة أخرى.",
+      errGoogleFailed: "حدث خطأ أثناء تسجيل الدخول عبر Google. يرجى المحاولة مرة أخرى.",
+      errGoogleEmailTaken: "حساب Google هذا غير مرتبط بحساب ToolsGift الخاص بك بعد. سجّل الدخول بكلمة المرور أولاً، ثم اربطه من ملفك الشخصي.",
+      errGoogleNotConfigured: "تسجيل الدخول عبر Google غير متاح حاليًا. يرجى المحاولة لاحقًا.",
+      connectedAccounts: "الحسابات المرتبطة",
+      connectedAccountsDesc: "اربط حساب Google لتسجيل الدخول عبر Google في المرة القادمة.",
+      googleLinked: "مرتبط",
+      linkGoogle: "ربط حساب Google",
+      errRequired: "هذا الحقل مطلوب.",
+      errInvalidEmail: "أدخل بريداً إلكترونياً صالحاً.",
+      errName: "يجب أن يتكون الاسم من 2 إلى 80 حرفاً.",
+      errWeakPassword: "استخدم 8 أحرف على الأقل تتضمن حرفاً ورقماً.",
+      errPasswordMismatch: "كلمتا المرور غير متطابقتين.",
+      errEmailTaken: "يوجد حساب بالفعل بهذا البريد الإلكتروني.",
+      errInvalidCredentials: "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+      errWrongPassword: "كلمة المرور الحالية غير صحيحة.",
+      errRateLimited: "محاولات كثيرة جداً. انتظر بضع دقائق وحاول مجدداً.",
+      errInvalidToken: "هذا الرابط غير صالح أو منتهي الصلاحية.",
+      errNotAuthenticated: "سجّل الدخول للمتابعة.",
+      errNetwork: "تعذّر الوصول إلى الخادم. تحقق من اتصالك وحاول مجدداً.",
+      errServer: "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    },
 
     nav: {
       home: "الرئيسية",
@@ -1590,6 +2867,16 @@ const rawTranslations = {
       productTitle: "أدوات مفيدة بدون تعقيد غير ضروري.",
       productDescription:
         "يجمع ToolsGift أدوات الملفات والمستندات والأدوات اليومية في مكان واحد.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -1630,6 +2917,95 @@ const rawTranslations = {
 
   bg: {
     languageName: "Български",
+
+    auth: {
+      signIn: "Вход",
+      signUp: "Създаване на акаунт",
+      signOut: "Излизане",
+      profile: "Профил",
+      account: "Акаунт",
+      planFree: "Безплатен план",
+      planPremium: "Премиум план",
+
+      pleaseWait: "Моля, изчакайте...",
+      showPassword: "Показване",
+      hidePassword: "Скриване",
+
+      name: "Име",
+      namePlaceholder: "Вашето име",
+      email: "Имейл",
+      password: "Парола",
+      confirmPassword: "Потвърдете паролата",
+      currentPassword: "Текуща парола",
+      newPassword: "Нова парола",
+      passwordHint: "Поне 8 знака, включващи буква и цифра.",
+
+      loginTitle: "Добре дошли отново",
+      loginSubtitle: "Влезте в своя акаунт в ToolsGift.",
+      loginCta: "Вход",
+      forgotPassword: "Забравена парола?",
+      noAccount: "Нямате акаунт?",
+      createAccountCta: "Създайте",
+
+      signupTitle: "Създайте своя акаунт",
+      signupSubtitle: "Създайте безплатен акаунт, за да управлявате профила и настройките си.",
+      signupCta: "Създаване на акаунт",
+      haveAccount: "Вече имате акаунт?",
+      signInCta: "Вход",
+
+      forgotTitle: "Нулиране на паролата",
+      forgotSubtitle: "Въведете своя имейл адрес и ще ви изпратим сигурна връзка за нулиране.",
+      sendResetLink: "Изпращане на връзка",
+      sentTitle: "Проверете пощенската си кутия",
+      sentSubtitle: "Ако за този адрес съществува акаунт, връзката е на път. Изтича след 15 минути.",
+      backToLogin: "Обратно към входа",
+
+      resetTitle: "Изберете нова парола",
+      resetSubtitle: "Въведете нова парола за своя акаунт.",
+      resetCta: "Актуализиране на паролата",
+      updatedTitle: "Паролата е актуализирана",
+      updatedSubtitle: "Паролата ви е променена. Всички други сесии бяха прекратени.",
+      goToSignIn: "Продължете към входа",
+      invalidLinkTitle: "Тази връзка вече не е валидна",
+      invalidLinkSubtitle: "Връзките за нулиране изтичат след 15 минути. Поискайте нова и опитайте отново.",
+
+      memberSince: "Член от",
+      personalInfo: "Лична информация",
+      personalInfoDesc: "Вашето име се показва в целия ви акаунт в ToolsGift.",
+      security: "Сигурност",
+      securityDesc: "Сменете паролата си. При промяната ще излезете от всички други устройства.",
+      saveChanges: "Запазване на промените",
+      changesSaved: "Промените са запазени",
+      changePasswordCta: "Смяна на паролата",
+      passwordChanged: "Паролата е сменена",
+      sessions: "Сесии",
+      sessionsDesc: "Влезли сте на това устройство. Излизането отвсякъде прекратява всички сесии, включително тази.",
+      signOutEverywhere: "Излизане отвсякъде",
+
+      continueWithGoogle: "Продължете с Google",
+      googleDivider: "или",
+      errGoogleCancelled: "Влизането чрез Google беше отменено. Опитайте отново.",
+      errGoogleFailed: "Нещо се обърка при влизане чрез Google. Опитайте отново.",
+      errGoogleEmailTaken: "Този Google акаунт все още не е свързан с вашия ToolsGift акаунт. Първо влезте с паролата си, след което го свържете от профила си.",
+      errGoogleNotConfigured: "Влизането чрез Google не е налично в момента. Опитайте по-късно.",
+      connectedAccounts: "Свързани акаунти",
+      connectedAccountsDesc: "Свържете Google акаунта си, за да влизате с Google следващия път.",
+      googleLinked: "Свързан",
+      linkGoogle: "Свързване на Google акаунт",
+      errRequired: "Това поле е задължително.",
+      errInvalidEmail: "Въведете валиден имейл адрес.",
+      errName: "Името трябва да е между 2 и 80 знака.",
+      errWeakPassword: "Използвайте поне 8 знака с буква и цифра.",
+      errPasswordMismatch: "Паролите не съвпадат.",
+      errEmailTaken: "Вече съществува акаунт с този имейл адрес.",
+      errInvalidCredentials: "Грешен имейл или парола.",
+      errWrongPassword: "Текущата ви парола е грешна.",
+      errRateLimited: "Твърде много опити. Изчакайте няколко минути и опитайте отново.",
+      errInvalidToken: "Тази връзка е невалидна или е изтекла.",
+      errNotAuthenticated: "Влезте, за да продължите.",
+      errNetwork: "Сървърът е недостъпен. Проверете връзката си и опитайте отново.",
+      errServer: "Нещо се обърка. Моля, опитайте отново.",
+    },
     nav: {
       home: "Начало",
       allTools: "Всички инструменти",
@@ -1710,6 +3086,16 @@ const rawTranslations = {
       productTitle: "Полезни инструменти без излишна сложност.",
       productDescription:
         "ToolsGift обединява инструменти за файлове, документи и ежедневни задачи на едно място.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
     categories: {
       imageTools: "Инструменти за изображения",
@@ -1745,6 +3131,95 @@ const rawTranslations = {
 
   ca: {
     languageName: "Català",
+
+    auth: {
+      signIn: "Inicia sessió",
+      signUp: "Crea un compte",
+      signOut: "Tanca la sessió",
+      profile: "Perfil",
+      account: "Compte",
+      planFree: "Pla gratuït",
+      planPremium: "Pla premium",
+
+      pleaseWait: "Espera...",
+      showPassword: "Mostra",
+      hidePassword: "Amaga",
+
+      name: "Nom",
+      namePlaceholder: "El teu nom",
+      email: "Correu electrònic",
+      password: "Contrasenya",
+      confirmPassword: "Confirma la contrasenya",
+      currentPassword: "Contrasenya actual",
+      newPassword: "Contrasenya nova",
+      passwordHint: "Almenys 8 caràcters, amb una lletra i un número.",
+
+      loginTitle: "Benvingut de nou",
+      loginSubtitle: "Inicia sessió al teu compte de ToolsGift.",
+      loginCta: "Inicia sessió",
+      forgotPassword: "Has oblidat la contrasenya?",
+      noAccount: "No tens un compte?",
+      createAccountCta: "Crea'n un",
+
+      signupTitle: "Crea el teu compte",
+      signupSubtitle: "Crea un compte gratuït per gestionar el teu perfil i la configuració.",
+      signupCta: "Crea un compte",
+      haveAccount: "Ja tens un compte?",
+      signInCta: "Inicia sessió",
+
+      forgotTitle: "Restableix la contrasenya",
+      forgotSubtitle: "Introdueix el teu correu electrònic i t'enviarem un enllaç segur per restablir-la.",
+      sendResetLink: "Envia l'enllaç",
+      sentTitle: "Comprova la safata d'entrada",
+      sentSubtitle: "Si existeix un compte amb aquesta adreça, l'enllaç ja és en camí. Caduca en 15 minuts.",
+      backToLogin: "Torna a l'inici de sessió",
+
+      resetTitle: "Tria una contrasenya nova",
+      resetSubtitle: "Introdueix una contrasenya nova per al teu compte.",
+      resetCta: "Actualitza la contrasenya",
+      updatedTitle: "Contrasenya actualitzada",
+      updatedSubtitle: "La teva contrasenya s'ha canviat. Totes les altres sessions s'han tancat.",
+      goToSignIn: "Continua a l'inici de sessió",
+      invalidLinkTitle: "Aquest enllaç ja no és vàlid",
+      invalidLinkSubtitle: "Els enllaços caduquen als 15 minuts. Demana'n un de nou i torna-ho a provar.",
+
+      memberSince: "Membre des del",
+      personalInfo: "Informació personal",
+      personalInfoDesc: "El teu nom es mostra a tot el teu compte de ToolsGift.",
+      security: "Seguretat",
+      securityDesc: "Canvia la contrasenya. En canviar-la, es tancarà la sessió a tots els altres dispositius.",
+      saveChanges: "Desa els canvis",
+      changesSaved: "S'han desat els canvis",
+      changePasswordCta: "Canvia la contrasenya",
+      passwordChanged: "Contrasenya canviada",
+      sessions: "Sessions",
+      sessionsDesc: "Has iniciat sessió en aquest dispositiu. Tanar la sessió a tot arreu acaba totes les sessions, inclosa aquesta.",
+      signOutEverywhere: "Tanca la sessió a tot arreu",
+
+      continueWithGoogle: "Continua amb Google",
+      googleDivider: "o",
+      errGoogleCancelled: "S'ha cancel·lat l'inici de sessió amb Google. Torna-ho a provar.",
+      errGoogleFailed: "S'ha produït un error en iniciar sessió amb Google. Torna-ho a provar.",
+      errGoogleEmailTaken: "Aquest compte de Google encara no està vinculat al teu compte de ToolsGift. Inicia sessió primer amb la contrasenya i després vincula'l des del teu perfil.",
+      errGoogleNotConfigured: "En aquest moment, l'inici de sessió amb Google no està disponible. Torna-ho a provar més tard.",
+      connectedAccounts: "Comptes vinculats",
+      connectedAccountsDesc: "Vincula el teu compte de Google per iniciar sessió amb Google la pròxima vegada.",
+      googleLinked: "Vinculat",
+      linkGoogle: "Vincular el compte de Google",
+      errRequired: "Aquest camp és obligatori.",
+      errInvalidEmail: "Introdueix una adreça de correu electrònic vàlida.",
+      errName: "El nom ha de tenir entre 2 i 80 caràcters.",
+      errWeakPassword: "Fes servir almenys 8 caràcters amb una lletra i un número.",
+      errPasswordMismatch: "Les contrasenyes no coincideixen.",
+      errEmailTaken: "Ja existeix un compte amb aquesta adreça de correu.",
+      errInvalidCredentials: "Correu o contrasenya incorrectes.",
+      errWrongPassword: "La teva contrasenya actual és incorrecta.",
+      errRateLimited: "Massa intents. Espera uns minuts i torna-ho a provar.",
+      errInvalidToken: "Aquest enllaç no és vàlid o ha caducat.",
+      errNotAuthenticated: "Inicia sessió per continuar.",
+      errNetwork: "No s'ha pogut contactar amb el servidor. Comprova la connexió i torna-ho a provar.",
+      errServer: "Algo ha anat malament. Torna-ho a provar.",
+    },
     nav: {
       home: "Inici",
       allTools: "Totes les eines",
@@ -1826,6 +3301,16 @@ const rawTranslations = {
       productTitle: "Eines útils sense complexitat innecessària.",
       productDescription:
         "ToolsGift reuneix eines per a fitxers, documents i tasques quotidianes en un sol lloc.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
     categories: {
       imageTools: "Eines d'imatge",
@@ -1861,6 +3346,95 @@ const rawTranslations = {
 
   nl: {
     languageName: "Nederlands",
+
+    auth: {
+      signIn: "Inloggen",
+      signUp: "Account maken",
+      signOut: "Uitloggen",
+      profile: "Profiel",
+      account: "Account",
+      planFree: "Gratis plan",
+      planPremium: "Premiumplan",
+
+      pleaseWait: "Even geduld...",
+      showPassword: "Tonen",
+      hidePassword: "Verbergen",
+
+      name: "Naam",
+      namePlaceholder: "Je naam",
+      email: "E-mail",
+      password: "Wachtwoord",
+      confirmPassword: "Wachtwoord bevestigen",
+      currentPassword: "Huidig wachtwoord",
+      newPassword: "Nieuw wachtwoord",
+      passwordHint: "Minstens 8 tekens, met een letter en een cijfer.",
+
+      loginTitle: "Welkom terug",
+      loginSubtitle: "Log in op je ToolsGift-account.",
+      loginCta: "Inloggen",
+      forgotPassword: "Wachtwoord vergeten?",
+      noAccount: "Geen account?",
+      createAccountCta: "Maak er een",
+
+      signupTitle: "Maak je account",
+      signupSubtitle: "Maak een gratis account om je profiel en instellingen te beheren.",
+      signupCta: "Account maken",
+      haveAccount: "Al een account?",
+      signInCta: "Inloggen",
+
+      forgotTitle: "Wachtwoord opnieuw instellen",
+      forgotSubtitle: "Vul je e-mailadres in en we sturen je een veilige herstellink.",
+      sendResetLink: "Stuur link",
+      sentTitle: "Controleer je inbox",
+      sentSubtitle: "Als er een account bestaat met dat adres, is de link onderweg. De link verloopt over 15 minuten.",
+      backToLogin: "Terug naar inloggen",
+
+      resetTitle: "Kies een nieuw wachtwoord",
+      resetSubtitle: "Vul een nieuw wachtwoord in voor je account.",
+      resetCta: "Wachtwoord bijwerken",
+      updatedTitle: "Wachtwoord bijgewerkt",
+      updatedSubtitle: "Je wachtwoord is gewijzigd. Alle andere sessies zijn uitgelogd.",
+      goToSignIn: "Verder naar inloggen",
+      invalidLinkTitle: "Deze link is niet meer geldig",
+      invalidLinkSubtitle: "Herstellinks verlopen na 15 minuten. Vraag een nieuwe aan en probeer het opnieuw.",
+
+      memberSince: "Lid sinds",
+      personalInfo: "Persoonlijke gegevens",
+      personalInfoDesc: "Je naam wordt in je hele ToolsGift-account getoond.",
+      security: "Beveiliging",
+      securityDesc: "Wijzig je wachtwoord. Daarmee word je overal elders uitgelogd.",
+      saveChanges: "Wijzigingen opslaan",
+      changesSaved: "Wijzigingen opgeslagen",
+      changePasswordCta: "Wachtwoord wijzigen",
+      passwordChanged: "Wachtwoord gewijzigd",
+      sessions: "Sessies",
+      sessionsDesc: "Je bent ingelogd op dit apparaat. Overal uitloggen beëindigt alle sessies, ook deze.",
+      signOutEverywhere: "Overal uitloggen",
+
+      continueWithGoogle: "Doorgaan met Google",
+      googleDivider: "of",
+      errGoogleCancelled: "Aanmelden met Google is geannuleerd. Probeer het opnieuw.",
+      errGoogleFailed: "Er is iets misgegaan bij het aanmelden met Google. Probeer het opnieuw.",
+      errGoogleEmailTaken: "Dat Google-account is nog niet gekoppeld aan je ToolsGift-account. Log eerst in met je wachtwoord en koppel het daarna vanuit je profiel.",
+      errGoogleNotConfigured: "Aanmelden met Google is momenteel niet beschikbaar. Probeer het later opnieuw.",
+      connectedAccounts: "Gekoppelde accounts",
+      connectedAccountsDesc: "Koppel je Google-account om de volgende keer met Google in te loggen.",
+      googleLinked: "Gekoppeld",
+      linkGoogle: "Google-account koppelen",
+      errRequired: "Dit veld is verplicht.",
+      errInvalidEmail: "Vul een geldig e-mailadres in.",
+      errName: "De naam moet tussen 2 en 80 tekens bevatten.",
+      errWeakPassword: "Gebruik minstens 8 tekens met een letter en een cijfer.",
+      errPasswordMismatch: "De wachtwoorden komen niet overeen.",
+      errEmailTaken: "Er bestaat al een account met dit e-mailadres.",
+      errInvalidCredentials: "E-mail of wachtwoord is onjuist.",
+      errWrongPassword: "Je huidige wachtwoord is onjuist.",
+      errRateLimited: "Te veel pogingen. Wacht een paar minuten en probeer het opnieuw.",
+      errInvalidToken: "Deze link is ongeldig of verlopen.",
+      errNotAuthenticated: "Log in om verder te gaan.",
+      errNetwork: "De server was niet bereikbaar. Controleer je verbinding en probeer het opnieuw.",
+      errServer: "Er is iets misgegaan. Probeer het opnieuw.",
+    },
     nav: {
       home: "Home",
       allTools: "Alle tools",
@@ -1942,6 +3516,16 @@ const rawTranslations = {
       productTitle: "Handige tools zonder onnodige complexiteit.",
       productDescription:
         "ToolsGift brengt dagelijkse tools voor bestanden, documenten en hulpprogramma's samen op één plek.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
     categories: {
       imageTools: "Afbeeldingstools",
@@ -1977,6 +3561,95 @@ const rawTranslations = {
 
   el: {
     languageName: "Ελληνικά",
+
+    auth: {
+      signIn: "Σύνδεση",
+      signUp: "Δημιουργία λογαριασμού",
+      signOut: "Αποσύνδεση",
+      profile: "Προφίλ",
+      account: "Λογαριασμός",
+      planFree: "Δωρεάν πλάνο",
+      planPremium: "Premium πλάνο",
+
+      pleaseWait: "Περιμένετε...",
+      showPassword: "Εμφάνιση",
+      hidePassword: "Απόκρυψη",
+
+      name: "Όνομα",
+      namePlaceholder: "Το όνομά σας",
+      email: "Ηλεκτρονικό ταχυδρομείο",
+      password: "Κωδικός πρόσβασης",
+      confirmPassword: "Επιβεβαίωση κωδικού",
+      currentPassword: "Τρέχων κωδικός",
+      newPassword: "Νέος κωδικός",
+      passwordHint: "Τουλάχιστον 8 χαρακτήρες, με ένα γράμμα και ένα νούμερο.",
+
+      loginTitle: "Καλώς ήρθατε ξανά",
+      loginSubtitle: "Συνδεθείτε στον λογαριασμό σας στο ToolsGift.",
+      loginCta: "Σύνδεση",
+      forgotPassword: "Ξεχάσατε τον κωδικό σας;",
+      noAccount: "Δεν έχετε λογαριασμό;",
+      createAccountCta: "Δημιουργήστε έναν",
+
+      signupTitle: "Δημιουργήστε τον λογαριασμό σας",
+      signupSubtitle: "Δημιουργήστε έναν δωρεάν λογαριασμό για να διαχειριστείτε το προφίλ και τις ρυθμίσεις σας.",
+      signupCta: "Δημιουργία λογαριασμού",
+      haveAccount: "Έχετε ήδη λογαριασμό;",
+      signInCta: "Σύνδεση",
+
+      forgotTitle: "Επαναφορά κωδικού",
+      forgotSubtitle: "Πληκτρολογήστε τη διεύθυνση email σας και θα σας στείλουμε ασφαλή σύνδεσμο επαναφοράς.",
+      sendResetLink: "Αποστολή συνδέσμου",
+      sentTitle: "Ελέγξτε τα εισερχόμενα",
+      sentSubtitle: "Αν υπάρχει λογαριασμός με αυτή τη διεύθυνση, ο σύνδεσμος στέλνεται. Λήγει σε 15 λεπτά.",
+      backToLogin: "Πίσω στη σύνδεση",
+
+      resetTitle: "Επιλέξτε νέο κωδικό",
+      resetSubtitle: "Πληκτρολογήστε έναν νέο κωδικό για τον λογαριασμό σας.",
+      resetCta: "Ενημέρωση κωδικού",
+      updatedTitle: "Ο κωδικός ενημερώθηκε",
+      updatedSubtitle: "Ο κωδικός σας άλλαξε. Όλες οι άλλες συνεδρίες αποσυνδέθηκαν.",
+      goToSignIn: "Συνέχεια στη σύνδεση",
+      invalidLinkTitle: "Ο σύνδεσμος δεν είναι πλέον έγκυρος",
+      invalidLinkSubtitle: "Οι σύνδεσμοι επαναφοράς λήγουν σε 15 λεπτά. Ζητήστε νέο και δοκιμάστε ξανά.",
+
+      memberSince: "Μέλος από",
+      personalInfo: "Προσωπικά στοιχεία",
+      personalInfoDesc: "Το όνομά σας εμφανίζεται σε όλο τον λογαριασμό σας στο ToolsGift.",
+      security: "Ασφάλεια",
+      securityDesc: "Αλλάξτε τον κωδικό σας. Με την αλλαγή θα αποσυνδεθείτε από όλες τις άλλες συσκευές.",
+      saveChanges: "Αποθήκευση αλλαγών",
+      changesSaved: "Οι αλλαγές αποθηκεύτηκαν",
+      changePasswordCta: "Αλλαγή κωδικού",
+      passwordChanged: "Ο κωδικός άλλαξε",
+      sessions: "Συνεδρίες",
+      sessionsDesc: "Έχετε συνδεθεί σε αυτή τη συσκευή. Η αποσύνδεση παντού τερματίζει όλες τις συνεδρίες, συμπεριλαμβανομένης αυτής.",
+      signOutEverywhere: "Αποσύνδεση παντού",
+
+      continueWithGoogle: "Συνέχεια με Google",
+      googleDivider: "ή",
+      errGoogleCancelled: "Η σύνδεση με Google ακυρώθηκε. Δοκιμάστε ξανά.",
+      errGoogleFailed: "Κάτι πήγε στραβά κατά τη σύνδεση με Google. Δοκιμάστε ξανά.",
+      errGoogleEmailTaken: "Αυτός ο λογαριασμός Google δεν έχει συνδεθεί ακόμη με τον λογαριασμό ToolsGift σας. Συνδεθείτε πρώτα με τον κωδικό σας και μετά συνδέστε τον από το προφίλ σας.",
+      errGoogleNotConfigured: "Η σύνδεση με Google δεν είναι διαθέσιμη αυτή τη στιγμή. Δοκιμάστε αργότερα.",
+      connectedAccounts: "Συνδεδεμένοι λογαριασμοί",
+      connectedAccountsDesc: "Συνδέστε τον λογαριασμό Google σας για να συνδέεστε με Google την επόμενη φορά.",
+      googleLinked: "Συνδέθηκε",
+      linkGoogle: "Σύνδεση λογαριασμού Google",
+      errRequired: "Αυτό το πεδίο είναι υποχρεωτικό.",
+      errInvalidEmail: "Πληκτρολογήστε μια έγκυρη διεύθυνση email.",
+      errName: "Το όνομα πρέπει να έχει από 2 έως 80 χαρακτήρες.",
+      errWeakPassword: "Χρησιμοποιήστε τουλάχιστον 8 χαρακτήρες με ένα γράμμα και ένα νούμερο.",
+      errPasswordMismatch: "Οι κωδικοί δεν ταιριάζουν.",
+      errEmailTaken: "Υπάρχει ήδη λογαριασμός με αυτό το email.",
+      errInvalidCredentials: "Λάθος email ή κωδικός.",
+      errWrongPassword: "Ο τρέχων κωδικός σας είναι λάθος.",
+      errRateLimited: "Πολλές προσπάθειες. Περιμένετε λίγα λεπτά και δοκιμάστε ξανά.",
+      errInvalidToken: "Αυτός ο σύνδεσμος δεν είναι έγκυρος ή έληξε.",
+      errNotAuthenticated: "Συνδεθείτε για να συνεχίσετε.",
+      errNetwork: "Δεν ήταν δυνατή η σύνδεση με τον διακομιστή. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
+      errServer: "Κάτι πήγε στραβά. Δοκιμάστε ξανά.",
+    },
     nav: {
       home: "Αρχική",
       allTools: "Όλα τα εργαλεία",
@@ -2058,6 +3731,16 @@ const rawTranslations = {
       productTitle: "Χρήσιμα εργαλεία χωρίς περιττή πολυπλοκότητα.",
       productDescription:
         "Το ToolsGift συγκεντρώνει εργαλεία για αρχεία, έγγραφα και καθημερινές εργασίες σε ένα μέρος.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
     categories: {
       imageTools: "Εργαλεία εικόνων",
@@ -2093,6 +3776,95 @@ const rawTranslations = {
 
   id: {
     languageName: "Bahasa Indonesia",
+
+    auth: {
+      signIn: "Masuk",
+      signUp: "Buat akun",
+      signOut: "Keluar",
+      profile: "Profil",
+      account: "Akun",
+      planFree: "Paket gratis",
+      planPremium: "Paket premium",
+
+      pleaseWait: "Mohon tunggu...",
+      showPassword: "Tampilkan",
+      hidePassword: "Sembunyikan",
+
+      name: "Nama",
+      namePlaceholder: "Nama Anda",
+      email: "Email",
+      password: "Kata sandi",
+      confirmPassword: "Konfirmasi kata sandi",
+      currentPassword: "Kata sandi saat ini",
+      newPassword: "Kata sandi baru",
+      passwordHint: "Minimal 8 karakter, termasuk huruf dan angka.",
+
+      loginTitle: "Selamat datang kembali",
+      loginSubtitle: "Masuk ke akun ToolsGift Anda.",
+      loginCta: "Masuk",
+      forgotPassword: "Lupa kata sandi?",
+      noAccount: "Belum punya akun?",
+      createAccountCta: "Buat satu",
+
+      signupTitle: "Buat akun Anda",
+      signupSubtitle: "Buat akun gratis untuk mengelola profil dan pengaturan Anda.",
+      signupCta: "Buat akun",
+      haveAccount: "Sudah punya akun?",
+      signInCta: "Masuk",
+
+      forgotTitle: "Atur ulang kata sandi",
+      forgotSubtitle: "Masukkan alamat email Anda dan kami akan mengirimkan tautan pengaturan ulang yang aman.",
+      sendResetLink: "Kirim tautan",
+      sentTitle: "Periksa kotak masuk Anda",
+      sentSubtitle: "Jika ada akun untuk alamat tersebut, tautannya sedang dikirim. Tautan kedaluwarsa dalam 15 menit.",
+      backToLogin: "Kembali ke halaman masuk",
+
+      resetTitle: "Pilih kata sandi baru",
+      resetSubtitle: "Masukkan kata sandi baru untuk akun Anda.",
+      resetCta: "Perbarui kata sandi",
+      updatedTitle: "Kata sandi diperbarui",
+      updatedSubtitle: "Kata sandi Anda telah diubah. Semua sesi lain telah keluar.",
+      goToSignIn: "Lanjutkan ke halaman masuk",
+      invalidLinkTitle: "Tautan ini tidak lagi berlaku",
+      invalidLinkSubtitle: "Tautan pengaturan ulang kedaluwarsa setelah 15 menit. Minta yang baru lalu coba lagi.",
+
+      memberSince: "Anggota sejak",
+      personalInfo: "Informasi pribadi",
+      personalInfoDesc: "Nama Anda ditampilkan di seluruh akun ToolsGift Anda.",
+      security: "Keamanan",
+      securityDesc: "Ubah kata sandi Anda. Dengan mengubahnya, Anda akan keluar dari semua perangkat lain.",
+      saveChanges: "Simpan perubahan",
+      changesSaved: "Perubahan disimpan",
+      changePasswordCta: "Ubah kata sandi",
+      passwordChanged: "Kata sandi diubah",
+      sessions: "Sesi",
+      sessionsDesc: "Anda masuk di perangkat ini. Keluar dari semua perangkat mengakhiri semua sesi, termasuk sesi ini.",
+      signOutEverywhere: "Keluar dari semua perangkat",
+
+      continueWithGoogle: "Lanjutkan dengan Google",
+      googleDivider: "atau",
+      errGoogleCancelled: "Masuk dengan Google dibatalkan. Silakan coba lagi.",
+      errGoogleFailed: "Terjadi kesalahan saat masuk dengan Google. Silakan coba lagi.",
+      errGoogleEmailTaken: "Akun Google tersebut belum ditautkan ke akun ToolsGift Anda. Masuk terlebih dahulu dengan kata sandi, lalu tautkan dari profil Anda.",
+      errGoogleNotConfigured: "Masuk dengan Google tidak tersedia saat ini. Silakan coba lagi nanti.",
+      connectedAccounts: "Akun terhubung",
+      connectedAccountsDesc: "Tautkan akun Google Anda untuk masuk dengan Google lain kali.",
+      googleLinked: "Tertaut",
+      linkGoogle: "Tautkan akun Google",
+      errRequired: "Kolom ini wajib diisi.",
+      errInvalidEmail: "Masukkan alamat email yang valid.",
+      errName: "Nama harus terdiri dari 2 hingga 80 karakter.",
+      errWeakPassword: "Gunakan minimal 8 karakter dengan huruf dan angka.",
+      errPasswordMismatch: "Kata sandi tidak cocok.",
+      errEmailTaken: "Akun dengan email ini sudah ada.",
+      errInvalidCredentials: "Email atau kata sandi salah.",
+      errWrongPassword: "Kata sandi Anda saat ini salah.",
+      errRateLimited: "Terlalu banyak percobaan. Tunggu beberapa menit lalu coba lagi.",
+      errInvalidToken: "Tautan ini tidak valid atau sudah kedaluwarsa.",
+      errNotAuthenticated: "Silakan masuk untuk melanjutkan.",
+      errNetwork: "Tidak dapat terhubung ke server. Periksa koneksi Anda lalu coba lagi.",
+      errServer: "Terjadi kesalahan. Silakan coba lagi.",
+    },
 
     nav: {
       home: "Beranda",
@@ -2173,6 +3945,16 @@ const rawTranslations = {
       productLabel: "ToolsGift",
       productTitle: "Alat yang berguna tanpa kerumitan yang tidak perlu.",
       productDescription: "ToolsGift menggabungkan alat file, dokumen, dan utilitas sehari-hari di satu tempat.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -2211,6 +3993,95 @@ const rawTranslations = {
 
   ms: {
     languageName: "Bahasa Melayu",
+
+    auth: {
+      signIn: "Log masuk",
+      signUp: "Cipta akaun",
+      signOut: "Log keluar",
+      profile: "Profil",
+      account: "Akaun",
+      planFree: "Pelan percuma",
+      planPremium: "Pelan premium",
+
+      pleaseWait: "Sila tunggu...",
+      showPassword: "Tunjuk",
+      hidePassword: "Sembunyi",
+
+      name: "Nama",
+      namePlaceholder: "Nama anda",
+      email: "E-mel",
+      password: "Kata laluan",
+      confirmPassword: "Sahkan kata laluan",
+      currentPassword: "Kata laluan semasa",
+      newPassword: "Kata laluan baharu",
+      passwordHint: "Sekurang-kurangnya 8 aksara, termasuk huruf dan nombor.",
+
+      loginTitle: "Selamat kembali",
+      loginSubtitle: "Log masuk ke akaun ToolsGift anda.",
+      loginCta: "Log masuk",
+      forgotPassword: "Lupa kata laluan?",
+      noAccount: "Tiada akaun?",
+      createAccountCta: "Cipta satu",
+
+      signupTitle: "Cipta akaun anda",
+      signupSubtitle: "Cipta akaun percuma untuk mengurus profil dan tetapan anda.",
+      signupCta: "Cipta akaun",
+      haveAccount: "Sudah ada akaun?",
+      signInCta: "Log masuk",
+
+      forgotTitle: "Tetapkan semula kata laluan",
+      forgotSubtitle: "Masukkan alamat e-mel anda dan kami akan menghantar pautan semakan selamat.",
+      sendResetLink: "Hantar pautan",
+      sentTitle: "Semak peti masuk anda",
+      sentSubtitle: "Jika akaun wujud untuk alamat tersebut, pautan sedang dihantar. Pautan tamat tempoh dalam 15 minit.",
+      backToLogin: "Kembali ke log masuk",
+
+      resetTitle: "Pilih kata laluan baharu",
+      resetSubtitle: "Masukkan kata laluan baharu untuk akaun anda.",
+      resetCta: "Kemas kini kata laluan",
+      updatedTitle: "Kata laluan dikemas kini",
+      updatedSubtitle: "Kata laluan anda telah ditukar. Semua sesi lain telah log keluar.",
+      goToSignIn: "Teruskan ke log masuk",
+      invalidLinkTitle: "Pautan ini tidak lagi sah",
+      invalidLinkSubtitle: "Pautan semakan tamat tempoh selepas 15 minit. Minta yang baharu dan cuba lagi.",
+
+      memberSince: "Ahli sejak",
+      personalInfo: "Maklumat peribadi",
+      personalInfoDesc: "Nama anda dipaparkan di seluruh akaun ToolsGift anda.",
+      security: "Keselamatan",
+      securityDesc: "Tukar kata laluan anda. Dengan menukar, anda akan log keluar dari semua peranti lain.",
+      saveChanges: "Simpan perubahan",
+      changesSaved: "Perubahan disimpan",
+      changePasswordCta: "Tukar kata laluan",
+      passwordChanged: "Kata laluan ditukar",
+      sessions: "Sesi",
+      sessionsDesc: "Anda telah log masuk pada peranti ini. Log keluar dari semua peranti menamatkan semua sesi, termasuk sesi ini.",
+      signOutEverywhere: "Log keluar dari semua peranti",
+
+      continueWithGoogle: "Teruskan dengan Google",
+      googleDivider: "atau",
+      errGoogleCancelled: "Log masuk Google dibatalkan. Sila cuba lagi.",
+      errGoogleFailed: "Sesuatu telah berlaku semasa log masuk dengan Google. Sila cuba lagi.",
+      errGoogleEmailTaken: "Akaun Google tersebut belum dipautkan ke akaun ToolsGift anda. Log masuk dahulu dengan kata laluan anda, kemudian pautkan dari profil anda.",
+      errGoogleNotConfigured: "Log masuk dengan Google tidak tersedia buat masa ini. Sila cuba lagi kelak.",
+      connectedAccounts: "Akaun dipautkan",
+      connectedAccountsDesc: "Pautkan akaun Google anda untuk log masuk dengan Google pada masa akan datang.",
+      googleLinked: "Dipautkan",
+      linkGoogle: "Pautkan akaun Google",
+      errRequired: "Medan ini diperlukan.",
+      errInvalidEmail: "Masukkan alamat e-mel yang sah.",
+      errName: "Nama mesti antara 2 hingga 80 aksara.",
+      errWeakPassword: "Gunakan sekurang-kurangnya 8 aksara dengan huruf dan nombor.",
+      errPasswordMismatch: "Kata laluan tidak sepadan.",
+      errEmailTaken: "Akaun dengan e-mel ini sudah wujud.",
+      errInvalidCredentials: "E-mel atau kata laluan salah.",
+      errWrongPassword: "Kata laluan semasa anda salah.",
+      errRateLimited: "Terlalu banyak percubaan. Tunggu beberapa minit dan cuba lagi.",
+      errInvalidToken: "Pautan ini tidak sah atau telah tamat tempoh.",
+      errNotAuthenticated: "Sila log masuk untuk meneruskan.",
+      errNetwork: "Tidak dapat mencapai pelayan. Semak sambungan anda dan cuba lagi.",
+      errServer: "Sesuatu telah berlaku. Sila cuba lagi.",
+    },
 
     nav: {
       home: "Laman Utama",
@@ -2291,6 +4162,16 @@ const rawTranslations = {
       productLabel: "ToolsGift",
       productTitle: "Alat berguna tanpa kerumitan yang tidak diperlukan.",
       productDescription: "ToolsGift menghimpunkan alat fail, dokumen dan utiliti harian di satu tempat.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -2329,6 +4210,95 @@ const rawTranslations = {
 
   pl: {
     languageName: "Polski",
+
+    auth: {
+      signIn: "Zaloguj się",
+      signUp: "Utwórz konto",
+      signOut: "Wyloguj się",
+      profile: "Profil",
+      account: "Konto",
+      planFree: "Plan darmowy",
+      planPremium: "Plan premium",
+
+      pleaseWait: "Proszę czekać...",
+      showPassword: "Pokaż",
+      hidePassword: "Ukryj",
+
+      name: "Imię i nazwisko",
+      namePlaceholder: "Twoje imię i nazwisko",
+      email: "E-mail",
+      password: "Hasło",
+      confirmPassword: "Potwierdź hasło",
+      currentPassword: "Obecne hasło",
+      newPassword: "Nowe hasło",
+      passwordHint: "Co najmniej 8 znaków, w tym litera i cyfra.",
+
+      loginTitle: "Witamy ponownie",
+      loginSubtitle: "Zaloguj się do swojego konta ToolsGift.",
+      loginCta: "Zaloguj się",
+      forgotPassword: "Zapomniałeś hasła?",
+      noAccount: "Nie masz konta?",
+      createAccountCta: "Załóż je",
+
+      signupTitle: "Utwórz swoje konto",
+      signupSubtitle: "Utwórz darmowe konto, aby zarządzać profilem i ustawieniami.",
+      signupCta: "Utwórz konto",
+      haveAccount: "Masz już konto?",
+      signInCta: "Zaloguj się",
+
+      forgotTitle: "Zresetuj hasło",
+      forgotSubtitle: "Podaj adres e-mail, a wyślemy Ci bezpieczny link do resetowania.",
+      sendResetLink: "Wyślij link",
+      sentTitle: "Sprawdź skrzynkę odbiorczą",
+      sentSubtitle: "Jeśli konto istnieje dla tego adresu, link jest w drodze. Wygasa po 15 minutach.",
+      backToLogin: "Powrót do logowania",
+
+      resetTitle: "Wybierz nowe hasło",
+      resetSubtitle: "Podaj nowe hasło dla swojego konta.",
+      resetCta: "Zaktualizuj hasło",
+      updatedTitle: "Hasło zaktualizowane",
+      updatedSubtitle: "Twoje hasło zostało zmienione. Wszystkie pozostałe sesje zostały wylogowane.",
+      goToSignIn: "Przejdź do logowania",
+      invalidLinkTitle: "Ten link jest już nieważny",
+      invalidLinkSubtitle: "Linki do resetowania wygasają po 15 minutach. Poproś o nowy i spróbuj ponownie.",
+
+      memberSince: "Członek od",
+      personalInfo: "Dane osobowe",
+      personalInfoDesc: "Twoje imię i nazwisko jest wyświetlane w całym koncie ToolsGift.",
+      security: "Bezpieczeństwo",
+      securityDesc: "Zmień swoje hasło. Po zmianie zostaniesz wylogowany na wszystkich innych urządzeniach.",
+      saveChanges: "Zapisz zmiany",
+      changesSaved: "Zmiany zapisane",
+      changePasswordCta: "Zmień hasło",
+      passwordChanged: "Hasło zmienione",
+      sessions: "Sesje",
+      sessionsDesc: "Jesteś zalogowany na tym urządzeniu. Wylogowanie wszędzie kończy wszystkie sesje, włącznie z tą.",
+      signOutEverywhere: "Wyloguj wszędzie",
+
+      continueWithGoogle: "Kontynuuj z Google",
+      googleDivider: "lub",
+      errGoogleCancelled: "Logowanie przez Google zostało anulowane. Spróbuj ponownie.",
+      errGoogleFailed: "Coś poszło nie tak podczas logowania przez Google. Spróbuj ponownie.",
+      errGoogleEmailTaken: "To konto Google nie jest jeszcze powiązane z Twoim kontem ToolsGift. Najpierw zaloguj się hasłem, a następnie powiąż je w swoim profilu.",
+      errGoogleNotConfigured: "Logowanie przez Google jest obecnie niedostępne. Spróbuj ponownie później.",
+      connectedAccounts: "Powiązane konta",
+      connectedAccountsDesc: "Powiąż konto Google, aby następnym razem logować się przez Google.",
+      googleLinked: "Powiązano",
+      linkGoogle: "Powiąż konto Google",
+      errRequired: "To pole jest wymagane.",
+      errInvalidEmail: "Podaj prawidłowy adres e-mail.",
+      errName: "Imię i nazwisko musi mieć od 2 do 80 znaków.",
+      errWeakPassword: "Użyj co najmniej 8 znaków, w tym litery i cyfry.",
+      errPasswordMismatch: "Hasła nie są zgodne.",
+      errEmailTaken: "Konto z tym adresem e-mail już istnieje.",
+      errInvalidCredentials: "Nieprawidłowy e-mail lub hasło.",
+      errWrongPassword: "Twoje obecne hasło jest nieprawidłowe.",
+      errRateLimited: "Zbyt wiele prób. Poczekaj kilka minut i spróbuj ponownie.",
+      errInvalidToken: "Ten link jest nieprawidłowy lub wygasł.",
+      errNotAuthenticated: "Zaloguj się, aby kontynuować.",
+      errNetwork: "Nie można połączyć się z serwerem. Sprawdź połączenie i spróbuj ponownie.",
+      errServer: "Coś poszło nie tak. Spróbuj ponownie.",
+    },
 
     nav: {
       home: "Strona główna",
@@ -2409,6 +4379,16 @@ const rawTranslations = {
       productLabel: "ToolsGift",
       productTitle: "Przydatne narzędzia bez zbędnych komplikacji.",
       productDescription: "ToolsGift łączy narzędzia do plików, dokumentów i codziennych zadań w jednym miejscu.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -2447,6 +4427,95 @@ const rawTranslations = {
 
   sv: {
     languageName: "Svenska",
+
+    auth: {
+      signIn: "Logga in",
+      signUp: "Skapa konto",
+      signOut: "Logga ut",
+      profile: "Profil",
+      account: "Konto",
+      planFree: "Gratisplan",
+      planPremium: "Premiumplan",
+
+      pleaseWait: "Vänta...",
+      showPassword: "Visa",
+      hidePassword: "Dölj",
+
+      name: "Namn",
+      namePlaceholder: "Ditt namn",
+      email: "E-post",
+      password: "Lösenord",
+      confirmPassword: "Bekräfta lösenord",
+      currentPassword: "Nuvarande lösenord",
+      newPassword: "Nytt lösenord",
+      passwordHint: "Minst 8 tecken, inklusive en bokstav och en siffra.",
+
+      loginTitle: "Välkommen tillbaka",
+      loginSubtitle: "Logga in på ditt ToolsGift-konto.",
+      loginCta: "Logga in",
+      forgotPassword: "Glömt ditt lösenord?",
+      noAccount: "Har du inget konto?",
+      createAccountCta: "Skapa ett",
+
+      signupTitle: "Skapa ditt konto",
+      signupSubtitle: "Skapa ett gratis konto för att hantera din profil och dina inställningar.",
+      signupCta: "Skapa konto",
+      haveAccount: "Har du redan ett konto?",
+      signInCta: "Logga in",
+
+      forgotTitle: "Återställ ditt lösenord",
+      forgotSubtitle: "Ange din e-postadress så skickar vi en säker återställningslänk.",
+      sendResetLink: "Skicka länk",
+      sentTitle: "Kontrollera din inkorg",
+      sentSubtitle: "Om ett konto finns för adressen är länken på väg. Den går ut om 15 minuter.",
+      backToLogin: "Tillbaka till inloggningen",
+
+      resetTitle: "Välj ett nytt lösenord",
+      resetSubtitle: "Ange ett nytt lösenord för ditt konto.",
+      resetCta: "Uppdatera lösenord",
+      updatedTitle: "Lösenordet uppdaterat",
+      updatedSubtitle: "Ditt lösenord har ändrats. Alla andra sessioner har loggats ut.",
+      goToSignIn: "Fortsätt till inloggningen",
+      invalidLinkTitle: "Den här länken är inte längre giltig",
+      invalidLinkSubtitle: "Återställningslänkar går ut efter 15 minuter. Begär en ny och försök igen.",
+
+      memberSince: "Medlem sedan",
+      personalInfo: "Personlig information",
+      personalInfoDesc: "Ditt namn visas i hela ditt ToolsGift-konto.",
+      security: "Säkerhet",
+      securityDesc: "Ändra ditt lösenord. När du ändrar det loggs du ut på alla andra enheter.",
+      saveChanges: "Spara ändringar",
+      changesSaved: "Ändringarna har sparats",
+      changePasswordCta: "Ändra lösenord",
+      passwordChanged: "Lösenordet har ändrats",
+      sessions: "Sessioner",
+      sessionsDesc: "Du är inloggad på den här enheten. Utloggning överallt avslutar alla sessioner, inklusive den här.",
+      signOutEverywhere: "Logga ut överallt",
+
+      continueWithGoogle: "Fortsätt med Google",
+      googleDivider: "eller",
+      errGoogleCancelled: "Google-inloggningen avbröts. Försök igen.",
+      errGoogleFailed: "Något gick fel när du loggade in med Google. Försök igen.",
+      errGoogleEmailTaken: "Det Google-kontot är ännu inte länkat till ditt ToolsGift-konto. Logga in med ditt lösenord först och länka det sedan från din profil.",
+      errGoogleNotConfigured: "Google-inloggning är inte tillgänglig just nu. Försök igen senare.",
+      connectedAccounts: "Länkade konton",
+      connectedAccountsDesc: "Länka ditt Google-konto för att logga in med Google nästa gång.",
+      googleLinked: "Länkat",
+      linkGoogle: "Länka Google-konto",
+      errRequired: "Detta fält är obligatoriskt.",
+      errInvalidEmail: "Ange en giltig e-postadress.",
+      errName: "Namnet måste vara mellan 2 och 80 tecken.",
+      errWeakPassword: "Använd minst 8 tecken med en bokstav och en siffra.",
+      errPasswordMismatch: "Lösenorden matchar inte.",
+      errEmailTaken: "Ett konto finns redan med den här e-postadressen.",
+      errInvalidCredentials: "Fel e-post eller lösenord.",
+      errWrongPassword: "Ditt nuvarande lösenord är fel.",
+      errRateLimited: "För många försök. Vänta några minuter och försök igen.",
+      errInvalidToken: "Den här länken är ogiltig eller har gått ut.",
+      errNotAuthenticated: "Logga in för att fortsätta.",
+      errNetwork: "Kunde inte nå servern. Kontrollera din anslutning och försök igen.",
+      errServer: "Något gick fel. Försök igen.",
+    },
 
     nav: {
       home: "Hem",
@@ -2527,6 +4596,16 @@ const rawTranslations = {
       productLabel: "ToolsGift",
       productTitle: "Användbara verktyg utan onödig komplexitet.",
       productDescription: "ToolsGift samlar verktyg för filer, dokument och vardagliga uppgifter på ett ställe.",
+      heroTagline: "ToolsGift",
+      heroH1: "Free Online Tools for Images, PDFs & Files",
+      heroSubtext: "Compress, convert, resize, merge, split and edit images, PDFs and everyday files with a free collection of online tools in your browser.",
+      browseAllTools: "Browse all tools",
+      imageToolsBtn: "Image tools",
+      pdfToolsBtn: "PDF tools",
+      sectionTagline: "Free online tools collection",
+      sectionTitle: "Browse ToolsGift's online tools",
+      sectionDescription: "Explore our collection of online tools for images, PDFs and everyday files — find the right tool to get the job done.",
+      productStatementH2: "Free online tools without the unnecessary complexity",
     },
 
     categories: {
@@ -2565,6 +4644,95 @@ const rawTranslations = {
 
   th: {
     languageName: "ภาษาไทย",
+
+    auth: {
+      signIn: "เข้าสู่ระบบ",
+      signUp: "สร้างบัญชี",
+      signOut: "ออกจากระบบ",
+      profile: "โปรไฟล์",
+      account: "บัญชี",
+      planFree: "แผนฟรี",
+      planPremium: "แผนพรีเมียม",
+
+      pleaseWait: "กรุณารอสักครู่...",
+      showPassword: "แสดง",
+      hidePassword: "ซ่อน",
+
+      name: "ชื่อ",
+      namePlaceholder: "ชื่อของคุณ",
+      email: "อีเมล",
+      password: "รหัสผ่าน",
+      confirmPassword: "ยืนยันรหัสผ่าน",
+      currentPassword: "รหัสผ่านปัจจุบัน",
+      newPassword: "รหัสผ่านใหม่",
+      passwordHint: "อย่างน้อย 8 อักขระ รวมตัวอักษรและตัวเลข",
+
+      loginTitle: "ยินดีต้อนรับกลับ",
+      loginSubtitle: "เข้าสู่บัญชี ToolsGift ของคุณ",
+      loginCta: "เข้าสู่ระบบ",
+      forgotPassword: "ลืมรหัสผ่าน?",
+      noAccount: "ยังไม่มีบัญชี?",
+      createAccountCta: "สร้างเลย",
+
+      signupTitle: "สร้างบัญชีของคุณ",
+      signupSubtitle: "สร้างบัญชีฟรีเพื่อจัดการโปรไฟล์และการตั้งค่าของคุณ",
+      signupCta: "สร้างบัญชี",
+      haveAccount: "มีบัญชีอยู่แล้ว?",
+      signInCta: "เข้าสู่ระบบ",
+
+      forgotTitle: "รีเซ็ตรหัสผ่าน",
+      forgotSubtitle: "กรอกอีเมลของคุณ แล้วเราจะส่งลิงก์รีเซ็ตที่ปลอดภัยให้",
+      sendResetLink: "ส่งลิงก์",
+      sentTitle: "ตรวจสอบกล่องจดหมาย",
+      sentSubtitle: "หากมีบัญชีสำหรับที่อยู่นี้ ลิงก์กำลังจะมาถึง ลิงก์หมดอายุใน 15 นาที",
+      backToLogin: "กลับไปหน้าเข้าสู่ระบบ",
+
+      resetTitle: "เลือกรหัสผ่านใหม่",
+      resetSubtitle: "กรอกรหัสผ่านใหม่สำหรับบัญชีของคุณ",
+      resetCta: "อัปเดตรหัสผ่าน",
+      updatedTitle: "อัปเดตรหัสผ่านแล้ว",
+      updatedSubtitle: "รหัสผ่านของคุณถูกเปลี่ยนแล้ว เซสชันอื่นทั้งหมดถูกออกจากระบบแล้ว",
+      goToSignIn: "ไปหน้าเข้าสู่ระบบ",
+      invalidLinkTitle: "ลิงก์นี้ใช้ไม่ได้อีกแล้ว",
+      invalidLinkSubtitle: "ลิงก์รีเซ็ตหมดอายุหลัง 15 นาที ขอลิงก์ใหม่แล้วลองอีกครั้ง",
+
+      memberSince: "สมาชิกตั้งแต่",
+      personalInfo: "ข้อมูลส่วนตัว",
+      personalInfoDesc: "ชื่อของคุณจะแสดงในบัญชี ToolsGift ทั้งหมด",
+      security: "ความปลอดภัย",
+      securityDesc: "เปลี่ยนรหัสผ่านของคุณ เมื่อเปลี่ยนแล้วคุณจะถูกออกจากระบบจากอุปกรณ์อื่นทั้งหมด",
+      saveChanges: "บันทึกการเปลี่ยนแปลง",
+      changesSaved: "บันทึกการเปลี่ยนแปลงแล้ว",
+      changePasswordCta: "เปลี่ยนรหัสผ่าน",
+      passwordChanged: "เปลี่ยนรหัสผ่านแล้ว",
+      sessions: "เซสชัน",
+      sessionsDesc: "คุณเข้าสู่ระบบบนอุปกรณ์นี้อยู่ การออกจากระบบทุกเครื่องจะยุติทุกเซสชัน รวมถึงเซสชันนี้",
+      signOutEverywhere: "ออกจากระบบทุกเครื่อง",
+
+      continueWithGoogle: "ดำเนินการต่อด้วย Google",
+      googleDivider: "หรือ",
+      errGoogleCancelled: "การลงชื่อเข้าใช้ด้วย Google ถูกยกเลิก โปรดลองอีกครั้ง",
+      errGoogleFailed: "เกิดข้อผิดพลาดขณะลงชื่อเข้าใช้ด้วย Google โปรดลองอีกครั้ง",
+      errGoogleEmailTaken: "บัญชี Google นี้ยังไม่ได้เชื่อมโยงกับบัญชี ToolsGift ของคุณ โปรดลงชื่อเข้าใช้ด้วยรหัสผ่านก่อน แล้วเชื่อมโยงจากโปรไฟล์ของคุณ",
+      errGoogleNotConfigured: "ขณะนี้ไม่สามารถลงชื่อเข้าใช้ด้วย Google ได้ โปรดลองอีกครั้งในภายหลัง",
+      connectedAccounts: "บัญชีที่เชื่อมโยง",
+      connectedAccountsDesc: "เชื่อมโยงบัญชี Google ของคุณเพื่อลงชื่อเข้าใช้ด้วย Google ในครั้งถัดไป",
+      googleLinked: "เชื่อมโยงแล้ว",
+      linkGoogle: "เชื่อมโยงบัญชี Google",
+      errRequired: "จำเป็นต้องกรอกช่องนี้",
+      errInvalidEmail: "กรอกที่อยู่อีเมลที่ถูกต้อง",
+      errName: "ชื่อต้องมีความยาวระหว่าง 2 ถึง 80 อักขระ",
+      errWeakPassword: "ใช้อย่างน้อย 8 อักขระ โดยมีตัวอักษรและตัวเลข",
+      errPasswordMismatch: "รหัสผ่านไม่ตรงกัน",
+      errEmailTaken: "มีบัญชีสำหรับอีเมลนี้อยู่แล้ว",
+      errInvalidCredentials: "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+      errWrongPassword: "รหัสผ่านปัจจุบันของคุณไม่ถูกต้อง",
+      errRateLimited: "พยายามมากเกินไป รอสักครู่แล้วลองอีกครั้ง",
+      errInvalidToken: "ลิงก์นี้ไม่ถูกต้องหรือหมดอายุแล้ว",
+      errNotAuthenticated: "เข้าสู่ระบบเพื่อดำเนินการต่อ",
+      errNetwork: "ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้ ตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง",
+      errServer: "เกิดข้อผิดพลาด โปรดลองอีกครั้ง",
+    },
 
     nav: {
       home: "หน้าหลัก",
@@ -2645,6 +4813,16 @@ const rawTranslations = {
       productLabel: "ToolsGift",
       productTitle: "เครื่องมือที่มีประโยชน์โดยไม่ซับซ้อนเกินจำเป็น",
       productDescription: "ToolsGift รวมเครื่องมือสำหรับไฟล์ เอกสาร และงานทั่วไปไว้ในที่เดียว",
+      heroTagline: "ToolsGift",
+      heroH1: "เครื่องมือออนไลน์ฟรีสำหรับรูปภาพ PDF และไฟล์",
+      heroSubtext: "บีบอัด แปลง ปรับขนาด รวม แยก และแก้ไขรูปภาพ PDF และไฟล์ทั่วไปด้วยชุดเครื่องมือออนไลน์ฟรีในเบราว์เซอร์ของคุณ",
+      browseAllTools: "เรียกดูเครื่องมือทั้งหมด",
+      imageToolsBtn: "เครื่องมือรูปภาพ",
+      pdfToolsBtn: "เครื่องมือ PDF",
+      sectionTagline: "ชุดเครื่องมือออนไลน์ฟรี",
+      sectionTitle: "เรียกดูเครื่องมือออนไลน์ของ ToolsGift",
+      sectionDescription: "สำรวจชุดเครื่องมือออนไลน์สำหรับรูปภาพ PDF และไฟล์ทั่วไป — ค้นหาเครื่องมือที่เหมาะกับงานของคุณ",
+      productStatementH2: "เครื่องมือออนไลน์ฟรีที่ไม่ซับซ้อนโดยไม่จำเป็น",
     },
 
     categories: {
@@ -2683,6 +4861,95 @@ const rawTranslations = {
 
   tr: {
     languageName: "Türkçe",
+
+    auth: {
+      signIn: "Giriş yap",
+      signUp: "Hesap oluştur",
+      signOut: "Çıkış yap",
+      profile: "Profil",
+      account: "Hesap",
+      planFree: "Ücretsiz plan",
+      planPremium: "Premium plan",
+
+      pleaseWait: "Lütfen bekleyin...",
+      showPassword: "Göster",
+      hidePassword: "Gizle",
+
+      name: "Ad",
+      namePlaceholder: "Adınız",
+      email: "E-posta",
+      password: "Şifre",
+      confirmPassword: "Şifreyi onaylayın",
+      currentPassword: "Mevcut şifre",
+      newPassword: "Yeni şifre",
+      passwordHint: "En az 8 karakter; bir harf ve bir rakam içermelidir.",
+
+      loginTitle: "Tekrar hoş geldiniz",
+      loginSubtitle: "ToolsGift hesabınıza giriş yapın.",
+      loginCta: "Giriş yap",
+      forgotPassword: "Şifrenizi mi unuttunuz?",
+      noAccount: "Hesabınız yok mu?",
+      createAccountCta: "Hemen oluşturun",
+
+      signupTitle: "Hesabınızı oluşturun",
+      signupSubtitle: "Profilinizi ve ayarlarınızı yönetmek için ücretsiz bir hesap oluşturun.",
+      signupCta: "Hesap oluştur",
+      haveAccount: "Zaten hesabınız var mı?",
+      signInCta: "Giriş yap",
+
+      forgotTitle: "Şifrenizi sıfırlayın",
+      forgotSubtitle: "E-posta adresinizi girin, size güvenli bir sıfırlama bağlantısı gönderelim.",
+      sendResetLink: "Bağlantı gönder",
+      sentTitle: "Gelen kutunuzu kontrol edin",
+      sentSubtitle: "Bu adres için bir hesap varsa bağlantı yolda. Bağlantı 15 dakika sonra geçersiz olur.",
+      backToLogin: "Girişe dön",
+
+      resetTitle: "Yeni bir şifre seçin",
+      resetSubtitle: "Hesabınız için yeni bir şifre girin.",
+      resetCta: "Şifreyi güncelle",
+      updatedTitle: "Şifre güncellendi",
+      updatedSubtitle: "Şifreniz değiştirildi. Diğer tüm oturumlar kapatıldı.",
+      goToSignIn: "Girişe devam et",
+      invalidLinkTitle: "Bu bağlantı artık geçerli değil",
+      invalidLinkSubtitle: "Sıfırlama bağlantıları 15 dakika sonra geçersiz olur. Yeni bir tane isteyip tekrar deneyin.",
+
+      memberSince: "Üyelik tarihi",
+      personalInfo: "Kişisel bilgiler",
+      personalInfoDesc: "Adınız ToolsGift hesabınızın tamamında görünür.",
+      security: "Güvenlik",
+      securityDesc: "Şifrenizi değiştirin. Değiştirdiğinizde diğer tüm cihazlardan çıkış yapılırsınız.",
+      saveChanges: "Değişiklikleri kaydet",
+      changesSaved: "Değişiklikler kaydedildi",
+      changePasswordCta: "Şifreyi değiştir",
+      passwordChanged: "Şifre değiştirildi",
+      sessions: "Oturumlar",
+      sessionsDesc: "Bu cihazda oturum açtınız. Her yerden çıkış yapmak bu oturum dahil tüm oturumları sonlandırır.",
+      signOutEverywhere: "Her yerden çıkış yap",
+
+      continueWithGoogle: "Google ile devam et",
+      googleDivider: "veya",
+      errGoogleCancelled: "Google ile oturum açma iptal edildi. Lütfen tekrar deneyin.",
+      errGoogleFailed: "Google ile oturum açarken bir sorun oluştu. Lütfen tekrar deneyin.",
+      errGoogleEmailTaken: "Bu Google hesabı henüz ToolsGift hesabınıza bağlı değil. Önce şifrenizle oturum açın, ardından profilinizden bağlayın.",
+      errGoogleNotConfigured: "Google ile oturum açma şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.",
+      connectedAccounts: "Bağlı hesaplar",
+      connectedAccountsDesc: "Gelecek sefer Google ile giriş yapmak için Google hesabınızı bağlayın.",
+      googleLinked: "Bağlı",
+      linkGoogle: "Google hesabını bağla",
+      errRequired: "Bu alan zorunludur.",
+      errInvalidEmail: "Geçerli bir e-posta adresi girin.",
+      errName: "Ad 2 ile 80 karakter arasında olmalıdır.",
+      errWeakPassword: "Harf ve rakam içeren en az 8 karakter kullanın.",
+      errPasswordMismatch: "Şifreler eşleşmiyor.",
+      errEmailTaken: "Bu e-posta adresiyle bir hesap zaten var.",
+      errInvalidCredentials: "E-posta veya şifre hatalı.",
+      errWrongPassword: "Mevcut şifreniz hatalı.",
+      errRateLimited: "Çok fazla deneme. Birkaç dakika bekleyip tekrar deneyin.",
+      errInvalidToken: "Bu bağlantı geçersiz veya süresi dolmuş.",
+      errNotAuthenticated: "Devam etmek için giriş yapın.",
+      errNetwork: "Sunucuya ulaşılamadı. Bağlantınızı kontrol edip tekrar deneyin.",
+      errServer: "Bir şeyler ters gitti. Lütfen tekrar deneyin.",
+    },
 
     nav: {
       home: "Ana Sayfa",
@@ -2763,6 +5030,16 @@ const rawTranslations = {
       productLabel: "ToolsGift",
       productTitle: "Gereksiz karmaşıklık olmadan kullanışlı araçlar.",
       productDescription: "ToolsGift dosya, belge ve günlük yardımcı araçlarını tek bir yerde toplar.",
+      heroTagline: "ToolsGift",
+      heroH1: "Görseller, PDF'ler ve Dosyalar için Ücretsiz Çevrimiçi Araçlar",
+      heroSubtext: "Görselleri, PDF'leri ve günlük dosyaları tarayıcınızdaki ücretsiz çevrimiçi araç koleksiyonuyla sıkıştırın, dönüştürün, yeniden boyutlandırın, birleştirin, bölün ve düzenleyin.",
+      browseAllTools: "Tüm araçlara göz at",
+      imageToolsBtn: "Görsel araçları",
+      pdfToolsBtn: "PDF araçları",
+      sectionTagline: "Ücretsiz çevrimiçi araç koleksiyonu",
+      sectionTitle: "ToolsGift'in çevrimiçi araçlarına göz atın",
+      sectionDescription: "Görseller, PDF'ler ve günlük dosyalar için çevrimiçi araç koleksiyonumuzu keşfedin — işi bitirmek için doğru aracı bulun.",
+      productStatementH2: "Gereksiz karmaşıklık olmadan ücretsiz çevrimiçi araçlar",
     },
 
     categories: {
@@ -2801,6 +5078,95 @@ const rawTranslations = {
 
   uk: {
     languageName: "Українська",
+
+    auth: {
+      signIn: "Увійти",
+      signUp: "Створити акаунт",
+      signOut: "Вийти",
+      profile: "Профіль",
+      account: "Акаунт",
+      planFree: "Безкоштовний тариф",
+      planPremium: "Преміум-тариф",
+
+      pleaseWait: "Зачекайте...",
+      showPassword: "Показати",
+      hidePassword: "Приховати",
+
+      name: "Ім'я",
+      namePlaceholder: "Ваше ім'я",
+      email: "Ел. пошта",
+      password: "Пароль",
+      confirmPassword: "Підтвердьте пароль",
+      currentPassword: "Поточний пароль",
+      newPassword: "Новий пароль",
+      passwordHint: "Щонайменше 8 символів, з літерою та цифрою.",
+
+      loginTitle: "З поверненням",
+      loginSubtitle: "Увійдіть у свій акаунт ToolsGift.",
+      loginCta: "Увійти",
+      forgotPassword: "Забули пароль?",
+      noAccount: "Немає акаунта?",
+      createAccountCta: "Створіть його",
+
+      signupTitle: "Створіть свій акаунт",
+      signupSubtitle: "Створіть безкоштовний акаунт, щоб керувати профілем і налаштуваннями.",
+      signupCta: "Створити акаунт",
+      haveAccount: "Уже маєте акаунт?",
+      signInCta: "Увійти",
+
+      forgotTitle: "Скидання пароля",
+      forgotSubtitle: "Введіть адресу ел. пошти, і ми надішлемо вам безпечне посилання для скидання.",
+      sendResetLink: "Надіслати посилання",
+      sentTitle: "Перевірте пошту",
+      sentSubtitle: "Якщо для цієї адреси є акаунт, посилання вже в дорозі. Воно спливає через 15 хвилин.",
+      backToLogin: "Повернутися до входу",
+
+      resetTitle: "Виберіть новий пароль",
+      resetSubtitle: "Введіть новий пароль для свого акаунта.",
+      resetCta: "Оновити пароль",
+      updatedTitle: "Пароль оновлено",
+      updatedSubtitle: "Ваш пароль змінено. Усі інші сеанси завершено.",
+      goToSignIn: "Продовжити до входу",
+      invalidLinkTitle: "Це посилання більше не дійсне",
+      invalidLinkSubtitle: "Посилання для скидання спливають через 15 хвилин. Запитайте нове та спробуйте ще раз.",
+
+      memberSince: "Учасник з",
+      personalInfo: "Особисті дані",
+      personalInfoDesc: "Ваше ім'я відображається в усьому акаунті ToolsGift.",
+      security: "Безпека",
+      securityDesc: "Змініть пароль. Після зміни вас буде виведено з усіх інших пристроїв.",
+      saveChanges: "Зберегти зміни",
+      changesSaved: "Зміни збережено",
+      changePasswordCta: "Змінити пароль",
+      passwordChanged: "Пароль змінено",
+      sessions: "Сеанси",
+      sessionsDesc: "Ви ввійшли на цьому пристрої. Вихід усюди завершує всі сеанси, включно з цим.",
+      signOutEverywhere: "Вийти усюди",
+
+      continueWithGoogle: "Продовжити з Google",
+      googleDivider: "або",
+      errGoogleCancelled: "Вхід через Google скасовано. Спробуйте ще раз.",
+      errGoogleFailed: "Під час входу через Google сталася помилка. Спробуйте ще раз.",
+      errGoogleEmailTaken: "Цей обліковий запис Google ще не прив'язано до вашого облікового запису ToolsGift. Спочатку увійдіть за паролем, потім прив'яжіть його у профілі.",
+      errGoogleNotConfigured: "Вхід через Google зараз недоступний. Спробуйте пізніше.",
+      connectedAccounts: "Прив'язані облікові записи",
+      connectedAccountsDesc: "Прив'яжіть обліковий запис Google, щоб наступного разу входити через Google.",
+      googleLinked: "Прив'язано",
+      linkGoogle: "Прив'язати обліковий запис Google",
+      errRequired: "Це поле обов'язкове.",
+      errInvalidEmail: "Введіть дійсну адресу ел. пошти.",
+      errName: "Ім'я повинно мати від 2 до 80 символів.",
+      errWeakPassword: "Використовуйте щонайменше 8 символів із літерою та цифрою.",
+      errPasswordMismatch: "Паролі не збігаються.",
+      errEmailTaken: "Акаунт з цією адресою вже існує.",
+      errInvalidCredentials: "Невірна ел. пошта або пароль.",
+      errWrongPassword: "Ваш поточний пароль невірний.",
+      errRateLimited: "Забагато спроб. Зачекайте кілька хвилин і спробуйте ще раз.",
+      errInvalidToken: "Це посилання недійсне або сплило.",
+      errNotAuthenticated: "Увійдіть, щоб продовжити.",
+      errNetwork: "Не вдалося зв'язатися з сервером. Перевірте з'єднання та спробуйте ще раз.",
+      errServer: "Щось пішло не так. Спробуйте ще раз.",
+    },
 
     nav: {
       home: "Головна",
@@ -2881,6 +5247,16 @@ const rawTranslations = {
       productLabel: "ToolsGift",
       productTitle: "Корисні інструменти без зайвої складності.",
       productDescription: "ToolsGift об'єднує інструменти для файлів, документів і повсякденних завдань в одному місці.",
+      heroTagline: "ToolsGift",
+      heroH1: "Безкоштовні онлайн-інструменти для зображень, PDF і файлів",
+      heroSubtext: "Стискайте, конвертуйте, змінюйте розмір, об'єднуйте, розділяйте та редагуйте зображення, PDF і повсякденні файли за допомогою безкоштовної колекції онлайн-інструментів у вашому браузері.",
+      browseAllTools: "Переглянути всі інструменти",
+      imageToolsBtn: "Інструменти для зображень",
+      pdfToolsBtn: "Інструменти PDF",
+      sectionTagline: "Безкоштовна колекція онлайн-інструментів",
+      sectionTitle: "Перегляньте онлайн-інструменти ToolsGift",
+      sectionDescription: "Досліджуйте нашу колекцію онлайн-інструментів для зображень, PDF і повсякденних файлів — знайдіть потрібний інструмент для виконання завдання.",
+      productStatementH2: "Безкоштовні онлайн-інструменти без зайвої складності",
     },
 
     categories: {
@@ -2919,6 +5295,95 @@ const rawTranslations = {
 
   vi: {
     languageName: "Tiếng Việt",
+
+    auth: {
+      signIn: "Đăng nhập",
+      signUp: "Tạo tài khoản",
+      signOut: "Đăng xuất",
+      profile: "Hồ sơ",
+      account: "Tài khoản",
+      planFree: "Gói miễn phí",
+      planPremium: "Gói cao cấp",
+
+      pleaseWait: "Vui lòng đợi...",
+      showPassword: "Hiện",
+      hidePassword: "Ẩn",
+
+      name: "Họ tên",
+      namePlaceholder: "Tên của bạn",
+      email: "Email",
+      password: "Mật khẩu",
+      confirmPassword: "Xác nhận mật khẩu",
+      currentPassword: "Mật khẩu hiện tại",
+      newPassword: "Mật khẩu mới",
+      passwordHint: "Ít nhất 8 ký tự, gồm chữ và số.",
+
+      loginTitle: "Chào mừng trở lại",
+      loginSubtitle: "Đăng nhập vào tài khoản ToolsGift của bạn.",
+      loginCta: "Đăng nhập",
+      forgotPassword: "Quên mật khẩu?",
+      noAccount: "Chưa có tài khoản?",
+      createAccountCta: "Tạo ngay",
+
+      signupTitle: "Tạo tài khoản của bạn",
+      signupSubtitle: "Tạo tài khoản miễn phí để quản lý hồ sơ và cài đặt.",
+      signupCta: "Tạo tài khoản",
+      haveAccount: "Đã có tài khoản?",
+      signInCta: "Đăng nhập",
+
+      forgotTitle: "Đặt lại mật khẩu",
+      forgotSubtitle: "Nhập địa chỉ email của bạn, chúng tôi sẽ gửi liên kết đặt lại an toàn.",
+      sendResetLink: "Gửi liên kết",
+      sentTitle: "Kiểm tra hộp thư",
+      sentSubtitle: "Nếu tồn tại tài khoản với địa chỉ đó, liên kết đang được gửi. Liên kết hết hạn sau 15 phút.",
+      backToLogin: "Quay lại đăng nhập",
+
+      resetTitle: "Chọn mật khẩu mới",
+      resetSubtitle: "Nhập mật khẩu mới cho tài khoản của bạn.",
+      resetCta: "Cập nhật mật khẩu",
+      updatedTitle: "Đã cập nhật mật khẩu",
+      updatedSubtitle: "Mật khẩu của bạn đã được thay đổi. Tất cả phiên khác đã được đăng xuất.",
+      goToSignIn: "Tiếp tục đăng nhập",
+      invalidLinkTitle: "Liên kết này không còn hiệu lực",
+      invalidLinkSubtitle: "Liên kết đặt lại hết hạn sau 15 phút. Yêu cầu liên kết mới và thử lại.",
+
+      memberSince: "Thành viên từ",
+      personalInfo: "Thông tin cá nhân",
+      personalInfoDesc: "Tên của bạn được hiển thị trong toàn bộ tài khoản ToolsGift.",
+      security: "Bảo mật",
+      securityDesc: "Đổi mật khẩu. Khi đổi, bạn sẽ bị đăng xuất trên mọi thiết bị khác.",
+      saveChanges: "Lưu thay đổi",
+      changesSaved: "Đã lưu thay đổi",
+      changePasswordCta: "Đổi mật khẩu",
+      passwordChanged: "Đã đổi mật khẩu",
+      sessions: "Phiên",
+      sessionsDesc: "Bạn đang đăng nhập trên thiết bị này. Đăng xuất ở mọi nơi sẽ kết thúc tất cả phiên, bao gồm phiên này.",
+      signOutEverywhere: "Đăng xuất ở mọi nơi",
+
+      continueWithGoogle: "Tiếp tục với Google",
+      googleDivider: "hoặc",
+      errGoogleCancelled: "Đăng nhập bằng Google đã bị hủy. Vui lòng thử lại.",
+      errGoogleFailed: "Đã xảy ra lỗi khi đăng nhập bằng Google. Vui lòng thử lại.",
+      errGoogleEmailTaken: "Tài khoản Google này chưa được liên kết với tài khoản ToolsGift của bạn. Hãy đăng nhập bằng mật khẩu trước, rồi liên kết từ hồ sơ của bạn.",
+      errGoogleNotConfigured: "Đăng nhập bằng Google hiện không khả dụng. Vui lòng thử lại sau.",
+      connectedAccounts: "Tài khoản đã liên kết",
+      connectedAccountsDesc: "Liên kết tài khoản Google để đăng nhập bằng Google vào lần sau.",
+      googleLinked: "Đã liên kết",
+      linkGoogle: "Liên kết tài khoản Google",
+      errRequired: "Trường này là bắt buộc.",
+      errInvalidEmail: "Nhập địa chỉ email hợp lệ.",
+      errName: "Tên phải có từ 2 đến 80 ký tự.",
+      errWeakPassword: "Dùng ít nhất 8 ký tự với chữ và số.",
+      errPasswordMismatch: "Mật khẩu không khớp.",
+      errEmailTaken: "Đã tồn tại tài khoản với email này.",
+      errInvalidCredentials: "Email hoặc mật khẩu không đúng.",
+      errWrongPassword: "Mật khẩu hiện tại không đúng.",
+      errRateLimited: "Quá nhiều lần thử. Hãy chờ vài phút rồi thử lại.",
+      errInvalidToken: "Liên kết này không hợp lệ hoặc đã hết hạn.",
+      errNotAuthenticated: "Vui lòng đăng nhập để tiếp tục.",
+      errNetwork: "Không thể kết nối máy chủ. Kiểm tra kết nối và thử lại.",
+      errServer: "Đã xảy ra lỗi. Vui lòng thử lại.",
+    },
 
     nav: {
       home: "Trang chủ",
@@ -2999,6 +5464,16 @@ const rawTranslations = {
       productLabel: "ToolsGift",
       productTitle: "Công cụ hữu ích không có sự phức tạp không cần thiết.",
       productDescription: "ToolsGift tập hợp các công cụ cho tệp, tài liệu và công việc hằng ngày ở một nơi.",
+      heroTagline: "ToolsGift",
+      heroH1: "Công cụ trực tuyến miễn phí cho hình ảnh, PDF và tệp",
+      heroSubtext: "Nén, chuyển đổi, thay đổi kích thước, gộp, tách và chỉnh sửa hình ảnh, PDF và các tệp hằng ngày bằng bộ sưu tập công cụ trực tuyến miễn phí ngay trong trình duyệt của bạn.",
+      browseAllTools: "Xem tất cả công cụ",
+      imageToolsBtn: "Công cụ hình ảnh",
+      pdfToolsBtn: "Công cụ PDF",
+      sectionTagline: "Bộ sưu tập công cụ trực tuyến miễn phí",
+      sectionTitle: "Duyệt các công cụ trực tuyến của ToolsGift",
+      sectionDescription: "Khám phá bộ sưu tập công cụ trực tuyến cho hình ảnh, PDF và các tệp hằng ngày — tìm đúng công cụ để hoàn thành công việc.",
+      productStatementH2: "Công cụ trực tuyến miễn phí không phức tạp không cần thiết",
     },
 
     categories: {
@@ -3037,6 +5512,95 @@ const rawTranslations = {
 
   sw: {
     languageName: "Kiswahili",
+
+    auth: {
+      signIn: "Ingia",
+      signUp: "Fungua akaunti",
+      signOut: "Toka",
+      profile: "Wasifu",
+      account: "Akaunti",
+      planFree: "Mpango wa bure",
+      planPremium: "Mpango wa premium",
+
+      pleaseWait: "Tafadhali subiri...",
+      showPassword: "Onyesha",
+      hidePassword: "Ficha",
+
+      name: "Jina",
+      namePlaceholder: "Jina lako",
+      email: "Barua pepe",
+      password: "Nenosiri",
+      confirmPassword: "Thibitisha nenosiri",
+      currentPassword: "Nenosiri la sasa",
+      newPassword: "Nenosiri jipya",
+      passwordHint: "Angalau herufi 8, ikiwa na herufi na tarakimu.",
+
+      loginTitle: "Karibu tena",
+      loginSubtitle: "Ingia kwenye akaunti yako ya ToolsGift.",
+      loginCta: "Ingia",
+      forgotPassword: "Umesahau nenosiri lako?",
+      noAccount: "Huna akaunti?",
+      createAccountCta: "Fungua moja",
+
+      signupTitle: "Fungua akaunti yako",
+      signupSubtitle: "Fungua akaunti bure kusimamia wasifu na mipangilio yako.",
+      signupCta: "Fungua akaunti",
+      haveAccount: "Tayari una akaunti?",
+      signInCta: "Ingia",
+
+      forgotTitle: "Weka upya nenosiri lako",
+      forgotSubtitle: "Weka barua pepe yako na tutakutumia kiungo salama cha kuweka upya.",
+      sendResetLink: "Tuma kiungo",
+      sentTitle: "Angalia kikasha chako",
+      sentSubtitle: "Kama kuna akaunti kwa anwani hiyo, kiungo kinafufuliwa. Kiungo kinaisha baada ya dakika 15.",
+      backToLogin: "Rudi kuingia",
+
+      resetTitle: "Chagua nenosiri jipya",
+      resetSubtitle: "Weka nenosiri jipya kwa akaunti yako.",
+      resetCta: "Sasisha nenosiri",
+      updatedTitle: "Nenosiri limesasishwa",
+      updatedSubtitle: "Nenosiri lako limebadilishwa. Viti vingine vyote vimetoka.",
+      goToSignIn: "Endelea kuingia",
+      invalidLinkTitle: "Kiungo hiki si halali tena",
+      invalidLinkSubtitle: "Viungo vya kuweka upya vinaisha baada ya dakika 15. Omba kipya kisha jaribu tena.",
+
+      memberSince: "Mwanachama tangu",
+      personalInfo: "Taarifa za kibinafsi",
+      personalInfoDesc: "Jina lako linaonekana kwenye akaunti yako yote ya ToolsGift.",
+      security: "Usalama",
+      securityDesc: "Badilisha nenosiri lako. Ukibadilisha, utatoka kwenye kifaa kingine chochote.",
+      saveChanges: "Hifadhi mabadiliko",
+      changesSaved: "Mabadiliko yamehifadhiwa",
+      changePasswordCta: "Badilisha nenosiri",
+      passwordChanged: "Nenosiri limebadilishwa",
+      sessions: "Viti",
+      sessionsDesc: "Umeingia kwenye kifaa hiki. Kutoka kote kumaliza viti vyote, kikiwemo hiki.",
+      signOutEverywhere: "Toka kote",
+
+      continueWithGoogle: "Endelea na Google",
+      googleDivider: "au",
+      errGoogleCancelled: "Kuingia kwa Google kateguliwa. Tafadhali jaribu tena.",
+      errGoogleFailed: "Kuna kitu kilichotokea unapoingia na Google. Tafadhali jaribu tena.",
+      errGoogleEmailTaken: "Akaunti hii ya Google bado haijaunganishwa na akaunti yako ya ToolsGift. Ingia kwanza nenosiri lako kisha uiunganishe kutoka wasifu wako.",
+      errGoogleNotConfigured: "Kuingia kwa Google hakupatikani sasa hivi. Tafadhali jaribu tena baadaye.",
+      connectedAccounts: "Akaunti zilizounganishwa",
+      connectedAccountsDesc: "Unganisha akaunti yako ili kuingia kwa Google wakati ujao.",
+      googleLinked: "Imeunganishwa",
+      linkGoogle: "Unganisha akaunti ya Google",
+      errRequired: "Sehemu hii inahitajika.",
+      errInvalidEmail: "Weka anwani halali ya barua pepe.",
+      errName: "Jina lazima liwe na herufi 2 hadi 80.",
+      errWeakPassword: "Tumia angalau herufi 8 zenye herufi na tarakimu.",
+      errPasswordMismatch: "Nenosiri halilingani.",
+      errEmailTaken: "Akaunti na barua pepe hii tayari ipo.",
+      errInvalidCredentials: "Barua pepe au nenosiri si sahihi.",
+      errWrongPassword: "Nenosiri lako la sasa si sahihi.",
+      errRateLimited: "Majaribio mengi mno. Subiri dakika chache kisha jaribu tena.",
+      errInvalidToken: "Kiungo hiki si sahihi au kimeisha.",
+      errNotAuthenticated: "Ingia ili kuendelea.",
+      errNetwork: "Hakuweza kufikia seva. Angalia muunganisho wako kisha jaribu tena.",
+      errServer: "Kilichoenda kimetenda. Tafadhali jaribu tena.",
+    },
 
     nav: {
       home: "Nyumbani",
@@ -3117,6 +5681,16 @@ const rawTranslations = {
       productLabel: "ToolsGift",
       productTitle: "Zana muhimu bila ugumu usio wa lazima.",
       productDescription: "ToolsGift huleta zana za faili, hati na kazi za kila siku pamoja katika sehemu moja.",
+      heroTagline: "ToolsGift",
+      heroH1: "Zana za Mtandaoni Bila Malipo kwa Picha, PDF na Faili",
+      heroSubtext: "Punguza, badilisha, badilisha ukubwa, unganisha, tenganisha na hariri picha, PDF na faili za kila siku kwa mkusanyiko wa zana za mtandaoni bila malipo kwenye kivinjari chako.",
+      browseAllTools: "Vinjari zana zote",
+      imageToolsBtn: "Zana za picha",
+      pdfToolsBtn: "Zana za PDF",
+      sectionTagline: "Mkusanyiko wa zana za mtandaoni bila malipo",
+      sectionTitle: "Vinjari zana za mtandaoni za ToolsGift",
+      sectionDescription: "Gundua mkusanyiko wetu wa zana za mtandaoni kwa picha, PDF na faili za kila siku — pata zana sahihi ya kukamilisha kazi.",
+      productStatementH2: "Zana za mtandaoni bila malipo bila ugumu usio wa lazima",
     },
 
     categories: {
@@ -4683,6 +7257,8 @@ export const translations = Object.fromEntries(
 
 export type Locale = keyof typeof translations;
 
+export type Translations = (typeof translations)[Locale];
+
 export const supportedLocales = [
   "en",
   "es",
@@ -4752,6 +7328,11 @@ export type ToolText = {
 };
 
 const toolTextEn: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Shipping Label & Invoice PDF",
+    description:
+      "Fit shipping labels and invoices from any PDF onto exact 4×6, 100×150 mm or custom print pages — no stretching, no cut content.",
+  },
   compressor: {
     title: "Image Compressor",
     description:
@@ -4996,9 +7577,29 @@ const toolTextEn: Record<string, ToolText> = {
     description:
       "Upload a video and create a shareable link with an expiry time.",
   },
+  "bulk-sms": {
+    title: "Bulk SMS",
+    description:
+      "Personalize one SMS message for every contact, validate phone numbers and copy or export the list.",
+  },
+  "bulk-email": {
+    title: "Bulk Email",
+    description:
+      "Personalize one email for every contact, validate email addresses and copy or export the list.",
+  },
+  "audio-to-text": {
+    title: "Audio to Text",
+    description:
+      "Turn audio recordings into editable text with private, in-browser transcription. Your audio file is never uploaded.",
+  },
 };
 
 const toolTextHi: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "शिपिंग लेबल और इनवॉएस पीएडी",
+    description:
+      "किसी भी पीएडी से शिपिंग लेबल और इनवॉएस को सही निर्दिष्ट 4×6, 100×150 मिमी या कस्टम प्रिंट पेज पर फिट करें — बिना स्ट्रेच, बिना कटा।",
+  },
   compressor: {
     title: "इमेज कम्प्रेसर",
     description: "बेहतरीन गुणवत्ता बनाए रखते हुए इमेज फ़ाइल का आकार कम करें।",
@@ -5238,9 +7839,29 @@ const toolTextHi: Record<string, ToolText> = {
     description:
       "एक वीडियो अपलोड करें और समाप्ति समय के साथ साझा करने योग्य लिंक बनाएँ।",
   },
+  "bulk-sms": {
+    title: "बल्क SMS",
+    description:
+      "हर संपर्क के लिए एक SMS संदेश को व्यक्तिगत बनाएं, फ़ोन नंबर जांचें और सूची कॉपी या एक्सपोर्ट करें।",
+  },
+  "bulk-email": {
+    title: "बल्क ईमेल",
+    description:
+      "हर संपर्क के लिए एक ईमेल व्यक्तिगत बनाएं, ईमेल पते जांचें और सूची कॉपी या एक्सपोर्ट करें।",
+  },
+  "audio-to-text": {
+    title: "ऑडियो से टेक्स्ट",
+    description:
+      "ब्राउज़र में निजी तरीके से ऑडियो रिकॉर्डिंग को एडिट करने योग्य टेक्स्ट में बदलें। आपकी ऑडियो फ़ाइल कहीं अपलोड नहीं होती।",
+  },
 };
 
 const toolTextEs: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Etiqueta de envío y factura PDF",
+    description:
+      "Ajusta etiquetas de envío y facturas de cualquier PDF a páginas de impresión exactas de 4×6, 100×150 mm o personalizadas, sin estirar ni cortar contenido.",
+  },
   compressor: {
     title: "Compresor de imágenes",
     description:
@@ -5483,9 +8104,29 @@ const toolTextEs: Record<string, ToolText> = {
     description:
       "Sube un vídeo y crea un enlace compartible con tiempo de caducidad.",
   },
+  "bulk-sms": {
+    title: "SMS masivo",
+    description:
+      "Personaliza un mensaje SMS para cada contacto, valida los números de teléfono y copia o exporta la lista.",
+  },
+  "bulk-email": {
+    title: "Correo masivo",
+    description:
+      "Personaliza un correo para cada contacto, valida las direcciones de correo y copia o exporta la lista.",
+  },
+  "audio-to-text": {
+    title: "Audio a texto",
+    description:
+      "Convierte grabaciones de audio en texto editable con transcripción privada en el navegador. Tu archivo de audio nunca se sube.",
+  },
 };
 
 const toolTextFr: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Étiquette d'expédition et facture PDF",
+    description:
+      "Ajuste les étiquettes d'expédition et les factures de n'importe quel PDF sur des pages d'impression exactes 4×6, 100×150 mm ou personnalisées, sans déformation ni coupe.",
+  },
   compressor: {
     title: "Compresseur d'images",
     description:
@@ -5730,9 +8371,29 @@ const toolTextFr: Record<string, ToolText> = {
     description:
       "Téléversez une vidéo et créez un lien partageable avec une durée d'expiration.",
   },
+  "bulk-sms": {
+    title: "SMS en masse",
+    description:
+      "Personnalisez un SMS pour chaque contact, vérifiez les numéros de téléphone et copiez ou exportez la liste.",
+  },
+  "bulk-email": {
+    title: "E-mail en masse",
+    description:
+      "Personnalisez un e-mail pour chaque contact, vérifiez les adresses e-mail et copiez ou exportez la liste.",
+  },
+  "audio-to-text": {
+    title: "Audio en texte",
+    description:
+      "Transformez des enregistrements audio en texte modifiable avec une transcription privée dans le navigateur. Votre fichier audio n'est jamais envoyé.",
+  },
 };
 
 const toolTextDe: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Versandetikett & Rechnung PDF",
+    description:
+      "Passt Versandetiketten und Rechnungen aus jedem PDF auf exakte 4×6-, 100×150-mm- oder eigene Druckseiten an — ohne Verzerren oder Abschneiden.",
+  },
   compressor: {
     title: "Bildkomprimierer",
     description: "Reduzieren Sie die Bilddateigröße bei hervorragender Qualität.",
@@ -5979,9 +8640,29 @@ const toolTextDe: Record<string, ToolText> = {
     description:
       "Laden Sie ein Video hoch und erstellen Sie einen teilbaren Link mit Ablaufzeit.",
   },
+  "bulk-sms": {
+    title: "Bulk-SMS",
+    description:
+      "Erstelle eine personalisierte SMS für jeden Kontakt, prüfe die Telefonnummern und kopiere oder exportiere die Liste.",
+  },
+  "bulk-email": {
+    title: "Bulk-E-Mail",
+    description:
+      "Erstelle eine personalisierte E-Mail für jeden Kontakt, prüfe die E-Mail-Adressen und kopiere oder exportiere die Liste.",
+  },
+  "audio-to-text": {
+    title: "Audio in Text",
+    description:
+      "Wandeln Sie Audioaufnahmen mit privater Transkription im Browser in bearbeitbaren Text um. Ihre Audiodatei wird nie hochgeladen.",
+  },
 };
 
 const toolTextIt: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Etichetta di spedizione e fattura PDF",
+    description:
+      "Adatta etichette di spedizione e fatture di qualsiasi PDF su pagine di stampa esatte 4×6, 100×150 mm o personalizzate, senza stirare o tagliare il contenuto.",
+  },
   compressor: {
     title: "Compressore di immagini",
     description:
@@ -6224,9 +8905,29 @@ const toolTextIt: Record<string, ToolText> = {
     description:
       "Carica un video e crea un link condivisibile con un tempo di scadenza.",
   },
+  "bulk-sms": {
+    title: "SMS in blocco",
+    description:
+      "Personalizza un SMS per ogni contatto, verifica i numeri di telefono e copia o esporta l'elenco.",
+  },
+  "bulk-email": {
+    title: "E-mail in blocco",
+    description:
+      "Personalizza un'e-mail per ogni contatto, verifica gli indirizzi e-mail e copia o esporta l'elenco.",
+  },
+  "audio-to-text": {
+    title: "Audio in testo",
+    description:
+      "Trasforma le registrazioni audio in testo modificabile con trascrizione privata nel browser. Il file audio non viene mai caricato.",
+  },
 };
 
 const toolTextPt: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Etiqueta de envio e fatura PDF",
+    description:
+      "Ajuste etiquetas de envio e faturas de qualquer PDF para páginas de impressão exatas de 4×6, 100×150 mm ou personalizadas, sem esticar nem cortar.",
+  },
   compressor: {
     title: "Compressor de imagens",
     description:
@@ -6469,9 +9170,29 @@ const toolTextPt: Record<string, ToolText> = {
     description:
       "Envie um vídeo e crie um link compartilhável com prazo de validade.",
   },
+  "bulk-sms": {
+    title: "SMS em massa",
+    description:
+      "Personalize uma mensagem SMS para cada contato, valide os números de telefone e copie ou exporte a lista.",
+  },
+  "bulk-email": {
+    title: "E-mail em massa",
+    description:
+      "Personalize um e-mail para cada contato, valide os endereços de e-mail e copie ou exporte a lista.",
+  },
+  "audio-to-text": {
+    title: "Áudio em texto",
+    description:
+      "Transforme gravações de áudio em texto editável com transcrição privada no navegador. O seu ficheiro de áudio nunca é enviado.",
+  },
 };
 
 const toolTextJa: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "発送ラベル・請求書PDF",
+    description:
+      "任意のPDFから発送ラベルや請求書を、4×6・100×150mm・カスタムの正確な印刷ページに合わせます。歪みや切り取りなし。",
+  },
   compressor: {
     title: "画像圧縮ツール",
     description: "高品質を保ちながら画像ファイルのサイズを縮小します。",
@@ -6710,9 +9431,29 @@ const toolTextJa: Record<string, ToolText> = {
     description:
       "動画をアップロードし、有効期限付きの共有リンクを作成します。",
   },
+  "bulk-sms": {
+    title: "一括SMS作成",
+    description:
+      "連絡先ごとにSMSメッセージをパーソナライズし、電話番号を検証して一覧をコピーまたはエクスポートします。",
+  },
+  "bulk-email": {
+    title: "一括メール作成",
+    description:
+      "連絡先ごとにメールをパーソナライズし、メールアドレスを検証して一覧をコピーまたはエクスポートします。",
+  },
+  "audio-to-text": {
+    title: "音声をテキストに",
+    description:
+      "ブラウザ内で音声を編集可能なテキストに変換します。音声ファイルが外部に送信されることはありません。",
+  },
 };
 
 const toolTextRu: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Транспортная накладная и счёт PDF",
+    description:
+      "Вкладывайте накладные и счёта из любого PDF в точные страницы 4×6, 100×150 мм или свои — без растяжения и обрезки.",
+  },
   compressor: {
     title: "Сжатие изображений",
     description: "Уменьшайте размер файла изображения, сохраняя отличное качество.",
@@ -6952,9 +9693,29 @@ const toolTextRu: Record<string, ToolText> = {
     title: "Видео → ссылка",
     description: "Загрузите видео и создайте ссылку для отправки со сроком действия.",
   },
+  "bulk-sms": {
+    title: "Массовые SMS",
+    description:
+      "Персонализируйте SMS для каждого контакта, проверьте номера телефонов и скопируйте или экспортируйте список.",
+  },
+  "bulk-email": {
+    title: "Массовые письма",
+    description:
+      "Персонализируйте письмо для каждого контакта, проверьте адреса электронной почты и скопируйте или экспортируйте список.",
+  },
+  "audio-to-text": {
+    title: "Аудио в текст",
+    description:
+      "Преобразуйте аудиозаписи в редактируемый текст с приватной транскрипцией в браузере. Аудиофайл никуда не загружается.",
+  },
 };
 
 const toolTextKo: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "배송 라벨 및 송장 PDF",
+    description:
+      "모든 PDF의 배송 라벨과 송장을 정확한 4×6, 100×150mm 또는 사용자 지정 인수 페이지에 맞춰 있습니다. 둘기 없음, 잘리 없음.",
+  },
   compressor: {
     title: "이미지 압축기",
     description: "뛰어난 품질을 유지하면서 이미지 파일 크기를 줄입니다.",
@@ -7186,9 +9947,29 @@ const toolTextKo: Record<string, ToolText> = {
     title: "동영상 → 링크",
     description: "동영상을 업로드하고 만료 시간이 있는 공유 링크를 만듭니다.",
   },
+  "bulk-sms": {
+    title: "대량 SMS 작성",
+    description:
+      "연락처별로 SMS 메시지를 개인화하고 전화번호를 검증한 뒤 목록을 복사하거나 내보냅니다.",
+  },
+  "bulk-email": {
+    title: "대량 이메일 작성",
+    description:
+      "연락처별로 이메일을 개인화하고 이메일 주소를 검증한 뒤 목록을 복사하거나 내보냅니다.",
+  },
+  "audio-to-text": {
+    title: "오디오 텍스트 변환",
+    description:
+      "브라우저에서 오디오를 편집 가능한 텍스트로 변환합니다. 오디오 파일은 업로드되지 않습니다.",
+  },
 };
 
 const toolTextZhCn: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "快递标签与发票 PDF",
+    description:
+      "将任意 PDF 中的快递标签和发票精确排入 4×6、100×150 毫米或自定义打印页面，不变形、不裁切。",
+  },
   compressor: {
     title: "图片压缩器",
     description: "在保持出色质量的同时缩小图片文件大小。",
@@ -7414,9 +10195,29 @@ const toolTextZhCn: Record<string, ToolText> = {
     title: "视频 → 链接",
     description: "上传视频并创建带有有效期的可分享链接。",
   },
+  "bulk-sms": {
+    title: "批量短信",
+    description:
+      "为每个联系人生成个性化短信，校验手机号码，并可复制或导出列表。",
+  },
+  "bulk-email": {
+    title: "批量邮件",
+    description:
+      "为每个联系人生成个性化邮件，校验电子邮箱地址，并可复制或导出列表。",
+  },
+  "audio-to-text": {
+    title: "音频转文字",
+    description:
+      "在浏览器中将录音转为可编辑的文本。音频文件不会被上传。",
+  },
 };
 
 const toolTextZhTw: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "物流標籤與發票 PDF",
+    description:
+      "將任何 PDF 中的物流標籤與發票精確置於 4×6、100×150 公簭或自訂列印頁面，不縮放變形、不裁切。",
+  },
   compressor: {
     title: "圖片壓縮器",
     description: "在維持優異品質的同時縮小圖片檔案大小。",
@@ -7643,9 +10444,29 @@ const toolTextZhTw: Record<string, ToolText> = {
     title: "影片 → 連結",
     description: "上傳影片並建立附有到期時間的可分享連結。",
   },
+  "bulk-sms": {
+    title: "批量簡訊",
+    description:
+      "為每個聯絡人產生個人化簡訊、驗證電話號碼，並可複製或匯出清單。",
+  },
+  "bulk-email": {
+    title: "批量郵件",
+    description:
+      "為每個聯絡人產生個人化郵件、驗證電子郵件地址，並可複製或匯出清單。",
+  },
+  "audio-to-text": {
+    title: "音訊轉文字",
+    description:
+      "在瀏覽器中將錄音轉為可編輯的文字。音訊檔案不會被上傳。",
+  },
 };
 
 const toolTextAr: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "ملصق الشحن وفاتورة PDF",
+    description:
+      "ضط ملصقات الشحن والفاتور منأي PDF على صفحات طباعة دقيقة 4×6 و 100×150 مم أو مسخارة بدون تمدد أو قص.",
+  },
   compressor: {
     title: "ضاغط الصور",
     description: "قلّل حجم ملف الصورة مع الحفاظ على جودة ممتازة.",
@@ -7877,9 +10698,29 @@ const toolTextAr: Record<string, ToolText> = {
     title: "فيديو → رابط",
     description: "ارفع فيديو وأنشئ رابطًا قابلاً للمشاركة مع وقت انتهاء.",
   },
+  "bulk-sms": {
+    title: "رسائل SMS جماعية",
+    description:
+      "خصّص رسالة SMS واحدة لكل جهة اتصال، وتحقّق من أرقام الهاتف، ثم انسخ القائمة أو صدّرها.",
+  },
+  "bulk-email": {
+    title: "رسائل بريد إلكتروني جماعية",
+    description:
+      "خصّص رسالة بريد إلكترونية واحدة لكل جهة اتصال، وتحقّق من عناوين البريد، ثم انسخ القائمة أو صدّرها.",
+  },
+  "audio-to-text": {
+    title: "من الصوت إلى النص",
+    description:
+      "حوّل تسجيلات الصوت إلى نص قابل للتعديل بتفريغ جلسي خاص داخل المتصفح. لا يتم رفع ملف الصوت إلى أي خادم.",
+  },
 };
 
 const toolTextBg: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Транспортен етикет и фактура PDF",
+    description:
+      "Поставяйте етикети и фактури от всякъв PDF в точни страници 4×6, 100×150 мм или по избор, без разтягане и изрязване.",
+  },
   compressor: {
     title: "Компресор за изображения",
     description: "Намалете размера на файла с изображение, като запазите отлично качество.",
@@ -8120,9 +10961,29 @@ const toolTextBg: Record<string, ToolText> = {
     title: "Видео → връзка",
     description: "Качете видео и създайте връзка за споделяне със срок на валидност.",
   },
+  "bulk-sms": {
+    title: "Масови SMS",
+    description:
+      "Персонализирайте едно SMS съобщение за всеки контакт, проверете телефонните номера и копирайте или експортирайте списъка.",
+  },
+  "bulk-email": {
+    title: "Масови имейли",
+    description:
+      "Персонализирайте един имейл за всеки контакт, проверете имейл адресите и копирайте или експортирайте списъка.",
+  },
+  "audio-to-text": {
+    title: "Аудио към текст",
+    description:
+      "Превърнете аудиозаписи в редактируем текст с частно транскрибиране в браузера. Аудиофайлът не се качва никъде.",
+  },
 };
 
 const toolTextCa: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Etiqueta d'enviament i factura PDF",
+    description:
+      "Ajusta etiquetes d'enviament i factures de qualsevol PDF a pàgines d'impressió exactes 4×6, 100×150 mm o personalitzades, sense estirar ni tallar el contingut.",
+  },
   compressor: {
     title: "Compressor d'imatges",
     description: "Redueix la mida del fitxer d'imatge mantenint una qualitat excel·lent.",
@@ -8364,9 +11225,29 @@ const toolTextCa: Record<string, ToolText> = {
     description:
       "Puja un vídeo i crea un enllaç compartible amb temps de caducitat.",
   },
+  "bulk-sms": {
+    title: "SMS massiu",
+    description:
+      "Personalitza un missatge SMS per a cada contact, valida els números de telèfon i copia o exporta la llista.",
+  },
+  "bulk-email": {
+    title: "Correu massiu",
+    description:
+      "Personalitza un correu per a cada contact, valida les adreces de correu i copia o exporta la llista.",
+  },
+  "audio-to-text": {
+    title: "D'àudio a text",
+    description:
+      "Converteix enregistraments d'àudio en text editable amb transcripció privada al navegador. El fitxer d'àudio no es puja mai.",
+  },
 };
 
 const toolTextNl: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Verzendlabel & factuur PDF",
+    description:
+      "Past verzendlabels en facturen uit elke PDF op exacte 4×6-, 100×150-mm- of eigen afdrukpagina's aan, zonder uitrekken of bijsnijden.",
+  },
   compressor: {
     title: "Afbeeldingscompressor",
     description:
@@ -8605,9 +11486,29 @@ const toolTextNl: Record<string, ToolText> = {
     title: "Video → Link",
     description: "Upload een video en maak een deelbare link met vervaltijd.",
   },
+  "bulk-sms": {
+    title: "Bulk-sms",
+    description:
+      "Personaliseer één sms-bericht per contact, valideer telefoonnummers en kopieer of exporteer de lijst.",
+  },
+  "bulk-email": {
+    title: "Bulk-e-mail",
+    description:
+      "Personaliseer één e-mail per contact, valideer e-mailadressen en kopieer of exporteer de lijst.",
+  },
+  "audio-to-text": {
+    title: "Audio naar tekst",
+    description:
+      "Zet audio-opnames om in bewerkbare tekst met privé-transcriptie in de browser. Je audiobestand wordt nooit geüpload.",
+  },
 };
 
 const toolTextEl: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Ετικέτα αποστολής & τιμολόγιο PDF",
+    description:
+      "Ταιριάζει ετικέτες αποστολής και τιμολόγια από οποιδήποτο PDF σε ακριβές σελίδες 4×6, 100×150 mm ή προσαρμοσμένες, χωρίς τέντωμα ή κοπή.",
+  },
   compressor: {
     title: "Συμπίεση εικόνων",
     description:
@@ -8853,9 +11754,29 @@ const toolTextEl: Record<string, ToolText> = {
     description:
       "Ανεβάστε ένα βίντεο και δημιουργήστε έναν κοινόχρηστο σύνδεσμο με χρόνο λήξης.",
   },
+  "bulk-sms": {
+    title: "Μαζικά SMS",
+    description:
+      "Δημιουργήστε ένα προσαρμοσμένο μήνυμα SMS για κάθε επαφή, ελέγξτε τις τηλεφωνικές αριθμούς και αντιγράψτε ή εξάγετε τη λίστα.",
+  },
+  "bulk-email": {
+    title: "Μαζικά email",
+    description:
+      "Δημιουργήστε ένα προσαρμοσμένο email για κάθε επαφή, ελέγξτε τις διευθύνσεις email και αντιγράψτε ή εξάγετε τη λίστα.",
+  },
+  "audio-to-text": {
+    title: "Ήχος σε κείμενο",
+    description:
+      "Μετατρέψτε ηχογραφήσεις σε επεξεργάσιμο κείμενο με ιδιωτική απομαγνητοφώνηση στο πρόγραμμα περιήγησης. Το αρχείο ήχου δεν ανεβαίνει πουθενά.",
+  },
 };
 
 const toolTextId: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Label Pengiriman & Faktur PDF",
+    description:
+      "Sesuaikan label pengiriman dan faktur dari PDF apa pun ke halaman cetak 4×6, 100×150 mm, atau kustom yang tepat tanpa meregang atau memotong isi.",
+  },
   compressor: {
     title: "Kompresor Gambar",
     description: "Kurangi ukuran file gambar sambil mempertahankan kualitas terbaik.",
@@ -9092,9 +12013,29 @@ const toolTextId: Record<string, ToolText> = {
     description:
       "Unggah video dan buat tautan yang dapat dibagikan dengan waktu kedaluwarsa.",
   },
+  "bulk-sms": {
+    title: "SMS Massal",
+    description:
+      "Personalisasi satu pesan SMS untuk setiap kontak, validasi nomor telepon, lalu salin atau ekspor daftar.",
+  },
+  "bulk-email": {
+    title: "Email Massal",
+    description:
+      "Personalisasi satu email untuk setiap kontak, validasi alamat email, lalu salin atau ekspor daftar.",
+  },
+  "audio-to-text": {
+    title: "Audio ke teks",
+    description:
+      "Ubah rekaman audio menjadi teks yang dapat diedit dengan transkripsi privat di berkas. File audio tidak pernah diunggah.",
+  },
 };
 
 const toolTextMs: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Label Penghantaran & Invois PDF",
+    description:
+      "Muatkan label penghantaran dan invois daripada sebarang PDF ke halaman cetak tepat 4×6, 100×150 mm atau tersuai tanpa diregang atau dipotong.",
+  },
   compressor: {
     title: "Pemampat Imej",
     description: "Kurangkan saiz fail imej sambil mengekalkan kualiti yang sangat baik.",
@@ -9331,9 +12272,29 @@ const toolTextMs: Record<string, ToolText> = {
     description:
       "Muat naik video dan cipta pautan boleh kongsi dengan masa tamat tempoh.",
   },
+  "bulk-sms": {
+    title: "SMS Pukal",
+    description:
+      "Personalisasikan satu mesej SMS untuk setiap kenalan, sahkan nombor telefon, kemudian salin atau eksport senarai.",
+  },
+  "bulk-email": {
+    title: "E-mel Pukal",
+    description:
+      "Personalisasikan satu e-mel untuk setiap kenalan, sahkan alamat e-mel, kemudian salin atau eksport senarai.",
+  },
+  "audio-to-text": {
+    title: "Audio kepada teks",
+    description:
+      "Tukar rakaman audio kepada teks yang boleh disunting dengan transkripsi peribadi dalam pelayar. Fail audio tidak pernah dimuat naik.",
+  },
 };
 
 const toolTextPl: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Etykieta wysyłkowa i faktura PDF",
+    description:
+      "Dopasowuje etykiety wysyłkowe i faktury z dowolnego PDF do dokładnych stron 4×6, 100×150 mm lub własnych, bez rozciągania i przycinania.",
+  },
   compressor: {
     title: "Kompresor obrazów",
     description: "Zmniejsz rozmiar pliku obrazu, zachowując doskonałą jakość.",
@@ -9572,9 +12533,29 @@ const toolTextPl: Record<string, ToolText> = {
     description:
       "Prześlij wideo i utwórz link do udostępniania z czasem wygaśnięcia.",
   },
+  "bulk-sms": {
+    title: "Masowa wiadomość SMS",
+    description:
+      "Spersonalizuj jedną wiadomość SMS dla każdego kontaktu, zweryfikuj numery telefonów i skopiuj lub eksportuj listę.",
+  },
+  "bulk-email": {
+    title: "Masowy e-mail",
+    description:
+      "Spersonalizuj jednego e-maila dla każdego kontaktu, zweryfikuj adresy e-mail i skopiuj lub eksportuj listę.",
+  },
+  "audio-to-text": {
+    title: "Audio na tekst",
+    description:
+      "Zamień nagrania audio w edytowalny tekst z prywatną transkrypcją w przeglądarce. Plik audio nigdy nie jest wysyłany.",
+  },
 };
 
 const toolTextSv: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Fraktetikett & faktura PDF",
+    description:
+      "Passar fraktetiketter och fakturur från vilket PDF som helst på exakta 4×6-, 100×150 mm- eller anpassade utryckssidor — utan töjning eller beskärning.",
+  },
   compressor: {
     title: "Bildkomprimerare",
     description:
@@ -9816,9 +12797,29 @@ const toolTextSv: Record<string, ToolText> = {
     title: "Video → Länk",
     description: "Ladda upp en video och skapa en delbar länk med en utgångstid.",
   },
+  "bulk-sms": {
+    title: "Mass-SMS",
+    description:
+      "Anpassa ett SMS-meddelande för varje kontakt, validera telefonnumren och kopiera eller exportera listan.",
+  },
+  "bulk-email": {
+    title: "Mass-e-post",
+    description:
+      "Anpassa ett e-postmeddelande för varje kontakt, validera e-postadresserna och kopiera eller exportera listan.",
+  },
+  "audio-to-text": {
+    title: "Ljud till text",
+    description:
+      "Gör ljudinspelningar till redigerbar text med privat transkription i webbläsaren. Din ljudfil laddas aldrig upp.",
+  },
 };
 
 const toolTextTh: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "ป้ายจัดสาร และแบิงใจนี PDF",
+    description:
+      "ตัวป้ายจัดสารและแบิงใจนีจาก PDF หากค่ะแพบพิเศษ 4×6, 100×150 มม. หรือค้ารับ และตัดที่มา",
+  },
   compressor: {
     title: "เครื่องบีบอัดรูปภาพ",
     description: "ลดขนาดไฟล์รูปภาพพร้อมคงคุณภาพที่ยอดเยี่ยม",
@@ -10043,9 +13044,29 @@ const toolTextTh: Record<string, ToolText> = {
     title: "วิดีโอ → ลิงก์",
     description: "อัปโหลดวิดีโอและสร้างลิงก์แชร์ที่มีเวลาหมดอายุ",
   },
+  "bulk-sms": {
+    title: "สร้าง SMS จำนวนมาก",
+    description:
+      "ปรับแต่งข้อความ SMS สำหรับผู้ติดต่อแต่ละราย ตรวจสอบหมายเลขโทรศัพท์ แล้วคัดลอกหรือส่งออกรายการ",
+  },
+  "bulk-email": {
+    title: "สร้างอีเมลจำนวนมาก",
+    description:
+      "ปรับแต่งอีเมลสำหรับผู้ติดต่อแต่ละราย ตรวจสอบที่อยู่อีเมล แล้วคัดลอกหรือส่งออกรายการ",
+  },
+  "audio-to-text": {
+    title: "เปลี่ยนเสียงเป็นข้อความ",
+    description:
+      "แปลงไฟล์เสียงเป็นข้อความที่แก้ไขได้ ด้วยการถอดความภายในเบราว์เซอร์ ไฟล์เสียงของคุณจะไม่ถูกอัปโหลด",
+  },
 };
 
 const toolTextTr: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Kargo etiketi ve fatura PDF",
+    description:
+      "Herhangi bir PDF'teki kargo etiketlerini ve faturaları tam 4×6, 100×150 mm veya özel baskı sayfalarına sığırın — germe veya kesme yok.",
+  },
   compressor: {
     title: "Görsel Sıkıştırıcı",
     description: "Mükemmel kaliteyi korurken görüntü dosyası boyutunu küçült.",
@@ -10286,9 +13307,29 @@ const toolTextTr: Record<string, ToolText> = {
     description:
       "Bir video yükle ve son kullanma süresine sahip paylaşılabilir bir bağlantı oluştur.",
   },
+  "bulk-sms": {
+    title: "Toplu SMS",
+    description:
+      "Her kişi için tek bir SMS mesajını kişiselleştirin, telefon numaralarını doğrulayın ve listeyi kopyalayın veya dışa aktarın.",
+  },
+  "bulk-email": {
+    title: "Toplu E-posta",
+    description:
+      "Her kişi için tek bir e-postayı kişiselleştirin, e-posta adreslerini doğrulayın ve listeyi kopyalayın veya dışa aktarın.",
+  },
+  "audio-to-text": {
+    title: "Sesden metne",
+    description:
+      "Ses kayıtlarını tarayıcıda özel bir şekilde düzenlenebilir metne dönüştürün. Ses dosyanız hiçbir yere yüklenmez.",
+  },
 };
 
 const toolTextUk: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Транспортна етикета та рахунок PDF",
+    description:
+      "Вкладайте етикети та рахунки з будь-якого PDF у точні сторінки 4×6, 100×150 мм або власні — без розтягнення чи обрізання.",
+  },
   compressor: {
     title: "Компресор зображень",
     description: "Зменшуйте розмір файлу зображення, зберігаючи чудову якість.",
@@ -10529,9 +13570,29 @@ const toolTextUk: Record<string, ToolText> = {
     title: "Відео → посилання",
     description: "Завантажте відео та створіть посилання для надсилання зі строком дії.",
   },
+  "bulk-sms": {
+    title: "Масова розсилка SMS",
+    description:
+      "Персоналізуйте SMS для кожного контакту, перевірте номери телефонів та скопіюйте або експортуйте список.",
+  },
+  "bulk-email": {
+    title: "Масова розсилка листів",
+    description:
+      "Персоналізуйте лист для кожного контакту, перевірте адреси електронної пошти та скопіюйте або експортуйте список.",
+  },
+  "audio-to-text": {
+    title: "Аудіо в текст",
+    description:
+      "Перетворюйте аудіозаписи на редагований текст із приватною транскрипцією в браузері. Аудіофайл нікуди не завантажується.",
+  },
 };
 
 const toolTextVi: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Nhãn vận chuyển & hóa đơn PDF",
+    description:
+      "Vừa khít nhãn vận chuyển và hóa đơn từ mọi PDF vào trang in đúng kích thước 4×6, 100×150 mm hoặc tùy chỉnh — không kêo dài, không cắt bỏ.",
+  },
   compressor: {
     title: "Công cụ nén ảnh",
     description: "Giảm kích thước tệp ảnh trong khi vẫn giữ chất lượng tuyệt vời.",
@@ -10765,9 +13826,29 @@ const toolTextVi: Record<string, ToolText> = {
     title: "Video → Liên kết",
     description: "Tải video lên và tạo liên kết có thể chia sẻ với thời gian hết hạn.",
   },
+  "bulk-sms": {
+    title: "SMS hàng loạt",
+    description:
+      "Cá nhân hóa một tin nhắn SMS cho từng liên hệ, kiểm tra số điện thoại rồi sao chép hoặc xuất danh sách.",
+  },
+  "bulk-email": {
+    title: "E-mail hàng loạt",
+    description:
+      "Cá nhân hóa một email cho từng liên hệ, kiểm tra địa chỉ email rồi sao chép hoặc xuất danh sách.",
+  },
+  "audio-to-text": {
+    title: "Âm thanh thành chữ",
+    description:
+      "Biến bản ghi âm thành văn bản có thể chỉnh sửa với tính năng chuyển lời nói thành chữ ngay trong trình duyệt. Tệp âm thanh không bao giờ được tải lên.",
+  },
 };
 
 const toolTextSw: Record<string, ToolText> = {
+  "shipping-label-pdf": {
+    title: "Lebo ya Usafirishaji na Ankara PDF",
+    description:
+      "Weka lebo za usafirishaji na ankara kutoka PDF yoyote kwenye kurasa za uchapaji kamili 4×6, 100×150 mm au maalum bila kunyoosha au kukata.",
+  },
   compressor: {
     title: "Kibana Picha",
     description: "Punguza ukubwa wa faili la picha huku ukidumisha ubora mzuri.",
@@ -11006,6 +14087,21 @@ const toolTextSw: Record<string, ToolText> = {
     title: "Video → Kiungo",
     description: "Pakia video na unda kiungo kinachoweza kushirikiwa chenye muda wa kuisha.",
   },
+  "bulk-sms": {
+    title: "SMS ya Wingi",
+    description:
+      "Pekeesha ujumbe mmoja wa SMS kwa kila mwasiliani, angalia namba za simu, kisha nakili au hamisha orodha.",
+  },
+  "bulk-email": {
+    title: "Barua pepe za Wingi",
+    description:
+      "Pekeesha barua pepe moja kwa kila mwasiliani, angalia anwani za barua pepe, kisha nakili au hamisha orodha.",
+  },
+  "audio-to-text": {
+    title: "Sauti kuwa maandishi",
+    description:
+      "Badilisha rekodi za sauti kuwa maandishi yanayoweza kuhaririwa kwa kutumie vinjari. Faili ya sauti haihapakwi popote.",
+  },
 };
 
 const toolTextByLocale: Partial<Record<Locale, Record<string, ToolText>>> = {
@@ -11036,6 +14132,2006 @@ const toolTextByLocale: Partial<Record<Locale, Record<string, ToolText>>> = {
   vi: toolTextVi,
   sw: toolTextSw,
 };
+
+export type ShippingLabelStrings = {
+  platformLabel: string;
+  platformAuto: string;
+  platformOther: string;
+  platformHint: string;
+  outputSizeLabel: string;
+  size4x6: string;
+  size100x150: string;
+  size3x5: string;
+  size4x4: string;
+  sizeA4: string;
+  sizeCustom: string;
+  widthLabel: string;
+  heightLabel: string;
+  unitMm: string;
+  unitIn: string;
+  unitLabel: string;
+  customSizeError: string;
+  contentLabel: string;
+  modeLabelOnly: string;
+  modeInvoiceOnly: string;
+  modeBoth: string;
+  modeHint: string;
+  printTip: string;
+  uploadTitle: string;
+  uploadHint: string;
+  uploadPrivacy: string;
+  replacePdf: string;
+  pagesWord: string;
+  analyzing: string;
+  analysisFailed: string;
+  detected: string;
+  reviewSuggested: string;
+  ready: string;
+  reviewPages: string;
+  noFilesYet: string;
+  batchLimits: string;
+  editorTitle: string;
+  editorHint: string;
+  page: string;
+  regionType: string;
+  kindLabel: string;
+  kindInvoice: string;
+  kindFull: string;
+  fullPage: string;
+  removeRegion: string;
+  resetRegions: string;
+  cancel: string;
+  applySelection: string;
+  sizeHint: string;
+  generate: string;
+  generating: string;
+  noRegionForMode: string;
+  sizeRequired: string;
+  noValidFiles: string;
+  corruptError: string;
+  cropTooSmall: string;
+  resultTitle: string;
+  downloadAll: string;
+  printHint: string;
+  noResults: string;
+  tooManyPages: string;
+};
+
+const shippingLabelEn: ShippingLabelStrings = {
+  platformLabel: "Shipping platform",
+  platformAuto: "Auto-detect",
+  platformOther: "Other / Custom",
+  platformHint:
+    "Pick your marketplace so regions are detected with the right proportions. Auto-detect reads the text inside your PDF.",
+  outputSizeLabel: "Output page size",
+  size4x6: "4 × 6 in (label roll)",
+  size100x150: "100 × 150 mm",
+  size3x5: "3 × 5 in",
+  size4x4: "4 × 4 in",
+  sizeA4: "A4",
+  sizeCustom: "Custom size",
+  widthLabel: "Width",
+  heightLabel: "Height",
+  unitMm: "mm",
+  unitIn: "in",
+  unitLabel: "Unit",
+  customSizeError: "Enter a valid width and height (10–1000 mm).",
+  contentLabel: "Content",
+  modeLabelOnly: "Shipping label",
+  modeInvoiceOnly: "Invoice",
+  modeBoth: "Label + Invoice",
+  modeHint:
+    "Every selected region is placed on its own exact-size page and scaled to fit — never stretched, never cut.",
+  printTip:
+    "Tip: print at 100% scale (no “fit to page”) so the output keeps its exact physical size.",
+  uploadTitle: "Drop PDF files here",
+  uploadHint: "or click to browse — up to 10 files, 50 MB each",
+  uploadPrivacy:
+    "Everything is processed in your browser. Your files are never uploaded to a server.",
+  replacePdf: "Add more PDFs",
+  pagesWord: "pages",
+  analyzing: "Analyzing…",
+  analysisFailed: "Could not read this PDF.",
+  detected: "Detected",
+  reviewSuggested: "Review suggested",
+  ready: "Ready",
+  reviewPages: "Review pages",
+  noFilesYet: "Upload PDFs to see page previews and adjust label areas.",
+  batchLimits: "Max 10 files and 200 pages per batch.",
+  editorTitle: "Adjust label & invoice area",
+  editorHint:
+    "Drag inside the box to move it. Drag a corner to resize. Change what the region contains with the buttons below.",
+  page: "Page",
+  regionType: "Region type",
+  kindLabel: "Label",
+  kindInvoice: "Invoice",
+  kindFull: "Full page",
+  fullPage: "Fit full page",
+  removeRegion: "Remove region",
+  resetRegions: "Reset",
+  cancel: "Cancel",
+  applySelection: "Apply selection",
+  sizeHint: "The output page keeps this exact ratio — no stretching, no cutting.",
+  generate: "Generate PDF",
+  generating: "Generating…",
+  noRegionForMode:
+    "No matching region found on any page. Pick another content type or adjust the regions.",
+  sizeRequired: "Choose a valid output size first.",
+  noValidFiles: "Add at least one readable PDF first.",
+  corruptError: "This PDF is damaged or password-protected and cannot be processed.",
+  cropTooSmall: "The selected region is too small for the output page. Please adjust the selection.",
+  resultTitle: "Your PDFs",
+  downloadAll: "Download all (ZIP)",
+  printHint:
+    "Print at 100% scale (choose “Actual size”, never “Fit to page”) for exact label dimensions.",
+  noResults: "Your generated PDFs will appear here.",
+  tooManyPages: "Page limit reached (200 pages per batch). Remove some files.",
+};
+
+const shippingLabelByLocale: Partial<Record<Locale, ShippingLabelStrings>> = {
+  en: shippingLabelEn,
+  hi: {
+    platformLabel: "शिपिंग प्लेटफ़ॉर्म",
+    platformAuto: "स्वतः पहचान",
+    platformOther: "अन्य / कस्टम",
+    platformHint:
+      "सही अनुपात में क्षेत्रों की पहचान के लिए अपना मार्केटप्लेस चुनें। स्वतः पहचान आपके PDF का टेक्स्ट पढ़ती है।",
+    outputSizeLabel: "आउटपुट पेज आकार",
+    size4x6: "4 × 6 इंच (लेबल रोल)",
+    size100x150: "100 × 150 मिमी",
+    size3x5: "3 × 5 इंच",
+    size4x4: "4 × 4 इंच",
+    sizeA4: "A4",
+    sizeCustom: "कस्टम आकार",
+    widthLabel: "चौड़ाई",
+    heightLabel: "ऊंचाई",
+    unitMm: "मिमी",
+    unitIn: "इंच",
+    unitLabel: "इकाई",
+    customSizeError: "मान्य चौड़ाई और ऊंचाई दर्ज करें (10–1000 मिमी)।",
+    contentLabel: "सामग्री",
+    modeLabelOnly: "शिपिंग लेबल",
+    modeInvoiceOnly: "चालान",
+    modeBoth: "लेबल + चालान",
+    modeHint:
+      "हर चुने गए क्षेत्र को अपने अलग सटीक-आकार वाले पेज पर रखा जाता है और फिट किया जाता है — कभी खिंचाव नहीं, कभी कटाव नहीं।",
+    printTip:
+      "सुझाव: 100% स्केल पर प्रिंट करें (“फ़िट टू पेज” न चुनें) ताकि आउटपुट का सटीक भौतिक आकार बना रहे।",
+    uploadTitle: "यहाँ PDF फ़ाइलें छोड़ें",
+    uploadHint: "या ब्राउज़ करने के लिए क्लिक करें — अधिकतम 10 फ़ाइलें, प्रत्येक 50 MB",
+    uploadPrivacy:
+      "सब कुछ आपके ब्राउज़र में ही संसाधित होता है। आपकी फ़ाइलें कभी सर्वर पर अपलोड नहीं होतीं।",
+    replacePdf: "और PDF जोड़ें",
+    pagesWord: "पेज",
+    analyzing: "विश्लेषण हो रहा है…",
+    analysisFailed: "यह PDF पढ़ी नहीं जा सकी।",
+    detected: "पहचाना गया",
+    reviewSuggested: "समीक्षा अनुशंसित",
+    ready: "तैयार",
+    reviewPages: "पेज समीक्षा करें",
+    noFilesYet:
+      "पेज पूर्वावलोकन देखने और लेबल क्षेत्र समायोजित करने के लिए PDF अपलोड करें।",
+    batchLimits: "प्रति बैच अधिकतम 10 फ़ाइलें और 200 पेज।",
+    editorTitle: "लेबल व चालान क्षेत्र समायोजित करें",
+    editorHint:
+      "बॉक्स के अंदर खींचकर उसे ले जाएँ। कोने पर खींचकर आकार बदलें। नीचे दिए बटनों से क्षेत्र की सामग्री बदलें।",
+    page: "पेज",
+    regionType: "क्षेत्र प्रकार",
+    kindLabel: "लेबल",
+    kindInvoice: "चालान",
+    kindFull: "पूरा पेज",
+    fullPage: "पूरा पेज फिट करें",
+    removeRegion: "क्षेत्र हटाएँ",
+    resetRegions: "रीसेट",
+    cancel: "रद्द करें",
+    applySelection: "चयन लागू करें",
+    sizeHint:
+      "आउटपुट पेज इसी सटीक अनुपात को रखता है — न खिंचाव, न कटाव।",
+    generate: "PDF बनाएँ",
+    generating: "बन रहा है…",
+    noRegionForMode:
+      "किसी भी पेज पर मेल खाता क्षेत्र नहीं मिला। कोई और सामग्री प्रकार चुनें या क्षेत्र समायोजित करें।",
+    sizeRequired: "पहले मान्य आउटपुट आकार चुनें।",
+    noValidFiles: "पहले कम से कम एक पठनीय PDF जोड़ें।",
+    corruptError:
+      "यह PDF क्षतिग्रस्त या पासवर्ड-सुरक्षित है और इसे संसाधित नहीं किया जा सकता।",
+    cropTooSmall:
+      "चयनित क्षेत्र आउटपुट पेज के लिए बहुत छोटा है। कृपया चयन समायोजित करें।",
+    resultTitle: "आपकी PDF",
+    downloadAll: "सभी डाउनलोड करें (ZIP)",
+    printHint:
+      "सटीक लेबल माप के लिए 100% स्केल पर प्रिंट करें (“वास्तविक आकार” चुनें, “फ़िट टू पेज” कभी नहीं)।",
+    noResults: "आपके बनाए गए PDF यहाँ दिखाई देंगे।",
+    tooManyPages:
+      "पेज सीमा पूरी हो गई (प्रति बैच 200 पेज)। कुछ फ़ाइलें हटाएँ।",
+  },
+  es: {
+    platformLabel: "Plataforma de envío",
+    platformAuto: "Detección automática",
+    platformOther: "Otra / Personalizada",
+    platformHint:
+      "Elige tu marketplace para que las regiones se detecten con las proporciones correctas. La detección automática lee el texto de tu PDF.",
+    outputSizeLabel: "Tamaño de página de salida",
+    size4x6: "4 × 6 in (rollo de etiquetas)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 in",
+    size4x4: "4 × 4 in",
+    sizeA4: "A4",
+    sizeCustom: "Tamaño personalizado",
+    widthLabel: "Ancho",
+    heightLabel: "Alto",
+    unitMm: "mm",
+    unitIn: "in",
+    unitLabel: "Unidad",
+    customSizeError: "Introduce un ancho y un alto válidos (10–1000 mm).",
+    contentLabel: "Contenido",
+    modeLabelOnly: "Etiqueta de envío",
+    modeInvoiceOnly: "Factura",
+    modeBoth: "Etiqueta + Factura",
+    modeHint:
+      "Cada región seleccionada se coloca en su propia página de tamaño exacto y se escala para encajar — nunca se estira ni se recorta.",
+    printTip:
+      "Consejo: imprime al 100 % de escala (sin “ajustar a la página”) para que la salida conserve su tamaño físico exacto.",
+    uploadTitle: "Suelta archivos PDF aquí",
+    uploadHint: "o haz clic para examinar — hasta 10 archivos, 50 MB cada uno",
+    uploadPrivacy:
+      "Todo se procesa en tu navegador. Tus archivos nunca se suben a un servidor.",
+    replacePdf: "Añadir más PDF",
+    pagesWord: "páginas",
+    analyzing: "Analizando…",
+    analysisFailed: "No se pudo leer este PDF.",
+    detected: "Detectado",
+    reviewSuggested: "Revisión sugerida",
+    ready: "Listo",
+    reviewPages: "Revisar páginas",
+    noFilesYet:
+      "Sube PDF para ver las vistas previas de las páginas y ajustar las áreas de la etiqueta.",
+    batchLimits: "Máximo 10 archivos y 200 páginas por lote.",
+    editorTitle: "Ajustar área de etiqueta y factura",
+    editorHint:
+      "Arrastra dentro del cuadro para moverlo. Arrastra una esquina para redimensionar. Cambia el contenido de la región con los botones de abajo.",
+    page: "Página",
+    regionType: "Tipo de región",
+    kindLabel: "Etiqueta",
+    kindInvoice: "Factura",
+    kindFull: "Página completa",
+    fullPage: "Ajustar página completa",
+    removeRegion: "Eliminar región",
+    resetRegions: "Restablecer",
+    cancel: "Cancelar",
+    applySelection: "Aplicar selección",
+    sizeHint:
+      "La página de salida mantiene esta proporción exacta — sin estirar, sin recortar.",
+    generate: "Generar PDF",
+    generating: "Generando…",
+    noRegionForMode:
+      "No se encontró ninguna región coincidente en las páginas. Elige otro tipo de contenido o ajusta las regiones.",
+    sizeRequired: "Elige primero un tamaño de salida válido.",
+    noValidFiles: "Añade al menos un PDF legible primero.",
+    corruptError:
+      "Este PDF está dañado o protegido con contraseña y no se puede procesar.",
+    cropTooSmall:
+      "La región seleccionada es demasiado pequeña para la página de salida. Ajusta la selección.",
+    resultTitle: "Tus PDF",
+    downloadAll: "Descargar todo (ZIP)",
+    printHint:
+      "Imprime al 100 % de escala (elige “Tamaño real”, nunca “Ajustar a la página”) para obtener las dimensiones exactas de la etiqueta.",
+    noResults: "Tus PDF generados aparecerán aquí.",
+    tooManyPages:
+      "Límite de páginas alcanzado (200 páginas por lote). Elimina algunos archivos.",
+  },
+  fr: {
+    platformLabel: "Plateforme d’expédition",
+    platformAuto: "Détection automatique",
+    platformOther: "Autre / Personnalisée",
+    platformHint:
+      "Choisissez votre marketplace pour que les zones soient détectées avec les bonnes proportions. La détection automatique lit le texte de votre PDF.",
+    outputSizeLabel: "Taille de page de sortie",
+    size4x6: "4 × 6 po (rouleau d’étiquettes)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 po",
+    size4x4: "4 × 4 po",
+    sizeA4: "A4",
+    sizeCustom: "Taille personnalisée",
+    widthLabel: "Largeur",
+    heightLabel: "Hauteur",
+    unitMm: "mm",
+    unitIn: "po",
+    unitLabel: "Unité",
+    customSizeError: "Saisissez une largeur et une hauteur valides (10–1000 mm).",
+    contentLabel: "Contenu",
+    modeLabelOnly: "Étiquette d’expédition",
+    modeInvoiceOnly: "Facture",
+    modeBoth: "Étiquette + Facture",
+    modeHint:
+      "Chaque zone sélectionnée est placée sur sa propre page de taille exacte et mise à l’échelle pour tenir — jamais étirée, jamais coupée.",
+    printTip:
+      "Astuce : imprimez à 100 % d’échelle (sans “adapter à la page”) pour que la sortie conserve sa taille physique exacte.",
+    uploadTitle: "Déposez vos fichiers PDF ici",
+    uploadHint: "ou cliquez pour parcourir — jusqu’à 10 fichiers, 50 Mo chacun",
+    uploadPrivacy:
+      "Tout est traité dans votre navigateur. Vos fichiers ne sont jamais envoyés vers un serveur.",
+    replacePdf: "Ajouter d’autres PDF",
+    pagesWord: "pages",
+    analyzing: "Analyse…",
+    analysisFailed: "Impossible de lire ce PDF.",
+    detected: "Détecté",
+    reviewSuggested: "Vérification suggérée",
+    ready: "Prêt",
+    reviewPages: "Vérifier les pages",
+    noFilesYet:
+      "Importez des PDF pour voir les aperçus des pages et ajuster les zones d’étiquette.",
+    batchLimits: "10 fichiers et 200 pages maximum par lot.",
+    editorTitle: "Ajuster la zone étiquette et facture",
+    editorHint:
+      "Glissez dans le cadre pour le déplacer. Glissez un coin pour redimensionner. Changez le contenu de la zone avec les boutons ci-dessous.",
+    page: "Page",
+    regionType: "Type de zone",
+    kindLabel: "Étiquette",
+    kindInvoice: "Facture",
+    kindFull: "Page entière",
+    fullPage: "Ajuster la page entière",
+    removeRegion: "Supprimer la zone",
+    resetRegions: "Réinitialiser",
+    cancel: "Annuler",
+    applySelection: "Appliquer la sélection",
+    sizeHint:
+      "La page de sortie conserve ce ratio exact — sans étirement, sans découpe.",
+    generate: "Générer le PDF",
+    generating: "Génération…",
+    noRegionForMode:
+      "Aucune zone correspondante trouvée sur les pages. Choisissez un autre type de contenu ou ajustez les zones.",
+    sizeRequired: "Choisissez d’abord une taille de sortie valide.",
+    noValidFiles: "Ajoutez d’abord au moins un PDF lisible.",
+    corruptError:
+      "Ce PDF est endommagé ou protégé par mot de passe et ne peut pas être traité.",
+    cropTooSmall:
+      "La zone sélectionnée est trop petite pour la page de sortie. Veuillez ajuster la sélection.",
+    resultTitle: "Vos PDF",
+    downloadAll: "Tout télécharger (ZIP)",
+    printHint:
+      "Imprimez à 100 % d’échelle (choisissez “Taille réelle”, jamais “Adapter à la page”) pour des dimensions d’étiquette exactes.",
+    noResults: "Vos PDF générés apparaîtront ici.",
+    tooManyPages:
+      "Limite de pages atteinte (200 pages par lot). Supprimez certains fichiers.",
+  },
+  de: {
+    platformLabel: "Versandplattform",
+    platformAuto: "Automatische Erkennung",
+    platformOther: "Weitere / Benutzerdefiniert",
+    platformHint:
+      "Wählen Sie Ihren Marktplatz, damit die Bereiche mit den richtigen Proportionen erkannt werden. Die automatische Erkennung liest den Text in Ihrem PDF.",
+    outputSizeLabel: "Ausgabeseitengröße",
+    size4x6: "4 × 6 in (Etikettenrolle)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 in",
+    size4x4: "4 × 4 in",
+    sizeA4: "A4",
+    sizeCustom: "Benutzerdefinierte Größe",
+    widthLabel: "Breite",
+    heightLabel: "Höhe",
+    unitMm: "mm",
+    unitIn: "in",
+    unitLabel: "Einheit",
+    customSizeError:
+      "Geben Sie eine gültige Breite und Höhe ein (10–1000 mm).",
+    contentLabel: "Inhalt",
+    modeLabelOnly: "Versandetikett",
+    modeInvoiceOnly: "Rechnung",
+    modeBoth: "Etikett + Rechnung",
+    modeHint:
+      "Jeder ausgewählte Bereich wird auf einer eigenen Seite in exakter Größe platziert und skaliert, um hineinzupassen — nie verzerrt, nie abgeschnitten.",
+    printTip:
+      "Tipp: Drucken Sie mit 100 % Skalierung (ohne “an Seite anpassen”), damit die Ausgabe ihre exakte physische Größe behält.",
+    uploadTitle: "PDF-Dateien hier ablegen",
+    uploadHint:
+      "oder klicken zum Auswählen — bis zu 10 Dateien, je 50 MB",
+    uploadPrivacy:
+      "Alles wird in Ihrem Browser verarbeitet. Ihre Dateien werden nie auf einen Server hochgeladen.",
+    replacePdf: "Weitere PDFs hinzufügen",
+    pagesWord: "Seiten",
+    analyzing: "Wird analysiert…",
+    analysisFailed: "Diese PDF konnte nicht gelesen werden.",
+    detected: "Erkannt",
+    reviewSuggested: "Prüfung empfohlen",
+    ready: "Bereit",
+    reviewPages: "Seiten prüfen",
+    noFilesYet:
+      "Laden Sie PDFs hoch, um Seitenvorschauen zu sehen und die Etikettenbereiche anzupassen.",
+    batchLimits: "Maximal 10 Dateien und 200 Seiten pro Stapel.",
+    editorTitle: "Etiketten- und Rechnungsbereich anpassen",
+    editorHint:
+      "Ziehen Sie im Rahmen, um ihn zu verschieben. Ziehen Sie eine Ecke zum Skalieren. Ändern Sie den Bereichsinhalt mit den Schaltflächen unten.",
+    page: "Seite",
+    regionType: "Bereichstyp",
+    kindLabel: "Etikett",
+    kindInvoice: "Rechnung",
+    kindFull: "Ganze Seite",
+    fullPage: "Ganze Seite einpassen",
+    removeRegion: "Bereich entfernen",
+    resetRegions: "Zurücksetzen",
+    cancel: "Abbrechen",
+    applySelection: "Auswahl übernehmen",
+    sizeHint:
+      "Die Ausgabeseite behält dieses exakte Seitenverhältnis — keine Verzerrung, kein Beschnitt.",
+    generate: "PDF erstellen",
+    generating: "Wird erstellt…",
+    noRegionForMode:
+      "Auf keiner Seite wurde ein passender Bereich gefunden. Wählen Sie einen anderen Inhaltstyp oder passen Sie die Bereiche an.",
+    sizeRequired: "Wählen Sie zuerst eine gültige Ausgabegröße.",
+    noValidFiles: "Fügen Sie zuerst mindestens eine lesbare PDF hinzu.",
+    corruptError:
+      "Diese PDF ist beschädigt oder passwortgeschützt und kann nicht verarbeitet werden.",
+    cropTooSmall:
+      "Der ausgewählte Bereich ist für die Ausgabeseite zu klein. Bitte passen Sie die Auswahl an.",
+    resultTitle: "Ihre PDFs",
+    downloadAll: "Alle herunterladen (ZIP)",
+    printHint:
+      "Drucken Sie mit 100 % Skalierung (“Tatsächliche Größe” wählen, niemals “an Seite anpassen”) für exakte Etikettenmaße.",
+    noResults: "Ihre erstellten PDFs erscheinen hier.",
+    tooManyPages:
+      "Seitenlimit erreicht (200 Seiten pro Stapel). Entfernen Sie einige Dateien.",
+  },
+  it: {
+    platformLabel: "Piattaforma di spedizione",
+    platformAuto: "Rilevamento automatico",
+    platformOther: "Altra / Personalizzata",
+    platformHint:
+      "Scegli il tuo marketplace perché le aree vengano rilevate con le proporzioni giuste. Il rilevamento automatico legge il testo del tuo PDF.",
+    outputSizeLabel: "Dimensione pagina di output",
+    size4x6: "4 × 6 in (rotolo di etichette)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 in",
+    size4x4: "4 × 4 in",
+    sizeA4: "A4",
+    sizeCustom: "Dimensione personalizzata",
+    widthLabel: "Larghezza",
+    heightLabel: "Altezza",
+    unitMm: "mm",
+    unitIn: "in",
+    unitLabel: "Unità",
+    customSizeError:
+      "Inserisci una larghezza e un’altezza valide (10–1000 mm).",
+    contentLabel: "Contenuto",
+    modeLabelOnly: "Etichetta di spedizione",
+    modeInvoiceOnly: "Fattura",
+    modeBoth: "Etichetta + Fattura",
+    modeHint:
+      "Ogni area selezionata viene collocata sulla sua pagina di dimensione esatta e ridimensionata per stare dentro — mai stirata, mai tagliata.",
+    printTip:
+      "Suggerimento: stampa al 100 % di scala (senza “adatta alla pagina”) perché l’output conservi le sue dimensioni fisiche esatte.",
+    uploadTitle: "Rilascia qui i file PDF",
+    uploadHint:
+      "o clicca per sfogliare — fino a 10 file, 50 MB ciascuno",
+    uploadPrivacy:
+      "Tutto viene elaborato nel tuo browser. I tuoi file non vengono mai caricati su un server.",
+    replacePdf: "Aggiungi altri PDF",
+    pagesWord: "pagine",
+    analyzing: "Analisi…",
+    analysisFailed: "Impossibile leggere questo PDF.",
+    detected: "Rilevato",
+    reviewSuggested: "Revisione consigliata",
+    ready: "Pronto",
+    reviewPages: "Controlla le pagine",
+    noFilesYet:
+      "Carica dei PDF per vedere le anteprime delle pagine e regolare le aree dell’etichetta.",
+    batchLimits: "Max 10 file e 200 pagine per lotto.",
+    editorTitle: "Regola area etichetta e fattura",
+    editorHint:
+      "Trascina dentro il riquadro per spostarlo. Trascina un angolo per ridimensionare. Cambia il contenuto dell’area con i pulsanti sotto.",
+    page: "Pagina",
+    regionType: "Tipo di area",
+    kindLabel: "Etichetta",
+    kindInvoice: "Fattura",
+    kindFull: "Pagina intera",
+    fullPage: "Adatta pagina intera",
+    removeRegion: "Rimuovi area",
+    resetRegions: "Reimposta",
+    cancel: "Annulla",
+    applySelection: "Applica selezione",
+    sizeHint:
+      "La pagina di output mantiene questa proporzione esatta — senza stiramento, senza ritaglio.",
+    generate: "Genera PDF",
+    generating: "Generazione…",
+    noRegionForMode:
+      "Nessuna area corrispondente trovata nelle pagine. Scegli un altro tipo di contenuto o regola le aree.",
+    sizeRequired: "Scegli prima una dimensione di output valida.",
+    noValidFiles: "Aggiungi prima almeno un PDF leggibile.",
+    corruptError:
+      "Questo PDF è danneggiato o protetto da password e non può essere elaborato.",
+    cropTooSmall:
+      "L’area selezionata è troppo piccola per la pagina di output. Regola la selezione.",
+    resultTitle: "I tuoi PDF",
+    downloadAll: "Scarica tutto (ZIP)",
+    printHint:
+      "Stampa al 100 % di scala (scegli “Dimensioni reali”, mai “Adatta alla pagina”) per dimensioni esatte dell’etichetta.",
+    noResults: "I tuoi PDF generati appariranno qui.",
+    tooManyPages:
+      "Limite di pagine raggiunto (200 pagine per lotto). Rimuovi alcuni file.",
+  },
+  pt: {
+    platformLabel: "Plataforma de envio",
+    platformAuto: "Detecção automática",
+    platformOther: "Outra / Personalizada",
+    platformHint:
+      "Escolha o seu marketplace para que as regiões sejam detectadas com as proporções corretas. A detecção automática lê o texto do seu PDF.",
+    outputSizeLabel: "Tamanho da página de saída",
+    size4x6: "4 × 6 in (rolo de etiquetas)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 in",
+    size4x4: "4 × 4 in",
+    sizeA4: "A4",
+    sizeCustom: "Tamanho personalizado",
+    widthLabel: "Largura",
+    heightLabel: "Altura",
+    unitMm: "mm",
+    unitIn: "in",
+    unitLabel: "Unidade",
+    customSizeError:
+      "Insira uma largura e uma altura válidas (10–1000 mm).",
+    contentLabel: "Conteúdo",
+    modeLabelOnly: "Etiqueta de envio",
+    modeInvoiceOnly: "Fatura",
+    modeBoth: "Etiqueta + Fatura",
+    modeHint:
+      "Cada região selecionada é colocada na sua própria página de tamanho exato e escalada para caber — nunca esticada, nunca cortada.",
+    printTip:
+      "Dica: imprima com 100 % de escala (sem “ajustar à página”) para que a saída mantenha o seu tamanho físico exato.",
+    uploadTitle: "Solte os arquivos PDF aqui",
+    uploadHint:
+      "ou clique para procurar — até 10 arquivos, 50 MB cada",
+    uploadPrivacy:
+      "Tudo é processado no seu navegador. Os seus arquivos nunca são enviados para um servidor.",
+    replacePdf: "Adicionar mais PDFs",
+    pagesWord: "páginas",
+    analyzing: "Analisando…",
+    analysisFailed: "Não foi possível ler este PDF.",
+    detected: "Detectado",
+    reviewSuggested: "Revisão sugerida",
+    ready: "Pronto",
+    reviewPages: "Rever páginas",
+    noFilesYet:
+      "Carregue PDFs para ver as pré-visualizações das páginas e ajustar as áreas da etiqueta.",
+    batchLimits: "Máximo de 10 arquivos e 200 páginas por lote.",
+    editorTitle: "Ajustar área de etiqueta e fatura",
+    editorHint:
+      "Arraste dentro da caixa para movê-la. Arraste um canto para redimensionar. Altere o conteúdo da região com os botões abaixo.",
+    page: "Página",
+    regionType: "Tipo de região",
+    kindLabel: "Etiqueta",
+    kindInvoice: "Fatura",
+    kindFull: "Página inteira",
+    fullPage: "Ajustar página inteira",
+    removeRegion: "Remover região",
+    resetRegions: "Redefinir",
+    cancel: "Cancelar",
+    applySelection: "Aplicar seleção",
+    sizeHint:
+      "A página de saída mantém esta proporção exata — sem esticar, sem cortar.",
+    generate: "Gerar PDF",
+    generating: "Gerando…",
+    noRegionForMode:
+      "Nenhuma região correspondente encontrada nas páginas. Escolha outro tipo de conteúdo ou ajuste as regiões.",
+    sizeRequired: "Escolha primeiro um tamanho de saída válido.",
+    noValidFiles: "Adicione pelo menos um PDF legível primeiro.",
+    corruptError:
+      "Este PDF está danificado ou protegido por senha e não pode ser processado.",
+    cropTooSmall:
+      "A região selecionada é pequena demais para a página de saída. Ajuste a seleção.",
+    resultTitle: "Os seus PDFs",
+    downloadAll: "Baixar tudo (ZIP)",
+    printHint:
+      "Imprima com 100 % de escala (escolha “Tamanho real”, nunca “Ajustar à página”) para dimensões exatas da etiqueta.",
+    noResults: "Os seus PDFs gerados aparecerão aqui.",
+    tooManyPages:
+      "Limite de páginas atingido (200 páginas por lote). Remova alguns arquivos.",
+  },
+  ja: {
+    platformLabel: "配送プラットフォーム",
+    platformAuto: "自動検出",
+    platformOther: "その他 / カスタム",
+    platformHint:
+      "正しい比率で領域を検出するため、マーケットプレイスを選択してください。自動検出は PDF 内のテキストを読み取ります。",
+    outputSizeLabel: "出力ページサイズ",
+    size4x6: "4 × 6 インチ（ラベルロール）",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 インチ",
+    size4x4: "4 × 4 インチ",
+    sizeA4: "A4",
+    sizeCustom: "カスタムサイズ",
+    widthLabel: "幅",
+    heightLabel: "高さ",
+    unitMm: "mm",
+    unitIn: "インチ",
+    unitLabel: "単位",
+    customSizeError: "幅と高さに有効な値を入力してください（10–1000 mm）。",
+    contentLabel: "内容",
+    modeLabelOnly: "配送ラベル",
+    modeInvoiceOnly: "請求書",
+    modeBoth: "ラベル + 請求書",
+    modeHint:
+      "選択した各領域は、それぞれ正確なサイズのページに配置され、縦横比を保ったまま縮小・拡大されます — 拡張や切り抜きは行われません。",
+    printTip:
+      "ヒント: 出力の実寸を保つには、100% スケール（「ページに合わせる」は使用しない）で印刷してください。",
+    uploadTitle: "ここに PDF ファイルをドロップ",
+    uploadHint: "またはクリックして参照 — 最大 10 ファイル、各 50 MB",
+    uploadPrivacy:
+      "すべてブラウザー内で処理されます。ファイルがサーバーにアップされることはありません。",
+    replacePdf: "PDF を追加",
+    pagesWord: "ページ",
+    analyzing: "分析中…",
+    analysisFailed: "この PDF を読み取れませんでした。",
+    detected: "検出済み",
+    reviewSuggested: "要確認",
+    ready: "準備完了",
+    reviewPages: "ページを確認",
+    noFilesYet:
+      "PDF をアップロードすると、ページのプレビューを確認してラベル領域を調整できます。",
+    batchLimits: "1 バッチあたり最大 10 ファイル・200 ページ。",
+    editorTitle: "ラベル・請求書の領域を調整",
+    editorHint:
+      "枠の内側をドラッグで移動、角をドラッグでサイズ変更できます。下のボタンで領域の種類を切り替えます。",
+    page: "ページ",
+    regionType: "領域の種類",
+    kindLabel: "ラベル",
+    kindInvoice: "請求書",
+    kindFull: "ページ全体",
+    fullPage: "ページ全体を合わせる",
+    removeRegion: "領域を削除",
+    resetRegions: "リセット",
+    cancel: "キャンセル",
+    applySelection: "選択を適用",
+    sizeHint: "出力ページはこの正確な比率を保ちます — 拡張も切り抜きもありません。",
+    generate: "PDF を生成",
+    generating: "生成中…",
+    noRegionForMode:
+      "該当する領域が見つかりません。別の内容種別を選ぶか、領域を調整してください。",
+    sizeRequired: "先に有効な出力サイズを選択してください。",
+    noValidFiles: "先に読み取り可能な PDF を 1 つ以上追加してください。",
+    corruptError:
+      "この PDF は破損またはパスワード保護されており、処理できません。",
+    cropTooSmall:
+      "選択した領域は出力ページに対して小さすぎます。選択を調整してください。",
+    resultTitle: "生成された PDF",
+    downloadAll: "すべてダウンロード（ZIP）",
+    printHint:
+      "正確なラベル寸法のために、100% スケール（「実際のサイズ」を選択し、「ページに合わせる」は使用しない）で印刷してください。",
+    noResults: "生成した PDF はここに表示されます。",
+    tooManyPages:
+      "ページ数の上限に達しました（1 バッチ 200 ページ）。一部のファイルを削除してください。",
+  },
+  ru: {
+    platformLabel: "Платформа доставки",
+    platformAuto: "Автоопределение",
+    platformOther: "Другая / Пользовательская",
+    platformHint:
+      "Выберите маркетплейс, чтобы области определялись с правильными пропорциями. Автоопределение читает текст в вашем PDF.",
+    outputSizeLabel: "Размер страницы вывода",
+    size4x6: "4 × 6 дюймов (рулон этикеток)",
+    size100x150: "100 × 150 мм",
+    size3x5: "3 × 5 дюймов",
+    size4x4: "4 × 4 дюйма",
+    sizeA4: "A4",
+    sizeCustom: "Пользовательский размер",
+    widthLabel: "Ширина",
+    heightLabel: "Высота",
+    unitMm: "мм",
+    unitIn: "дюйм",
+    unitLabel: "Единица",
+    customSizeError: "Введите допустимые ширину и высоту (10–1000 мм).",
+    contentLabel: "Содержимое",
+    modeLabelOnly: "Товарная этикетка",
+    modeInvoiceOnly: "Накладная",
+    modeBoth: "Этикетка + накладная",
+    modeHint:
+      "Каждая выбранная область размещается на отдельной странице точного размера и масштабируется по пропорциям — без растяжения и обрезки.",
+    printTip:
+      "Совет: печатайте с масштабом 100 % (без “подгонки под страницу”), чтобы вывод сохранил точный физический размер.",
+    uploadTitle: "Перетащите PDF-файлы сюда",
+    uploadHint: "или нажмите, чтобы выбрать — до 10 файлов, по 50 МБ",
+    uploadPrivacy:
+      "Всё обрабатывается в вашем браузере. Файлы никогда не загружаются на сервер.",
+    replacePdf: "Добавить ещё PDF",
+    pagesWord: "стр.",
+    analyzing: "Анализ…",
+    analysisFailed: "Не удалось прочитать этот PDF.",
+    detected: "Определено",
+    reviewSuggested: "Рекомендуется проверка",
+    ready: "Готово",
+    reviewPages: "Проверить страницы",
+    noFilesYet:
+      "Загрузите PDF, чтобы увидеть предпросмотр страниц и настроить области этикетки.",
+    batchLimits: "Не более 10 файлов и 200 страниц в пакете.",
+    editorTitle: "Настройка области этикетки и накладной",
+    editorHint:
+      "Перетаскивайте внутри рамки, чтобы переместить. Тяните угол, чтобы изменить размер. Меняйте тип области кнопками ниже.",
+    page: "Страница",
+    regionType: "Тип области",
+    kindLabel: "Этикетка",
+    kindInvoice: "Накладная",
+    kindFull: "Вся страница",
+    fullPage: "Вписать всю страницу",
+    removeRegion: "Удалить область",
+    resetRegions: "Сбросить",
+    cancel: "Отмена",
+    applySelection: "Применить выбор",
+    sizeHint:
+      "Страница вывода сохраняет точные пропорции — без растяжения и обрезки.",
+    generate: "Создать PDF",
+    generating: "Создание…",
+    noRegionForMode:
+      "Подходящих областей не найдено. Выберите другой тип содержимого или настройте области.",
+    sizeRequired: "Сначала выберите допустимый размер вывода.",
+    noValidFiles: "Сначала добавьте хотя бы один читаемый PDF.",
+    corruptError:
+      "Этот PDF повреждён или защищён паролем и не может быть обработан.",
+    cropTooSmall:
+      "Выбранная область слишком мала для страницы вывода. Измените выделение.",
+    resultTitle: "Ваши PDF",
+    downloadAll: "Скачать всё (ZIP)",
+    printHint:
+      "Печатайте с масштабом 100 % (выбирайте “Фактический размер”, а не “Подгонить под страницу”) для точных размеров этикетки.",
+    noResults: "Здесь появятся созданные вами PDF.",
+    tooManyPages:
+      "Достигнут предел страниц (200 на пакет). Удалите часть файлов.",
+  },
+  ko: {
+    platformLabel: "배송 플랫폼",
+    platformAuto: "자동 감지",
+    platformOther: "기타 / 사용자 지정",
+    platformHint:
+      "올바른 비율로 영역을 감지하도록 마켓플레이스를 선택하세요. 자동 감지는 PDF 안의 텍스트를 읽습니다.",
+    outputSizeLabel: "출력 페이지 크기",
+    size4x6: "4 × 6인치 (라벨 롤)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5인치",
+    size4x4: "4 × 4인치",
+    sizeA4: "A4",
+    sizeCustom: "사용자 지정 크기",
+    widthLabel: "너비",
+    heightLabel: "높이",
+    unitMm: "mm",
+    unitIn: "인치",
+    unitLabel: "단위",
+    customSizeError: "올바른 너비와 높이를 입력하세요 (10–1000 mm).",
+    contentLabel: "내용",
+    modeLabelOnly: "배송 라벨",
+    modeInvoiceOnly: "청구서",
+    modeBoth: "라벨 + 청구서",
+    modeHint:
+      "선택한 각 영역은 정확한 크기의 페이지에 각각 배치되고 비율을 유지한 채 맞춰집니다 — 늘리거나 잘리지 않습니다.",
+    printTip:
+      "팁: 출력물의 실제 크기를 유지하려면 100% 배율(“페이지 맞춤” 사용 금지)로 인쇄하세요.",
+    uploadTitle: "PDF 파일을 여기에 놓으세요",
+    uploadHint: "또는 클릭하여 찾아보기 — 최대 10개, 각 50 MB",
+    uploadPrivacy:
+      "모든 처리는 브라우저에서 이루어집니다. 파일은 절대 서버로 업로드되지 않습니다.",
+    replacePdf: "PDF 추가",
+    pagesWord: "쪽",
+    analyzing: "분석 중…",
+    analysisFailed: "이 PDF를 읽을 수 없습니다.",
+    detected: "감지됨",
+    reviewSuggested: "검토 권장",
+    ready: "준비 완료",
+    reviewPages: "페이지 검토",
+    noFilesYet:
+      "PDF를 업로드하면 페이지 미리보기를 보고 라벨 영역을 조정할 수 있습니다.",
+    batchLimits: "배치당 최대 10개 파일, 200쪽.",
+    editorTitle: "라벨 및 청구서 영역 조정",
+    editorHint:
+      "상자 안을 드래그해 이동하고, 모서리를 드래그해 크기를 바꿉니다. 아래 버튼으로 영역 종류를 변경하세요.",
+    page: "쪽",
+    regionType: "영역 유형",
+    kindLabel: "라벨",
+    kindInvoice: "청구서",
+    kindFull: "전체 페이지",
+    fullPage: "전체 페이지 맞추기",
+    removeRegion: "영역 삭제",
+    resetRegions: "초기화",
+    cancel: "취소",
+    applySelection: "선택 적용",
+    sizeHint: "출력 페이지는 이 정확한 비율을 유지합니다 — 늘림 없음, 잘림 없음.",
+    generate: "PDF 생성",
+    generating: "생성 중…",
+    noRegionForMode:
+      "일치하는 영역이 없습니다. 다른 내용 유형을 선택하거나 영역을 조정하세요.",
+    sizeRequired: "먼저 유효한 출력 크기를 선택하세요.",
+    noValidFiles: "먼저 읽을 수 있는 PDF를 하나 이상 추가하세요.",
+    corruptError: "이 PDF는 손상되었거나 비밀번호로 보호되어 처리할 수 없습니다.",
+    cropTooSmall: "선택한 영역이 출력 페이지에 비해 너무 작습니다. 선택을 조정하세요.",
+    resultTitle: "내 PDF",
+    downloadAll: "모두 다운로드 (ZIP)",
+    printHint:
+      "정확한 라벨 크기로 인쇄하려면 100% 배율(“실제 크기” 선택, “페이지 맞춤” 금지)로 인쇄하세요.",
+    noResults: "생성된 PDF가 여기에 표시됩니다.",
+    tooManyPages: "페이지 한도에 도달했습니다 (배치당 200쪽). 일부 파일을 제거하세요.",
+  },
+  "zh-cn": {
+    platformLabel: "配送平台",
+    platformAuto: "自动检测",
+    platformOther: "其他 / 自定义",
+    platformHint:
+      "选择您的电商平台，以便按正确比例识别区域。自动检测会读取 PDF 中的文字。",
+    outputSizeLabel: "输出页面尺寸",
+    size4x6: "4 × 6 英寸（标签纸卷）",
+    size100x150: "100 × 150 毫米",
+    size3x5: "3 × 5 英寸",
+    size4x4: "4 × 4 英寸",
+    sizeA4: "A4",
+    sizeCustom: "自定义尺寸",
+    widthLabel: "宽度",
+    heightLabel: "高度",
+    unitMm: "毫米",
+    unitIn: "英寸",
+    unitLabel: "单位",
+    customSizeError: "请输入有效的宽度和高度（10–1000 毫米）。",
+    contentLabel: "内容",
+    modeLabelOnly: "配送标签",
+    modeInvoiceOnly: "发票",
+    modeBoth: "标签 + 发票",
+    modeHint:
+      "每个选定区域都会放到单独的精确尺寸页面上，并按比例缩放以完整放入 — 不拉伸、不裁切。",
+    printTip:
+      "提示：以 100% 比例打印（不要选择“适应页面”），输出才能保持准确的实际尺寸。",
+    uploadTitle: "将 PDF 文件拖放到这里",
+    uploadHint: "或点击浏览 — 最多 10 个文件，每个 50 MB",
+    uploadPrivacy:
+      "所有处理均在您的浏览器中完成，文件绝不会上传到服务器。",
+    replacePdf: "添加更多 PDF",
+    pagesWord: "页",
+    analyzing: "正在分析…",
+    analysisFailed: "无法读取此 PDF。",
+    detected: "已检测",
+    reviewSuggested: "建议复核",
+    ready: "就绪",
+    reviewPages: "复核页面",
+    noFilesYet: "上传 PDF 即可查看页面预览并调整标签区域。",
+    batchLimits: "每批最多 10 个文件、200 页。",
+    editorTitle: "调整标签与发票区域",
+    editorHint:
+      "在框内拖动可移动，拖动角点可调整大小。使用下方按钮更改区域类型。",
+    page: "页",
+    regionType: "区域类型",
+    kindLabel: "标签",
+    kindInvoice: "发票",
+    kindFull: "整页",
+    fullPage: "适应整页",
+    removeRegion: "移除区域",
+    resetRegions: "重置",
+    cancel: "取消",
+    applySelection: "应用选择",
+    sizeHint: "输出页面保持完全相同的比例 — 不拉伸、不裁切。",
+    generate: "生成 PDF",
+    generating: "正在生成…",
+    noRegionForMode:
+      "未在任何页面找到匹配区域。请选择其他内容类型或调整区域。",
+    sizeRequired: "请先选择有效的输出尺寸。",
+    noValidFiles: "请先添加至少一个可读取的 PDF。",
+    corruptError: "此 PDF 已损坏或受密码保护，无法处理。",
+    cropTooSmall: "所选区域相对于输出页面过小，请调整选择。",
+    resultTitle: "您的 PDF",
+    downloadAll: "全部下载（ZIP）",
+    printHint:
+      "以 100% 比例打印（选择“实际大小”，切勿选择“适应页面”），标签尺寸才准确。",
+    noResults: "生成的 PDF 将显示在这里。",
+    tooManyPages: "已达到页数上限（每批 200 页），请删除部分文件。",
+  },
+  "zh-tw": {
+    platformLabel: "配送平台",
+    platformAuto: "自動偵測",
+    platformOther: "其他 / 自訂",
+    platformHint:
+      "選擇您的電商平台，以便以正確比例偵測區域。自動偵測會讀取 PDF 中的文字。",
+    outputSizeLabel: "輸出頁面尺寸",
+    size4x6: "4 × 6 吋（標籤紙捲）",
+    size100x150: "100 × 150 公釐",
+    size3x5: "3 × 5 吋",
+    size4x4: "4 × 4 吋",
+    sizeA4: "A4",
+    sizeCustom: "自訂尺寸",
+    widthLabel: "寬度",
+    heightLabel: "高度",
+    unitMm: "公釐",
+    unitIn: "吋",
+    unitLabel: "單位",
+    customSizeError: "請輸入有效的寬度與高度（10–1000 公釐）。",
+    contentLabel: "內容",
+    modeLabelOnly: "配送標籤",
+    modeInvoiceOnly: "發票",
+    modeBoth: "標籤 + 發票",
+    modeHint:
+      "每個選定區域都會放在個別的精確尺寸頁面，並按比例縮放完整放入 — 不拉伸、不裁切。",
+    printTip:
+      "提示：以 100% 比例列印（請勿選擇「符合頁面」），輸出才能保持準確的實際尺寸。",
+    uploadTitle: "將 PDF 檔案拖放到這裡",
+    uploadHint: "或點擊瀏覽 — 最多 10 個檔案，每個 50 MB",
+    uploadPrivacy:
+      "所有處理都在您的瀏覽器中完成，檔案絕不會上傳到伺服器。",
+    replacePdf: "加入更多 PDF",
+    pagesWord: "頁",
+    analyzing: "分析中…",
+    analysisFailed: "無法讀取此 PDF。",
+    detected: "已偵測",
+    reviewSuggested: "建議複核",
+    ready: "就緒",
+    reviewPages: "複核頁面",
+    noFilesYet: "上傳 PDF 即可查看頁面預覽並調整標籤區域。",
+    batchLimits: "每批最多 10 個檔案、200 頁。",
+    editorTitle: "調整標籤與發票區域",
+    editorHint:
+      "在框內拖曳可移動，拖曳角落可調整大小。使用下方按鈕變更區域類型。",
+    page: "頁",
+    regionType: "區域類型",
+    kindLabel: "標籤",
+    kindInvoice: "發票",
+    kindFull: "整頁",
+    fullPage: "符合整頁",
+    removeRegion: "移除區域",
+    resetRegions: "重設",
+    cancel: "取消",
+    applySelection: "套用選擇",
+    sizeHint: "輸出頁面維持完全相同的比例 — 不拉伸、不裁切。",
+    generate: "產生 PDF",
+    generating: "產生中…",
+    noRegionForMode:
+      "未在任何頁面找到符合的區域。請選擇其他內容類型或調整區域。",
+    sizeRequired: "請先選擇有效的輸出尺寸。",
+    noValidFiles: "請先加入至少一個可讀取的 PDF。",
+    corruptError: "此 PDF 已損壞或受密碼保護，無法處理。",
+    cropTooSmall: "所選區域相對於輸出頁面過小，請調整選擇。",
+    resultTitle: "您的 PDF",
+    downloadAll: "全部下載（ZIP）",
+    printHint:
+      "以 100% 比例列印（選擇「實際大小」，請勿選擇「符合頁面」），標籤尺寸才準確。",
+    noResults: "產生的 PDF 將顯示在這裡。",
+    tooManyPages: "已達到頁數上限（每批 200 頁），請刪除部分檔案。",
+  },
+  ar: {
+    platformLabel: "منصة الشحن",
+    platformAuto: "كشف تلقائي",
+    platformOther: "أخرى / مخصص",
+    platformHint:
+      "اختر متجرك الإلكتروني ليتم كشف المناطق بالنِسب الصحيحة. يقرأ الكشف التلقائي النص داخل ملف PDF.",
+    outputSizeLabel: "حجم صفحة الإخراج",
+    size4x6: "4 × 6 بوصة (لفة ملصقات)",
+    size100x150: "100 × 150 مم",
+    size3x5: "3 × 5 بوصة",
+    size4x4: "4 × 4 بوصة",
+    sizeA4: "A4",
+    sizeCustom: "حجم مخصص",
+    widthLabel: "العرض",
+    heightLabel: "الارتفاع",
+    unitMm: "مم",
+    unitIn: "بوصة",
+    unitLabel: "الوحدة",
+    customSizeError: "أدخل عرضًا وارتفاعًا صالحين (10–1000 مم).",
+    contentLabel: "المحتوى",
+    modeLabelOnly: "ملصق الشحن",
+    modeInvoiceOnly: "فاتورة",
+    modeBoth: "ملصق + فاتورة",
+    modeHint:
+      "يتم وضع كل منطقة مختارة على صفحتها الخاصة ذات الحجم الدقيق وتكبيرها لتناسبها — دون تمديد أو قص.",
+    printTip:
+      "نصيحة: اطبع بنسبة 100% (بدون «ملاءمة الصفحة») ليبقى للمخرجات حجمه الفعلي الدقيق.",
+    uploadTitle: "أسقط ملفات PDF هنا",
+    uploadHint: "أو انقر للاستعراض — حتى 10 ملفات، 50 ميغابايت لكل ملف",
+    uploadPrivacy:
+      "تتم المعالجة كلها في متصفحك. لا تُرفع ملفاتك إلى خادم أبدًا.",
+    replacePdf: "أضف المزيد من ملفات PDF",
+    pagesWord: "صفحات",
+    analyzing: "جارٍ التحليل…",
+    analysisFailed: "تعذّر قراءة ملف PDF هذا.",
+    detected: "تم الكشف",
+    reviewSuggested: "يوصى بالمراجعة",
+    ready: "جاهز",
+    reviewPages: "مراجعة الصفحات",
+    noFilesYet:
+      "ارفع ملفات PDF لعرض معاينات الصفحات وضبط مناطق الملصق.",
+    batchLimits: "حد أقصى 10 ملفات و200 صفحة لكل دفعة.",
+    editorTitle: "ضبط منطقة الملصق والفاتورة",
+    editorHint:
+      "اسحب داخل الإطار لتحريكه. اسحب أحد الزوايا لتغيير الحجم. غيّر نوع المنطقة بالأزرار أدناه.",
+    page: "صفحة",
+    regionType: "نوع المنطقة",
+    kindLabel: "ملصق",
+    kindInvoice: "فاتورة",
+    kindFull: "صفحة كاملة",
+    fullPage: "ملاءمة الصفحة كاملة",
+    removeRegion: "إزالة المنطقة",
+    resetRegions: "إعادة تعيين",
+    cancel: "إلغاء",
+    applySelection: "تطبيق الاختيار",
+    sizeHint: "تحافظ صفحة الإخراج على هذه النسبة الدقيقة — دون تمديد أو قص.",
+    generate: "إنشاء PDF",
+    generating: "جارٍ الإنشاء…",
+    noRegionForMode:
+      "لم يتم العثور على منطقة مطابقة في أي صفحة. اختر نوع محتوى آخر أو عدّل المناطق.",
+    sizeRequired: "اختر حجم إخراج صالحًا أولًا.",
+    noValidFiles: "أضف ملف PDF واحدًا قابلًا للقراءة على الأقل أولًا.",
+    corruptError:
+      "ملف PDF هذا تالف أو محمي بكلمة مرور ولا يمكن معالجته.",
+    cropTooSmall:
+      "المنطقة المختارة صغيرة جدًا لصفحة الإخراج. يرجى تعديل الاختيار.",
+    resultTitle: "ملفات PDF الخاصة بك",
+    downloadAll: "تنزيل الكل (ZIP)",
+    printHint:
+      "اطبع بنسبة 100% (اختر «الحجم الفعلي» ولا تختار «ملاءمة الصفحة» أبدًا) للحصول على أبعاد ملصق دقيقة.",
+    noResults: "ستظهر ملفات PDF التي أنشأتها هنا.",
+    tooManyPages: "تم بلوغ حد الصفحات (200 صفحة لكل دفعة). أزل بعض الملفات.",
+  },
+  bg: {
+    platformLabel: "Платформа за доставка",
+    platformAuto: "Автоматично откриване",
+    platformOther: "Друга / По избор",
+    platformHint:
+      "Изберете вашия маркетплейс, за да се открият областите с правилните пропорции. Автоматичното откриване чете текста във вашето PDF.",
+    outputSizeLabel: "Размер на изходната страница",
+    size4x6: "4 × 6 инча (ролка етикети)",
+    size100x150: "100 × 150 мм",
+    size3x5: "3 × 5 инча",
+    size4x4: "4 × 4 инча",
+    sizeA4: "A4",
+    sizeCustom: "Размер по избор",
+    widthLabel: "Ширина",
+    heightLabel: "Височина",
+    unitMm: "мм",
+    unitIn: "инч",
+    unitLabel: "Единица",
+    customSizeError: "Въведете валидна ширина и височина (10–1000 мм).",
+    contentLabel: "Съдържание",
+    modeLabelOnly: "Етикет за доставка",
+    modeInvoiceOnly: "Фактура",
+    modeBoth: "Етикет + фактура",
+    modeHint:
+      "Всяка избрана област се поставя на собствена страница с точен размер и се мащабира, за да се побере — никога не се разтяга, никога не се отрязва.",
+    printTip:
+      "Съвет: отпечатвайте с мащаб 100 % (без „побиране в страница“), за да запази изходът точния си физически размер.",
+    uploadTitle: "Пуснете PDF файлове тук",
+    uploadHint: "или кликнете за избиране — до 10 файла, по 50 MB",
+    uploadPrivacy:
+      "Всичко се обработва във вашия браузър. Вашите файлове никога не се качват на сървър.",
+    replacePdf: "Добавяне на още PDF",
+    pagesWord: "страници",
+    analyzing: "Анализиране…",
+    analysisFailed: "Този PDF не можа да бъде прочетен.",
+    detected: "Открито",
+    reviewSuggested: "Препоръчва се преглед",
+    ready: "Готово",
+    reviewPages: "Преглед на страниците",
+    noFilesYet:
+      "Качете PDF файлове, за да видите прегледите на страниците и да настроите областите на етикета.",
+    batchLimits: "До 10 файла и 200 страници на партида.",
+    editorTitle: "Настройка на областта за етикет и фактура",
+    editorHint:
+      "Плъзнете вътре в рамката, за да я преместите. Плъзнете ъгъл, за да промените размера. Сменете вида на областта с бутоните по-долу.",
+    page: "Страница",
+    regionType: "Вид област",
+    kindLabel: "Етикет",
+    kindInvoice: "Фактура",
+    kindFull: "Цяла страница",
+    fullPage: "Побиране на цялата страница",
+    removeRegion: "Премахване на област",
+    resetRegions: "Нулиране",
+    cancel: "Отмяна",
+    applySelection: "Прилагане на избора",
+    sizeHint:
+      "Изходната страница запазва точно това съотношение — без разтягане и без отрязване.",
+    generate: "Генериране на PDF",
+    generating: "Генериране…",
+    noRegionForMode:
+      "Няма намерена подходяща област на нито една страница. Изберете друг вид съдържание или настройте областите.",
+    sizeRequired: "Първо изберете валиден изходен размер.",
+    noValidFiles: "Първо добавете поне един четим PDF.",
+    corruptError:
+      "Този PDF е повреден или защитен с парола и не може да бъде обработен.",
+    cropTooSmall:
+      "Избраната област е твърде малка за изходната страница. Моля, настройте избора.",
+    resultTitle: "Вашите PDF",
+    downloadAll: "Изтегляне на всичко (ZIP)",
+    printHint:
+      "Отпечатвайте с мащаб 100 % (изберете „истински размер“, никога „побиране в страница“) за точни размери на етикета.",
+    noResults: "Вашите генерирани PDF ще се покажат тук.",
+    tooManyPages:
+      "Достигнат е лимитът от страници (200 страници на партида). Премахнете някои файлове.",
+  },
+  ca: {
+    platformLabel: "Plataforma d’enviament",
+    platformAuto: "Detecció automàtica",
+    platformOther: "Altra / Personalitzada",
+    platformHint:
+      "Trieu el vostre marketplace perquè les regions es detectin amb les proporcions correctes. La detecció automàtica llegeix el text del vostre PDF.",
+    outputSizeLabel: "Mida de pàgina de sortida",
+    size4x6: "4 × 6 in (rotoló d’etiquetes)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 in",
+    size4x4: "4 × 4 in",
+    sizeA4: "A4",
+    sizeCustom: "Mida personalitzada",
+    widthLabel: "Amplada",
+    heightLabel: "Alçada",
+    unitMm: "mm",
+    unitIn: "in",
+    unitLabel: "Unitat",
+    customSizeError: "Introduïu una amplada i una alçada vàlides (10–1000 mm).",
+    contentLabel: "Contingut",
+    modeLabelOnly: "Etiqueta d’enviament",
+    modeInvoiceOnly: "Factura",
+    modeBoth: "Etiqueta + Factura",
+    modeHint:
+      "Cada regió seleccionada es col·loca a la seva pròpia pàgina de mida exacta i s’escala perquè hi capgui — mai s’estira, mai es retalla.",
+    printTip:
+      "Consell: imprimiu al 100 % d’escala (sense “ajustar a la pàgina”) perquè la sortida conservi la seva mida física exacta.",
+    uploadTitle: "Deixeu anar fitxers PDF aquí",
+    uploadHint: "o feu clic per examinar — fins a 10 fitxers, 50 MB cadascun",
+    uploadPrivacy:
+      "Tot es processa al vostre navegador. Els vostres fitxers mai no es pugen a un servidor.",
+    replacePdf: "Afegir més PDF",
+    pagesWord: "pàgines",
+    analyzing: "Analitzant…",
+    analysisFailed: "No s’ha pogut llegir aquest PDF.",
+    detected: "Detectat",
+    reviewSuggested: "Revisió suggerida",
+    ready: "Preparat",
+    reviewPages: "Revisar pàgines",
+    noFilesYet:
+      "Pengeu PDF per veure les previsualitzacions de les pàgines i ajustar les àrees de l’etiqueta.",
+    batchLimits: "Màxim 10 fitxers i 200 pàgines per lot.",
+    editorTitle: "Ajustar l’àrea d’etiqueta i factura",
+    editorHint:
+      "Arrossegueu dins del quadre per moure’l. Arrossegueu una cantonada per redimensionar. Canvieu el tipus de regió amb els botons de sota.",
+    page: "Pàgina",
+    regionType: "Tipus de regió",
+    kindLabel: "Etiqueta",
+    kindInvoice: "Factura",
+    kindFull: "Pàgina completa",
+    fullPage: "Ajustar pàgina completa",
+    removeRegion: "Eliminar regió",
+    resetRegions: "Restablir",
+    cancel: "Cancel·lar",
+    applySelection: "Aplicar selecció",
+    sizeHint:
+      "La pàgina de sortida manté aquesta proporció exacta — sense estirar, sense retallar.",
+    generate: "Generar PDF",
+    generating: "Generant…",
+    noRegionForMode:
+      "No s’ha trobat cap regió coincident a les pàgines. Trieu un altre tipus de contingut o ajusteu les regions.",
+    sizeRequired: "Trieu primer una mida de sortida vàlida.",
+    noValidFiles: "Afegiu almenys un PDF legible primer.",
+    corruptError:
+      "Aquest PDF està malmès o protegit amb contrasenya i no es pot processar.",
+    cropTooSmall:
+      "La regió seleccionada és massa petita per a la pàgina de sortida. Ajusteu la selecció.",
+    resultTitle: "Els vostres PDF",
+    downloadAll: "Descarregar-ho tot (ZIP)",
+    printHint:
+      "Imprimiu al 100 % d’escala (trieu “Mida real”, mai “Ajustar a la pàgina”) per obtenir les dimensions exactes de l’etiqueta.",
+    noResults: "Els vostres PDF generats apareixeran aquí.",
+    tooManyPages:
+      "S’ha arribat al límit de pàgines (200 pàgines per lot). Elimineu alguns fitxers.",
+  },
+  nl: {
+    platformLabel: "Verzendplatform",
+    platformAuto: "Automatisch detecteren",
+    platformOther: "Overig / Aangepast",
+    platformHint:
+      "Kies uw marketplace zodat de gebieden met de juiste verhoudingen worden gedetecteerd. Automatisch detecteren leest de tekst in uw PDF.",
+    outputSizeLabel: "Uitvoerformaat pagina",
+    size4x6: "4 × 6 in (etikettenrol)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 in",
+    size4x4: "4 × 4 in",
+    sizeA4: "A4",
+    sizeCustom: "Aangepast formaat",
+    widthLabel: "Breedte",
+    heightLabel: "Hoogte",
+    unitMm: "mm",
+    unitIn: "in",
+    unitLabel: "Eenheid",
+    customSizeError: "Voer een geldige breedte en hoogte in (10–1000 mm).",
+    contentLabel: "Inhoud",
+    modeLabelOnly: "Verzendlabel",
+    modeInvoiceOnly: "Factuur",
+    modeBoth: "Label + Factuur",
+    modeHint:
+      "Elk geselecteerd gebied wordt op zijn eigen pagina met exact formaat geplaatst en geschaald om te passen — nooit uitgerekt, nooit bijgesneden.",
+    printTip:
+      "Tip: print op 100 % schaal (zonder “passen op pagina”) zodat de uitvoer exact hetzelfde fysieke formaat behoudt.",
+    uploadTitle: "Zet PDF-bestanden hier neer",
+    uploadHint: "of klik om te bladeren — maximaal 10 bestanden, elk 50 MB",
+    uploadPrivacy:
+      "Alles wordt in uw browser verwerkt. Uw bestanden worden nooit naar een server geüpload.",
+    replacePdf: "Meer PDF’s toevoegen",
+    pagesWord: "pagina’s",
+    analyzing: "Analyseren…",
+    analysisFailed: "Deze PDF kon niet worden gelezen.",
+    detected: "Gedetecteerd",
+    reviewSuggested: "Controle aanbevolen",
+    ready: "Gereed",
+    reviewPages: "Pagina’s controleren",
+    noFilesYet:
+      "Upload PDF’s om paginavoorbeelden te zien en de labelgebieden aan te passen.",
+    batchLimits: "Maximaal 10 bestanden en 200 pagina’s per batch.",
+    editorTitle: "Label- en factuurgebied aanpassen",
+    editorHint:
+      "Sleep binnen het kader om te verplaatsen. Sleep een hoek om te schalen. Wijzig het gebiedstype met de knoppen hieronder.",
+    page: "Pagina",
+    regionType: "Gebiedstype",
+    kindLabel: "Label",
+    kindInvoice: "Factuur",
+    kindFull: "Hele pagina",
+    fullPage: "Hele pagina passend maken",
+    removeRegion: "Gebied verwijderen",
+    resetRegions: "Opnieuw instellen",
+    cancel: "Annuleren",
+    applySelection: "Selectie toepassen",
+    sizeHint:
+      "De uitvoerpagina behoudt precies deze verhouding — geen uitrekking, geen bijsnijden.",
+    generate: "PDF genereren",
+    generating: "Genereren…",
+    noRegionForMode:
+      "Geen overeenkomend gebied gevonden op een van de pagina’s. Kies een ander inhoudstype of pas de gebieden aan.",
+    sizeRequired: "Kies eerst een geldig uitvoerformaat.",
+    noValidFiles: "Voeg eerst minstens één leesbare PDF toe.",
+    corruptError:
+      "Deze PDF is beschadigd of met een wachtwoord beveiligd en kan niet worden verwerkt.",
+    cropTooSmall:
+      "Het geselecteerde gebied is te klein voor de uitvoerpagina. Pas de selectie aan.",
+    resultTitle: "Uw PDF’s",
+    downloadAll: "Alles downloaden (ZIP)",
+    printHint:
+      "Print op 100 % schaal (kies “werkelijk formaat”, nooit “passen op pagina”) voor exacte etiketmaten.",
+    noResults: "Uw gegenereerde PDF’s verschijnen hier.",
+    tooManyPages:
+      "Paginagrens bereikt (200 pagina’s per batch). Verwijder enkele bestanden.",
+  },
+  el: {
+    platformLabel: "Πλατφόρμα αποστολής",
+    platformAuto: "Αυτόματη ανίχνευση",
+    platformOther: "Άλλη / Προσαρμοσμένη",
+    platformHint:
+      "Επιλέξτε το marketplace σας ώστε οι περιοχές να ανιχνευθούν με τις σωστές αναλογίες. Η αυτόματη ανίχνευση διαβάζει το κείμενο του PDF σας.",
+    outputSizeLabel: "Μέγεθος σελίδας εξόδου",
+    size4x6: "4 × 6 in (ρολό ετικετών)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 in",
+    size4x4: "4 × 4 in",
+    sizeA4: "A4",
+    sizeCustom: "Προσαρμοσμένο μέγεθος",
+    widthLabel: "Πλάτος",
+    heightLabel: "Ύψος",
+    unitMm: "mm",
+    unitIn: "in",
+    unitLabel: "Μονάδα",
+    customSizeError: "Εισαγάγετε έγκυρο πλάτος και ύψος (10–1000 mm).",
+    contentLabel: "Περιεχόμενο",
+    modeLabelOnly: "Ετικέτα αποστολής",
+    modeInvoiceOnly: "Τιμολόγιο",
+    modeBoth: "Ετικέτα + Τιμολόγιο",
+    modeHint:
+      "Κάθε επιλεγμένη περιοχή τοποθετείται στη δική της σελίδα ακριβούς μεγέθους και κλιμακώνεται ώστε να χωρά — χωρίς τέντωμα, χωρίς κοπή.",
+    printTip:
+      "Συμβουλή: εκτυπώστε σε κλίμακα 100 % (χωρίς «προσαρμογή στη σελίδα») ώστε το αποτέλεσμα να διατηρήσει το ακριβές φυσικό του μέγεθος.",
+    uploadTitle: "Αποθέστε αρχεία PDF εδώ",
+    uploadHint: "ή κάντε κλικ για περιήγηση — έως 10 αρχεία, 50 MB το καθένα",
+    uploadPrivacy:
+      "Όλα επεξεργάζονται στο πρόγραμμα περιήγησής σας. Τα αρχεία σας δεν ανεβαίνουν ποτέ σε διακομιστή.",
+    replacePdf: "Προσθήκη περισσότερων PDF",
+    pagesWord: "σελίδες",
+    analyzing: "Ανάλυση…",
+    analysisFailed: "Δεν ήταν δυνατή η ανάγνωση αυτού του PDF.",
+    detected: "Ανιχνεύθηκε",
+    reviewSuggested: "Προτείνεται έλεγχος",
+    ready: "Έτοιμο",
+    reviewPages: "Έλεγχος σελίδων",
+    noFilesYet:
+      "Ανεβάστε PDF για να δείτε τις προεπισκοπήσεις των σελίδων και να προσαρμόσετε τις περιοχές της ετικέτας.",
+    batchLimits: "Έως 10 αρχεία και 200 σελίδες ανά παρτίδα.",
+    editorTitle: "Προσαρμογή περιοχής ετικέτας και τιμολογίου",
+    editorHint:
+      "Σύρετε μέσα στο πλαίσιο για μετακίνηση. Σύρετε μια γωνία για αλλαγή μεγέθους. Αλλάξτε τον τύπο της περιοχής με τα κουμπιά παρακάτω.",
+    page: "Σελίδα",
+    regionType: "Τύπος περιοχής",
+    kindLabel: "Ετικέτα",
+    kindInvoice: "Τιμολόγιο",
+    kindFull: "Ολόκληρη σελίδα",
+    fullPage: "Προσαρμογή ολόκληρης σελίδας",
+    removeRegion: "Αφαίρεση περιοχής",
+    resetRegions: "Επαναφορά",
+    cancel: "Ακύρωση",
+    applySelection: "Εφαρμογή επιλογής",
+    sizeHint:
+      "Η σελίδα εξόδου διατηρεί αυτήν ακριβώς την αναλογία — χωρίς τέντωμα, χωρίς κοπή.",
+    generate: "Δημιουργία PDF",
+    generating: "Δημιουργία…",
+    noRegionForMode:
+      "Δεν βρέθηκε κατάλληλη περιοχή σε καμία σελίδα. Επιλέξτε άλλο είδος περιεχομένου ή προσαρμόστε τις περιοχές.",
+    sizeRequired: "Επιλέξτε πρώτα έγκυρο μέγεθος εξόδου.",
+    noValidFiles: "Προσθέστε πρώτα τουλάχιστον ένα αναγνώσιμο PDF.",
+    corruptError:
+      "Αυτό το PDF είναι κατεστραμμένο ή προστατευμένο με κωδικό και δεν μπορεί να επεξεργαστεί.",
+    cropTooSmall:
+      "Η επιλεγμένη περιοχή είναι πολύ μικρή για τη σελίδα εξόδου. Παρακαλώ προσαρμόστε την επιλογή.",
+    resultTitle: "Τα PDF σας",
+    downloadAll: "Λήψη όλων (ZIP)",
+    printHint:
+      "Εκτυπώστε σε κλίμακα 100 % (επιλέξτε «πραγματικό μέγεθος», ποτέ «προσαρμογή στη σελίδα») για ακριβείς διαστάσεις ετικέτας.",
+    noResults: "Τα δημιουργημένα PDF σας θα εμφανιστούν εδώ.",
+    tooManyPages:
+      "Έφτασε το όριο σελίδων (200 σελίδες ανά παρτίδα). Αφαιρέστε ορισμένα αρχεία.",
+  },
+  id: {
+    platformLabel: "Platform pengiriman",
+    platformAuto: "Deteksi otomatis",
+    platformOther: "Lainnya / Kustom",
+    platformHint:
+      "Pilih marketplace Anda agar area terdeteksi dengan proporsi yang tepat. Deteksi otomatis membaca teks di PDF Anda.",
+    outputSizeLabel: "Ukuran halaman keluaran",
+    size4x6: "4 × 6 in (rol label)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 in",
+    size4x4: "4 × 4 in",
+    sizeA4: "A4",
+    sizeCustom: "Ukuran kustom",
+    widthLabel: "Lebar",
+    heightLabel: "Tinggi",
+    unitMm: "mm",
+    unitIn: "in",
+    unitLabel: "Satuan",
+    customSizeError: "Masukkan lebar dan tinggi yang valid (10–1000 mm).",
+    contentLabel: "Konten",
+    modeLabelOnly: "Label pengiriman",
+    modeInvoiceOnly: "Faktur",
+    modeBoth: "Label + Faktur",
+    modeHint:
+      "Setiap area yang dipilih ditempatkan di halaman berukuran tepat tersendiri dan diskalakan agar pas — tidak pernah teregang, tidak pernah terpotong.",
+    printTip:
+      "Tips: cetak pada skala 100% (tanpa “paskan ke halaman”) agar keluaran mempertahankan ukuran fisik yang tepat.",
+    uploadTitle: "Letakkan file PDF di sini",
+    uploadHint: "atau klik untuk memilih — hingga 10 file, masing-masing 50 MB",
+    uploadPrivacy:
+      "Semua diproses di browser Anda. File Anda tidak pernah diunggah ke server.",
+    replacePdf: "Tambahkan PDF lain",
+    pagesWord: "halaman",
+    analyzing: "Menganalisis…",
+    analysisFailed: "PDF ini tidak dapat dibaca.",
+    detected: "Terdeteksi",
+    reviewSuggested: "Perlu ditinjau",
+    ready: "Siap",
+    reviewPages: "Tinjau halaman",
+    noFilesYet:
+      "Unggah PDF untuk melihat pratinjau halaman dan menyesuaikan area label.",
+    batchLimits: "Maksimal 10 file dan 200 halaman per batch.",
+    editorTitle: "Sesuaikan area label & faktur",
+    editorHint:
+      "Geser di dalam kotak untuk memindahkannya. Seret sudut untuk mengubah ukuran. Ubah jenis area dengan tombol di bawah.",
+    page: "Halaman",
+    regionType: "Jenis area",
+    kindLabel: "Label",
+    kindInvoice: "Faktur",
+    kindFull: "Halaman penuh",
+    fullPage: "Paskan halaman penuh",
+    removeRegion: "Hapus area",
+    resetRegions: "Atur ulang",
+    cancel: "Batal",
+    applySelection: "Terapkan pilihan",
+    sizeHint:
+      "Halaman keluaran mempertahankan rasio tepat ini — tanpa peregangan, tanpa pemotongan.",
+    generate: "Buat PDF",
+    generating: "Membuat…",
+    noRegionForMode:
+      "Tidak ditemukan area yang cocok di halaman mana pun. Pilih jenis konten lain atau sesuaikan area.",
+    sizeRequired: "Pilih dulu ukuran keluaran yang valid.",
+    noValidFiles: "Tambahkan setidaknya satu PDF yang dapat dibaca terlebih dahulu.",
+    corruptError:
+      "PDF ini rusak atau dilindungi kata sandi dan tidak dapat diproses.",
+    cropTooSmall:
+      "Area yang dipilih terlalu kecil untuk halaman keluaran. Silakan sesuaikan pilihan.",
+    resultTitle: "PDF Anda",
+    downloadAll: "Unduh semua (ZIP)",
+    printHint:
+      "Cetak pada skala 100% (pilih “Ukuran sebenarnya”, jangan pernah “Paskan ke halaman”) untuk dimensi label yang tepat.",
+    noResults: "PDF yang Anda buat akan muncul di sini.",
+    tooManyPages:
+      "Batas halaman tercapai (200 halaman per batch). Hapus beberapa file.",
+  },
+  ms: {
+    platformLabel: "Platform penghantaran",
+    platformAuto: "Kesan automatik",
+    platformOther: "Lain / Tersuai",
+    platformHint:
+      "Pilih marketplace anda supaya kawasan dikesan dengan nisbah yang betul. Kesan automatik membaca teks dalam PDF anda.",
+    outputSizeLabel: "Saiz halaman output",
+    size4x6: "4 × 6 in (rol label)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 in",
+    size4x4: "4 × 4 in",
+    sizeA4: "A4",
+    sizeCustom: "Saiz tersuai",
+    widthLabel: "Lebar",
+    heightLabel: "Tinggi",
+    unitMm: "mm",
+    unitIn: "in",
+    unitLabel: "Unit",
+    customSizeError: "Masukkan lebar dan tinggi yang sah (10–1000 mm).",
+    contentLabel: "Kandungan",
+    modeLabelOnly: "Label penghantaran",
+    modeInvoiceOnly: "Invois",
+    modeBoth: "Label + Invois",
+    modeHint:
+      "Setiap kawasan yang dipilih diletakkan pada halaman bersaiz tepatnya sendiri dan diskala agar muat — tidak pernah diregang, tidak pernah dipotong.",
+    printTip:
+      "Tip: cetak pada skala 100% (tanpa “muatkan ke halaman”) supaya output mengekalkan saiz fizikal yang tepat.",
+    uploadTitle: "Letakkan fail PDF di sini",
+    uploadHint: "atau klik untuk melayari — sehingga 10 fail, 50 MB setiap satu",
+    uploadPrivacy:
+      "Semua diproses dalam pelayar anda. Fail anda tidak pernah dimuat naik ke pelayan.",
+    replacePdf: "Tambah PDF lagi",
+    pagesWord: "halaman",
+    analyzing: "Menganalisis…",
+    analysisFailed: "PDF ini tidak dapat dibaca.",
+    detected: "Dikesan",
+    reviewSuggested: "Semakan disyorkan",
+    ready: "Sedia",
+    reviewPages: "Semak halaman",
+    noFilesYet:
+      "Muat naik PDF untuk melihat pratonton halaman dan melaraskan kawasan label.",
+    batchLimits: "Maksimum 10 fail dan 200 halaman setiap batch.",
+    editorTitle: "Laraskan kawasan label & invois",
+    editorHint:
+      "Seret di dalam kotak untuk mengalihkannya. Seret sudut untuk mengubah saiz. Tukar jenis kawasan dengan butang di bawah.",
+    page: "Halaman",
+    regionType: "Jenis kawasan",
+    kindLabel: "Label",
+    kindInvoice: "Invois",
+    kindFull: "Halaman penuh",
+    fullPage: "Muatkan halaman penuh",
+    removeRegion: "Buang kawasan",
+    resetRegions: "Set semula",
+    cancel: "Batal",
+    applySelection: "Gunakan pilihan",
+    sizeHint:
+      "Halaman output mengekalkan nisbah tepat ini — tanpa peregangan, tanpa pemotongan.",
+    generate: "Jana PDF",
+    generating: "Menjana…",
+    noRegionForMode:
+      "Tiada kawasan sepadan dijumpai pada mana-mana halaman. Pilih jenis kandungan lain atau laraskan kawasan.",
+    sizeRequired: "Pilih saiz output yang sah dahulu.",
+    noValidFiles: "Tambah sekurang-kurangnya satu PDF yang boleh dibaca dahulu.",
+    corruptError:
+      "PDF ini rosak atau dilindungi kata laluan dan tidak boleh diproses.",
+    cropTooSmall:
+      "Kawasan yang dipilih terlalu kecil untuk halaman output. Sila laraskan pilihan.",
+    resultTitle: "PDF anda",
+    downloadAll: "Muat turun semua (ZIP)",
+    printHint:
+      "Cetak pada skala 100% (pilih “Saiz sebenar”, jangan sekali-kali “Muatkan ke halaman”) untuk dimensi label yang tepat.",
+    noResults: "PDF yang anda jana akan muncul di sini.",
+    tooManyPages:
+      "Had halaman dicapai (200 halaman setiap batch). Buang beberapa fail.",
+  },
+  pl: {
+    platformLabel: "Platforma wysyłkowa",
+    platformAuto: "Automatyczne wykrywanie",
+    platformOther: "Inna / Niestandardowa",
+    platformHint:
+      "Wybierz swój marketplace, aby obszary były wykrywane z prawidłowymi proporcjami. Automatyczne wykrywanie odczytuje tekst w Twoim PDF.",
+    outputSizeLabel: "Rozmiar strony wyjściowej",
+    size4x6: "4 × 6 cali (rolka etykiet)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 cali",
+    size4x4: "4 × 4 cale",
+    sizeA4: "A4",
+    sizeCustom: "Rozmiar niestandardowy",
+    widthLabel: "Szerokość",
+    heightLabel: "Wysokość",
+    unitMm: "mm",
+    unitIn: "cal",
+    unitLabel: "Jednostka",
+    customSizeError: "Wprowadź prawidłową szerokość i wysokość (10–1000 mm).",
+    contentLabel: "Treść",
+    modeLabelOnly: "Etykieta wysyłkowa",
+    modeInvoiceOnly: "Faktura",
+    modeBoth: "Etykieta + Faktura",
+    modeHint:
+      "Każdy wybrany obszar trafia na osobną stronę o dokładnym rozmiarze i jest skalowany, aby się zmieścił — bez rozciągania i bez przycinania.",
+    printTip:
+      "Wskazówka: drukuj w skali 100 % (bez “dopasuj do strony”), aby wydruk zachował dokładny rozmiar fizyczny.",
+    uploadTitle: "Upuść pliki PDF tutaj",
+    uploadHint: "lub kliknij, aby przeglądać — maksymalnie 10 plików, po 50 MB",
+    uploadPrivacy:
+      "Wszystko jest przetwarzane w Twojej przeglądarce. Twoje pliki nigdy nie są wysyłane na serwer.",
+    replacePdf: "Dodaj więcej PDF",
+    pagesWord: "stron",
+    analyzing: "Analizowanie…",
+    analysisFailed: "Nie udało się odczytać tego PDF.",
+    detected: "Wykryto",
+    reviewSuggested: "Zalecany przegląd",
+    ready: "Gotowe",
+    reviewPages: "Przejrzyj strony",
+    noFilesYet:
+      "Wgraj pliki PDF, aby zobaczyć podglądy stron i dostosować obszary etykiet.",
+    batchLimits: "Maksymalnie 10 plików i 200 stron na partię.",
+    editorTitle: "Dostosuj obszar etykiety i faktury",
+    editorHint:
+      "Przeciągnij wewnątrz ramki, aby ją przesunąć. Przeciągnij róg, aby zmienić rozmiar. Zmień typ obszaru przyciskami poniżej.",
+    page: "Strona",
+    regionType: "Typ obszaru",
+    kindLabel: "Etykieta",
+    kindInvoice: "Faktura",
+    kindFull: "Cała strona",
+    fullPage: "Dopasuj całą stronę",
+    removeRegion: "Usuń obszar",
+    resetRegions: "Resetuj",
+    cancel: "Anuluj",
+    applySelection: "Zastosuj zaznaczenie",
+    sizeHint:
+      "Strona wyjściowa zachowuje dokładnie te proporcje — bez rozciągania i bez przycinania.",
+    generate: "Generuj PDF",
+    generating: "Generowanie…",
+    noRegionForMode:
+      "Nie znaleziono pasującego obszaru na żadnej stronie. Wybierz inny typ treści lub dostosuj obszary.",
+    sizeRequired: "Najpierw wybierz prawidłowy rozmiar wyjściowy.",
+    noValidFiles: "Najpierw dodaj przynajmniej jeden czytelny plik PDF.",
+    corruptError:
+      "Ten plik PDF jest uszkodzony lub chroniony hasłem i nie może być przetworzony.",
+    cropTooSmall:
+      "Wybrany obszar jest zbyt mały dla strony wyjściowej. Dostosuj zaznaczenie.",
+    resultTitle: "Twoje PDF",
+    downloadAll: "Pobierz wszystko (ZIP)",
+    printHint:
+      "Drukuj w skali 100 % (wybierz “rzeczywisty rozmiar”, nigdy “dopasuj do strony”), aby etykiety miały dokładne wymiary.",
+    noResults: "Twoje wygenerowane PDF pojawią się tutaj.",
+    tooManyPages:
+      "Osiągnięto limit stron (200 stron na partię). Usuń część plików.",
+  },
+  sv: {
+    platformLabel: "Fraktplattform",
+    platformAuto: "Automatisk identifiering",
+    platformOther: "Annan / Anpassad",
+    platformHint:
+      "Välj din marknadsplats så att områdena identifieras med rätt proportioner. Automatisk identifiering läser texten i ditt PDF.",
+    outputSizeLabel: "Utskriftsstorlek för sidan",
+    size4x6: "4 × 6 tum (etikettrulle)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 tum",
+    size4x4: "4 × 4 tum",
+    sizeA4: "A4",
+    sizeCustom: "Anpassad storlek",
+    widthLabel: "Bredd",
+    heightLabel: "Höjd",
+    unitMm: "mm",
+    unitIn: "tum",
+    unitLabel: "Enhet",
+    customSizeError: "Ange en giltig bredd och höjd (10–1000 mm).",
+    contentLabel: "Innehåll",
+    modeLabelOnly: "Fraktetikett",
+    modeInvoiceOnly: "Faktura",
+    modeBoth: "Etikett + Faktura",
+    modeHint:
+      "Varje valt område placeras på en egen sida med exakt storlek och skalas för att passa — aldrig uttänjt, aldrig beskuret.",
+    printTip:
+      "Tips: skriv ut i skala 100 % (utan “anpassa till sidan”) så behåller utskriften sin exakta fysiska storlek.",
+    uploadTitle: "Släpp PDF-filer här",
+    uploadHint: "eller klicka för att bläddra — upp till 10 filer, 50 MB vardera",
+    uploadPrivacy:
+      "Allt behandlas i din webbläsare. Dina filer laddas aldrig upp till en server.",
+    replacePdf: "Lägg till fler PDF-filer",
+    pagesWord: "sidor",
+    analyzing: "Analyserar…",
+    analysisFailed: "Kunde inte läsa denna PDF.",
+    detected: "Identifierad",
+    reviewSuggested: "Granskning rekommenderas",
+    ready: "Klar",
+    reviewPages: "Granska sidor",
+    noFilesYet:
+      "Ladda upp PDF-filer för att se sidförhandsvisningar och justera etikettområdena.",
+    batchLimits: "Högst 10 filer och 200 sidor per batch.",
+    editorTitle: "Justera etikett- och fakturaområdet",
+    editorHint:
+      "Dra i rutan för att flytta den. Dra i ett hörn för att ändra storlek. Ändra områdestyp med knapparna nedan.",
+    page: "Sida",
+    regionType: "Områdestyp",
+    kindLabel: "Etikett",
+    kindInvoice: "Faktura",
+    kindFull: "Hela sidan",
+    fullPage: "Anpassa hela sidan",
+    removeRegion: "Ta bort område",
+    resetRegions: "Återställ",
+    cancel: "Avbryt",
+    applySelection: "Verkställ val",
+    sizeHint:
+      "Utskriftssidan behåller denna exakta proportion — ingen uttänjning, ingen beskärning.",
+    generate: "Skapa PDF",
+    generating: "Skapar…",
+    noRegionForMode:
+      "Inget matchande område hittades på någon sida. Välj en annan innehållstyp eller justera områdena.",
+    sizeRequired: "Välj först en giltig utskriftsstorlek.",
+    noValidFiles: "Lägg till minst en läsbar PDF först.",
+    corruptError:
+      "Denna PDF är skadad eller lösenordsskyddad och kan inte behandlas.",
+    cropTooSmall:
+      "Det valda området är för litet för utskriftssidan. Justera valet.",
+    resultTitle: "Dina PDF-filer",
+    downloadAll: "Ladda ner allt (ZIP)",
+    printHint:
+      "Skriv ut i skala 100 % (välj “verklig storlek”, aldrig “anpassa till sidan”) för exakta etikettmått.",
+    noResults: "Dina skapade PDF-filer visas här.",
+    tooManyPages:
+      "Sidgränsen nåddes (200 sidor per batch). Ta bort några filer.",
+  },
+  th: {
+    platformLabel: "แพลตฟอร์มจัดส่ง",
+    platformAuto: "ตรวจจับอัตโนมัติ",
+    platformOther: "อื่น ๆ / กำหนดเอง",
+    platformHint:
+      "เลือกตลาดของคุณเพื่อให้ตรวจจับพื้นที่ด้วยสัดส่วนที่ถูกต้อง การตรวจจับอัตโนมัติจะอ่านข้อความใน PDF ของคุณ",
+    outputSizeLabel: "ขนาดหน้าผลลัพธ์",
+    size4x6: "4 × 6 นิ้ว (ม้วนป้าย)",
+    size100x150: "100 × 150 มม.",
+    size3x5: "3 × 5 นิ้ว",
+    size4x4: "4 × 4 นิ้ว",
+    sizeA4: "A4",
+    sizeCustom: "ขนาดกำหนดเอง",
+    widthLabel: "ความกว้าง",
+    heightLabel: "ความสูง",
+    unitMm: "มม.",
+    unitIn: "นิ้ว",
+    unitLabel: "หน่วย",
+    customSizeError: "กรอกความกว้างและความสูงที่ถูกต้อง (10–1000 มม.)",
+    contentLabel: "เนื้อหา",
+    modeLabelOnly: "ป้ายจัดส่ง",
+    modeInvoiceOnly: "ใบแจ้งหนี้",
+    modeBoth: "ป้าย + ใบแจ้งหนี้",
+    modeHint:
+      "พื้นที่ที่เลือกแต่ละส่วนจะถูกวางบนหน้าขนาดพอดีของตัวเองและปรับสัดส่วนให้พอดี — ไม่ยืด ไม่ตัด",
+    printTip:
+      "เคล็ดลับ: พิมพ์ที่สเกล 100% (ไม่ต้องเลือก “พอดีกับหน้า”) เพื่อให้ผลลัพธ์คงขนาดจริงไว้",
+    uploadTitle: "วางไฟล์ PDF ที่นี่",
+    uploadHint: "หรือคลิกเพื่อเลือกไฟล์ — สูงสุด 10 ไฟล์ ไฟล์ละ 50 MB",
+    uploadPrivacy:
+      "ประมวลผลในเบราว์เซอร์ของคุณเท่านั้น ไฟล์ของคุณจะไม่ถูกอัปโหลดไปยังเซิร์ฟเวอร์",
+    replacePdf: "เพิ่ม PDF อีก",
+    pagesWord: "หน้า",
+    analyzing: "กำลังวิเคราะห์…",
+    analysisFailed: "ไม่สามารถอ่าน PDF นี้ได้",
+    detected: "ตรวจพบ",
+    reviewSuggested: "แนะนำให้ตรวจสอบ",
+    ready: "พร้อม",
+    reviewPages: "ตรวจสอบหน้า",
+    noFilesYet: "อัปโหลด PDF เพื่อดูตัวอย่างหน้าและปรับพื้นที่ป้าย",
+    batchLimits: "สูงสุด 10 ไฟล์ และ 200 หน้าต่อชุด",
+    editorTitle: "ปรับพื้นที่ป้ายและใบแจ้งหนี้",
+    editorHint:
+      "ลากภายในกล่องเพื่อเลื่อน ลากมุมเพื่อเปลี่ยนขนาด และเปลี่ยนประเภทพื้นที่ด้วยปุ่มด้านล่าง",
+    page: "หน้า",
+    regionType: "ประเภทพื้นที่",
+    kindLabel: "ป้าย",
+    kindInvoice: "ใบแจ้งหนี้",
+    kindFull: "ทั้งหน้า",
+    fullPage: "พอดีทั้งหน้า",
+    removeRegion: "ลบพื้นที่",
+    resetRegions: "รีเซ็ต",
+    cancel: "ยกเลิก",
+    applySelection: "ใช้การเลือก",
+    sizeHint: "หน้าผลลัพธ์จะคงสัดส่วนนี้ไว้เป๊ะ — ไม่ยืด ไม่ตัด",
+    generate: "สร้าง PDF",
+    generating: "กำลังสร้าง…",
+    noRegionForMode:
+      "ไม่พบพื้นที่ที่ตรงกันในหน้าใดเลย เลือกประเภทเนื้อหาอื่นหรือปรับพื้นที่",
+    sizeRequired: "เลือกขนาดผลลัพธ์ที่ใช้ได้ก่อน",
+    noValidFiles: "เพิ่ม PDF ที่อ่านได้อย่างน้อยหนึ่งไฟล์ก่อน",
+    corruptError: "PDF นี้เสียหายหรือถูกรหัสผ่านจึงประมวลผลไม่ได้",
+    cropTooSmall: "พื้นที่ที่เลือกเล็กเกินไปสำหรับหน้าผลลัพธ์ โปรดปรับการเลือก",
+    resultTitle: "PDF ของคุณ",
+    downloadAll: "ดาวน์โหลดทั้งหมด (ZIP)",
+    printHint:
+      "พิมพ์ที่สเกล 100% (เลือก “ขนาดจริง” ห้ามเลือก “พอดีกับหน้า”) เพื่อให้ขนาดป้ายถูกต้อง",
+    noResults: "PDF ที่คุณสร้างจะปรากฏที่นี่",
+    tooManyPages: "ถึงขีดจำกัดหน้าแล้ว (200 หน้าต่อชุด) ลบไฟล์บางส่วนออก",
+  },
+  tr: {
+    platformLabel: "Kargo platformu",
+    platformAuto: "Otomatik algılama",
+    platformOther: "Diğer / Özel",
+    platformHint:
+      "Bölgelerin doğru oranlarda algılanması için pazaryerinizi seçin. Otomatik algılama, PDF içindeki metni okur.",
+    outputSizeLabel: "Çıktı sayfa boyutu",
+    size4x6: "4 × 6 in (etiket rulosu)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 in",
+    size4x4: "4 × 4 in",
+    sizeA4: "A4",
+    sizeCustom: "Özel boyut",
+    widthLabel: "Genişlik",
+    heightLabel: "Yükseklik",
+    unitMm: "mm",
+    unitIn: "in",
+    unitLabel: "Birim",
+    customSizeError: "Geçerli bir genişlik ve yükseklik girin (10–1000 mm).",
+    contentLabel: "İçerik",
+    modeLabelOnly: "Kargo etiketi",
+    modeInvoiceOnly: "Fatura",
+    modeBoth: "Etiket + Fatura",
+    modeHint:
+      "Her seçilen bölge, kendi tam ölçülü sayfasına yerleştirilir ve sığacak şekilde ölçeklenir — asla gerilmez, asla kesilmez.",
+    printTip:
+      "İpucu: Çıktının tam fiziksel ölçüsünü koruması için %100 ölçekle yazdırın (“sayfaya sığdır” seçmeden).",
+    uploadTitle: "PDF dosyalarını buraya bırakın",
+    uploadHint: "veya göz atmak için tıklayın — en fazla 10 dosya, her biri 50 MB",
+    uploadPrivacy:
+      "Her şey tarayıcınızda işlenir. Dosyalarınız asla bir sunucuya yüklenmez.",
+    replacePdf: "Daha fazla PDF ekle",
+    pagesWord: "sayfa",
+    analyzing: "Analiz ediliyor…",
+    analysisFailed: "Bu PDF okunamadı.",
+    detected: "Algılandı",
+    reviewSuggested: "İnceleme önerilir",
+    ready: "Hazır",
+    reviewPages: "Sayfaları incele",
+    noFilesYet:
+      "Sayfa önizlemelerini görmek ve etiket alanlarını ayarlamak için PDF yükleyin.",
+    batchLimits: "Parti başına en fazla 10 dosya ve 200 sayfa.",
+    editorTitle: "Etiket ve fatura alanını ayarla",
+    editorHint:
+      "Taşımak için kutunun içine sürükleyin. Boyutlandırmak için bir köşeye sürükleyin. Alan türünü aşağıdaki düğmelerle değiştirin.",
+    page: "Sayfa",
+    regionType: "Alan türü",
+    kindLabel: "Etiket",
+    kindInvoice: "Fatura",
+    kindFull: "Tüm sayfa",
+    fullPage: "Tüm sayfayı sığdır",
+    removeRegion: "Alanı kaldır",
+    resetRegions: "Sıfırla",
+    cancel: "İptal",
+    applySelection: "Seçimi uygula",
+    sizeHint: "Çıktı sayfası bu tam oranı korur — gerilme yok, kesme yok.",
+    generate: "PDF oluştur",
+    generating: "Oluşturuluyor…",
+    noRegionForMode:
+      "Hiçbir sayfada eşleşen bölge bulunamadı. Başka bir içerik türü seçin veya alanları ayarlayın.",
+    sizeRequired: "Önce geçerli bir çıktı boyutu seçin.",
+    noValidFiles: "Önce en az bir okunabilir PDF ekleyin.",
+    corruptError: "Bu PDF hasarlı veya parola korumalı ve işlenemiyor.",
+    cropTooSmall:
+      "Seçilen bölge çıktı sayfası için çok küçük. Lütfen seçimi ayarlayın.",
+    resultTitle: "PDF’leriniz",
+    downloadAll: "Tümünü indir (ZIP)",
+    printHint:
+      "Tam etiket ölçüleri için %100 ölçekle yazdırın (“gerçek boyut”u seçin, asla “sayfaya sığdır” demeyin).",
+    noResults: "Oluşturduğunuz PDF’ler burada görünecek.",
+    tooManyPages:
+      "Sayfa sınırına ulaşıldı (parti başına 200 sayfa). Bazı dosyaları kaldırın.",
+  },
+  uk: {
+    platformLabel: "Платформа доставки",
+    platformAuto: "Автовизначення",
+    platformOther: "Інша / Користувацька",
+    platformHint:
+      "Виберіть маркетплейс, щоб області визначалися з правильними пропорціями. Автовизначення зчитує текст у вашому PDF.",
+    outputSizeLabel: "Розмір сторінки виведення",
+    size4x6: "4 × 6 дюймів (рулон етикеток)",
+    size100x150: "100 × 150 мм",
+    size3x5: "3 × 5 дюймів",
+    size4x4: "4 × 4 дюйма",
+    sizeA4: "A4",
+    sizeCustom: "Користувацький розмір",
+    widthLabel: "Ширина",
+    heightLabel: "Висота",
+    unitMm: "мм",
+    unitIn: "дюйм",
+    unitLabel: "Одиниця",
+    customSizeError: "Введіть допустиму ширину та висоту (10–1000 мм).",
+    contentLabel: "Вміст",
+    modeLabelOnly: "Товарна етикетка",
+    modeInvoiceOnly: "Накладна",
+    modeBoth: "Етикетка + накладна",
+    modeHint:
+      "Кожна вибрана область розміщується на окремій сторінці точного розміру й масштабується за пропорціями — без розтягнення та обрізання.",
+    printTip:
+      "Порада: друкуйте з масштабом 100 % (без «підгонки під сторінку»), щоб виведення зберегло точний фізичний розмір.",
+    uploadTitle: "Перетягніть PDF-файли сюди",
+    uploadHint: "або натисніть, щоб вибрати — до 10 файлів, по 50 МБ",
+    uploadPrivacy:
+      "Усе обробляється у вашому браузері. Файли ніколи не завантажуються на сервер.",
+    replacePdf: "Додати ще PDF",
+    pagesWord: "стор.",
+    analyzing: "Аналіз…",
+    analysisFailed: "Не вдалося прочитати цей PDF.",
+    detected: "Визначено",
+    reviewSuggested: "Рекомендовано перевірку",
+    ready: "Готово",
+    reviewPages: "Перевірити сторінки",
+    noFilesYet:
+      "Завантажте PDF, щоб побачити попередній перегляд сторінок і налаштувати області етикетки.",
+    batchLimits: "Не більше 10 файлів і 200 сторінок за пакет.",
+    editorTitle: "Налаштування області етикетки та накладної",
+    editorHint:
+      "Перетягуйте всередині рамки, щоб перемістити. Тягніть кут, щоб змінити розмір. Міняйте тип області кнопками нижче.",
+    page: "Сторінка",
+    regionType: "Тип області",
+    kindLabel: "Етикетка",
+    kindInvoice: "Накладна",
+    kindFull: "Уся сторінка",
+    fullPage: "Вписати всю сторінку",
+    removeRegion: "Видалити область",
+    resetRegions: "Скинути",
+    cancel: "Скасувати",
+    applySelection: "Застосувати вибір",
+    sizeHint:
+      "Сторінка виведення зберігає точні пропорції — без розтягнення та обрізання.",
+    generate: "Створити PDF",
+    generating: "Створення…",
+    noRegionForMode:
+      "Відповідних областей не знайдено. Виберіть інший тип вмісту або налаштуйте області.",
+    sizeRequired: "Спочатку виберіть допустимий розмір виведення.",
+    noValidFiles: "Спочатку додайте принаймні один читабельний PDF.",
+    corruptError:
+      "Цей PDF пошкоджений або захищений паролем і не може бути оброблений.",
+    cropTooSmall:
+      "Вибрана область замала для сторінки виведення. Змініть виділення.",
+    resultTitle: "Ваші PDF",
+    downloadAll: "Скачати все (ZIP)",
+    printHint:
+      "Друкуйте з масштабом 100 % (вибирайте «Фактичний розмір», а ніколи «Підогнати під сторінку») для точних розмірів етикетки.",
+    noResults: "Тут з’являться створені вами PDF.",
+    tooManyPages:
+      "Досягнуто ліміт сторінок (200 сторінок за пакет). Видаліть частину файлів.",
+  },
+  vi: {
+    platformLabel: "Nền tảng vận chuyển",
+    platformAuto: "Tự động nhận diện",
+    platformOther: "Khác / Tùy chỉnh",
+    platformHint:
+      "Chọn sàn thương mại của bạn để vùng được nhận diện với tỷ lệ chính xác. Tự động nhận diện đọc văn bản trong PDF của bạn.",
+    outputSizeLabel: "Kích thước trang đầu ra",
+    size4x6: "4 × 6 in (cuộn nhãn)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 in",
+    size4x4: "4 × 4 in",
+    sizeA4: "A4",
+    sizeCustom: "Kích thước tùy chỉnh",
+    widthLabel: "Chiều rộng",
+    heightLabel: "Chiều cao",
+    unitMm: "mm",
+    unitIn: "in",
+    unitLabel: "Đơn vị",
+    customSizeError: "Nhập chiều rộng và chiều cao hợp lệ (10–1000 mm).",
+    contentLabel: "Nội dung",
+    modeLabelOnly: "Nhãn vận chuyển",
+    modeInvoiceOnly: "Hóa đơn",
+    modeBoth: "Nhãn + Hóa đơn",
+    modeHint:
+      "Mỗi vùng được chọn sẽ đặt trên trang riêng có kích thước chính xác và được co giãn để vừa — không bao giờ kéo giãn, không bao giờ cắt xén.",
+    printTip:
+      "Mẹo: in ở tỷ lệ 100% (không chọn “vừa trang”) để đầu ra giữ đúng kích thước thực.",
+    uploadTitle: "Thả tệp PDF vào đây",
+    uploadHint: "hoặc nhấp để duyệt — tối đa 10 tệp, mỗi tệp 50 MB",
+    uploadPrivacy:
+      "Mọi xử lý diễn ra trong trình duyệt của bạn. Tệp của bạn không bao giờ được tải lên máy chủ.",
+    replacePdf: "Thêm PDF khác",
+    pagesWord: "trang",
+    analyzing: "Đang phân tích…",
+    analysisFailed: "Không thể đọc PDF này.",
+    detected: "Đã nhận diện",
+    reviewSuggested: "Cần xem lại",
+    ready: "Sẵn sàng",
+    reviewPages: "Xem lại trang",
+    noFilesYet: "Tải PDF lên để xem trước trang và điều chỉnh vùng nhãn.",
+    batchLimits: "Tối đa 10 tệp và 200 trang mỗi lô.",
+    editorTitle: "Điều chỉnh vùng nhãn & hóa đơn",
+    editorHint:
+      "Kéo bên trong khung để di chuyển. Kéo góc để thay đổi kích thước. Đổi loại vùng bằng các nút bên dưới.",
+    page: "Trang",
+    regionType: "Loại vùng",
+    kindLabel: "Nhãn",
+    kindInvoice: "Hóa đơn",
+    kindFull: "Toàn trang",
+    fullPage: "Vừa toàn trang",
+    removeRegion: "Xóa vùng",
+    resetRegions: "Đặt lại",
+    cancel: "Hủy",
+    applySelection: "Áp dụng lựa chọn",
+    sizeHint: "Trang đầu ra giữ đúng tỷ lệ này — không kéo giãn, không cắt xén.",
+    generate: "Tạo PDF",
+    generating: "Đang tạo…",
+    noRegionForMode:
+      "Không tìm thấy vùng phù hợp trên trang nào. Chọn loại nội dung khác hoặc điều chỉnh vùng.",
+    sizeRequired: "Hãy chọn kích thước đầu ra hợp lệ trước.",
+    noValidFiles: "Hãy thêm ít nhất một PDF đọc được trước.",
+    corruptError:
+      "PDF này bị hỏng hoặc được bảo vệ bằng mật khẩu nên không thể xử lý.",
+    cropTooSmall:
+      "Vùng đã chọn quá nhỏ so với trang đầu ra. Vui lòng điều chỉnh lựa chọn.",
+    resultTitle: "PDF của bạn",
+    downloadAll: "Tải tất cả (ZIP)",
+    printHint:
+      "In ở tỷ lệ 100% (chọn “kích thước thực”, tuyệt đối không chọn “vừa trang”) để có kích thước nhãn chính xác.",
+    noResults: "PDF bạn tạo sẽ xuất hiện ở đây.",
+    tooManyPages:
+      "Đã đạt giới hạn trang (200 trang mỗi lô). Hãy xóa bớt tệp.",
+  },
+  sw: {
+    platformLabel: "Jukwaa la usafirishaji",
+    platformAuto: "Utambuzi wa kiotomatiki",
+    platformOther: "Nyingine / Maalum",
+    platformHint:
+      "Chagua soko lako ili maeneo yatambuliwe kwa uwiano sahihi. Utambuzi wa kiotomatiki usoma maandishi ndani ya PDF yako.",
+    outputSizeLabel: "Ukubwa wa ukurasa wa matokeo",
+    size4x6: "4 × 6 inchi (raba ya lebo)",
+    size100x150: "100 × 150 mm",
+    size3x5: "3 × 5 inchi",
+    size4x4: "4 × 4 inchi",
+    sizeA4: "A4",
+    sizeCustom: "Ukubwa maalum",
+    widthLabel: "Upana",
+    heightLabel: "Urefu",
+    unitMm: "mm",
+    unitIn: "inchi",
+    unitLabel: "Kipimo",
+    customSizeError: "Weka upana na urefu sahihi (10–1000 mm).",
+    contentLabel: "Maudhui",
+    modeLabelOnly: "Lebo ya usafirishaji",
+    modeInvoiceOnly: "Ankara",
+    modeBoth: "Lebo + Ankara",
+    modeHint:
+      "Kila eneo lililochaguliwa hupangwa kwenye ukurasa wake mwenye ukubwa kamili na kubadilishwa ukubwa ili kuingia — hakunyoosha wala kukata.",
+    printTip:
+      "Kidokezo: chapisha kwa kiwango cha 100% (bila “kufanana na ukurasa”) ili matokeo yadumishe ukubwa halisi wa kimwili.",
+    uploadTitle: "Weka faili za PDF hapa",
+    uploadHint: "au bonyeza ili kutafuta — hadi faili 10, kila moja 50 MB",
+    uploadPrivacy:
+      "Kila kitu huchakatwa kwenye kivinjari chako. Faili zako hazipakwi kwenye seva kamwe.",
+    replacePdf: "Ongeza PDF zaidi",
+    pagesWord: "kurasa",
+    analyzing: "Inachambua…",
+    analysisFailed: "Hikuweza kusoma PDF hii.",
+    detected: "Imetambulika",
+    reviewSuggested: "Inashauriwa kukagua",
+    ready: "Tayari",
+    reviewPages: "Kagua kurasa",
+    noFilesYet:
+      "Pakia PDF ili kuona mapitio ya kurasa na kurekebisha maeneo ya lebo.",
+    batchLimits: "Hadi faili 10 na kurasa 200 kwa kila kundi.",
+    editorTitle: "Rekebisha eneo la lebo na ankara",
+    editorHint:
+      "Vuta ndani ya sanduku ili kusogeza. Pembe ili kubadilisha ukubwa. Badilisha aina ya eneo kwa vitufe hapa chini.",
+    page: "Ukurasa",
+    regionType: "Aina ya eneo",
+    kindLabel: "Lebo",
+    kindInvoice: "Ankara",
+    kindFull: "Ukurasa mzima",
+    fullPage: "Sawazisha ukurasa mzima",
+    removeRegion: "Ondoa eneo",
+    resetRegions: "Weka upya",
+    cancel: "Ghairi",
+    applySelection: "Tekeleza uchaguzi",
+    sizeHint:
+      "Ukurasa wa matokeo unadumisha uwiano huu sahihi — hakuna kunyoosha wala kukata.",
+    generate: "Tengeneza PDF",
+    generating: "Inatengeneza…",
+    noRegionForMode:
+      "Hakuna eneo linalolingana lililopatikana kwenye kurasa yoyote. Chagua aina nyingine ya maudhui au rekebisha maeneo.",
+    sizeRequired: "Chagua kwanza ukubwa sahihi wa matokeo.",
+    noValidFiles: "Ongeza angalau PDF moja inayosomeka kwanza.",
+    corruptError:
+      "PDF hii imeharibiwa au imehifadhiwa kwa nenosiri na haiwezi kuchakatwa.",
+    cropTooSmall:
+      "Eneo lililochaguliwa ni ndogo sana kwa ukurasa wa matokeo. Tafadhali rekebisha uchaguzi.",
+    resultTitle: "PDF zako",
+    downloadAll: "Pakua zote (ZIP)",
+    printHint:
+      "Chapisha kwa kiwango cha 100% (chagua “ukubwa halisi”, kamwe si “kufanana na ukurasa”) ili vipimo vya lebo viwe sahihi.",
+    noResults: "PDF ulizotengeneza zitaonekana hapa.",
+    tooManyPages:
+      "Kikomo cha kurasa kimefikiwa (kurasa 200 kwa kila kundi). Ondoa baadhi ya faili.",
+  },
+};
+
+export function getShippingLabelStrings(
+  locale: Locale
+): ShippingLabelStrings {
+  return { ...shippingLabelEn, ...(shippingLabelByLocale[locale] ?? {}) };
+}
 
 export function getToolText(locale: Locale, slug: string): ToolText {
   const localized = toolTextByLocale[locale] ?? toolTextEn;

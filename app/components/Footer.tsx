@@ -24,6 +24,24 @@ export default function Footer() {
           className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm"
         >
           <Link
+            href="/"
+            className="text-white/55 darkmode:text-white/55 transition hover:text-white darkmode:hover:text-white"
+          >
+            {t.nav.home}
+          </Link>
+          <Link
+            href="/image-tools"
+            className="text-white/55 darkmode:text-white/55 transition hover:text-white darkmode:hover:text-white"
+          >
+            {t.categories.imageTools}
+          </Link>
+          <Link
+            href="/pdf-tools"
+            className="text-white/55 darkmode:text-white/55 transition hover:text-white darkmode:hover:text-white"
+          >
+            {t.home.pdfToolsBtn}
+          </Link>
+          <Link
             href="/about"
             className="text-white/55 darkmode:text-white/55 transition hover:text-white darkmode:hover:text-white"
           >

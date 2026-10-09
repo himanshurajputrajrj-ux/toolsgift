@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import ShareFileResult from "./ShareFileResult";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
@@ -9,6 +9,52 @@ const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
 type CompressionLevel = "low" | "medium" | "high";
 
+type GhostscriptFile = { name: string; data: Uint8Array };
+type GhostscriptRunner = {
+  load?: () => Promise<void>;
+  exec(
+    args: string[],
+    options?: {
+      files?: Array<{ name: string; data: Uint8Array }>;
+      dirs?: string[];
+      outputs?: string[];
+    },
+  ): Promise<{ exitCode: number; files: GhostscriptFile[]; stderr?: string }>;
+  dispose(): void;
+};
+type GhostscriptBrowserApi = {
+  loadHosted(options: { baseUrl: string }): Promise<GhostscriptRunner>;
+};
+
+async function loadGhostscript(): Promise<GhostscriptRunner> {
+  const browserWindow = window as typeof window & {
+    WasmZooGhostscript?: GhostscriptBrowserApi;
+    __toolsgiftGhostscriptLoading?: Promise<void>;
+  };
+
+  if (!browserWindow.WasmZooGhostscript) {
+    if (!browserWindow.__toolsgiftGhostscriptLoading) {
+      browserWindow.__toolsgiftGhostscriptLoading = new Promise<void>((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = "/ghostscript/browser-ghostscript.js";
+        script.async = true;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error("Could not load the Ghostscript browser runtime."));
+        document.head.appendChild(script);
+      });
+    }
+    await browserWindow.__toolsgiftGhostscriptLoading;
+  }
+
+  const api = browserWindow.WasmZooGhostscript;
+  if (!api) throw new Error("Ghostscript browser API was not initialized.");
+
+  const runner = await api.loadHosted({
+    baseUrl: new URL("/ghostscript/", window.location.origin).href,
+  });
+  if (typeof runner.load === "function") await runner.load();
+  return runner;
+}
 export default function PDFCompressor() {
   const inputRef = useRef<HTMLInputElement>(null);
   const { locale, t } = useLanguage();
@@ -79,69 +125,48 @@ export default function PDFCompressor() {
 
   const compressPDF = async () => {
     if (!file) return;
-
     setProcessing(true);
     setError("");
     clearResult();
-
     try {
-      const sourceBytes = await file.arrayBuffer();
-
-      const { PDFDocument } = await import("pdf-lib");
-
-      const sourcePdf = await PDFDocument.load(sourceBytes);
-
-      /*
-       * pdf-lib does not provide true image recompression.
-       * This browser-side compression focuses on rebuilding
-       * the PDF structure and removing unnecessary metadata.
-       *
-       * Higher compression levels also apply additional
-       * document cleanup where possible.
-       */
-
-      const outputPdf = await PDFDocument.create();
-
-      const pages = await outputPdf.copyPages(
-        sourcePdf,
-        sourcePdf.getPageIndices()
-      );
-
-      pages.forEach((page) => {
-        outputPdf.addPage(page);
-      });
-
-      if (compression === "high") {
-        outputPdf.setTitle("");
-        outputPdf.setAuthor("");
-        outputPdf.setSubject("");
-        outputPdf.setKeywords([]);
-        outputPdf.setProducer("ToolsGift");
-        outputPdf.setCreator("ToolsGift");
-      } else if (compression === "medium") {
-        outputPdf.setProducer("ToolsGift");
+      const sourceBytes = new Uint8Array(await file.arrayBuffer());
+      const gs = await loadGhostscript();
+      try {
+        const preset = compression === "high" ? "/screen" : compression === "low" ? "/printer" : "/ebook";
+        const imageSettings = compression === "low" ? ["-dDownsampleColorImages=false", "-dDownsampleGrayImages=false"] : compression === "medium" ? ["-dDownsampleColorImages=true", "-dColorImageDownsampleType=/Bicubic", "-dColorImageResolution=150", "-dDownsampleGrayImages=true", "-dGrayImageDownsampleType=/Bicubic", "-dGrayImageResolution=150"] : ["-dDownsampleColorImages=true", "-dColorImageDownsampleType=/Bicubic", "-dColorImageResolution=96", "-dDownsampleGrayImages=true", "-dGrayImageDownsampleType=/Bicubic", "-dGrayImageResolution=96"]
+        const result = await gs.exec(
+          [
+            "-dSAFER", "-dBATCH", "-dNOPAUSE", "-dQUIET",
+            "-sDEVICE=pdfwrite", "-dCompatibilityLevel=1.4",
+            `-dPDFSETTINGS=${preset}`,
+            ...imageSettings, "-dDetectDuplicateImages=true",
+            "-dCompressFonts=true", "-dSubsetFonts=true",
+            "-sOutputFile=/output.pdf", "/input.pdf",
+          ],
+          {
+            files: [{ name: "/input.pdf", data: sourceBytes }],
+            outputs: ["/output.pdf"],
+          },
+        );
+        if (result.exitCode !== 0) {
+          throw new Error(result.stderr || "Ghostscript PDF compression failed.");
+        }
+        const outputFile = result.files.find((entry) => entry.name === "/output.pdf") ?? result.files[0];
+        if (!outputFile?.data?.byteLength) throw new Error("Ghostscript did not return a PDF.");
+        const candidate = new Blob([new Uint8Array(outputFile.data)], { type: "application/pdf" });
+        const finalBlob = candidate.size < file.size ? candidate : file;
+        setResultBlob(finalBlob);
+        setResultUrl(URL.createObjectURL(finalBlob));
+      } finally {
+        gs.dispose();
       }
-
-      const pdfBytes = await outputPdf.save({
-        useObjectStreams: true,
-        addDefaultPage: false,
-        updateFieldAppearances: false,
-      });
-
-      const blob = new Blob([new Uint8Array(pdfBytes)], {
-        type: "application/pdf",
-      });
-
-      setResultBlob(blob);
-      setResultUrl(URL.createObjectURL(blob));
     } catch (err) {
-      console.error(err);
+      console.error("PDF compression failed:", err);
       setError(t.messages.processingFailed);
     } finally {
       setProcessing(false);
     }
   };
-
   const downloadPDF = () => {
     if (!resultBlob || !resultUrl) return;
 
@@ -354,8 +379,16 @@ export default function PDFCompressor() {
                 </div>
 
                 <h3 className="mt-4 text-lg font-semibold text-slate-900">
-                  PDF compressed successfully
+                  {file && resultBlob && resultBlob.size < file.size ? "PDF compressed successfully" : "No further size reduction"}
                 </h3>
+
+                {file && resultBlob && (
+                  <p className="mt-2 text-sm font-semibold text-slate-700">
+                    {resultBlob.size < file.size
+                      ? `${(((file.size - resultBlob.size) / file.size) * 100).toFixed(1)}% smaller than original`
+                      : "No size reduction; the original PDF is kept."}
+                  </p>
+                )}
 
                 {file && resultBlob && (
                   <div className="mt-5 grid gap-3 sm:grid-cols-2">

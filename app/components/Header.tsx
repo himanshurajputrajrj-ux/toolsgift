@@ -13,6 +13,7 @@ import {
   languageOptions,
 } from "@/app/i18n/translations";
 import { useLanguage } from "@/app/providers/LanguageProvider";
+import { useAuth } from "@/app/providers/AuthProvider";
 
 const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
@@ -61,7 +62,11 @@ type IconType =
   | "passport"
   | "batch"
   | "qr"
-  | "video";
+  | "video"
+  | "sms"
+  | "email"
+  | "audio"
+  | "shipping";
 
 type IconColor =
   | "red"
@@ -322,6 +327,12 @@ const editTools: Tool[] = [
     color: "purple",
   },
   {
+    title: "Shipping Label & Invoice PDF",
+    link: "/tools/shipping-label-pdf",
+    icon: "shipping",
+    color: "blue",
+  },
+  {
     title: "PDF Editor",
     link: "/tools/pdf-editor",
     icon: "edit",
@@ -450,6 +461,25 @@ const utilityTools: Tool[] = [
     icon: "converter",
     color: "orange",
   },
+  // Hidden from public UI: Bulk SMS / Bulk Email (kept for later re-enabling)
+  // {
+  //   title: "Bulk SMS",
+  //   link: "/tools/bulk-sms",
+  //   icon: "sms",
+  //   color: "blue",
+  // },
+  // {
+  //   title: "Bulk Email",
+  //   link: "/tools/bulk-email",
+  //   icon: "email",
+  //   color: "blue",
+  // },
+  {
+    title: "Audio to Text",
+    link: "/tools/audio-to-text",
+    icon: "audio",
+    color: "purple",
+  },
 ];const otherTools: Tool[] = [
   {
     title: "Video to Link",
@@ -467,6 +497,7 @@ const utilityTools: Tool[] = [
 
 export default function Header() {
   const { locale, t, setLocale } = useLanguage();
+  const { user: authUser, status: authStatus, signOut } = useAuth();
   const [toolsOpen, setToolsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -653,6 +684,9 @@ useIsomorphicLayoutEffect(() => {
           )}
         </button>
 
+        {/* Account */}
+        <AuthMenu darkMode={darkMode} onNavigate={closeMenus} />
+
         {/* Desktop Secondary Menu */}
         <div className="relative hidden lg:block">
           <button type="button" onClick={() => { setToolsOpen(false); setLanguageOpen(false); setDesktopDropdown(null); setMoreOpen((v) => !v); }} className={`flex h-10 w-10 items-center justify-center rounded-xl border shadow-sm transition ${darkMode ? "border-white/10 bg-[#1e293b] text-white hover:bg-[#334155]" : "border-black/10 bg-white/70 text-[#202124] hover:bg-white"}`} aria-label={t.nav.more} title={t.nav.more} aria-expanded={moreOpen} aria-haspopup="menu" aria-controls="desktop-more-menu">
@@ -662,6 +696,30 @@ useIsomorphicLayoutEffect(() => {
 
         {moreOpen && (
           <div id="desktop-more-menu" role="menu" aria-label={t.nav.more} className={`absolute right-5 top-[66px] z-[130] hidden w-56 rounded-2xl border p-2 shadow-2xl lg:block ${darkMode ? "border-white/10 bg-[#151f32]" : "border-[#c9a227]/20 bg-[#fffdf8]"}`}>
+            {authStatus === "authenticated" && authUser ? (
+              <div className={`mb-1 border-b pb-1 ${darkMode ? "border-white/10" : "border-black/10"}`}>
+                <Link href="/profile" role="menuitem" onClick={() => setMoreOpen(false)} className={`block rounded-xl px-3 py-2.5 text-sm font-semibold ${darkMode ? "text-slate-200 hover:bg-white/10" : "text-black/75 hover:bg-black/[0.05]"}`}>
+                  {t.auth.profile}
+                </Link>
+                <button
+                  type="button"
+                  role="menuitem"
+                  onClick={async () => { setMoreOpen(false); await signOut(); }}
+                  className={`block w-full rounded-xl px-3 py-2.5 text-left text-sm font-semibold ${darkMode ? "text-slate-200 hover:bg-white/10" : "text-black/75 hover:bg-black/[0.05]"}`}
+                >
+                  {t.auth.signOut}
+                </button>
+              </div>
+            ) : (
+              <div className={`mb-1 border-b pb-1 ${darkMode ? "border-white/10" : "border-black/10"}`}>
+                <Link href="/login" role="menuitem" onClick={() => setMoreOpen(false)} className={`block rounded-xl px-3 py-2.5 text-sm font-semibold ${darkMode ? "text-slate-200 hover:bg-white/10" : "text-black/75 hover:bg-black/[0.05]"}`}>
+                  {t.auth.signIn}
+                </Link>
+                <Link href="/signup" role="menuitem" onClick={() => setMoreOpen(false)} className={`block rounded-xl px-3 py-2.5 text-sm font-semibold ${darkMode ? "text-slate-200 hover:bg-white/10" : "text-black/75 hover:bg-black/[0.05]"}`}>
+                  {t.auth.signUp}
+                </Link>
+              </div>
+            )}
             {[
               [t.nav.features, "/#features"],
               [t.nav.howItWorks, "/#how-it-works"],
@@ -948,6 +1006,88 @@ useIsomorphicLayoutEffect(() => {
                 <span>{darkMode ? t.nav.lightMode : t.nav.darkMode}</span>
               </button>
 
+              {/* ACCOUNT */}
+              <div
+                className={`border-b py-2 ${
+                  darkMode ? "border-white/10" : "border-black/10"
+                }`}
+              >
+                {authStatus === "authenticated" && authUser ? (
+                  <>
+                    <div
+                      className={`flex items-center gap-3 px-1 py-3 ${
+                        darkMode ? "text-white" : "text-black"
+                      }`}
+                    >
+                      <span
+                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#c9a227] text-sm font-black text-[#202124]"
+                        aria-hidden="true"
+                      >
+                        {authUser.name.trim().charAt(0).toUpperCase() ||
+                          authUser.email.charAt(0).toUpperCase()}
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block truncate text-sm font-extrabold">
+                          {authUser.name}
+                        </span>
+                        <span
+                          className={`block truncate text-xs ${
+                            darkMode ? "text-slate-400" : "text-black/50"
+                          }`}
+                        >
+                          {authUser.email}
+                        </span>
+                      </span>
+                    </div>
+
+                    <Link
+                      href="/profile"
+                      onClick={closeMenus}
+                      className={`block py-4 text-base font-bold ${
+                        darkMode ? "text-slate-300" : "text-black/75"
+                      }`}
+                    >
+                      {t.auth.profile}
+                    </Link>
+
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        closeMenus();
+                        await signOut();
+                      }}
+                      className={`block w-full py-4 text-left text-base font-bold ${
+                        darkMode ? "text-slate-300" : "text-black/75"
+                      }`}
+                    >
+                      {t.auth.signOut}
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/login"
+                      onClick={closeMenus}
+                      className={`block py-4 text-base font-bold ${
+                        darkMode ? "text-slate-300" : "text-black/75"
+                      }`}
+                    >
+                      {t.auth.signIn}
+                    </Link>
+
+                    <Link
+                      href="/signup"
+                      onClick={closeMenus}
+                      className={`block py-4 text-base font-bold ${
+                        darkMode ? "text-slate-300" : "text-black/75"
+                      }`}
+                    >
+                      {t.auth.signUp}
+                    </Link>
+                  </>
+                )}
+              </div>
+
               <Link
                 href="/#faq"
                 onClick={closeMenus}
@@ -974,6 +1114,218 @@ useIsomorphicLayoutEffect(() => {
       )}
 
     </header>
+  );
+}
+
+
+/* =========================================================
+   ACCOUNT MENU (DESKTOP)
+========================================================= */
+
+function AuthMenu({
+  darkMode,
+  onNavigate,
+}: {
+  darkMode: boolean;
+  onNavigate: () => void;
+}) {
+  const { t } = useLanguage();
+  const { user, status, signOut } = useAuth();
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    function handleOutside(event: MouseEvent) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false);
+      }
+    }
+
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [open]);
+
+  if (status === "loading") {
+    return (
+      <span
+        aria-hidden="true"
+        className={`hidden h-10 w-28 animate-pulse rounded-xl border md:block ${
+          darkMode ? "border-white/10 bg-[#1e293b]" : "border-black/10 bg-white/70"
+        }`}
+      />
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="hidden lg:block">
+        <Link
+          href="/login"
+          onClick={onNavigate}
+          className={`flex h-10 items-center justify-center gap-2 rounded-xl border px-4 text-sm font-bold shadow-sm transition ${
+            darkMode
+              ? "border-[#c9a227]/40 bg-[#1e293b] text-[#f4d77b] hover:bg-[#334155]"
+              : "border-[#c9a227]/20 bg-white/70 text-[#202124] hover:bg-white"
+          }`}
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          {t.auth.signIn}
+        </Link>
+      </div>
+    );
+  }
+
+  const initial =
+    user.name.trim().charAt(0).toUpperCase() ||
+    user.email.charAt(0).toUpperCase();
+
+  return (
+    <div ref={containerRef} className="relative hidden lg:block">
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        aria-haspopup="menu"
+        aria-controls="account-menu"
+        aria-label={t.auth.account}
+        title={t.auth.account}
+        className={`flex h-10 items-center gap-2 rounded-xl border px-2.5 text-sm font-bold shadow-sm transition ${
+          darkMode
+            ? "border-[#c9a227]/40 bg-[#1e293b] text-white hover:bg-[#334155]"
+            : "border-[#c9a227]/20 bg-white/70 text-[#202124] hover:bg-white"
+        }`}
+      >
+        <span
+          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#c9a227] text-xs font-black text-[#202124]"
+          aria-hidden="true"
+        >
+          {initial}
+        </span>
+        <span className="hidden max-w-[7.5rem] truncate xl:inline">
+          {user.name}
+        </span>
+        <svg
+          width="13"
+          height="13"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          aria-hidden="true"
+        >
+          <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      {open && (
+        <div
+          id="account-menu"
+          role="menu"
+          aria-label={t.auth.account}
+          className={`absolute right-0 top-full z-[130] mt-3 w-64 rounded-2xl border p-2 shadow-2xl ${
+            darkMode
+              ? "border-white/10 bg-[#151f32]"
+              : "border-[#c9a227]/20 bg-[#fffdf8]"
+          }`}
+        >
+          <div className="px-3 py-3">
+            <p
+              className={`truncate text-sm font-extrabold ${
+                darkMode ? "text-white" : "text-[#202124]"
+              }`}
+            >
+              {user.name}
+            </p>
+            <p
+              className={`mt-0.5 truncate text-xs ${
+                darkMode ? "text-slate-400" : "text-black/50"
+              }`}
+            >
+              {user.email}
+            </p>
+            <span
+              className={`mt-2 inline-flex rounded-full border px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider ${
+                darkMode
+                  ? "border-[#c9a227]/40 text-[#f4d77b]"
+                  : "border-[#c9a227]/40 text-[#9b7818]"
+              }`}
+            >
+              {user.plan.id === "free" ? t.auth.planFree : t.auth.planPremium}
+            </span>
+          </div>
+
+          <div
+            className={`border-t pt-1 ${
+              darkMode ? "border-white/10" : "border-black/10"
+            }`}
+          >
+            <Link
+              href="/profile"
+              role="menuitem"
+              onClick={() => {
+                setOpen(false);
+                onNavigate();
+              }}
+              className={`block rounded-xl px-3 py-2.5 text-sm font-semibold ${
+                darkMode
+                  ? "text-slate-200 hover:bg-white/10"
+                  : "text-black/75 hover:bg-black/[0.05]"
+              }`}
+            >
+              {t.auth.profile}
+            </Link>
+
+            <button
+              type="button"
+              role="menuitem"
+              onClick={async () => {
+                setOpen(false);
+                onNavigate();
+                await signOut();
+              }}
+              className={`block w-full rounded-xl px-3 py-2.5 text-left text-sm font-semibold ${
+                darkMode
+                  ? "text-slate-200 hover:bg-white/10"
+                  : "text-black/75 hover:bg-black/[0.05]"
+              }`}
+            >
+              {t.auth.signOut}
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -1576,6 +1928,39 @@ function IconShape({
           <rect x="14" y="4" width="6" height="6" />
           <rect x="4" y="14" width="6" height="6" />
           <path d="M14 14h2v2h-2zM18 14h2M18 18h2M14 18v2" />
+        </svg>
+      );
+
+    case "sms":
+      return (
+        <svg {...common}>
+          <path d="M4 5h16v11H9l-5 4V5z" />
+          <path d="M8 9h8M8 12.5h5" />
+        </svg>
+      );
+
+    case "email":
+      return (
+        <svg {...common}>
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="m3.5 7 8.5 6 8.5-6" />
+        </svg>
+      );
+
+    case "audio":
+      return (
+        <svg {...common}>
+          <rect x="9" y="3" width="6" height="11" rx="3" />
+          <path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6" />
+        </svg>
+      );
+
+    case "shipping":
+      return (
+        <svg {...common}>
+          <rect x="4" y="3" width="16" height="18" rx="2" />
+          <rect x="7" y="6" width="6" height="4" rx="1" />
+          <path d="M7 13h10M7 16h7M16 6.5v3" />
         </svg>
       );
 

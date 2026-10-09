@@ -230,11 +230,35 @@ const RELATED_TOOLS: Record<string, RelatedTool[]> = {
     { name: "Image Compressor", href: "/tools/compressor" },
     { name: "PDF to JPG", href: "/tools/pdf-to-jpg" },
   ],
+  "bulk-sms": [
+    { name: "Word Counter", href: "/tools/word-counter" },
+    { name: "Character Counter", href: "/tools/character-counter" },
+    { name: "Case Converter", href: "/tools/case-converter" },
+    { name: "QR Code Generator", href: "/tools/qr-code-generator" },
+  ],
+  "bulk-email": [
+    // Hidden from public UI: Bulk SMS (kept for later re-enabling)
+    // { name: "Bulk SMS", href: "/tools/bulk-sms" },
+    { name: "Word Counter", href: "/tools/word-counter" },
+    { name: "Character Counter", href: "/tools/character-counter" },
+    { name: "Case Converter", href: "/tools/case-converter" },
+  ],
+  "audio-to-text": [
+    { name: "Image to Text", href: "/tools/image-to-text" },
+    { name: "Word Counter", href: "/tools/word-counter" },
+    { name: "Case Converter", href: "/tools/case-converter" },
+  ],
   "word-to-pdf": [
     { name: "PDF to Word", href: "/tools/pdf-to-word" },
     { name: "PowerPoint to PDF", href: "/tools/powerpoint-to-pdf" },
     { name: "Excel to PDF", href: "/tools/excel-to-pdf" },
     { name: "PDF Compressor", href: "/tools/pdf-compressor" },
+  ],
+  "shipping-label-pdf": [
+    { name: "PDF Cropper", href: "/tools/pdf-cropper" },
+    { name: "PDF Editor", href: "/tools/pdf-editor" },
+    { name: "PDF Organizer", href: "/tools/pdf-organizer" },
+    { name: "PDF Page Numbers", href: "/tools/pdf-page-numbers" },
   ],
 };const TOOLS: Record<string, ToolData> = {
   "background-remover": {
@@ -254,6 +278,33 @@ const RELATED_TOOLS: Record<string, RelatedTool[]> = {
     output: "a PDF version of the spreadsheet",
     useCase: "sharing spreadsheets as fixed-layout documents",
     benefit: "making spreadsheet files easier to share and print",
+  },
+  "bulk-sms": {
+    name: "Bulk SMS Composer",
+    description: "Create personalized bulk SMS messages from a contact list with merge fields, phone number validation and copy or export options.",
+    action: "personalize one SMS message for every contact in a list",
+    input: "a contact list with names and phone numbers plus a message template",
+    output: "a personalized SMS message for each valid contact",
+    useCase: "preparing personalized text messages for many recipients at once",
+    benefit: "writing a single message that is personalized for every contact without editing each text by hand",
+  },
+  "bulk-email": {
+    name: "Bulk Email Composer",
+    description: "Create personalized emails from a contact list with merge fields, email address validation, duplicate detection and copy or export options. No emails are ever sent.",
+    action: "personalize one email for every contact in a list",
+    input: "a contact list with names and email addresses plus an email subject and body",
+    output: "a personalized email for each valid contact, ready to copy or export",
+    useCase: "preparing personalized emails for many recipients at once",
+    benefit: "writing one subject and body that becomes a personalized email for every contact without composing each message by hand",
+  },
+  "audio-to-text": {
+    name: "Audio to Text",
+    description: "Turn speech from audio recordings into editable text with private, in-browser transcription. Audio files are never uploaded to a server.",
+    action: "transcribe speech from an audio recording",
+    input: "an audio file such as MP3, WAV, FLAC, OGG, M4A/AAC, Opus or WebM",
+    output: "editable transcript text that can be copied or downloaded as a TXT file",
+    useCase: "turning lectures, interviews, podcasts and voice notes into readable text",
+    benefit: "reading, searching and reusing spoken content without typing it out or sending the recording anywhere",
   },
   "compressor": {
     name: "Image Compressor",
@@ -397,6 +448,15 @@ const RELATED_TOOLS: Record<string, RelatedTool[]> = {
     output: "a PDF with the selected page areas cropped",
     useCase: "removing excess margins or unwanted page areas",
     benefit: "creating cleaner page layouts",
+  },
+  "shipping-label-pdf": {
+    name: "Shipping Label & Invoice PDF",
+    description: "Fit shipping labels and invoices from any PDF onto exact 4x6, 100x150 mm or custom print pages without stretching or cutting content.",
+    action: "place label and invoice regions onto exact-size print pages",
+    input: "a supported PDF containing shipping labels or invoices",
+    output: "a print-ready PDF with the exact page dimensions you selected",
+    useCase: "printing marketplace shipping labels and invoices for Meesho, Amazon, Flipkart and other platforms",
+    benefit: "getting perfectly sized label pages with no distortion, no cropped barcodes and no guesswork",
   },
   "pdf-editor": {
     name: "PDF Editor",
